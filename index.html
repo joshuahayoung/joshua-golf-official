@@ -8,7 +8,7 @@
     * { box-sizing: border-box; }
     body { margin: 0; padding: 0; overflow-x: hidden; font-family: 'Segoe UI', Roboto, sans-serif; }
 
-    /* [핵심] 상단 고정 컨테이너 */
+    /* [상단 고정] */
     .sticky-top {
       position: sticky;
       top: 0;
@@ -33,26 +33,31 @@
       align-items: center;
       padding: 12px 5%;
       background: #fff;
-      border-bottom: 1px solid #eee;
     }
 
     .logo-area { display: flex; align-items: center; text-decoration: none; color: #333; }
     .logo-img { height: 38px; width: auto; margin-right: 10px; }
     .logo-text { font-weight: 800; font-size: 17px; letter-spacing: -0.5px; }
 
-    /* 데스크탑 메뉴 */
+    /* [PC 메뉴] */
     .nav-links { display: flex; gap: 20px; align-items: center; }
     .nav-links a { 
-      text-decoration: none; 
-      color: #555; 
-      font-size: 13px; 
-      font-weight: 600; 
-      text-transform: uppercase;
-      transition: 0.3s;
+      text-decoration: none; color: #555; font-size: 13px; font-weight: 600; 
+      text-transform: uppercase; transition: 0.3s;
     }
     .nav-links a.active { color: #0c2340; border-bottom: 2px solid #0c2340; padding-bottom: 2px; }
 
-    /* [TOP 버튼 스타일] */
+    /* [모바일 햄버거 버튼 - 기본 숨김] */
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #333;
+      background: none;
+      border: none;
+    }
+
+    /* [TOP 버튼] */
     #backToTop {
       position: fixed;
       bottom: 30px;
@@ -61,41 +66,52 @@
       background-color: #0c2340;
       color: white;
       border: none;
-      width: 45px;
-      height: 45px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       cursor: pointer;
-      display: none; /* 초기에는 숨김 */
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      display: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       font-weight: bold;
+      font-size: 12px;
     }
 
-    /* [반응형] 모바일 설정 (768px 이하) */
+    /* [반응형 - 모바일 768px 이하] */
     @media (max-width: 768px) {
-      .header-wrapper {
-        flex-direction: column;
-        padding: 15px 0 0 0; /* 좌우 여백 제거 */
-      }
-      .logo-area { margin-bottom: 15px; }
+      .menu-toggle { display: block; } /* 햄버거 버튼 등장 */
       
+      /* 메뉴를 왼쪽 사이드바 형태로 변경 */
       .nav-links {
-        flex-direction: column; /* 세로 정렬 */
-        width: 100%;
-        gap: 0;
-        border-top: 1px solid #eee;
+        position: fixed;
+        left: -100%; /* 처음엔 화면 왼쪽 밖으로 숨김 */
+        top: 0;
+        width: 250px;
+        height: 100%;
+        background: #fff;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 60px 20px;
+        gap: 20px;
+        transition: 0.4s ease-in-out;
+        z-index: 1001;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.1);
       }
-      .nav-links a {
-        width: 100%;
-        padding: 12px 0;
-        text-align: center;
-        border-bottom: 1px solid #f9f9f9;
-        font-size: 12px;
+
+      /* 메뉴가 열렸을 때 클래스 */
+      .nav-links.active { left: 0; }
+
+      /* 메뉴 닫기 버튼 (X) */
+      .close-menu {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 20px;
+        cursor: pointer;
+        color: #666;
       }
-      .nav-links a.active {
-        background-color: #f0f2f5;
-        border-bottom: 1px solid #eee;
-        color: #0c2340;
-      }
+      
+      .nav-links a { width: 100%; font-size: 16px; padding: 10px 0; border-bottom: 1px solid #eee; }
+      .nav-links a.active { border-bottom: 1px solid #0c2340; background: none; }
     }
   </style>
 </head>
@@ -103,38 +119,56 @@
 <body>
 
   <div class="sticky-top">
-    <div class="top-bar">
-      Official Website of Joshua Hong | UTSA
-    </div>
+    <div class="top-bar">Official Website of Joshua Hong | UTSA</div>
 
     <header class="header-wrapper">
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
       <a href="index.html" class="logo-area">
         <img src="https://raw.githubusercontent.com/joshuahayoung/joshua-golf-official/main/logo.png" alt="JH Logo" class="logo-img"> 
         <span class="logo-text">Joshua Hong Golf</span>
       </a>
 
-      <nav class="nav-links">
+      <nav class="nav-links" id="navLinks">
+        <span class="close-menu" onclick="toggleMenu()" style="display: none;">✕</span>
         <a href="index.html" class="active">Home</a>
         <a href="ncaa-stats.html">NCAA Stats</a>
         <a href="news-media.html">News & Media</a>
         <a href="reference-links.html">Reference & Links</a>
         <a href="junior-career.html">Junior Career</a>
       </nav>
+
+      <div style="width: 24px; display: none;" class="pc-spacer"></div>
     </header>
   </div>
 
   <button id="backToTop" onclick="scrollToTop()">TOP</button>
 
   <script>
+    // 1. 모바일 메뉴 토글 함수
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      const closeBtn = document.querySelector('.close-menu');
+      navLinks.classList.toggle('active');
+      
+      // 모바일일 때만 X 버튼 보이게 처리
+      if(window.innerWidth <= 768) {
+        closeBtn.style.display = navLinks.classList.contains('active') ? 'block' : 'none';
+      }
+    }
+
+    // 2. 스크롤 시 TOP 버튼 및 상단 고정 제어
     window.onscroll = function() {
-      var btn = document.getElementById("backToTop");
-      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+      const btn = document.getElementById("backToTop");
+      // 스크롤이 100px만 내려가도 바로 버튼 표시
+      if (window.pageYOffset > 100) {
         btn.style.display = "block";
       } else {
         btn.style.display = "none";
       }
     };
 
+    // 3. 부드럽게 위로 올리기
     function scrollToTop() {
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
