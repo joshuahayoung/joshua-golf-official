@@ -4,76 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reference & Links | Joshua Hong Official</title>
-    <style>
-    /* 1. 기본 폰트 및 가독성 설정 */
-    body {
-      font-family: 'Segoe UI', Roboto, sans-serif;
-      line-height: 1.7; /* 행간 최적화 */
-      letter-spacing: 0.02em; /* 자간 최적화 */
-      margin: 0;
-      padding: 0;
-    }
+   <style>
+    /* 1. 부모님 코드의 틀을 유지하며 반응형만 보정 */
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 0; overflow-x: hidden; }
 
-    /* 2. 반응형 헤더 & 메뉴 */
-    .header-container {
+    .header-wrapper {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 5%;
-      background: white;
+      padding: 15px 5%;
+      background: #fff;
       border-bottom: 1px solid #eee;
+      width: 100%;
+      flex-wrap: wrap; /* 모바일에서 내용이 넘치면 아래로 내림 */
     }
 
-    .nav-menu {
-      display: flex;
-      gap: 20px;
+    .logo-area { display: flex; align-items: center; text-decoration: none; color: #333; }
+    .logo-img { height: 40px; margin-right: 10px; width: auto; }
+    .logo-text { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+
+    .nav-links { display: flex; gap: 20px; align-items: center; }
+    .nav-links a { 
+      text-decoration: none; 
+      color: #555; 
+      font-size: 13px; 
+      font-weight: 600; 
+      text-transform: uppercase;
+      white-space: nowrap; 
     }
 
-    /* 모바일 대응 미디어 쿼리 */
+    /* 2. 모바일(768px 이하)에서 메뉴가 겹치지 않게 조절 */
     @media (max-width: 768px) {
-      .header-container {
-        flex-direction: column; /* 로고와 메뉴를 세로로 */
-        gap: 15px;
+      .header-wrapper {
+        flex-direction: column; /* 로고 아래로 메뉴 배치 */
+        padding: 15px 10px;
         text-align: center;
       }
-      .nav-menu {
-        flex-wrap: wrap; /* 메뉴가 넘치면 다음 줄로 */
+      .logo-area { margin-bottom: 15px; justify-content: center; }
+      
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap; /* 메뉴가 많으면 다음 줄로 자연스럽게 넘김 */
         justify-content: center;
-        gap: 10px;
-        font-size: 14px;
+        gap: 10px 15px; /* 가로 세로 간격 조절 */
+        width: 100%;
       }
-      /* 4열 갤러리를 모바일에서 2열로 변경 */
-      #rankings-grid, .gallery-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
+      .nav-links a {
+        font-size: 12px; /* 모바일 가독성 확보 */
+        padding: 5px 0;
       }
-    }
-
-    /* 3. TOP 버튼 스타일 */
-    #topBtn {
-      display: none; /* 처음엔 숨김 */
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      z-index: 99;
-      border: none;
-      outline: none;
-      background-color: #0c2340; /* UTSA Navy */
-      color: white;
-      cursor: pointer;
-      padding: 15px;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      font-weight: bold;
-    }
-    
-    #topBtn:hover {
-      background-color: #ff5a00; /* UTSA Orange */
     }
   </style>
 </head>
 <body style="margin:0; padding:0; background-color: #ffffff;">
+    <header class="header-wrapper">
+    <a href="index.html" class="logo-area">
+      <img src="https://raw.githubusercontent.com/joshuahayoung/joshua-golf-official/main/logo.png" alt="Joshua Hong Golf" class="logo-img"> 
+      <span class="logo-text">Joshua Hong Golf</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="ncaa-stats.html">NCAA Stats</a>
+      <a href="news-media.html" style="color: #0c2340; border-bottom: 2px solid #0c2340;">News</a>
+      <a href="reference-links.html">Reference</a>
+      <a href="junior-career.html">Junior</a>
+    </nav>
+  </header>
 
 <div class="common-header" style="width: 100%; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   
