@@ -48,22 +48,13 @@
     .nav-links a.active { color: #0c2340; border-bottom: 2px solid #0c2340; padding-bottom: 2px; }
 
     /* [햄버거 버튼] */
-    .menu-toggle {
-      display: none;
-      font-size: 26px;
-      cursor: pointer;
-      color: #333;
-      background: none;
-      border: none;
-      padding: 0;
-    }
+    .menu-toggle { display: none; font-size: 26px; cursor: pointer; color: #333; background: none; border: none; }
 
-    /* [TOP 버튼] - 위치 확실히 고정 */
+    /* [TOP 버튼] - 처음에 좋아하셨던 스타일로 복구 및 오른쪽 고정 */
     #backToTop {
       position: fixed;
       bottom: 30px;
-      right: 25px !important; /* 오른쪽 고정 */
-      left: auto !important;  /* 왼쪽 설정 무시 */
+      right: 25px;
       z-index: 9999;
       background-color: #0c2340;
       color: white;
@@ -72,55 +63,25 @@
       height: 50px;
       border-radius: 50%;
       cursor: pointer;
-      display: none; 
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      display: none; /* 스크립트로 제어 */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       font-weight: bold;
       font-size: 12px;
-      line-height: 50px;
-      text-align: center;
-    }
-
-    /* [모바일 사이드바 배경 어둡게] */
-    .menu-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 1000;
     }
 
     /* [반응형 - 모바일] */
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
-      
       .nav-links {
         position: fixed;
-        left: -100%; 
-        top: 0;
-        width: 280px;
-        height: 100%;
-        background: #fff;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 80px 30px;
-        gap: 25px;
-        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 1001;
+        left: -100%; top: 0; width: 280px; height: 100%;
+        background: #fff; flex-direction: column; align-items: flex-start;
+        padding: 80px 30px; gap: 25px; transition: 0.4s; z-index: 1001;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.1);
       }
-
       .nav-links.active { left: 0; }
-      .menu-overlay.active { display: block; }
-
-      .close-menu {
-        position: absolute;
-        top: 25px;
-        left: 25px; /* 주신 이미지대로 왼쪽에 X 버튼 */
-        font-size: 24px;
-        cursor: pointer;
-        color: #333;
-      }
-      
-      .nav-links a { width: 100%; font-size: 16px; padding: 10px 0; border-bottom: 1px solid #eee; color: #333; }
+      .close-menu { position: absolute; top: 25px; left: 25px; font-size: 24px; cursor: pointer; }
+      .nav-links a { width: 100%; font-size: 16px; padding: 10px 0; border-bottom: 1px solid #eee; }
       .nav-links a.active { color: #0c2340; font-weight: 800; border-bottom: 2px solid #0c2340; }
     }
   </style>
@@ -128,19 +89,14 @@
 
 <body>
 
-  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
-
   <div class="sticky-top">
     <div class="top-bar">Official Website of Joshua Hong | UTSA</div>
-
     <header class="header-wrapper">
       <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-
       <a href="index.html" class="logo-area">
         <img src="https://raw.githubusercontent.com/joshuahayoung/joshua-golf-official/main/logo.png" alt="JH Logo" class="logo-img"> 
         <span class="logo-text">Joshua Hong Golf</span>
       </a>
-
       <nav class="nav-links" id="navLinks">
         <span class="close-menu" onclick="toggleMenu()">✕</span>
         <a href="index.html" class="active">Home</a>
@@ -149,7 +105,6 @@
         <a href="reference-links.html">Reference & Links</a>
         <a href="junior-career.html">Junior Career</a>
       </nav>
-
       <div style="width: 30px;" class="pc-spacer"></div>
     </header>
   </div>
@@ -157,25 +112,23 @@
   <button id="backToTop" onclick="scrollToTop()">TOP</button>
 
   <script>
-    // 1. 모바일 메뉴 제어
+    // 1. 모바일 메뉴 토글
     function toggleMenu() {
       document.getElementById('navLinks').classList.toggle('active');
-      document.getElementById('menuOverlay').classList.toggle('active');
     }
 
-    // 2. 스크롤 제어 (100px만 내려가도 TOP 버튼 등장)
+    // 2. TOP 버튼 스크립트 (아까 좋아하셨던 방식 그대로 적용)
     window.onscroll = function() {
-      const btn = document.getElementById("backToTop");
-      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-      
-      if (currentScroll > 100) {
-        btn.style.setProperty("display", "block", "important");
+      var btn = document.getElementById("backToTop");
+      // 스크롤이 100px 이상 내려가면 바로 보이게 (감도 높임)
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        btn.style.display = "block";
       } else {
-        btn.style.setProperty("display", "none", "important");
+        btn.style.display = "none";
       }
     };
 
-    // 3. TOP 버튼 기능
+    // 3. 최상단 이동
     function scrollToTop() {
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
