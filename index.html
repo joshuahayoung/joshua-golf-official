@@ -47,22 +47,24 @@
     }
     .nav-links a.active { color: #0c2340; border-bottom: 2px solid #0c2340; padding-bottom: 2px; }
 
-    /* [모바일 햄버거 버튼 - 기본 숨김] */
+    /* [햄버거 버튼] */
     .menu-toggle {
       display: none;
-      font-size: 24px;
+      font-size: 26px;
       cursor: pointer;
       color: #333;
       background: none;
       border: none;
+      padding: 0;
     }
 
-    /* [TOP 버튼] */
+    /* [TOP 버튼] - 위치 확실히 고정 */
     #backToTop {
       position: fixed;
       bottom: 30px;
-      right: 30px;
-      z-index: 999;
+      right: 25px !important; /* 오른쪽 고정 */
+      left: auto !important;  /* 왼쪽 설정 무시 */
+      z-index: 9999;
       background-color: #0c2340;
       color: white;
       border: none;
@@ -70,53 +72,63 @@
       height: 50px;
       border-radius: 50%;
       cursor: pointer;
-      display: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      display: none; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
       font-weight: bold;
       font-size: 12px;
+      line-height: 50px;
+      text-align: center;
     }
 
-    /* [반응형 - 모바일 768px 이하] */
+    /* [모바일 사이드바 배경 어둡게] */
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+    }
+
+    /* [반응형 - 모바일] */
     @media (max-width: 768px) {
-      .menu-toggle { display: block; } /* 햄버거 버튼 등장 */
+      .menu-toggle { display: block; }
       
-      /* 메뉴를 왼쪽 사이드바 형태로 변경 */
       .nav-links {
         position: fixed;
-        left: -100%; /* 처음엔 화면 왼쪽 밖으로 숨김 */
+        left: -100%; 
         top: 0;
-        width: 250px;
+        width: 280px;
         height: 100%;
         background: #fff;
         flex-direction: column;
         align-items: flex-start;
-        padding: 60px 20px;
-        gap: 20px;
-        transition: 0.4s ease-in-out;
+        padding: 80px 30px;
+        gap: 25px;
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 1001;
-        box-shadow: 5px 0 15px rgba(0,0,0,0.1);
       }
 
-      /* 메뉴가 열렸을 때 클래스 */
       .nav-links.active { left: 0; }
+      .menu-overlay.active { display: block; }
 
-      /* 메뉴 닫기 버튼 (X) */
       .close-menu {
         position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 20px;
+        top: 25px;
+        left: 25px; /* 주신 이미지대로 왼쪽에 X 버튼 */
+        font-size: 24px;
         cursor: pointer;
-        color: #666;
+        color: #333;
       }
       
-      .nav-links a { width: 100%; font-size: 16px; padding: 10px 0; border-bottom: 1px solid #eee; }
-      .nav-links a.active { border-bottom: 1px solid #0c2340; background: none; }
+      .nav-links a { width: 100%; font-size: 16px; padding: 10px 0; border-bottom: 1px solid #eee; color: #333; }
+      .nav-links a.active { color: #0c2340; font-weight: 800; border-bottom: 2px solid #0c2340; }
     }
   </style>
 </head>
 
 <body>
+
+  <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
 
   <div class="sticky-top">
     <div class="top-bar">Official Website of Joshua Hong | UTSA</div>
@@ -130,7 +142,7 @@
       </a>
 
       <nav class="nav-links" id="navLinks">
-        <span class="close-menu" onclick="toggleMenu()" style="display: none;">✕</span>
+        <span class="close-menu" onclick="toggleMenu()">✕</span>
         <a href="index.html" class="active">Home</a>
         <a href="ncaa-stats.html">NCAA Stats</a>
         <a href="news-media.html">News & Media</a>
@@ -138,41 +150,38 @@
         <a href="junior-career.html">Junior Career</a>
       </nav>
 
-      <div style="width: 24px; display: none;" class="pc-spacer"></div>
+      <div style="width: 30px;" class="pc-spacer"></div>
     </header>
   </div>
 
   <button id="backToTop" onclick="scrollToTop()">TOP</button>
 
   <script>
-    // 1. 모바일 메뉴 토글 함수
+    // 1. 모바일 메뉴 제어
     function toggleMenu() {
-      const navLinks = document.getElementById('navLinks');
-      const closeBtn = document.querySelector('.close-menu');
-      navLinks.classList.toggle('active');
-      
-      // 모바일일 때만 X 버튼 보이게 처리
-      if(window.innerWidth <= 768) {
-        closeBtn.style.display = navLinks.classList.contains('active') ? 'block' : 'none';
-      }
+      document.getElementById('navLinks').classList.toggle('active');
+      document.getElementById('menuOverlay').classList.toggle('active');
     }
 
-    // 2. 스크롤 시 TOP 버튼 및 상단 고정 제어
+    // 2. 스크롤 제어 (100px만 내려가도 TOP 버튼 등장)
     window.onscroll = function() {
       const btn = document.getElementById("backToTop");
-      // 스크롤이 100px만 내려가도 바로 버튼 표시
-      if (window.pageYOffset > 100) {
-        btn.style.display = "block";
+      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (currentScroll > 100) {
+        btn.style.setProperty("display", "block", "important");
       } else {
-        btn.style.display = "none";
+        btn.style.setProperty("display", "none", "important");
       }
     };
 
-    // 3. 부드럽게 위로 올리기
+    // 3. TOP 버튼 기능
     function scrollToTop() {
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
   </script>
+
+  
 
 <div class="profile-container" style="width: 100%; max-width: 900px; margin: 0 auto; padding: 0 15px; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   
