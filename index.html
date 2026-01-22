@@ -21,7 +21,6 @@
 
     /* 로고 영역 */
     .logo-area { display: flex; align-items: center; text-decoration: none; color: #333; }
-    /* 로고 이미지 크기 고정으로 깨짐 방지 */
     .logo-img { height: 40px; width: auto; margin-right: 10px; display: block; }
     .logo-text { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
 
@@ -35,8 +34,14 @@
       text-transform: uppercase;
       white-space: nowrap; 
     }
-    /* Home 페이지 활성화 스타일 (통일성) */
-    .nav-links a.active { color: #0c2340; font-weight: 900; border-bottom: 2px solid #0c2340; }
+    
+    /* 현재 페이지 강조 스타일 */
+    .nav-links a.active { 
+      color: #0c2340; 
+      font-weight: 900; 
+      border-bottom: 2px solid #0c2340; 
+      padding-bottom: 3px;
+    }
 
     /* [반응형 핵심] 모바일 설정 (화면 너비 768px 이하) */
     @media (max-width: 768px) {
@@ -58,12 +63,24 @@
         padding: 8px 4px;
         background: #f8f9fa; 
         border-radius: 4px;
-        display: block; /* 클릭 영역 확보 */
+        display: block;
+        /* 모바일에서는 하단 선 제거 (깔끔하게 버튼형으로) */
+        border-bottom: none !important;
+      }
+      /* 모바일용 활성화 버튼 색상 */
+      .nav-links a.active {
+        background: #0c2340;
+        color: #fff;
       }
     }
   </style>
 </head>
 <body style="margin:0; padding:0; background-color: #ffffff;">
+
+  <div style="width: 100%; background-color: #705b0a; color: white; text-align: center; padding: 12px 0; font-size: 14px; font-weight: 500; letter-spacing: 0.5px; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    Official Website of Joshua Hong | UTSA
+  </div>
+
   <header class="header-wrapper">
     <a href="index.html" class="logo-area">
       <img src="https://raw.githubusercontent.com/joshuahayoung/joshua-golf-official/main/logo.png" alt="Joshua Hong Golf" class="logo-img"> 
@@ -73,34 +90,12 @@
     <nav class="nav-links">
       <a href="index.html" class="active">Home</a>
       <a href="ncaa-stats.html">NCAA Stats</a>
-      <a href="news-media.html">News</a>
-      <a href="reference-links.html">Reference</a>
-      <a href="junior-career.html">Junior</a>
+      <a href="news-media.html">News & Media</a>
+      <a href="reference-links.html">Reference & Links</a>
+      <a href="junior-career.html">Junior Career</a>
+      <span style="cursor: pointer; font-size: 18px; color: #666; margin-left: 10px;">🔍</span>
     </nav>
   </header>
-
-  
-  <div class="common-header" style="width: 100%; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <div style="background-color: #705b0a; color: white; text-align: center; padding: 12px 0; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;">
-    Official Website of Joshua Hong | UTSA
-  </div>
-
-  <nav style="max-width: 1000px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; background: #fff; border-bottom: 1px solid #f0f0f0;">
-    <div style="display: flex; align-items: center; gap: 15px;">
-      <img src="https://raw.githubusercontent.com/joshuahayoung/joshua-golf-official/main/logo.png" alt="JH Logo" style="height: 45px; width: auto;">
-      <span style="font-size: 20px; font-weight: 400; color: #333; letter-spacing: 0.5px;">Joshua Hong Golf</span>
-    </div>
-
-    <ul style="list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; align-items: center;">
-      <li><a href="index.html" style="text-decoration: none; color: #0c2340; font-size: 14px; font-weight: 900; border-bottom: 2px solid #0c2340; padding-bottom: 3px; text-transform: uppercase;">Home</a></li>
-      <li><a href="ncaa-stats.html" style="text-decoration: none; color: #666; font-size: 13px; text-transform: uppercase;">NCAA Stats</a></li>
-      <li><a href="news-media.html" style="text-decoration: none; color: #666; font-size: 13px; text-transform: uppercase;">News & Media</a></li>
-      <li><a href="reference-links.html" style="text-decoration: none; color: #666; font-size: 13px; text-transform: uppercase;">Reference & Links</a></li>
-      <li><a href="junior-career.html" style="text-decoration: none; color: #666; font-size: 13px; text-transform: uppercase;">Junior Career</a></li>
-      <li><span style="cursor: pointer; font-size: 18px; color: #666;">🔍</span></li>
-    </ul>
-  </nav>
-</div>
 
 <div class="profile-container" style="width: 100%; max-width: 900px; margin: 0 auto; padding: 0 15px; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   
