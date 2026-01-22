@@ -21,58 +21,66 @@
 
     /* 로고 영역 */
     .logo-area { display: flex; align-items: center; text-decoration: none; color: #333; }
-    .logo-img { height: 40px; margin-right: 10px; }
+    /* 로고 이미지 크기 고정으로 깨짐 방지 */
+    .logo-img { height: 40px; width: auto; margin-right: 10px; display: block; }
     .logo-text { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
 
     /* 메뉴 영역 (PC용) */
-    .nav-links { display: flex; gap: 20px; }
+    .nav-links { display: flex; gap: 20px; align-items: center; }
     .nav-links a { 
       text-decoration: none; 
       color: #555; 
       font-size: 13px; 
       font-weight: 600; 
       text-transform: uppercase;
-      white-space: nowrap; /* 글자 줄바꿈 방지 */
+      white-space: nowrap; 
     }
+    /* Home 페이지 활성화 스타일 (통일성) */
+    .nav-links a.active { color: #0c2340; font-weight: 900; border-bottom: 2px solid #0c2340; }
 
     /* [반응형 핵심] 모바일 설정 (화면 너비 768px 이하) */
     @media (max-width: 768px) {
       .header-wrapper {
-        flex-direction: column; /* 위아래로 배치 */
+        flex-direction: column; 
         padding: 15px 10px;
+        height: auto;
       }
-      .logo-area { margin-bottom: 15px; } /* 로고와 메뉴 사이 간격 */
+      .logo-area { margin-bottom: 15px; } 
       .nav-links {
-        display: grid; /* 바둑판식 배열 */
-        grid-template-columns: repeat(3, 1fr); /* 3열로 정렬 */
+        display: grid; 
+        grid-template-columns: repeat(3, 1fr); 
         gap: 8px;
         width: 100%;
         text-align: center;
       }
       .nav-links a {
-        font-size: 11px; /* 글씨 크기 축소 */
+        font-size: 11px; 
         padding: 8px 4px;
-        background: #f8f9fa; /* 버튼처럼 보이게 */
+        background: #f8f9fa; 
         border-radius: 4px;
+        display: block; /* 클릭 영역 확보 */
       }
     }
   </style>
 </head>
 <body style="margin:0; padding:0; background-color: #ffffff;">
-    <header class="header-wrapper">
-  <a href="index.html" class="logo-area">
-    <img src="logo.png" alt="Joshua Hong Golf" class="logo-img"> <span class="logo-text">Joshua Hong Golf</span>
-  </a>
+  <header class="header-wrapper">
+    <a href="index.html" class="logo-area">
+      <img src="https://raw.githubusercontent.com/joshuahayoung/joshua-golf-official/main/logo.png" alt="Joshua Hong Golf" class="logo-img"> 
+      <span class="logo-text">Joshua Hong Golf</span>
+    </a>
 
-  <nav class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="ncaa-stats.html">NCAA Stats</a>
-    <a href="news-media.html">News</a>
-    <a href="reference-links.html">Reference</a>
-    <a href="junior-career.html">Junior</a>
-  </nav>
-</header>
-    <div class="common-header" style="width: 100%; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    <nav class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="ncaa-stats.html">NCAA Stats</a>
+      <a href="news-media.html">News</a>
+      <a href="reference-links.html">Reference</a>
+      <a href="junior-career.html">Junior</a>
+    </nav>
+  </header>
+
+  
+  <div class="common-header" style="width: 100%; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <div style="background-color: #705b0a; color: white; text-align: center; padding: 12px 0; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;">
     Official Website of Joshua Hong | UTSA
   </div>
