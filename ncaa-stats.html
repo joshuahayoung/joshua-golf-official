@@ -1,80 +1,77 @@
-<!DOCTYPE html>
-<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joshua Hong - NCAA Stats</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Joshua Hong Golf</title>
 
-    <style>
-    /* 1. 기본 폰트 및 가독성 설정 */
-    body {
-      font-family: 'Segoe UI', Roboto, sans-serif;
-      line-height: 1.7; /* 행간 최적화 */
-      letter-spacing: 0.02em; /* 자간 최적화 */
-      margin: 0;
-      padding: 0;
-    }
+  <style>
+    /* 전체 레이아웃 초기화 */
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 0; overflow-x: hidden; }
 
-    /* 2. 반응형 헤더 & 메뉴 */
-    .header-container {
+    /* 로고 & 메뉴 컨테이너 */
+    .header-wrapper {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 5%;
-      background: white;
+      padding: 15px 5%;
+      background: #fff;
       border-bottom: 1px solid #eee;
+      width: 100%;
     }
 
-    .nav-menu {
-      display: flex;
-      gap: 20px;
+    /* 로고 영역 */
+    .logo-area { display: flex; align-items: center; text-decoration: none; color: #333; }
+    .logo-img { height: 40px; margin-right: 10px; }
+    .logo-text { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+
+    /* 메뉴 영역 (PC용) */
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { 
+      text-decoration: none; 
+      color: #555; 
+      font-size: 13px; 
+      font-weight: 600; 
+      text-transform: uppercase;
+      white-space: nowrap; /* 글자 줄바꿈 방지 */
     }
 
-    /* 모바일 대응 미디어 쿼리 */
+    /* [반응형 핵심] 모바일 설정 (화면 너비 768px 이하) */
     @media (max-width: 768px) {
-      .header-container {
-        flex-direction: column; /* 로고와 메뉴를 세로로 */
-        gap: 15px;
+      .header-wrapper {
+        flex-direction: column; /* 위아래로 배치 */
+        padding: 15px 10px;
+      }
+      .logo-area { margin-bottom: 15px; } /* 로고와 메뉴 사이 간격 */
+      .nav-links {
+        display: grid; /* 바둑판식 배열 */
+        grid-template-columns: repeat(3, 1fr); /* 3열로 정렬 */
+        gap: 8px;
+        width: 100%;
         text-align: center;
       }
-      .nav-menu {
-        flex-wrap: wrap; /* 메뉴가 넘치면 다음 줄로 */
-        justify-content: center;
-        gap: 10px;
-        font-size: 14px;
+      .nav-links a {
+        font-size: 11px; /* 글씨 크기 축소 */
+        padding: 8px 4px;
+        background: #f8f9fa; /* 버튼처럼 보이게 */
+        border-radius: 4px;
       }
-      /* 4열 갤러리를 모바일에서 2열로 변경 */
-      #rankings-grid, .gallery-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-      }
-    }
-
-    /* 3. TOP 버튼 스타일 */
-    #topBtn {
-      display: none; /* 처음엔 숨김 */
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      z-index: 99;
-      border: none;
-      outline: none;
-      background-color: #0c2340; /* UTSA Navy */
-      color: white;
-      cursor: pointer;
-      padding: 15px;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      font-weight: bold;
-    }
-    
-    #topBtn:hover {
-      background-color: #ff5a00; /* UTSA Orange */
     }
   </style>
 </head>
 <body style="margin: 0; padding: 0; background-color: #ffffff;">
+    <header class="header-wrapper">
+  <a href="index.html" class="logo-area">
+    <img src="logo.png" alt="Joshua Hong Golf" class="logo-img"> <span class="logo-text">Joshua Hong Golf</span>
+  </a>
+
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="ncaa-stats.html">NCAA Stats</a>
+    <a href="news-media.html">News</a>
+    <a href="reference-links.html">Reference</a>
+    <a href="junior-career.html">Junior</a>
+  </nav>
+</header>
 
     <div class="common-header" style="width: 100%; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <div style="background-color: #705b0a; color: white; text-align: center; padding: 12px 0; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;">
