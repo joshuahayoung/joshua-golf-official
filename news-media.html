@@ -1,3 +1,64 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Joshua Hong Golf</title>
+
+  <style>
+    /* 전체 레이아웃 초기화 */
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 0; overflow-x: hidden; }
+
+    /* 로고 & 메뉴 컨테이너 */
+    .header-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 5%;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      width: 100%;
+    }
+
+    /* 로고 영역 */
+    .logo-area { display: flex; align-items: center; text-decoration: none; color: #333; }
+    .logo-img { height: 40px; margin-right: 10px; }
+    .logo-text { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+
+    /* 메뉴 영역 (PC용) */
+    .nav-links { display: flex; gap: 20px; }
+    .nav-links a { 
+      text-decoration: none; 
+      color: #555; 
+      font-size: 13px; 
+      font-weight: 600; 
+      text-transform: uppercase;
+      white-space: nowrap; /* 글자 줄바꿈 방지 */
+    }
+
+    /* [반응형 핵심] 모바일 설정 (화면 너비 768px 이하) */
+    @media (max-width: 768px) {
+      .header-wrapper {
+        flex-direction: column; /* 위아래로 배치 */
+        padding: 15px 10px;
+      }
+      .logo-area { margin-bottom: 15px; } /* 로고와 메뉴 사이 간격 */
+      .nav-links {
+        display: grid; /* 바둑판식 배열 */
+        grid-template-columns: repeat(3, 1fr); /* 3열로 정렬 */
+        gap: 8px;
+        width: 100%;
+        text-align: center;
+      }
+      .nav-links a {
+        font-size: 11px; /* 글씨 크기 축소 */
+        padding: 8px 4px;
+        background: #f8f9fa; /* 버튼처럼 보이게 */
+        border-radius: 4px;
+      }
+    }
+  </style>
+</head>
+
 <body style="margin: 0; padding: 0; background-color: #ffffff;">
 
   <header class="header-wrapper">
