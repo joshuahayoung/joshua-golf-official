@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reference & Links | Joshua Hong Official</title>
-   <style>
-    /* 1. 부모님 코드의 틀을 유지하며 반응형만 보정 */
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Reference & Links | Joshua Hong Official</title>
+  <style>
+    /* 1. 전체 레이아웃 초기화 및 통일성 유지 */
     * { box-sizing: border-box; }
     body { margin: 0; padding: 0; overflow-x: hidden; }
 
@@ -17,11 +17,10 @@
       background: #fff;
       border-bottom: 1px solid #eee;
       width: 100%;
-      flex-wrap: wrap; /* 모바일에서 내용이 넘치면 아래로 내림 */
     }
 
     .logo-area { display: flex; align-items: center; text-decoration: none; color: #333; }
-    .logo-img { height: 40px; margin-right: 10px; width: auto; }
+    .logo-img { height: 40px; width: auto; margin-right: 10px; display: block; }
     .logo-text { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
 
     .nav-links { display: flex; gap: 20px; align-items: center; }
@@ -34,30 +33,37 @@
       white-space: nowrap; 
     }
 
-    /* 2. 모바일(768px 이하)에서 메뉴가 겹치지 않게 조절 */
+    /* 2. 모바일 반응형 (768px 이하) - 격자형 정렬 */
     @media (max-width: 768px) {
       .header-wrapper {
-        flex-direction: column; /* 로고 아래로 메뉴 배치 */
+        flex-direction: column; 
         padding: 15px 10px;
+        height: auto;
+      }
+      .logo-area { margin-bottom: 15px; } 
+      .nav-links {
+        display: grid; 
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 8px;
+        width: 100%;
         text-align: center;
       }
-      .logo-area { margin-bottom: 15px; justify-content: center; }
-      
-      .nav-links {
-        display: flex;
-        flex-wrap: wrap; /* 메뉴가 많으면 다음 줄로 자연스럽게 넘김 */
-        justify-content: center;
-        gap: 10px 15px; /* 가로 세로 간격 조절 */
-        width: 100%;
-      }
       .nav-links a {
-        font-size: 12px; /* 모바일 가독성 확보 */
-        padding: 5px 0;
+        font-size: 11px; 
+        padding: 8px 4px;
+        background: #f8f9fa; 
+        border-radius: 4px;
+        display: block;
+        border-bottom: none !important;
       }
     }
   </style>
 </head>
 <body style="margin: 0; padding: 0; background-color: #ffffff;">
+
+  <div style="width: 100%; background-color: #705b0a; color: white; text-align: center; padding: 12px 0; font-size: 14px; font-weight: 500; letter-spacing: 0.5px; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    Official Website of Joshua Hong | UTSA
+  </div>
 
   <header class="header-wrapper">
     <a href="index.html" class="logo-area">
@@ -71,33 +77,9 @@
       <a href="news-media.html">News & Media</a>
       <a href="reference-links.html" style="color: #0c2340; font-weight: 900; border-bottom: 2px solid #0c2340; padding-bottom: 3px;">Reference & Links</a>
       <a href="junior-career.html">Junior Career</a>
-      <span style="cursor: pointer; font-size: 16px; color: #666; margin-left: 10px;">🔍</span>
+      <span style="cursor: pointer; font-size: 18px; color: #666; margin-left: 10px;">🔍</span>
     </nav>
   </header>
-
-<div class="common-header" style="width: 100%; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  
-  <div style="background-color: #705b0a; color: white; text-align: center; padding: 12px 0; font-size: 14px; font-weight: 500; letter-spacing: 0.5px;">
-    Official Website of Joshua Hong | UTSA
-  </div>
-
-  <nav style="max-width: 1000px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; background: #fff; border-bottom: 1px solid #f0f0f0;">
-    
-    <div style="display: flex; align-items: center; gap: 15px;">
-      <img src="https://raw.githubusercontent.com/joshuahayoung/joshua-golf-official/main/logo.png" alt="JH Logo" style="height: 45px; width: auto;">
-      <span style="font-size: 20px; font-weight: 400; color: #333; letter-spacing: 0.5px;">Joshua Hong Golf</span>
-    </div>
-
-    <ul style="list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; align-items: center;">
-      <li><a href="index.html" style="text-decoration: none; color: #666; font-size: 13px; text-transform: uppercase;">Home</a></li>
-      <li><a href="ncaa-stats.html" style="text-decoration: none; color: #666; font-size: 13px; text-transform: uppercase;">NCAA Stats</a></li>
-      <li><a href="news-media.html" style="text-decoration: none; color: #666; font-size: 13px; text-transform: uppercase;">News & Media</a></li>
-      <li><a href="reference-links.html" style="text-decoration: none; color: #0c2340; font-size: 14px; font-weight: 900; border-bottom: 2px solid #0c2340; padding-bottom: 3px; text-transform: uppercase;">Reference & Links</a></li>
-      <li><a href="junior-career.html" style="text-decoration: none; color: #666; font-size: 13px; text-transform: uppercase;">Junior Career</a></li>
-      <li><span style="cursor: pointer; font-size: 18px; color: #666;">🔍</span></li>
-    </ul>
-  </nav>
-</div>
 
 <div style="font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; width: 100%; color: #2c3e50; line-height: 1.8; max-width: 900px; margin: auto; box-sizing: border-box; padding: 0 10px;">
   <div style="text-align: center; margin-bottom: 25px; padding-top: 40px;">
