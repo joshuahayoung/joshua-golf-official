@@ -1,4 +1,6 @@
 <head>
+  <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/joshuahayoung/lab/main/images/joshua-hong-logo.jpg">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/joshuahayoung/lab/main/images/joshua-hong-logo.jpg">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-H1JW8YBDZ8"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -197,19 +199,269 @@
 </div>
 
 
-
-
-
+  
+  
 <div class="performance-log-section" style="max-width: 900px; margin: 0 auto 60px; padding: 0 15px; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
 
+  <style>
+    /* 기본 테이블 스타일 */
+    .log-table { width: 100%; border-collapse: collapse; background: white; table-layout: fixed; margin-bottom: 0; border: none; }
+    .log-table th { background: #f8f9fa; font-size: 12px; color: #0c2340; text-transform: uppercase; padding: 15px 10px; border-bottom: 2px solid #0c2340; text-align: center; }
+    .log-table th.col-left { text-align: left; padding-left: 20px; }
+    .log-table td { padding: 15px 10px; border-bottom: 1px solid #edf2f7; vertical-align: middle; text-align: center; }
+    .log-table td.col-left { text-align: left; padding-left: 20px; }
+    
+    .under-par { color: #e74c3c !important; font-weight: 800 !important; }
+    .scheduled-text { font-size: 11px; color: #95a5a6; font-weight: 600; }
+    .today-text { font-size: 12px; font-weight: 800; color: #e74c3c; }
+
+    /* In Progress 카드 스타일 */
+    .live-event-card {
+      background: #ffffff;
+      border: 2px solid #0c2340;
+      border-radius: 20px;
+      padding: 5px;
+      box-shadow: 0 15px 45px rgba(12, 35, 64, 0.12);
+      margin-bottom: 50px;
+      position: relative;
+    }
+
+    /* 스코어카드 버튼 스타일 */
+    .card-link {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 4px 10px;
+      background: #f1f3f5;
+      color: #0c2340;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 4px;
+      border: 1px solid #dee2e6;
+      transition: all 0.2s;
+    }
+    .card-link:hover { background: #e9ecef; border-color: #ced4da; }
+
+    /* 모바일 대응 */
+    @media (max-width: 768px) {
+      .log-table thead { display: none; }
+      .log-table, .log-table tbody, .log-table tr, .log-table td { display: block; width: 100%; box-sizing: border-box; }
+      .log-table tr { margin-bottom: 15px; border: 1px solid #eee !important; border-radius: 12px; padding: 12px; }
+      .log-table td { border: none !important; padding: 0 !important; text-align: left !important; }
+      .hide-mobile { display: none !important; }
+      .mobile-status-bar { display: flex !important; background: #fcfcfc; border-radius: 8px; margin-top: 12px; padding: 10px 5px; border: 1px dashed #e2e8f0; }
+      .ms-item { flex: 1; text-align: center; border-right: 1px solid #eee; }
+      .ms-item:last-child { border-right: none; }
+      .ms-label { display: block; font-size: 9px; color: #aaa; font-weight: 800; margin-bottom: 2px; }
+      .ms-value { display: block; font-size: 13px; font-weight: 800; }
+    }
+    
+    @media (min-width: 769px) {
+      .mobile-status-bar { display: none !important; }
+      .col-info { width: 55%; }
+      .col-score { width: 10%; }
+      .col-par { width: 10%; }
+      .col-status { width: 15%; }
+      .col-finish { width: 10%; }
+    }
+  </style>
+
+ <div style="border-bottom: 2px solid #0c2340; padding-bottom: 20px; margin-bottom: 40px; text-align: center;">
+    <h1 style="margin: 0; color: #0c2340; font-size: 26px; letter-spacing: 2px; font-weight: 900; text-transform: uppercase;">
+      On-going Tournament
+    </h1>
+  </div>
+
+  <div class="live-event-card">
+    <div style="padding: 20px 25px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="background: #e74c3c; color: white; padding: 4px 14px; border-radius: 50px; font-size: 10px; font-weight: 900; letter-spacing: 1px; display: flex; align-items: center; gap: 6px;">
+          <span style="width: 8px; height: 8px; background: white; border-radius: 50%; animation: pulse 1.5s infinite;"></span>
+          IN PROGRESS
+        </span>
+        <h2 style="color: #0c2340; margin: 0; font-size: 22px; font-weight: 800;">Cancun Collegiate Qualifying</h2>
+      </div>
+      <div style="font-size: 12px; color: #95a5a6; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Jan 2026 Season</div>
+    </div>
+
+    <div style="border-radius: 0 0 15px 15px; overflow: hidden; border-top: 1px solid #edf2f7;">
+      <table class="log-table">
+        <thead>
+          <tr>
+            <th class="col-info col-left">Tournament Details</th>
+            <th class="col-score">Score</th>
+            <th class="col-par">Par</th>
+            <th class="col-status">Status</th>
+            <th class="col-finish">Finish</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background: rgba(231, 76, 60, 0.02);">
+            <td class="col-left">
+              <div style="font-weight: 600; font-size: 13px; color: #e74c3c;">Jan 22, 2026</div>
+              <div style="font-weight: 800; color: #0c2340; font-size: 16px; margin: 2px 0;">Round 1: The Canyons Course (Par 72)</div>
+              <div style="font-size: 12px; color: #7f8c8d;">TPC San Antonio </div>
+<button type="button" 
+        onclick="document.getElementById('scorecard-modal').style.display='flex'"
+        style="cursor: pointer; display: inline-flex; align-items: center; margin-top: 8px; padding: 5px 12px; background: #ffffff; color: #0c2340; font-family: inherit; font-size: 11px; font-weight: 800; border-radius: 6px; border: 1.5px solid #0c2340; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+  <span style="margin-right: 5px;">📊</span> VIEW SCORECARD
+</button>
+
+<div id="scorecard-modal" 
+     onclick="this.style.display='none'" 
+     style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box;">
+  
+  <div style="position: relative; max-width: 100%; max-height: 90%;">
+    <div style="color: white; text-align: right; font-size: 12px; margin-bottom: 10px; font-weight: 600;">CLOSE [X]</div>
+    
+    <img src="https://raw.githubusercontent.com/joshuahayoung/lab/main/images/qualify%201%20cancun.jpg" 
+         style="max-width: 100%; max-height: 80vh; border-radius: 8px; box-shadow: 0 0 30px rgba(0,0,0,0.5); border: 3px solid white;">
+    
+    <div style="color: white; text-align: center; margin-top: 15px; font-size: 14px; font-weight: 700;">
+      Cancun Collegiate Qualifying - Round 1 Scorecard
+    </div>
+  </div>
+</div>
+              <div class="mobile-status-bar">
+                <div class="ms-item"><span class="ms-label">SCORE</span><span class="ms-value under-par">68</span></div>
+                <div class="ms-item"><span class="ms-label">PAR</span><span class="ms-value under-par">-4</span></div>
+                <div class="ms-item"><span class="ms-label">STATUS</span><span class="ms-value">Final</span></div>
+                <div class="ms-item"><span class="ms-label">FINISH</span><span class="ms-value">T1</span></div>
+              </div>
+            </td>
+            <td class="hide-mobile"><span class="under-par" style="font-size: 16px;">68</span></td>
+            <td class="hide-mobile"><span class="under-par" style="font-size: 16px;">-4</span></td>
+            <td class="hide-mobile" style="font-weight: 700; font-size: 13px;">Final</td>
+            <td class="hide-mobile" style="font-weight: 800; font-size: 16px;">T1</td>
+          </tr>
+          <tr>
+            <td class="col-left">
+              <div style="font-weight: 600; font-size: 13px;">Jan 23, 2026</div>
+              <div style="font-weight: 800; color: #0c2340; font-size: 16px; margin: 2px 0;">Round 2: The Oaks Course (Par 72)</div>
+              <div style="font-size: 12px; color: #7f8c8d;">TPC San Antonio </div>
+              <div class="mobile-status-bar">
+                <div class="ms-item"><span class="ms-label">SCORE</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">PAR</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">STATUS</span><span class="ms-value today-text">Today</span></div>
+                <div class="ms-item"><span class="ms-label">FINISH</span><span class="ms-value">-</span></div>
+              </div>
+            </td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile today-text">Today</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+          </tr>
+          <tr>
+            <td class="col-left">
+              <div style="font-weight: 600; font-size: 13px;">Jan 26, 2026</div>
+              <div style="font-weight: 800; color: #0c2340; font-size: 16px; margin: 2px 0;">Round 3: The Canyons Course (Par 72)</div>
+              <div style="font-size: 12px; color: #7f8c8d;">TPC San Antonio </div>
+              <div class="mobile-status-bar">
+                <div class="ms-item" style="border:none;"><span class="ms-label">STATUS</span><span class="ms-value scheduled-text">Scheduled</span></div>
+              </div>
+            </td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile scheduled-text">Scheduled</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+          </tr>
+          <tr>
+            <td class="col-left">
+              <div style="font-weight: 600; font-size: 13px;">Jan 27, 2026</div>
+              <div style="font-weight: 800; color: #0c2340; font-size: 16px; margin: 2px 0;">Round 4: The Oaks Course (Par 72)</div>
+              <div style="font-size: 12px; color: #7f8c8d;">TPC San Antonio </div>
+              <div class="mobile-status-bar">
+                <div class="ms-item" style="border:none;"><span class="ms-label">STATUS</span><span class="ms-value scheduled-text">Scheduled</span></div>
+              </div>
+            </td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile scheduled-text">Scheduled</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="background: #0c2340; padding: 15px 25px; border-radius: 0 0 18px 18px; display: flex; justify-content: space-between; align-items: center;">
+      <div style="color: rgba(255,255,255,0.7); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Current Stats</div>
+      <div style="display: flex; gap: 30px;">
+        <div style="text-align: right;">
+          <span style="color: rgba(255,255,255,0.6); font-size: 10px; font-weight: 800; display: block;">TOTAL</span>
+          <span style="color: #ffffff; font-size: 20px; font-weight: 900;">68</span>
+        </div>
+        <div style="text-align: right;">
+          <span style="color: rgba(255,255,255,0.6); font-size: 10px; font-weight: 800; display: block;">PAR</span>
+          <span style="color: #e74c3c; font-size: 20px; font-weight: 900;">-4</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* 불빛만 깜빡이게 만드는 애니메이션 정의 */
+  @keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.2; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+</style>
+
+
+
+  
+
+
+
+  
+<div class="performance-log-section" style="max-width: 900px; margin: 0 auto 60px; padding: 0 15px; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  
   <div style="border-bottom: 2px solid #0c2340; padding-bottom: 20px; margin-bottom: 40px; text-align: center;">
     <h1 style="margin: 0; color: #0c2340; font-size: 26px; letter-spacing: 2px; font-weight: 900; text-transform: uppercase;">
-      JOSHUA HONG : PERFORMANCE LOG
+      PERFORMANCE LOG
     </h1>
     <p style="margin: 8px 0 0; color: #7f8c8d; font-size: 14px; font-weight: 500; letter-spacing: 1px;">
       Official Tournament Schedule
     </p>
   </div>
+  
+  <style>
+    /* 테이블 기본 구조 (데스크탑) */
+    .log-table { width: 100%; border-collapse: collapse; background: white; table-layout: fixed; margin-bottom: 0; border: none; }
+    .log-table th { background: #f8f9fa; font-size: 12px; color: #0c2340; text-transform: uppercase; padding: 15px 10px; border-bottom: 2px solid #2e7d32; text-align: center; }
+    .log-table th.col-left { text-align: left; padding-left: 20px; }
+    .log-table td { padding: 15px 10px; border-bottom: 1px solid #edf2f7; vertical-align: middle; text-align: center; }
+    .log-table td.col-left { text-align: left; padding-left: 20px; }
+    
+    /* 강조 스타일 */
+    .under-par { color: #e74c3c !important; font-weight: 800 !important; }
+    .scheduled-text { font-size: 11px; color: #95a5a6; font-weight: 600; }
+
+    /* 모바일 최적화 (768px 이하) */
+    @media (max-width: 768px) {
+      .log-table thead { display: none; }
+      .log-table, .log-table tbody, .log-table tr, .log-table td { display: block; width: 100%; box-sizing: border-box; }
+      .log-table tr { margin-bottom: 20px; border: 1px solid #e2e8f0 !important; border-radius: 15px; padding: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+      .log-table td { border: none !important; padding: 0 !important; text-align: left !important; }
+      .hide-mobile { display: none !important; }
+      .mobile-status-bar { display: flex !important; background: #fcfcfc; border-radius: 8px; margin-top: 15px; padding: 10px 5px; border: 1px dashed #e2e8f0; }
+      .ms-item { flex: 1; text-align: center; border-right: 1px solid #eee; }
+      .ms-item:last-child { border-right: none; }
+      .ms-label { display: block; font-size: 9px; color: #aaa; font-weight: 800; margin-bottom: 2px; }
+      .ms-value { display: block; font-size: 13px; font-weight: 800; color: #bdc3c7; }
+    }
+    
+    /* PC 전용 너비 */
+    @media (min-width: 769px) {
+      .mobile-status-bar { display: none !important; }
+      .col-info { width: 50%; }
+      .col-rounds { width: 15%; }
+      .col-total { width: 10%; }
+      .col-par { width: 10%; }
+      .col-finish { width: 15%; }
+    }
+  </style>
 
   <div style="margin-bottom: 50px;">
     <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
@@ -221,122 +473,190 @@
       </div>
     </div>
 
-    <div style="overflow-x: auto; border-radius: 15px; border: 1px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.05); background: white;">
-      <table style="width: 100%; border-collapse: collapse; min-width: 700px; font-size: 14.5px;">
+    <div style="border-radius: 15px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+      <table class="log-table">
         <thead>
-          <tr style="background-color: #f8f9fa; border-bottom: 2px solid #2e7d32;">
-            <th style="padding: 18px 15px; text-align: left; color: #0c2340; font-weight: 800; width: 15%;">Date</th>
-            <th style="padding: 18px 15px; text-align: left; color: #0c2340; font-weight: 800; width: 45%;">Tournament / Course</th>
-            <th style="padding: 18px 15px; text-align: center; color: #0c2340; font-weight: 800;">R1-R2-R3</th>
-            <th style="padding: 18px 15px; text-align: center; color: #0c2340; font-weight: 800;">Total</th>
-            <th style="padding: 18px 15px; text-align: center; color: #0c2340; font-weight: 800;">Par</th>
-            <th style="padding: 18px 15px; text-align: center; color: #0c2340; font-weight: 800;">Finish</th>
+          <tr>
+            <th class="col-info col-left">Tournament / Course</th>
+            <th class="col-rounds">R1-R2-R3</th>
+            <th class="col-total">Total</th>
+            <th class="col-par">Par</th>
+            <th class="col-finish">Finish</th>
           </tr>
         </thead>
         <tbody style="color: #2d3436;">
-          <tr style="border-bottom: 1px solid #edf2f7;">
-            <td style="padding: 18px 15px; font-weight: 600;">Feb 2-4</td>
-            <td style="padding: 18px 15px;">
-              <div style="font-weight: 800; color: #0c2340;">Compadres Collegiate (UTRGV)</div>
-              <div style="font-size: 13px; color: #7f8c8d; margin-top: 4px;">Iberostar Playa Paraiso - Playa Del Carmen, MX</div>
+          
+          <tr>
+            <td class="col-left">
+              <div style="font-weight: 600; font-size: 13px;">Feb 2-4, 2026</div>
+              <div style="font-weight: 800; color: #0c2340; font-size: 16px; margin: 2px 0;">Compadres Collegiate (UTRGV)</div>
+              <div style="font-size: 12px; color: #7f8c8d;">Iberostar Playa Paraiso - MX</div>
+              <div class="mobile-status-bar">
+                <div class="ms-item"><span class="ms-label">R1-R2-R3</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">TOTAL</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">PAR</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">FINISH</span><span class="ms-value">-</span></div>
+              </div>
             </td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
           </tr>
-          <tr style="border-bottom: 1px solid #edf2f7; background-color: #fcfdfe;">
-            <td style="padding: 18px 15px; font-weight: 600;">Feb 23-24</td>
-            <td style="padding: 18px 15px;">
-              <div style="font-weight: 800; color: #0c2340;">Lone Star Collegiate (UTSA)</div>
-              <div style="font-size: 13px; color: #7f8c8d; margin-top: 4px;">TPC San Antonio Canyons - San Antonio, TX</div>
+
+          <tr style="background-color: #fcfdfe;">
+            <td class="col-left">
+              <div style="font-weight: 600; font-size: 13px;">Feb 23-24, 2026</div>
+              <div style="font-weight: 800; color: #0c2340; font-size: 16px; margin: 2px 0;">Lone Star Collegiate (UTSA)</div>
+              <div style="font-size: 12px; color: #7f8c8d;">TPC San Antonio Canyons - TX</div>
+              <div class="mobile-status-bar">
+                <div class="ms-item"><span class="ms-label">R1-R2-R3</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">TOTAL</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">PAR</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">FINISH</span><span class="ms-value">-</span></div>
+              </div>
             </td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
           </tr>
-          <tr style="border-bottom: 1px solid #edf2f7;">
-            <td style="padding: 18px 15px; font-weight: 600;">Mar 2-3</td>
-            <td style="padding: 18px 15px;">
-              <div style="font-weight: 800; color: #0c2340;">Golden Nugget Inv. (Lamar)</div>
-              <div style="font-size: 13px; color: #7f8c8d; margin-top: 4px;">The CC at Golden Nugget - Lake Charles, LA</div>
+
+          <tr>
+            <td class="col-left">
+              <div style="font-weight: 600; font-size: 13px;">Mar 2-3, 2026</div>
+              <div style="font-weight: 800; color: #0c2340; font-size: 16px; margin: 2px 0;">Golden Nugget Inv. (Lamar)</div>
+              <div style="font-size: 12px; color: #7f8c8d;">The CC at Golden Nugget - LA</div>
+              <div class="mobile-status-bar">
+                <div class="ms-item"><span class="ms-label">R1-R2-R3</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">TOTAL</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">PAR</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">FINISH</span><span class="ms-value">-</span></div>
+              </div>
             </td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
           </tr>
-          <tr style="border-bottom: 1px solid #edf2f7; background-color: #fcfdfe;">
-            <td style="padding: 18px 15px; font-weight: 600;">Mar 16-17</td>
-            <td style="padding: 18px 15px;">
-              <div style="font-weight: 800; color: #0c2340;">Arizona Thunderbirds Intercollegiate</div>
-              <div style="font-size: 13px; color: #7f8c8d; margin-top: 4px;">Tucson CC - Tucson, AZ</div>
+
+          <tr style="background-color: #fcfdfe;">
+            <td class="col-left">
+              <div style="font-weight: 600; font-size: 13px;">Mar 16-17, 2026</div>
+              <div style="font-weight: 800; color: #0c2340; font-size: 16px; margin: 2px 0;">Arizona Thunderbirds Intercollegiate</div>
+              <div style="font-size: 12px; color: #7f8c8d;">Tucson CC - AZ</div>
+              <div class="mobile-status-bar">
+                <div class="ms-item"><span class="ms-label">R1-R2-R3</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">TOTAL</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">PAR</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">FINISH</span><span class="ms-value">-</span></div>
+              </div>
             </td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
           </tr>
-          <tr style="border-bottom: 1px solid #edf2f7;">
-            <td style="padding: 18px 15px; font-weight: 600;">Mar 23-24</td>
-            <td style="padding: 18px 15px;">
-              <div style="font-weight: 800; color: #0c2340;">Bell Bank "Pay it Forward" Collegiate</div>
-              <div style="font-size: 13px; color: #7f8c8d; margin-top: 4px;">Wigwam GC - Litchfield Park, AZ</div>
+
+          <tr>
+            <td class="col-left">
+              <div style="font-weight: 600; font-size: 13px;">Mar 23-24, 2026</div>
+              <div style="font-weight: 800; color: #0c2340; font-size: 16px; margin: 2px 0;">Bell Bank "Pay it Forward" Collegiate</div>
+              <div style="font-size: 12px; color: #7f8c8d;">Wigwam GC - AZ</div>
+              <div class="mobile-status-bar">
+                <div class="ms-item"><span class="ms-label">R1-R2-R3</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">TOTAL</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">PAR</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">FINISH</span><span class="ms-value">-</span></div>
+              </div>
             </td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
           </tr>
-          <tr style="border-bottom: 1px solid #edf2f7; background-color: #fcfdfe;">
-            <td style="padding: 18px 15px; font-weight: 600;">Apr 6-7</td>
-            <td style="padding: 18px 15px;">
-              <div style="font-weight: 800; color: #0c2340;">Tiger Intercollegiate (Missouri)</div>
-              <div style="font-size: 13px; color: #7f8c8d; margin-top: 4px;">The Club at Old Hawthorne - Columbia, MO</div>
+
+          <tr style="background-color: #fcfdfe;">
+            <td class="col-left">
+              <div style="font-weight: 600; font-size: 13px;">Apr 6-7, 2026</div>
+              <div style="font-weight: 800; color: #0c2340; font-size: 16px; margin: 2px 0;">Tiger Intercollegiate (Missouri)</div>
+              <div style="font-size: 12px; color: #7f8c8d;">The Club at Old Hawthorne - MO</div>
+              <div class="mobile-status-bar">
+                <div class="ms-item"><span class="ms-label">R1-R2-R3</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">TOTAL</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">PAR</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">FINISH</span><span class="ms-value">-</span></div>
+              </div>
             </td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
           </tr>
-          <tr style="border-bottom: 1px solid #edf2f7; background: rgba(201, 138, 46, 0.03);">
-            <td style="padding: 18px 15px; font-weight: 600; color: #c98a2e;">Apr 27-29</td>
-            <td style="padding: 18px 15px;">
-              <div style="font-weight: 800; color: #0c2340;">American Conference Championship</div>
-              <div style="font-size: 13px; color: #7f8c8d; margin-top: 4px;">Ritz Carlton Members Club - Sarasota, FL</div>
+
+          <tr style="background: rgba(201, 138, 46, 0.03);">
+            <td class="col-left">
+              <div style="font-weight: 600; font-size: 13px; color: #c98a2e;">Apr 27-29, 2026</div>
+              <div style="font-weight: 800; color: #0c2340; font-size: 16px; margin: 2px 0;">American Conference Championship</div>
+              <div style="font-size: 12px; color: #7f8c8d;">Ritz Carlton Members Club - FL</div>
+              <div class="mobile-status-bar">
+                <div class="ms-item"><span class="ms-label">R1-R2-R3</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">TOTAL</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">PAR</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">FINISH</span><span class="ms-value">-</span></div>
+              </div>
             </td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
           </tr>
-          <tr style="border-bottom: 1px solid #edf2f7;">
-            <td style="padding: 18px 15px; font-weight: 600;">May 18-20</td>
-            <td style="padding: 18px 15px;">
-              <div style="font-weight: 800; color: #0c2340;">NCAA Regional</div>
-              <div style="font-size: 13px; color: #7f8c8d; margin-top: 4px;">TBD - Location to be Announced</div>
+
+          <tr>
+            <td class="col-left">
+              <div style="font-weight: 600; font-size: 13px;">May 18-20, 2026</div>
+              <div style="font-weight: 800; color: #0c2340; font-size: 16px; margin: 2px 0;">NCAA Regional</div>
+              <div style="font-size: 12px; color: #7f8c8d;">TBD - Location to be Announced</div>
+              <div class="mobile-status-bar">
+                <div class="ms-item"><span class="ms-label">R1-R2-R3</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">TOTAL</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">PAR</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">FINISH</span><span class="ms-value">-</span></div>
+              </div>
             </td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
           </tr>
+
           <tr style="background: rgba(12, 35, 64, 0.05);">
-            <td style="padding: 18px 15px; font-weight: 600; color: #0c2340;">May 29 - Jun 3</td>
-            <td style="padding: 18px 15px;">
-              <div style="font-weight: 800; color: #0c2340;">NCAA Championship</div>
-              <div style="font-size: 13px; color: #7f8c8d; margin-top: 4px;">Omni La Costa - Carlsbad, CA</div>
+            <td class="col-left">
+              <div style="font-weight: 600; font-size: 13px; color: #0c2340;">May 29 - Jun 3, 2026</div>
+              <div style="font-weight: 800; color: #0c2340; font-size: 16px; margin: 2px 0;">NCAA Championship</div>
+              <div style="font-size: 12px; color: #7f8c8d;">Omni La Costa - Carlsbad, CA</div>
+              <div class="mobile-status-bar">
+                <div class="ms-item"><span class="ms-label">R1-R2-R3</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">TOTAL</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">PAR</span><span class="ms-value">-</span></div>
+                <div class="ms-item"><span class="ms-label">FINISH</span><span class="ms-value">-</span></div>
+              </div>
             </td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
-            <td style="padding: 18px 15px; text-align: center; color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
+            <td class="hide-mobile" style="color: #bdc3c7;">-</td>
           </tr>
+
         </tbody>
       </table>
     </div>
   </div>
+</div>
+
+
+
+  
 
   <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 12px; border: 1px solid #e2e8f0;">
     <p style="margin: 0; font-size: 14px; color: #666; line-height: 1.6;">
@@ -347,48 +667,97 @@
 
 </div>
 
-  <div class="archives-section" style="max-width: 900px; margin: 0 auto 60px; padding: 0 15px; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+
+  
+<div class="archives-section" style="max-width: 900px; margin: 0 auto 60px; padding: 0 15px; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+
+  <style>
+    /* 테이블 기본 구조 */
+    .res-table { width: 100%; border-collapse: collapse; background: white; table-layout: fixed; }
+    .res-table th { background: #f8f9fa; font-size: 11px; color: #666; text-transform: uppercase; padding: 15px 10px; border-bottom: 1px solid #eee; }
+    .res-table td { padding: 15px 10px; border-bottom: 1px solid #eee; vertical-align: middle; }
+    
+    /* 모바일 최적화 (768px 이하) */
+    @media (max-width: 768px) {
+      .res-table thead { display: none; } /* 헤더 숨김 */
+      .res-table, .res-table tbody, .res-table tr, .res-table td { display: block; width: 100%; box-sizing: border-box; }
+      
+      .res-table tr { 
+        margin-bottom: 20px; 
+        border: 1px solid #eee !important; 
+        border-radius: 15px; 
+        padding: 15px; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      }
+      
+      .res-table td { border: none; padding: 0; text-align: left; overflow: visible; }
+      
+      /* PC용 점수 칸들을 모바일에서는 숨김 */
+      .hide-on-mobile { display: none !important; }
+      
+      /* 모바일 전용 한 줄 스코어 바 */
+      .mobile-score-bar { 
+        display: flex !important; 
+        background: #fcfcfc;
+        border-radius: 8px;
+        margin-top: 15px;
+        padding: 10px 5px;
+        border: 1px solid #f0f0f0;
+      }
+      .m-item { flex: 1; text-align: center; border-right: 1px solid #eee; }
+      .m-item:last-child { border-right: none; }
+      .m-label { display: block; font-size: 9px; color: #aaa; font-weight: 800; margin-bottom: 2px; }
+      .m-value { display: block; font-size: 13px; font-weight: 800; color: #333; }
+    }
+    
+    /* PC 전용 설정 */
+    @media (min-width: 769px) {
+      .mobile-score-bar { display: none !important; }
+      .col-tour { width: 45%; }
+      .col-score { width: 20%; }
+      .col-val { width: 11%; }
+    }
+  </style>
 
   <div style="border-top: 2px solid #0c2340; border-bottom: 2px solid #0c2340; padding: 25px 0; margin-bottom: 40px; text-align: center; background-color: #fafafa;">
-    <h2 style="margin: 0; font-size: 22px; color: #0c2340; letter-spacing: 2px; font-weight: 900; text-transform: uppercase;">
-      Managed Official Archives
-    </h2>
+    <h2 style="margin: 0; font-size: 22px; color: #0c2340; letter-spacing: 2px; font-weight: 900; text-transform: uppercase;">Managed Official Archives</h2>
     <div style="width: 40px; height: 3px; background: #c98a2e; margin: 12px auto;"></div>
-    <h3 style="margin: 0; font-size: 13px; color: #666; letter-spacing: 3px; font-weight: 600; text-transform: uppercase;">
-      Tournament Results & WAGR Metrics
-    </h3>
+    <h3 style="margin: 0; font-size: 13px; color: #666; letter-spacing: 3px; font-weight: 600; text-transform: uppercase;">Tournament Results & WAGR Metrics</h3>
   </div>
 
   <div style="margin-bottom: 50px;">
     <div style="display: flex; align-items: center; margin-bottom: 20px; border-left: 6px solid #c98a2e; padding-left: 15px;">
-      <h4 style="margin: 0; color: #c98a2e; font-size: 22px; font-weight: 800; letter-spacing: -0.5px;">Off-Season / Special Invitational</h4>
+      <h4 style="margin: 0; color: #c98a2e; font-size: 20px; font-weight: 800;">Off-Season / Special Invitational</h4>
     </div>
     
-    <div style="overflow-x: auto; border-radius: 15px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-      <table style="width: 100%; border-collapse: collapse; min-width: 800px; font-size: 14px; background: white;">
-        <thead style="background: #f8f9fa; font-size: 11px; color: #666; text-transform: uppercase; border-bottom: 1px solid #eee;">
+    <div style="border-radius: 15px; border: 1px solid #eee; overflow: hidden;">
+      <table class="res-table">
+        <thead>
           <tr>
-            <th style="padding: 15px; text-align: left;">Date</th>
-            <th style="padding: 15px; text-align: left;">Tournament / Course</th>
-            <th style="padding: 15px; text-align: center;">R1-R2-R3</th>
-            <th style="padding: 15px; text-align: center;">Total</th>
-            <th style="padding: 15px; text-align: center;">Par</th>
-            <th style="padding: 15px; text-align: center;">Finish</th>
+            <th class="col-tour">Date / Tournament</th>
+            <th class="col-score">R1-R2-R3</th>
+            <th class="col-val">Total</th>
+            <th class="col-val">Par</th>
+            <th class="col-val">Finish</th>
           </tr>
         </thead>
         <tbody>
-          <tr style="border-bottom: 1px solid #eee;">
-            <td style="padding: 20px 15px; color: #888; font-weight: 600;">Dec 2025</td>
-            <td style="padding: 20px 15px;">
-              <div style="font-weight: 800; color: #0c2340; font-size: 15px;">Patriot All-America Invitational</div>
-              <div style="font-size: 11px; color: #c98a2e; margin-top: 5px; font-weight: 700; background: #fdfcf9; display: inline-block; padding: 2px 8px; border-radius: 4px; border: 1px solid #f2e6d5;">
-                WAGR Power: 806.3420 / Pts: 6.1052
+          <tr>
+            <td>
+              <div style="color: #999; font-weight: 700; font-size: 11px;">Dec 2025</div>
+              <div style="font-weight: 800; color: #0c2340; font-size: 16px; margin: 2px 0;">Patriot All-America Invitational</div>
+              <div style="font-size: 11px; color: #c98a2e; font-weight: 700; letter-spacing: -0.2px;">WAGR Power: 806.3420 / Pts: 6.1052</div>
+              <div class="mobile-score-bar">
+                <div class="m-item"><span class="m-label">R1-R2-R3</span><span class="m-value">71-73-72</span></div>
+                <div class="m-item"><span class="m-label">TOTAL</span><span class="m-value">216</span></div>
+                <div class="m-item"><span class="m-label">PAR</span><span class="m-value">+6</span></div>
+                <div class="m-item"><span class="m-label">FINISH</span><span class="m-value" style="color:#0c2340;">T38</span></div>
               </div>
             </td>
-            <td style="padding: 20px 15px; text-align: center; color: #2d3436;">71-73-72</td>
-            <td style="padding: 20px 15px; text-align: center; font-weight: 600;">216</td>
-            <td style="padding: 20px 15px; text-align: center; font-weight: 800; color: #2d3436;">+6</td>
-            <td style="padding: 20px 15px; text-align: center; font-weight: 800; color: #0c2340;">T38</td>
+            <td class="hide-on-mobile" style="text-align: center;">71-73-72</td>
+            <td class="hide-on-mobile" style="text-align: center; font-weight: 700;">216</td>
+            <td class="hide-on-mobile" style="text-align: center; font-weight: 800;">+6</td>
+            <td class="hide-on-mobile" style="text-align: center; font-weight: 800; color: #0c2340;">T38</td>
           </tr>
         </tbody>
       </table>
@@ -397,78 +766,96 @@
 
   <div style="margin-bottom: 40px;">
     <div style="display: flex; align-items: center; margin-bottom: 20px; border-left: 6px solid #0c2340; padding-left: 15px;">
-      <h4 style="margin: 0; color: #0c2340; font-size: 22px; font-weight: 800; letter-spacing: -0.5px;">2025 NCAA Fall Season <span style="font-weight: 400; color: #7f8c8d; font-size: 16px;">(4 Events)</span></h4>
+      <h4 style="margin: 0; color: #0c2340; font-size: 20px; font-weight: 800;">2025 NCAA Fall Season</h4>
     </div>
     
-    <div style="overflow-x: auto; border-radius: 15px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-      <table style="width: 100%; border-collapse: collapse; min-width: 800px; font-size: 14px; background: white;">
-        <thead style="background: #f8f9fa; font-size: 11px; color: #666; text-transform: uppercase; border-bottom: 1px solid #eee;">
+    <div style="border-radius: 15px; border: 1px solid #eee; overflow: hidden;">
+      <table class="res-table">
+        <thead>
           <tr>
-            <th style="padding: 15px; text-align: left;">Date</th>
-            <th style="padding: 15px; text-align: left;">Tournament / Course</th>
-            <th style="padding: 15px; text-align: center;">R1-R2-R3</th>
-            <th style="padding: 15px; text-align: center;">Total</th>
-            <th style="padding: 15px; text-align: center;">Par</th>
-            <th style="padding: 15px; text-align: center;">Finish</th>
+            <th class="col-tour">Date / Tournament</th>
+            <th class="col-score">R1-R2-R3</th>
+            <th class="col-val">Total</th>
+            <th class="col-val">Par</th>
+            <th class="col-val">Finish</th>
           </tr>
         </thead>
-        <tbody style="color: #2d3436;">
-          <tr style="border-bottom: 1px solid #eee;">
-            <td style="padding: 20px 15px; color: #888; font-weight: 600;">Oct 2025</td>
-            <td style="padding: 20px 15px;">
-              <div style="font-weight: 700; color: #2d3436;">Trinity Forest Invitational</div>
-              <div style="font-size: 11px; color: #777; margin-top: 5px; font-weight: 700;">WAGR Power: 360.1597 / Pts: 3.1971</div>
+        <tbody>
+          <tr>
+            <td>
+              <div style="color: #999; font-weight: 700; font-size: 11px;">Oct 2025</div>
+              <div style="font-weight: 700; color: #333; font-size: 15px;">Trinity Forest Invitational</div>
+              <div style="font-size: 11px; color: #777; font-weight: 700;">WAGR Power: 360.1597 / Pts: 3.1971</div>
+              <div class="mobile-score-bar">
+                <div class="m-item"><span class="m-label">R1-R2-R3</span><span class="m-value">75-73-74</span></div>
+                <div class="m-item"><span class="m-label">TOTAL</span><span class="m-value">222</span></div>
+                <div class="m-item"><span class="m-label">PAR</span><span class="m-value">+6</span></div>
+                <div class="m-item"><span class="m-label">FINISH</span><span class="m-value">T55</span></div>
+              </div>
             </td>
-            <td style="padding: 20px 15px; text-align: center;">75-73-74</td>
-            <td style="padding: 20px 15px; text-align: center;">222</td>
-            <td style="padding: 20px 15px; text-align: center; font-weight: 700;">+6</td>
-            <td style="padding: 20px 15px; text-align: center; font-weight: 700;">T55</td>
+            <td class="hide-on-mobile" style="text-align: center;">75-73-74</td>
+            <td class="hide-on-mobile" style="text-align: center;">222</td>
+            <td class="hide-on-mobile" style="text-align: center; font-weight: 700;">+6</td>
+            <td class="hide-on-mobile" style="text-align: center; font-weight: 700;">T55</td>
           </tr>
-          <tr style="border-bottom: 1px solid #eee; background-color: #fcfdfe;">
-            <td style="padding: 20px 15px; color: #888; font-weight: 600;">Oct 2025</td>
-            <td style="padding: 20px 15px;">
-              <div style="font-weight: 700; color: #2d3436;">Badger Invitational</div>
-              <div style="font-size: 11px; color: #777; margin-top: 5px; font-weight: 700;">WAGR Power: 129.0694 / Pts: 3.3178</div>
+          <tr style="background: #fcfdfe;">
+            <td>
+              <div style="color: #999; font-weight: 700; font-size: 11px;">Oct 2025</div>
+              <div style="font-weight: 700; color: #333; font-size: 15px;">Badger Invitational</div>
+              <div style="font-size: 11px; color: #777; font-weight: 700;">WAGR Power: 129.0694 / Pts: 3.3178</div>
+              <div class="mobile-score-bar">
+                <div class="m-item"><span class="m-label">R1-R2-R3</span><span class="m-value"><span style="color:#e53935;">71</span>-71-76</span></div>
+                <div class="m-item"><span class="m-label">TOTAL</span><span class="m-value">218</span></div>
+                <div class="m-item"><span class="m-label">PAR</span><span class="m-value">+2</span></div>
+                <div class="m-item"><span class="m-label">FINISH</span><span class="m-value">T24</span></div>
+              </div>
             </td>
-            <td style="padding: 20px 15px; text-align: center;">
-              <span style="color: #e53935; font-weight: 800;">71</span> - <span style="color: #e53935; font-weight: 800;">71</span> - 76
-            </td>
-            <td style="padding: 20px 15px; text-align: center;">218</td>
-            <td style="padding: 20px 15px; text-align: center; font-weight: 700;">+2</td>
-            <td style="padding: 20px 15px; text-align: center; font-weight: 700;">T24</td>
+            <td class="hide-on-mobile" style="text-align: center;"><span style="color:#e53935;font-weight:800;">71</span>-71-76</td>
+            <td class="hide-on-mobile" style="text-align: center;">218</td>
+            <td class="hide-on-mobile" style="text-align: center; font-weight: 700;">+2</td>
+            <td class="hide-on-mobile" style="text-align: center; font-weight: 700;">T24</td>
           </tr>
-          <tr style="border-bottom: 1px solid #eee;">
-            <td style="padding: 20px 15px; color: #888; font-weight: 600;">Sep 2025</td>
-            <td style="padding: 20px 15px;">
-              <div style="font-weight: 700; color: #2d3436;">Highlands Invitational</div>
-              <div style="font-size: 11px; color: #777; margin-top: 5px; font-weight: 700;">WAGR Power: 232.6656 / Pts: 4.9097</div>
+          <tr>
+            <td>
+              <div style="color: #999; font-weight: 700; font-size: 11px;">Sep 2025</div>
+              <div style="font-weight: 700; color: #333; font-size: 15px;">Highlands Invitational</div>
+              <div style="font-size: 11px; color: #777; font-weight: 700;">WAGR Power: 232.6656 / Pts: 4.9097</div>
+              <div class="mobile-score-bar">
+                <div class="m-item"><span class="m-label">R1-R2-R3</span><span class="m-value">74-<span style="color:#e53935;">71</span>-70</span></div>
+                <div class="m-item"><span class="m-label">TOTAL</span><span class="m-value">215</span></div>
+                <div class="m-item"><span class="m-label">PAR</span><span class="m-value" style="color:#e53935;">-1</span></div>
+                <div class="m-item"><span class="m-label">FINISH</span><span class="m-value">T12</span></div>
+              </div>
             </td>
-            <td style="padding: 20px 15px; text-align: center;">
-              74 - <span style="color: #e53935; font-weight: 800;">71</span> - <span style="color: #e53935; font-weight: 800;">70</span>
-            </td>
-            <td style="padding: 20px 15px; text-align: center;">215</td>
-            <td style="padding: 20px 15px; text-align: center; font-weight: 900; color: #e53935;">-1</td>
-            <td style="padding: 20px 15px; text-align: center; font-weight: 800;">T12</td>
+            <td class="hide-on-mobile" style="text-align: center;">74-<span style="color:#e53935;font-weight:800;">71</span>-70</td>
+            <td class="hide-on-mobile" style="text-align: center;">215</td>
+            <td class="hide-on-mobile" style="text-align: center; font-weight: 900; color:#e53935;">-1</td>
+            <td class="hide-on-mobile" style="text-align: center; font-weight: 800;">T12</td>
           </tr>
-          <tr style="background: rgba(12, 35, 64, 0.03);">
-            <td style="padding: 20px 15px; color: #0c2340; font-weight: 700;">Sep 2025</td>
-            <td style="padding: 20px 15px;">
-              <div style="font-weight: 800; color: #0c2340;">Argent Financial Invitational</div>
-              <div style="font-size: 11px; color: #777; margin-top: 5px; font-weight: 700;">WAGR Power: 230.8799 / Pts: 5.3735</div>
+          <tr style="background: rgba(12, 35, 64, 0.04);">
+            <td>
+              <div style="color: #0c2340; font-weight: 700; font-size: 11px;">Sep 2025</div>
+              <div style="font-weight: 800; color: #0c2340; font-size: 15px;">Argent Financial Invitational</div>
+              <div style="font-size: 11px; color: #777; font-weight: 700;">WAGR Power: 230.8799 / Pts: 5.3735</div>
+              <div class="mobile-score-bar">
+                <div class="m-item"><span class="m-label">R1-R2-R3</span><span class="m-value" style="color:#e53935;">70-70-69</span></div>
+                <div class="m-item"><span class="m-label">TOTAL</span><span class="m-value" style="color:#e53935;">209</span></div>
+                <div class="m-item"><span class="m-label">PAR</span><span class="m-value" style="color:#e53935;">-7</span></div>
+                <div class="m-item"><span class="m-label">FINISH</span><span class="m-value" style="color:#0c2340;">T9</span></div>
+              </div>
             </td>
-            <td style="padding: 20px 15px; text-align: center; font-weight: 900; color: #e53935;">
-              70 - 70 - 69
-            </td>
-            <td style="padding: 20px 15px; text-align: center; font-weight: 900; color: #e53935;">209</td>
-            <td style="padding: 20px 15px; text-align: center; font-weight: 900; color: #e53935;">-7</td>
-            <td style="padding: 20px 15px; text-align: center; font-weight: 900; color: #0c2340;">T9</td>
+            <td class="hide-on-mobile" style="text-align: center; font-weight: 900; color:#e53935;">70-70-69</td>
+            <td class="hide-on-mobile" style="text-align: center; font-weight: 900; color:#e53935;">209</td>
+            <td class="hide-on-mobile" style="text-align: center; font-weight: 900; color:#e53935;">-7</td>
+            <td class="hide-on-mobile" style="text-align: center; font-weight: 900; color: #0c2340;">T9</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-
 </div>
+
+  
 
 
   <div class="analysis-section" style="max-width: 900px; margin: 0 auto 50px; padding: 0 15px; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
