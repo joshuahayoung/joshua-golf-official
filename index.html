@@ -1,6 +1,6 @@
 <head>
   <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/joshuahayoung/lab/main/images/joshua-hong-logo.jpg">
-<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/joshuahayoung/lab/main/images/joshua-hong-logo.jpg">
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/joshuahayoung/lab/main/images/joshua-hong-logo.jpg">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-H1JW8YBDZ8"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -23,11 +23,33 @@
     }
     * { box-sizing: border-box; }
 
-    /* [상단 고정 헤더] */
+    /* [상단 헤더 기본 스타일] */
     .sticky-top {
-      position: sticky; top: 0; z-index: 1000; width: 100%;
+      position: absolute; top: 0; left: 0; z-index: 1000; width: 100%;
       background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      /* 우아한 등장을 위한 트랜지션 설정 */
+      transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out, visibility 0.4s;
     }
+
+    /* 스크롤 시 내려와 고정되는 상태 */
+    .sticky-top.scrolled {
+      position: fixed;
+      top: 0;
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+      background: rgba(255, 255, 255, 0.98);
+    }
+
+    /* 위로 올라갈 때 '스르르륵' 사라지는 준비 상태 */
+    .sticky-top.preparing {
+      position: fixed;
+      top: 0;
+      transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+    }
+
     .top-bar {
       background-color: #F15A22; color: white; text-align: center;
       padding: 10px 0; font-size: 11px;
@@ -105,19 +127,11 @@
       .footer-name { display: block; font-family: 'Oswald', sans-serif; font-size: 16px; font-weight: 500; color: #333; }
       .footer-team { display: block; font-family: 'Oswald', sans-serif; font-size: 11px; color: #F15A22; margin-top: 4px; }
     }
-
-    /* [가로 모드 해결] */
-    @media (orientation: landscape) and (max-height: 500px) {
-      .header-wrapper { height: 55px; }
-      .logo-img { height: 35px !important; }
-      .nav-links { padding: 30px 25px; overflow-y: auto; }
-      .menu-footer { margin-top: 30px; }
-    }
   </style>
 </head>
 
 <body>
-  <div class="sticky-top">
+  <div class="sticky-top" id="mainHeader">
     <div class="top-bar">OFFICIAL WEBSITE OF JOSHUA HONG | UTSA </div>
     <header class="header-wrapper">
       <button class="menu-toggle" onclick="toggleMenu()">☰</button>
@@ -154,13 +168,29 @@
       document.getElementById('navLinks').classList.toggle('active');
     }
 
-    // 잘 작동하는 Reference 페이지의 스크립트 방식을 적용
     window.addEventListener('scroll', function() {
       const btn = document.getElementById('fixedTopBtn');
-      if (window.pageYOffset > 100) {
+      const header = document.getElementById('mainHeader');
+      const currentScrollY = window.pageYOffset;
+
+      // 1. TOP 버튼 제어
+      if (currentScrollY > 100) {
         btn.style.display = 'block';
       } else {
         btn.style.display = 'none';
+      }
+
+      // 2. 헤더 우아한 제어 (300px 기준)
+      if (currentScrollY > 300) {
+        header.classList.add('scrolled');
+        header.classList.remove('preparing');
+      } else if (currentScrollY > 10) { 
+        // 10px ~ 300px 사이일 때 위로 스르르르륵 숨김
+        header.classList.remove('scrolled');
+        header.classList.add('preparing');
+      } else {
+        // 완전 최상단일 때 원래 위치에 깜빡임 없이 안착
+        header.classList.remove('scrolled', 'preparing');
       }
     });
 
@@ -168,16 +198,8 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
-</body>
 
-
-
-
-  
-
-  
-
-<div class="profile-container" style="width: 100%; max-width: 900px; margin: 0 auto; padding: 0 15px; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+<div class="profile-container" style="width: 100%; max-width: 900px; margin: 0 auto; padding: 130px 15px 0 15px; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   
   <div style="text-align: center; margin-bottom: 25px; padding-top: 20px;">
   <h1 style="font-size: 34px; font-weight: 900; color: #0c2340; margin: 0; letter-spacing: -1px; text-transform: uppercase; line-height: 1.1;">
@@ -204,6 +226,8 @@
     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: clamp(40px, 10vw, 80px); font-weight: 900; color: rgba(12, 35, 64, 0.04); white-space: nowrap; z-index: 1; pointer-events: none; letter-spacing: -2px;">
       UTSA
     </div>
+
+    
 
 
 
@@ -499,7 +523,7 @@
   
 
 
-  <div class="insight-section" style="max-width: 900px; margin: 0 auto 40px; padding: 0 15px; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+ <div class="insight-section" style="max-width: 900px; margin: 0 auto 40px; padding: 0 15px; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   
   <input type="checkbox" id="card-toggle" style="display: none;">
 
@@ -507,7 +531,8 @@
     .insight-card-wrapper {
       position: relative;
       width: 100%;
-      min-height: 580px; 
+      /* 버튼과 LAST UPDATED 문구가 넉넉히 들어가도록 높이 재조정 */
+      min-height: 500px; 
       perspective: 1000px;
     }
     .insight-card {
@@ -524,7 +549,7 @@
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: space-between; /* 상단 내용과 하단 버튼/날짜를 양끝으로 배치 */
     }
     .card-current { transform: rotateY(0deg); z-index: 2; }
     .card-archive { transform: rotateY(180deg); z-index: 1; }
@@ -560,12 +585,13 @@
       100% { opacity: 1; transform: scale(1); }
     }
 
+    /* 모바일 반응형: 화면이 좁아지면 텍스트가 길어지므로 높이를 더 확보 */
     @media (max-width: 768px) {
-      .insight-card-wrapper { min-height: 780px; }
+      .insight-card-wrapper { min-height: 650px; }
       .insight-card { padding: 25px 20px; }
     }
     @media (max-width: 480px) {
-      .insight-card-wrapper { min-height: 880px; }
+      .insight-card-wrapper { min-height: 780px; }
     }
   </style>
 
