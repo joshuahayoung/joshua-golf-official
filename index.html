@@ -521,7 +521,7 @@
   
 
 
- <div class="insight-section" style="max-width: 900px; margin: 0 auto 40px; padding: 0 15px; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+<div class="insight-section" style="max-width: 900px; margin: 0 auto 40px; padding: 0 15px; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   
   <input type="checkbox" id="card-toggle" style="display: none;">
 
@@ -529,8 +529,8 @@
     .insight-card-wrapper {
       position: relative;
       width: 100%;
-      /* 버튼과 LAST UPDATED 문구가 넉넉히 들어가도록 높이 재조정 */
-      min-height: 500px; 
+      /* 내부 콘텐츠 길이에 맞게 가변적으로 변하도록 기본 높이 상향 및 유연성 부여 */
+      min-height: 580px; 
       perspective: 1000px;
     }
     .insight-card {
@@ -547,7 +547,9 @@
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      justify-content: space-between; /* 상단 내용과 하단 버튼/날짜를 양끝으로 배치 */
+      justify-content: space-between;
+      /* 내용이 넘칠 경우 내부 스크롤이 아닌 카드 크기에 맞게 표시되도록 설정 */
+      overflow: visible; 
     }
     .card-current { transform: rotateY(0deg); z-index: 2; }
     .card-archive { transform: rotateY(180deg); z-index: 1; }
@@ -583,13 +585,14 @@
       100% { opacity: 1; transform: scale(1); }
     }
 
-    /* 모바일 반응형: 화면이 좁아지면 텍스트가 길어지므로 높이를 더 확보 */
+    /* 모바일 반응형: 텍스트가 세로로 길어지므로 카드 높이를 대폭 확보 */
     @media (max-width: 768px) {
-      .insight-card-wrapper { min-height: 650px; }
+      .insight-card-wrapper { min-height: 720px; }
       .insight-card { padding: 25px 20px; }
     }
     @media (max-width: 480px) {
-      .insight-card-wrapper { min-height: 780px; }
+      .insight-card-wrapper { min-height: 850px; }
+      .insight-card { padding: 20px 15px; }
     }
   </style>
 
@@ -610,14 +613,23 @@
           </span>
         </div>
 
-        <div style="font-size: 15px; line-height: 1.7; color: #efefef; border-left: 4px solid #c98a2e; padding-left: 25px;">
-          <p style="margin: 0 0 15px 0; color: #c98a2e; font-weight: 700; font-size: 17px;">Winter Preparation & Spring Outlook</p>
-          <p style="margin-bottom: 15px;">January training was <strong>strategically focused</strong> on tightening long-iron dispersion and increasing short-game consistency. This technical block aimed to stabilize mid-to-long range scoring opportunities.</p>
-          <p style="margin-bottom: 15px;">Initial performance during the Jan 22-23 qualifying rounds (R1-R2) demonstrated improved ball-striking stability under competitive pressure. Technical refinement remains ongoing to maintain this consistency across all four rounds.</p>
-          <p style="margin-bottom: 0; color: #fff; font-weight: 600;">The objective for the Spring season is to maintain a high level of competitive readiness and consistently contribute to the team’s overall performance in every tournament.</p>
+      <div style="font-size: 15px; line-height: 1.7; color: #efefef; border-left: 4px solid #c98a2e; padding-left: 25px;">
+          <p style="margin: 0 0 15px 0; color: #c98a2e; font-weight: 700; font-size: 17px;">Winter Preparation & Competitive Assessment</p>
+          <p style="margin-bottom: 15px;">
+            January training was structured around refining <strong>long-iron dispersion</strong> and reinforcing <strong>short-game execution</strong>, with the objective of stabilizing scoring opportunities from mid-to-long range.
+          </p>
+          <p style="margin-bottom: 15px;">
+            Performance during the Jan 22–23 qualifying rounds (R1–R2) reflected improved ball-striking consistency under competitive conditions. During Round 3, a separate data point was recorded as Joshua tested aggressive driving lines on the Oaks Course in a <strong>high-margin scenario</strong>. This round provided useful feedback on driver control and decision-making under full-power execution.
+          </p>
+          <p style="margin-bottom: 15px;">
+            A corrective training session followed on Jan 29 at TPC San Antonio, focusing on driver alignment and short-game touch to recalibrate feel and reestablish R1–R2 performance benchmarks.
+          </p>
+          <p style="margin-bottom: 0; color: #fff; font-weight: 600;">
+            Preparation continues with the goal of entering the Spring season fully calibrated and ready to contribute consistently across all competitive rounds.
+          </p>
         </div>
       </div>
-
+      
       <div>
         <label for="card-toggle" class="toggle-btn">
           VIEW FALL 2025 ANALYSIS (ARCHIVE) <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -635,11 +647,17 @@
           <h3 style="font-size: 22px; color: #94a3b8; margin: 0; font-weight: 800;">Performance Archive</h3>
         </div>
 
-        <div style="font-size: 14px; line-height: 1.7; color: #efefef; border-left: 4px solid #94a3b8; padding-left: 25px; font-style: italic;">
-          <p style="margin: 0 0 18px 0; color: #fff; font-weight: 700; font-style: normal; font-size: 17px;">Fall Review & Strategic Focus </p>
-          <p style="margin-bottom: 18px;">The Patriot All-America provided a clear benchmark against one of the strongest amateur fields in the country. Following the event, Joshua conducted a technical review, which identified <strong>long-iron precision</strong> as a key area requiring immediate improvement to compete consistently at the NCAA level.</p>
-          <p style="margin-bottom: 18px;">In coordination with the UTSA coaching staff, a short-term adjustment was approved to prioritize an <strong>intensive training block during January</strong>. This decision was made with a single objective: to return fully prepared for qualifying rounds and contribute more effectively to the team’s performance during the Spring season.</p>
-          <p style="margin-bottom: 0;">Joshua is grateful to the UTSA staff for their trust and collaboration, and he remains fully committed to translating this focused work into measurable results that elevate the team’s standing.</p>
+      <div style="font-size: 14px; line-height: 1.7; color: #efefef; border-left: 4px solid #94a3b8; padding-left: 25px; font-style: italic;">
+          <p style="margin: 0 0 18px 0; color: #fff; font-weight: 700; font-style: normal; font-size: 17px;">Fall Review & Strategic Focus</p>
+          <p style="margin-bottom: 18px;">
+            The Patriot All-America Invitational served as a competitive reference point against a national amateur field, including several of the top collegiate players. Following the event, a technical review identified <strong>long-iron performance</strong> as an area for improvement ahead of Spring qualifying.
+          </p>
+          <p style="margin-bottom: 18px;">
+            In coordination with the UTSA coaching staff, a short-term adjustment was approved for Joshua to remain on campus and continue <strong>individual training during January</strong> rather than participate in the scheduled team trip.
+          </p>
+          <p style="margin-bottom: 0;">
+            This period was used to address identified technical areas prior to Spring qualifying rounds and subsequent team events. Joshua continues preparation within the UTSA program for the Spring season.
+          </p>
         </div>
       </div>
 
@@ -663,24 +681,25 @@
       <h2 style="font-size: 26px; color: #0c2340; margin: 0; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">Introduction</h2>
     </div>
 
-    <div style="text-align: justify; word-break: keep-all;">
-      <p style="font-size: 18px; margin-bottom: 20px; line-height: 1.8; color: #2d3748;">
-        <span style="font-weight: 900; font-size: 22px; color: #0c2340; border-bottom: 3px solid #cbd5e0; padding-bottom: 2px;">Joshua Hong</span> (b. 2007) is a <b>Korean-Mexican</b> golfer currently competing for the <b>University of Texas at San Antonio (UTSA)</b> in <b>NCAA Division I</b>.
-      </p>
-      
-      <p style="font-size: 16.5px; margin-bottom: 20px; line-height: 1.8; color: #4a5568;">
-        Since joining the collegiate ranks in 2025, Joshua has focused on adapting his game to the demands of elite NCAA competition, working closely with his coaches and performance advisors to build consistency across all areas of his game.
-      </p>
+   <div style="text-align: justify; word-break: keep-all;">
+  <p style="font-size: 18px; margin-bottom: 20px; line-height: 1.8; color: #2d3748;">
+    <span style="font-weight: 900; font-size: 22px; color: #0c2340; border-bottom: 3px solid #cbd5e0; padding-bottom: 2px;">Joshua Hong</span> (b. 2007) is a <b>Korean-Mexican</b> golfer competing for the <b>University of Texas at San Antonio (UTSA)</b> in <b>NCAA Division I</b>.
+  </p>
+  
+  <p style="font-size: 16.5px; margin-bottom: 20px; line-height: 1.8; color: #4a5568;">
+    Since entering collegiate competition in 2025, his development has focused on adapting to the performance demands of NCAA play through structured training and competitive evaluation within the collegiate environment.
+  </p>
 
-      <div style="background: white; padding: 25px; border-radius: 15px; border-left: 5px solid #3182ce; margin-top: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); box-sizing: border-box;">
-        <p style="font-size: 16.5px; line-height: 1.8; color: #2d3748; margin: 0;">
-          His development is reflected in steady competitive output, including a 
-          <span style="color: #2b6cb0; font-weight: 800; font-size: 18px; background: rgba(43, 108, 176, 0.05); padding: 2px 6px; border-radius: 4px;">71.5 Adj. Scoring Average</span> 
-          across 4 Fall Season events. Combined with an 
-          <span style="color: #10b981; font-weight: 800; font-size: 18px; background: rgba(16, 185, 129, 0.05); padding: 2px 6px; border-radius: 4px;">Academic GPA of 3.4</span>, 
-          he continues to prioritize long-term growth as a dependable student-athlete at the national level.
-        </p>
-      </div>
+  <div style="background: white; padding: 25px; border-radius: 15px; border-left: 5px solid #3182ce; margin-top: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); box-sizing: border-box;">
+    <p style="font-size: 16.5px; line-height: 1.8; color: #2d3748; margin: 0;">
+      Across four Fall season events, Joshua recorded a 
+      <span style="color: #2b6cb0; font-weight: 800; font-size: 18px; background: rgba(43, 108, 176, 0.05); padding: 2px 6px; border-radius: 4px;">71.5 Adj. Scoring Average</span>. 
+      Alongside an 
+      <span style="color: #10b981; font-weight: 800; font-size: 18px; background: rgba(16, 185, 129, 0.05); padding: 2px 6px; border-radius: 4px;">Academic GPA of 3.4</span>, 
+      his profile reflects a steady, process-driven approach to long-term development as a student-athlete.
+    </p>
+  </div>
+</div>
     </div>
   </div>
 
@@ -750,18 +769,18 @@
     </h2>
     
     <div style="text-align: justify; word-break: keep-all;">
-      <p style="font-size: 16.5px; line-height: 1.8; color: #333; margin-bottom: 25px;">
-        Joshua was born in <b>Guadalajara, Jalisco</b>, to a deeply united Korean family. Outside the home, his life was vibrantly Mexican; however, inside, <b>strict Korean discipline</b> prevailed—speaking exclusively Korean and following a rigid work ethic characterized by high responsibility.
-      </p>
-      
-      <div style="background: rgba(27, 94, 32, 0.03); padding: 25px; border-radius: 15px; border-left: 4px solid #2e7d32; position: relative;">
-        <span style="position: absolute; top: 10px; left: 10px; font-size: 40px; color: rgba(46, 125, 50, 0.1); font-family: Georgia, serif;">"</span>
-        
-        <p style="font-size: 16px; line-height: 1.8; font-style: italic; color: #2e7d32; margin: 0; position: relative; z-index: 1;">
-          "I love Mexico deeply. Representing my country is one of the greatest honors of my life. Wherever I compete, I carry the Mexican flag with pride. I also carry my Korean heritage in my heart, cherishing the unique strength and values I’ve gained from both cultures."
-        </p>
-      </div>
-    </div>
+  <p style="font-size: 16.5px; line-height: 1.8; color: #333; margin-bottom: 25px;">
+    Joshua was born in <b>Guadalajara, Jalisco</b>, and raised in a Korean household. He grew up in a Mexican social environment while maintaining Korean language use and family routines at home. His upbringing reflected consistent exposure to both cultural contexts during his early development.
+  </p>
+  
+  <div style="background: rgba(27, 94, 32, 0.03); padding: 25px; border-radius: 15px; border-left: 4px solid #2e7d32; position: relative;">
+    <span style="position: absolute; top: 10px; left: 10px; font-size: 40px; color: rgba(46, 125, 50, 0.1); font-family: Georgia, serif;">"</span>
+    
+    <p style="font-size: 16px; line-height: 1.8; font-style: italic; color: #2e7d32; margin: 0; position: relative; z-index: 1;">
+      Joshua has represented Mexico in competition and identifies with both his Mexican nationality and Korean heritage. His background is characterized by the integration of these dual cultural values, which inform his approach to competitive golf and personal development.
+    </p>
+  </div>
+</div>
 
     <div style="margin-top: 25px; display: flex; gap: 10px; justify-content: flex-end; opacity: 0.6;">
       <span style="font-size: 12px; color: #1b5e20; font-weight: 700;">🇲🇽 MEXICO</span>
@@ -787,14 +806,14 @@
   </div>
   <span style="letter-spacing: -0.5px;">A Late Start, Built Through Structure and Discipline</span>
 </h3>
-      <div style="font-size: 16.5px; line-height: 1.8; color: #2d3748; text-align: justify; word-break: keep-all;">
-        <p style="margin-bottom: 15px;">
-          Joshua began playing golf at <b>age 12</b>, later than many of his peers. This background has shaped a development path grounded in <b>structure, repetition, and disciplined work habits</b>.
-        </p>
-        <p style="margin: 0;">
-          Rather than relying on early exposure, his progress has been driven by <b>deliberate training plans</b>, multi-sport athletic foundations, and consistent feedback from coaches. Today, he applies that same professional approach as a key member of the <b>UTSA men’s golf program</b>.
-        </p>
-      </div>
+    <div style="font-size: 16.5px; line-height: 1.8; color: #2d3748; text-align: justify; word-break: keep-all;">
+  <p style="margin-bottom: 15px;">
+    Joshua began playing golf at <b>age 12</b>. Prior to golf, he participated in other organized sports, which provided an athletic foundation for his transition to competitive golf.
+  </p>
+  <p style="margin: 0;">
+    His development has involved <b>structured training schedules</b>, repetitive skill work, and regular technical feedback from coaches. He currently competes as a member of the <b>UTSA men’s golf program</b>, maintaining a process-driven approach to collegiate competition.
+  </p>
+</div>
     </div>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
@@ -811,9 +830,9 @@
   </div>
   <b style="color: #0c2340; font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Family Support</b>
 </div>
-        <p style="font-size: 14.5px; line-height: 1.7; color: #444; margin: 0;">
-          Raised with the support of his parents and grandmother, Joshua has two older siblings—both <b>medical students</b>. His family environment has emphasized <b>discipline, responsibility, and long-term commitment</b> throughout his development.
-        </p>
+      <p style="font-size: 14.5px; line-height: 1.7; color: #444; margin: 0;">
+  Joshua was raised with the support of his parents and grandmother. He has two older siblings, and his family environment emphasized <b>discipline, responsibility, and long-term commitment</b> during his development.
+</p>
       </div>
 
       <div style="background: #f4f7f9; padding: 25px; border-radius: 20px; border: 1px solid #d1d9e0; box-sizing: border-box; transition: all 0.3s ease;">
@@ -828,8 +847,8 @@
   <b style="color: #0c2340; font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Multi-Sport Background</b>
 </div>
         <p style="font-size: 14.5px; line-height: 1.7; color: #444; margin: 0;">
-          Before golf, he competed in <b>High-Performance Tennis</b> (from age 7) and <b>Baseball</b> (ages 11–12), building the exceptional coordination and athleticism that fueled his rapid rise in the golf world.
-        </p>
+  Prior to golf, Joshua competed in <b>high-performance tennis</b> beginning at age 7 and <b>baseball</b> between the ages of 11 and 12. His early athletic experience included participation in organized training and competition across multiple sports before transitioning to golf.
+</p>
       </div>
 
     </div>
@@ -888,9 +907,9 @@
           <img src="https://lh3.googleusercontent.com/d/1OGsiHtOY3dFr9yJsjWb5UEgxQKdVtbFy" style="width: 100%; height: 100%; object-fit: cover;" alt="Sportsmanship Award">
           <div style="position: absolute; top: 15px; left: 15px; background: #c98a2e; color: white; padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 800; letter-spacing: 1px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">HONOR</div>
         </div>
-        <p style="margin: 0; font-size: 15px; color: #455a64; line-height: 1.7; font-weight: 500;">
-          Recognizing Joshua's <b>exceptional character, integrity</b>, and profound respect for the game of golf.
-        </p>
+<p style="margin: 0; font-size: 15px; color: #455a64; line-height: 1.7; font-weight: 500;">
+  This award is given in recognition of <b>conduct and sportsmanship</b> observed throughout the event.
+</p>
       </div>
 
       <div style="width: 100%; max-width: 320px; margin: 0 auto;">
@@ -899,8 +918,8 @@
           <div style="position: absolute; top: 15px; left: 15px; background: #0c2340; color: white; padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 800; letter-spacing: 1px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">THE JR. PLAYERS</div>
         </div>
         <p style="margin: 0; font-size: 15px; color: #455a64; line-height: 1.7; font-weight: 500;">
-          An elite-level invitation to <b>TPC Sawgrass</b>, competing among the world's most promising junior golfers.
-        </p>
+  The championship is held at <b>TPC Sawgrass</b> and features an <b>invited field</b> of junior competitors.
+</p>
       </div>
     </div>
   </div>
@@ -1003,9 +1022,9 @@
   <h3 style="margin: 0; color: #5f6368; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">AI-Powered Profile Overview</h3>
 </div>
     
-    <div style="font-size: 16px; color: #3c4043; line-height: 1.8; border-left: 5px solid #0c2340; padding: 25px; background-color: #f8fafc; border-radius: 0 15px 15px 0; text-align: justify; word-break: keep-all;">
-      "Joshua Hong is a <b>Two-Time National Junior Champion</b> and a strategic asset for the UTSA program. His unique <b>Korean-Mexican heritage</b>, combined with an elite work ethic and a transition from high-performance sports to golf dominance, <b>positions him as a reliable and disciplined student-athlete within a structured collegiate environment.</b>"
-    </div>
+   <div style="font-size: 16px; color: #3c4043; line-height: 1.8; border-left: 5px solid #0c2340; padding: 25px; background-color: #f8fafc; border-radius: 0 15px 15px 0; text-align: justify; word-break: keep-all;">
+  Joshua Hong won the <b>FMG National Junior Championship</b> in Mexico in <b>back-to-back years</b>, a result that had not previously occurred in the championship’s history. He is a member of the <b>UTSA Men’s Golf program</b>. With a Korean-Mexican background, Joshua transitioned to competitive golf after participating in other high-performance sports. His development has followed a <b>structured training and competition pathway</b> within the collegiate golf environment.
+</div>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 30px;">
 <a href="https://www.wagr.com/playerprofile/joshua-hong-40704" target="_blank" style="text-decoration: none; background: #1a73e8; color: white; padding: 14px 5px; border-radius: 12px; text-align: center; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 8px; transition: opacity 0.2s;">
