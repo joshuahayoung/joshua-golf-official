@@ -360,7 +360,7 @@
     .mobile-status-bar { display: none; }
   </style>
 
-  <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 15px;">
+<div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 15px;">
     <div style="flex-grow: 1; height: 1px; background: #edf2f7; max-width: 60px;"></div>
     <h2 style="margin: 0; color: #c98a2e; font-size: 24px; font-weight: 800; letter-spacing: -0.5px;">On-going Activity</h2>
     <div style="flex-grow: 1; height: 1px; background: #edf2f7; max-width: 60px;"></div>
@@ -400,10 +400,12 @@
             </div>
           </div>
         </div>
-        <div class="rank-box" style="display: flex; flex-direction: column; align-items: center; gap: 3px;">
-          <span style="color: #94a3b8; font-size: 8px; font-weight: 800;">RANK</span>
-          <div style="background: #0c2340; color: #ffffff; width: 30px; height: 30px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 900;">1</div>
+        
+        <div class="rank-box" style="display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 34px;">
+          <span style="color: #94a3b8; font-size: 8px; font-weight: 800; letter-spacing: 0.5px;">RANK</span>
+          <div style="color: #0c2340; font-size: 18px; font-weight: 900; line-height: 1;">1</div>
         </div>
+
         <a href="ncaa-stats.html#Tournament-Schedule-Scoring" style="text-decoration: none; display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 8px; border: 1px solid #e2e8f0; background: #ffffff;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0c2340" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline>
@@ -424,42 +426,6 @@
       </svg>
     </div>
   </a>
-
-
-
-    
-  <table class="schedule-table">
-    <thead>
-      <tr>
-        <th>Round Info</th>
-        <th class="hide-mobile">Score</th>
-        <th class="hide-mobile">To Par</th>
-        <th class="hide-mobile">Status</th>
-        <th class="hide-mobile">Rank</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="col-left">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <div style="font-weight: 800; color: #0c2340; font-size: 15px;">Round 1</div>
-            <div class="pairing-btn"><span>Pairing</span></div>
-            <div class="pairing-btn"><span>Scorecard</span></div>
-          </div>
-          <div style="font-size: 11px; color: #7f8c8d; margin-top: 2px;">Feb 1, 2026</div>
-          <div class="mobile-status-bar">
-            <div class="ms-item"><span class="ms-label">SCORE</span><span class="ms-value under-par">70</span></div>
-            <div class="ms-item"><span class="ms-label">PAR</span><span class="ms-value under-par">-2</span></div>
-            <div class="ms-item"><span class="ms-label">RANK</span><span class="ms-value">1</span></div>
-          </div>
-        </td>
-        <td class="hide-mobile under-par">70</td>
-        <td class="hide-mobile under-par">-2</td>
-        <td class="hide-mobile" style="font-size: 11px; color: #10b981; font-weight: 700;">FINISHED</td>
-        <td class="hide-mobile" style="color: #0c2340; font-weight: 900; font-size: 15px;">1</td>
-      </tr>
-    </tbody>
-  </table>
 
 </div>
 
