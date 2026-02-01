@@ -244,7 +244,8 @@
       50% { opacity: 0.3; transform: scale(0.8); }
       100% { opacity: 1; transform: scale(1); }
     }
-    .status-dot { width: 6px; height: 6px; background-color: #ffffff; border-radius: 50%; display: inline-block; animation: pulse 2s infinite ease-in-out; }
+    /* status-dot 색상을 녹색(#10b981)으로 수정 */
+    .status-dot { width: 6px; height: 6px; background-color: #10b981; border-radius: 50%; display: inline-block; animation: pulse 2s infinite ease-in-out; }
     
     /* 두 카드의 공통 스타일 적용 */
     .activity-card, .focus-container {
@@ -339,6 +340,33 @@
     }
   </style>
 
+  <style>
+  @media (max-width: 768px) {
+    .activity-card div[style*="flex-wrap: nowrap"] {
+      flex-wrap: wrap !important;
+      padding: 15px !important;
+    }
+    .activity-card div[style*="flex: 1"] {
+      flex: 0 0 100% !important;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 12px;
+      margin-bottom: 8px;
+    }
+    .activity-card div[style*="flex-shrink: 0"] {
+      width: 100% !important;
+      justify-content: space-between !important;
+    }
+    .activity-card div[style*="border-right: 1px solid"] {
+      border-right: none !important;
+      padding-right: 0 !important;
+    }
+    .activity-card div[style*="width: 85px"], 
+    .activity-card div[style*="width: 70px"] {
+      width: auto !important;
+    }
+  }
+</style>
+
 <div style="margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 15px;">
   <div style="flex-grow: 1; height: 1px; background: #edf2f7; max-width: 60px;"></div>
   <h2 style="margin: 0; color: #c98a2e; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; text-transform: none; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
@@ -347,32 +375,64 @@
   <div style="flex-grow: 1; height: 1px; background: #edf2f7; max-width: 60px;"></div>
 </div>
 
-  <div class="activity-card">
-    <div style="padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px;">
-      <div style="display: flex; align-items: center; gap: 15px;">
-        <div style="display: flex; align-items: center; gap: 8px; background: #0c2340; padding: 5px 10px; border-radius: 6px;">
-          <span class="status-dot"></span>
-          <span style="color: #ffffff; font-size: 10px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase;">IN PROGRESS</span>
+
+  
+<div class="activity-card" style="max-width: 900px; margin: 20px auto; background: #ffffff; border-radius: 14px; border: 2.5px solid #0c2340; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); overflow: hidden; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; box-sizing: border-box;">
+  <div style="padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: nowrap;">
+    
+    <div style="display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0;">
+      <div style="display: flex; align-items: center; gap: 6px; background: #0c2340; padding: 6px 12px; border-radius: 6px; flex-shrink: 0;">
+        <span style="width: 6px; height: 6px; background-color: #10b981; border-radius: 50%;"></span>
+        <span style="color: #ffffff; font-size: 10px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase;">IN PROGRESS</span>
+      </div>
+      <div style="overflow: hidden;">
+        <div style="display: flex; align-items: baseline; gap: 6px;">
+          <span style="color: #0c2340; font-weight: 900; font-size: 17px; white-space: nowrap;">Compadres Collegiate</span>
+          <span style="color: #94a3b8; font-size: 11px; font-weight: 700; flex-shrink: 0;">(Feb 1-3)</span>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 2px;">
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <span style="color: #0c2340; font-weight: 800; font-size: 15px;">Compadres Collegiate</span>
-            <span style="color: #94a3b8; font-size: 12px; font-weight: 700;">(Feb 1-3)</span>
+        <span style="color: #64748b; font-size: 12px; font-weight: 600; display: block; margin-top: 1px;">Iberostar Playa Paraiso, Mexico</span>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 24px; flex-shrink: 0;">
+      <div style="display: flex; flex-direction: column; gap: 4px; border-right: 1px solid #f1f5f9; padding-right: 24px;">
+        <div style="display: flex; justify-content: flex-end; gap: 30px;">
+          <span style="color: #94a3b8; font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; width: 85px; text-align: right;">R1 - R2 - R3</span>
+          <span style="color: #94a3b8; font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; width: 70px; text-align: right;">PAR / TOTAL</span>
+        </div>
+        <div style="display: flex; justify-content: flex-end; gap: 30px; align-items: center;">
+          <div style="display: flex; gap: 10px; width: 85px; justify-content: flex-end;">
+            <span style="color: #e74c3c; font-size: 16px; font-weight: 900;">70</span>
+            <span style="color: #cbd5e1; font-size: 16px; font-weight: 400;">—</span>
+            <span style="color: #cbd5e1; font-size: 16px; font-weight: 400;">—</span>
           </div>
-          <span style="color: #64748b; font-size: 12px; font-weight: 500;">Iberostar Playa Paraiso, Mexico</span>
+          <div style="display: flex; gap: 6px; width: 70px; justify-content: flex-end;">
+            <span style="color: #e74c3c; font-size: 16px; font-weight: 900;">-2</span>
+            <span style="color: #e74c3c; font-size: 16px; font-weight: 900;">(70)</span>
+          </div>
         </div>
       </div>
-      <a href="ncaa-stats.html#Tournament-Schedule-Scoring" class="icon-link" style="background: #f8fafc; padding: 8px 15px; border-radius: 6px; border: 1px solid #e2e8f0;">
-        <span style="color: #0c2340; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">
-          View Current Status
-        </span>
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0c2340" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 3px;">
+        <span style="color: #94a3b8; font-size: 8px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">RANK</span>
+        <div style="background: #0c2340; color: #ffffff; width: 30px; height: 30px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 900;">1</div>
+      </div>
+
+      <a href="ncaa-stats.html#Tournament-Schedule-Scoring" style="text-decoration: none; display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 8px; border: 1px solid #e2e8f0; background: #ffffff; transition: all 0.2s ease; box-shadow: 0 2px 4px rgba(0,0,0,0.03);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0c2340" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
           <line x1="7" y1="17" x2="17" y2="7"></line>
           <polyline points="7 7 17 7 17 17"></polyline>
         </svg>
       </a>
     </div>
   </div>
+</div>
+
+
+
+  
+
+  
 
   <a href="./ncaa-stats.html#current-focus" style="text-decoration: none; display: block;">
     <div class="focus-container">
