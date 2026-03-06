@@ -663,6 +663,8 @@
   <h3 style="margin: 0; color: #1b5e20; font-size: 18px; letter-spacing: 1px; text-transform: uppercase; font-weight: 900;">Junior Career Gallery</h3>
 </div>
 
+
+
 <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;">
       <img src="./images/junior-year/1-joshua-hong-Club-Record-CCQ-62-Sep-2024.jpeg" onclick="popupJrGallery(0)" style="width:100%; height:120px; object-fit:cover; object-position: center 5%; border-radius:8px; cursor:pointer; transition: transform 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.1);" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'" alt="Joshua Hong Club Record CCQ 62 Sep 2024" title="Joshua Hong Club Record CCQ 62 Sep 2024" loading="lazy" decoding="async">
       <img src="./images/junior-year/2-Joshua-Hong-Copa-Centro-Champion-Sep-2024.jpeg" onclick="popupJrGallery(1)" style="width:100%; height:120px; object-fit:cover; object-position: center 45%; border-radius:8px; cursor:pointer; transition: transform 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.1);" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'" alt="Joshua Hong Copa Centro Champion Sep 2024" title="Joshua Hong Copa Centro Champion Sep 2024" loading="lazy" decoding="async">
@@ -687,7 +689,7 @@
       <img src="./images/junior-year/21-Joshua-Hong-NCJGC-Bumgadner-Memorial-Jr-Win-2023.jpeg" onclick="popupJrGallery(20)" style="width:100%; height:120px; object-fit:cover; object-position: center 42%; border-radius:8px; cursor:pointer;" alt="Joshua Hong NCJGC Bumgadner Memorial Jr Win 2023" title="Joshua Hong NCJGC Bumgadner Memorial Jr Win 2023" loading="lazy" decoding="async">
       <img src="./images/junior-year/22-Joshua-Hong-Zona-Gado-Interzona-2024.jpeg" onclick="popupJrGallery(21)" style="width:100%; height:120px; object-fit:cover; object-position: center 55%; border-radius:8px; cursor:pointer;" alt="Joshua Hong Zona GADO INTERZONA 2024" title="Joshua Hong Zona GADO INTERZONA 2024" loading="lazy" decoding="async">
       <img src="./images/junior-year/23-Joshua-Hong-Selection-Mexico-Gabriel-Derbez-Lucca-Buenlostro-2025.jpeg" onclick="popupJrGallery(22)" style="width:100%; height:120px; object-fit:cover; object-position: center 15%; border-radius:8px; cursor:pointer;" alt="Joshua Hong Selection Mexico Gabriel Derbez Lucca Buenlostro 2025" title="Joshua Hong Selection Mexico Gabriel Derbez Lucca Buenlostro 2025" loading="lazy" decoding="async">
-      <img src="./images/junior-year/24-Joshua-Hong-Campeonato-Pareja-Zona-Centro-Leonardo-Lavalle-2025.jpeg" onclick="popupJrGallery(23)" style="width:100%; height:120px; object-fit:cover; object-position: center 15%; border-radius:8px; cursor:pointer;" alt="Joshua Hong Campeonato Pareja Zona Centro Leonardo Lavalle 2025" title="Joshua Hong Campeonato Pareja Zona Centro Leonardo Lavalle 2025" loading="lazy" decoding="async">
+      <img src="./images/junior-year/24-Joshua-Hong-Campeonato-Pareja-Zona-Centro-Leonardo-Lavalle-2025.jpeg" onclick="popupJrGallery(23)" style="width:100%; height:120px; object-fit:cover; object-position: center 15%; border-radius:8px; cursor:pointer;" alt="Joshua Hong Campeonato Pareja Zone Centro Leonardo Lavalle 2025" title="Joshua Hong Campeonato Pareja Zone Centro Leonardo Lavalle 2025" loading="lazy" decoding="async">
 </div>
 
 <script>
@@ -725,30 +727,31 @@
       const top = (screen.height / 2) - (h / 2);
       const popup = window.open("", "JoshuaJrGallery", "width="+w+",height="+h+",top="+top+",left="+left+",resizable=yes");
       
-      let htmlContent = '<html><head><title>Joshua Hong Junior Gallery</title><style>';
-      htmlContent += 'body { margin: 0; background: #000; color: white; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 100vh; overflow-x: hidden; overflow-y: auto; font-family: sans-serif; padding: 20px 0 60px 0; box-sizing: border-box; -webkit-overflow-scrolling: touch; }';
-      htmlContent += '.nav-btn { position: fixed; top: 50%; transform: translateY(-50%); font-size: 90px; color: rgba(255,255,255,0.4); cursor: pointer; user-select: none; padding: 30px 40px; transition: 0.3s; z-index: 10; font-weight: 200; text-decoration: none; }';
-      htmlContent += '.nav-btn:hover { color: white; background: rgba(255,255,255,0.1); } #prev { left: 0; } #next { right: 0; }';
-      htmlContent += '#close-x { position: fixed; top: 20px; right: 20px; font-size: 50px; cursor: pointer; opacity: 0.7; z-index: 20; transition: 0.3s; line-height: 1; font-weight: 300; }';
-      htmlContent += '#close-x:hover { opacity: 1; transform: rotate(90deg); color: #ff4d4d; }';
-      htmlContent += '#imgContainer { width: 100%; display: flex; justify-content: center; align-items: center; flex: 1; position: relative; margin: 20px 0; }';
-      htmlContent += '#mainImg { max-width: 95%; max-height: 70vh; object-fit: contain; border-radius: 8px; transition: opacity 0.2s; box-shadow: 0 0 30px rgba(255,255,255,0.1); user-select: none; -webkit-user-drag: none; }';
-      htmlContent += '.bottom-controls { display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%; padding: 20px 0; margin-top: auto; }';
-      htmlContent += '.close-btn-bottom { background: #fff; color: #000; border: none; padding: 18px 60px; border-radius: 40px; font-weight: 900; font-size: 18px; cursor: pointer; letter-spacing: 2px; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }';
-      htmlContent += '.close-btn-bottom:hover { background: #ff4d4d; color: #fff; transform: scale(1.05); }';
-      htmlContent += '.info-row { display: flex; align-items: center; gap: 20px; opacity: 0.6; }';
-      htmlContent += '.counter { font-size: 14px; letter-spacing: 2px; font-weight: 600; display: flex; align-items: center; gap: 8px; }';
-      htmlContent += '@media (max-width: 768px) { body { padding-top: 60px; } .nav-btn { display: none; } #close-x { font-size: 45px; top: 15px; right: 15px; } #mainImg { max-height: 60vh; } .close-btn-bottom { padding: 15px 45px; font-size: 15px; } }';
+      let htmlContent = '<html><head><title>Joshua Hong Junior Gallery</title>';
+      htmlContent += '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
+      htmlContent += '<style>';
+      htmlContent += 'body { margin: 0; background: #000; color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 0; box-sizing: border-box; }';
+      htmlContent += '.nav-btn { position: fixed; top: 50%; transform: translateY(-50%); font-size: 60px; color: rgba(255,255,255,0.2); cursor: pointer; user-select: none; padding: 30px; transition: 0.3s; z-index: 10; font-weight: 100; text-decoration: none; }';
+      htmlContent += '.nav-btn:hover { color: white; background: rgba(255,255,255,0.05); } #prev { left: 0; } #next { right: 0; }';
+      htmlContent += '#wrapper { position: relative; display: inline-block; line-height: 0; }';
+      htmlContent += '#close-x { position: absolute; top: -45px; right: -45px; font-size: 32px; cursor: pointer; opacity: 0.6; z-index: 20; transition: 0.3s; line-height: 1; font-weight: 200; padding: 10px; }';
+      htmlContent += '#close-x:hover { opacity: 1; color: #ff4d4d; transform: scale(1.1); }';
+      htmlContent += '#imgContainer { width: 100%; display: flex; justify-content: center; align-items: center; flex: 1; position: relative; padding: 32px; }';
+      htmlContent += '#mainImg { max-width: 90vw; max-height: 80vh; object-fit: contain; border-radius: 2px; transition: opacity 0.2s; box-shadow: 0 0 40px rgba(0,0,0,0.8); user-select: none; -webkit-user-drag: none; }';
+      htmlContent += '.footer-info { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; opacity: 0.5; pointer-events: none; }';
+      htmlContent += '.counter { font-size: 12px; letter-spacing: 2px; font-weight: 400; }';
+      htmlContent += '@media (max-width: 768px) { #imgContainer { padding: 20px; } #close-x { top: -40px; right: -10px; font-size: 36px; opacity: 0.8; } .nav-btn { font-size: 40px; padding: 15px; } #mainImg { max-height: 75vh; max-width: 95vw; } }';
       htmlContent += '</style></head><body>';
-      htmlContent += '<div id="close-x" onclick="window.close()">×</div>';
-      htmlContent += '<div id="prev" class="nav-btn" onclick="move(-1)">❮</div>';
-      htmlContent += '<div id="imgContainer"><img id="mainImg" src="' + jrImages[index] + '"></div>';
-      htmlContent += '<div id="next" class="nav-btn" onclick="move(1)">❯</div>';
-      htmlContent += '<div class="bottom-controls">';
-      htmlContent += '  <button class="close-btn-bottom" onclick="window.close()">CLOSE WINDOW</button>';
-      htmlContent += '  <div class="info-row">';
-      htmlContent += '    <div class="counter" id="countDisplay">' + (index + 1) + ' / ' + jrImages.length + '</div>';
+      htmlContent += '<div id="imgContainer">';
+      htmlContent += '  <div id="wrapper">';
+      htmlContent += '    <div id="close-x" onclick="window.close()">×</div>';
+      htmlContent += '    <img id="mainImg" src="' + jrImages[index] + '">';
       htmlContent += '  </div>';
+      htmlContent += '</div>';
+      htmlContent += '<div id="prev" class="nav-btn" onclick="move(-1)">❮</div>';
+      htmlContent += '<div id="next" class="nav-btn" onclick="move(1)">❯</div>';
+      htmlContent += '<div class="footer-info">';
+      htmlContent += '  <div class="counter" id="countDisplay">' + (index + 1) + ' / ' + jrImages.length + '</div>';
       htmlContent += '</div>';
       htmlContent += '<script>';
       htmlContent += 'let idx = ' + index + ';';
@@ -780,6 +783,7 @@
     }
 </script>
 
+    
      <div style="text-align: center; border-top: 1px solid #eee; padding: 30px 20px 60px 20px;">
   <p style="color: #cbd5e1; font-size: 10px; font-weight: 400; letter-spacing: -0.2px; margin-bottom: 8px;">
     멕시코 한국인 골프 선수 자슈아 홍 (Joshua Hong Golf) 공식 기록 페이지
