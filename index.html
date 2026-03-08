@@ -315,10 +315,7 @@ gtag('config', 'G-H1JW8YBDZ8');
 
    <div style="position: relative; text-align: center; margin-bottom: 25px; padding: 10px 0; overflow: hidden;">
     <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: clamp(40px, 10vw, 80px); font-weight: 900; color: rgba(12, 35, 64, 0.04); white-space: nowrap; z-index: 1; pointer-events: none; letter-spacing: -2px;">
-      UTSA
     </div>
-
-
 
 
 <div class="index-activity-section" style="max-width: 900px; margin: 0 auto 60px; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; width: 100%;">
@@ -532,6 +529,8 @@ gtag('config', 'G-H1JW8YBDZ8');
       font-size: 10px;
       font-weight: 800;
       text-align: center;
+      white-space: nowrap;
+      letter-spacing: 0.3px;
     }
 
     .iac-stat-values {
@@ -540,6 +539,7 @@ gtag('config', 'G-H1JW8YBDZ8');
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
+      white-space: nowrap;
     }
 
     .iac-value-under {
@@ -572,6 +572,7 @@ gtag('config', 'G-H1JW8YBDZ8');
       align-items: center;
       gap: 2px;
       min-width: 45px;
+      white-space: nowrap;
     }
 
     .iac-pos-label {
@@ -594,6 +595,7 @@ gtag('config', 'G-H1JW8YBDZ8');
       align-items: center;
       justify-content: center;
       padding: 5px;
+      flex-shrink: 0;
     }
 
     .iac-link svg {
@@ -610,7 +612,8 @@ gtag('config', 'G-H1JW8YBDZ8');
       .iac-card-inner {
         flex-direction: column;
         align-items: flex-start;
-        padding: 20px 15px;
+        padding: 18px 14px;
+        gap: 14px;
       }
 
       .iac-info {
@@ -626,27 +629,88 @@ gtag('config', 'G-H1JW8YBDZ8');
       .iac-stats {
         width: 100%;
         margin-left: 0;
-        justify-content: space-between;
-        gap: 16px;
-        padding-top: 16px;
+        display: flex;
+        align-items: stretch;
+        gap: 8px;
+        padding-top: 14px;
         border-top: 1px solid #f1f5f9;
+        flex-wrap: nowrap;
       }
 
       .iac-round-block {
         border-right: none;
         padding-right: 0;
-        width: 100%;
-        justify-content: space-between;
-        gap: 12px;
+        min-width: 0;
+        flex: 1;
+        display: flex;
+        align-items: stretch;
+        gap: 8px;
+      }
+
+      .iac-stat-col {
+        flex: 1;
+        min-width: 0;
+        align-items: center;
+        justify-content: center;
+        background: #f8fafc;
+        border: 1px solid #e9eef5;
+        border-radius: 10px;
+        padding: 10px 10px 9px;
+        gap: 5px;
+      }
+
+      .iac-stat-label {
+        font-size: 10px;
+        text-align: center;
+        line-height: 1.1;
+      }
+
+      .iac-stat-values {
+        gap: 7px;
+        justify-content: center;
+        flex-wrap: nowrap;
+        overflow: hidden;
+      }
+
+      .iac-value-under,
+      .iac-value-even,
+      .iac-value-over,
+      .iac-value-neutral {
+        font-size: 16px;
+        line-height: 1;
+      }
+
+      .iac-pos-box {
+        min-width: 58px;
+        align-items: center;
+        justify-content: center;
+        background: #f8fafc;
+        border: 1px solid #e9eef5;
+        border-radius: 10px;
+        padding: 10px 8px 9px;
+        gap: 4px;
+      }
+
+      .iac-pos-label {
+        font-size: 10px;
+      }
+
+      .iac-pos-value {
+        font-size: 18px;
       }
 
       .iac-link {
-        padding: 0;
-        margin-left: auto;
+        align-self: center;
+        justify-content: center;
+        padding: 0 2px;
       }
 
       .iac-header-title {
         font-size: 17px;
+      }
+
+      .iac-updated {
+        margin-left: 0;
       }
     }
   </style>
@@ -659,7 +723,7 @@ gtag('config', 'G-H1JW8YBDZ8');
       date: "Mar 2-3",
       location: "Lake Charles, LA / The CC At The Golden Nugget",
       rounds: ["64", "70", "69"],
-      roundPars: ["-8", "-2", "-3"], 
+      roundPars: ["-8", "-2", "-3"],
       total: "203",
       totalPar: "-13",
       pos: "3",
@@ -759,7 +823,7 @@ gtag('config', 'G-H1JW8YBDZ8');
                   </div>
 
                   <div class="iac-stat-col">
-                    <div class="iac-stat-label">PAR / TOTAL</div>
+                    <div class="iac-stat-label">PAR (TOTAL)</div>
                     <div class="iac-stat-values">
                       ${iacRenderParTotal(data.totalPar, data.total)}
                     </div>
@@ -788,20 +852,20 @@ gtag('config', 'G-H1JW8YBDZ8');
   </script>
 </div>
 
+
+
     
 
   
 
-    <div style="position: relative; z-index: 2;">
-      <h2 style="font-size: clamp(28px, 5vw, 36px); color: #0c2340; margin: 0; font-weight: 800; display: inline-block;">
-        Schedule <span style="font-weight: 300; color: #777;">&</span> Results
-      </h2>
-      <span style="display: block; width: 80px; height: 4px; background: #c98a2e; margin: 0px auto 0; border-radius: 2px;"></span>
-    </div>
+    <div style="position: relative; z-index: 2; text-align: center; margin-top: -15px;">
+  <h2 style="font-size: clamp(28px, 5vw, 36px); color: #0c2340; margin: 0; line-height: 1.05; font-weight: 800; display: inline-block;">
+    Schedule <span style="font-weight: 300; color: #777;">&</span> Results
+  </h2>
+  <span style="display: block; width: 80px; height: 4px; background: #c98a2e; margin: 4px auto 0; border-radius: 2px;"></span>
+</div>
     
   </div>
-
-
   
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; width: 100%; margin-top: -30px; margin-bottom: 30px;">
     
@@ -868,7 +932,7 @@ gtag('config', 'G-H1JW8YBDZ8');
     <div style="background: #ffffff; padding: 30px 25px; border-radius: 24px; border: 1px solid #e1e8ed; box-shadow: 0 15px 35px rgba(0,0,0,0.06); position: relative; overflow: hidden; border-top: 6px solid #2c3e50; height: 100%; box-sizing: border-box; display: flex; flex-direction: column;">
       <div style="background: #2c3e50; color: white; padding: 5px 15px; border-radius: 0 0 10px 10px; font-size: 11px; font-weight: 800; position: absolute; top: 0; left: 25px; letter-spacing: 1px; box-shadow: 0 2px 5px rgba(44,62,80,0.2);">RECENT</div>
       
-      <div style="min-height: 54px; margin: 20px 0 8px 0; display: flex; align-items: center; justify-content: space-between;">
+      <div style="min-height: 54px; margin: 20px 0 4px 0; display: flex; align-items: center; justify-content: space-between;">
         <h3 style="font-size: 20px; color: #0c2340; font-weight: 800; line-height: 1.2; margin: 0;">
           Golden Nugget Invitational
         </h3>
