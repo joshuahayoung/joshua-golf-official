@@ -1351,21 +1351,99 @@
     if (typeof ChartDataLabels !== 'undefined') {
         try { Chart.register(ChartDataLabels); } catch (e) {}
     }
-    
+
     Chart.defaults.font.family = "'Oswald', sans-serif";
+
+    const isMobile = window.innerWidth <= 768;
+
+    // ===== DATA (값은 원본 그대로 유지) =====
+    const archiveLabels = [
+        '9/07 (Argent)',
+        '9/15 (Highlands)',
+        '9/22 (Badger)',
+        '10/05 (Trinity)',
+        '12/27 (Patriot)*',
+        '2/01 (Compadres)',
+        '2/24 (Military)',
+        '3/03 (Golden)'
+    ];
+
+    const archiveScores = [69.66, 71.66, 72.66, 74.00, 72.00, 72.00, 71.66, 67.6];
+
+    const archivePositions = ['T9', 'T12', 'T24', 'T55', 'T38*', 'T3', '1', '3'];
+
+    const archiveRounds = [
+        '70-70-69 (-7)',
+        '74-71-70 (-1)',
+        '71-71-76 (+2)',
+        '75-73-74 (+6)',
+        '71-73-72 (+6)',
+        '70-75-71 (E)',
+        '69-72-74 (-1)',
+        '64-70-69 (-13)'
+    ];
+
+    const archiveRankImpact = [
+        '● Rank Impact ▲ 151',
+        '● Rank Impact ▲ 28',
+        '● Rank Impact ▼ 38',
+        '● Rank Impact ▼ 98',
+        null,
+        '● Rank Impact ▲ 142',
+        '● Rank Impact ▲ 72',
+        '● Rank Impact ▲ 43'
+    ];
+
+    const archiveWagrPower = [
+        '230.8799',
+        '232.6656',
+        '129.0694',
+        '360.1597',
+        '806.3420',
+        '145.6033',
+        '',
+        '135.0209'
+    ];
+
+    const archivePtsEarned = [
+        '5.3735',
+        '4.9097',
+        '3.3178',
+        '3.1971',
+        '6.1052',
+        '6.5774',
+        '9.2734',
+        '6.7817'
+    ];
+
+    // 모바일에서 표시만 짧게 (원본 데이터는 그대로 유지)
+    function mobileLabel(label) {
+        if (!isMobile) return label;
+        return label
+            .replace(' (Argent)', '')
+            .replace(' (Highlands)', '')
+            .replace(' (Badger)', '')
+            .replace(' (Trinity)', '')
+            .replace(' (Patriot)*', '*')
+            .replace(' (Compadres)', '')
+            .replace(' (Military)', '')
+            .replace(' (Golden)', '');
+    }
+
     const ctxOfficialArchive = document.getElementById('archiveOfficialChart').getContext('2d');
+
     new Chart(ctxOfficialArchive, {
         type: 'line',
         data: {
-            labels: ['9/07 (Argent)', '9/15 (Highlands)', '9/22 (Badger)', '10/05 (Trinity)', '12/27 (Patriot)*', '2/01 (Compadres)', '2/24 (Military)', '3/03 (Golden)'],
+            labels: archiveLabels,
             datasets: [{
                 label: 'Scoring Avg',
-                data: [69.66, 71.66, 72.66, 74.00, 72.00, 72.00, 71.66, 67.6],
+                data: archiveScores,
                 borderColor: '#0c2340',
                 backgroundColor: 'rgba(12, 35, 64, 0.05)',
                 borderWidth: 2,
-                pointRadius: 6,
-                pointHoverRadius: 9,
+                pointRadius: isMobile ? 4 : 6,
+                pointHoverRadius: isMobile ? 6 : 9,
                 pointBackgroundColor: '#0c2340',
                 pointHoverBackgroundColor: '#F15A22',
                 pointBorderColor: '#fff',
@@ -1373,10 +1451,16 @@
                 tension: 0.3,
                 fill: true,
                 datalabels: {
-                    align: 'top', anchor: 'end', offset: 8, color: '#0c2340',
-                    font: { weight: '700', size: 13 },
+                    align: 'top',
+                    anchor: 'end',
+                    offset: isMobile ? 4 : 8,
+                    color: '#0c2340',
+                    font: {
+                        weight: '700',
+                        size: isMobile ? 10 : 13
+                    },
                     formatter: function(value, context) {
-                        return ['T9', 'T12', 'T24', 'T55', 'T38*', 'T3', '1', '3'][context.dataIndex];
+                        return archivePositions[context.dataIndex];
                     }
                 }
             }]
@@ -1384,30 +1468,37 @@
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            // 하단 텍스트와의 거리를 위해 bottom 패딩 확보, 좌측 마진 손실을 줄이기 위해 left 조정
-            layout: { padding: { top: 35, bottom: 25, left: -5, right: 15 } },
+            layout: {
+                padding: isMobile
+                    ? { top: 20, bottom: 18, left: 0, right: 0 }
+                    : { top: 35, bottom: 25, left: -5, right: 15 }
+            },
             scales: {
-                y: { 
-                    min: 65, 
-                    max: 82, 
-                    grid: { color: '#efefef', drawBorder: false }, 
-                    ticks: { 
-                        font: { size: 11, weight: '600' }, 
+                y: {
+                    min: 65,
+                    max: 82,
+                    grid: { color: '#efefef', drawBorder: false },
+                    ticks: {
+                        font: { size: isMobile ? 10 : 11, weight: '600' },
                         color: '#333',
-                        padding: 0 // 좌측 여백 최소화
+                        padding: 0
                     },
                     title: { display: false }
                 },
-                x: { 
-                    grid: { display: false }, 
-                    ticks: { 
-                        color: '#333', 
-                        font: { size: 10, weight: '500' },
-                        autoSkip: false, // 모든 날짜 강제 출력
-                        maxRotation: 45, // 좁은 화면에서 날짜 겹침 방지
-                        minRotation: 45
+                x: {
+                    grid: { display: false },
+                    ticks: {
+                        color: '#333',
+                        font: { size: isMobile ? 8 : 10, weight: '500' },
+                        autoSkip: false,
+                        maxRotation: isMobile ? 60 : 45,
+                        minRotation: isMobile ? 60 : 45,
+                        callback: function(value) {
+                            const label = this.getLabelForValue(value);
+                            return mobileLabel(label);
+                        }
                     },
-                    offset: false // 우측 및 좌측 끝단 공백 제거 (벽에 밀착)
+                    offset: false
                 }
             },
             plugins: {
@@ -1419,27 +1510,21 @@
                     padding: 12,
                     displayColors: false,
                     callbacks: {
+                        title: function(context) {
+                            return archiveLabels[context[0].dataIndex];
+                        },
                         label: function(context) {
                             return `● Scoring Avg: ${context.parsed.y}`;
                         },
                         afterLabel: function(context) {
                             const i = context.dataIndex;
                             return [
-                                `● Rounds: ${['70-70-69 (-7)', '74-71-70 (-1)', '71-71-76 (+2)', '75-73-74 (+6)', '71-73-72 (+6)', '70-75-71 (E)', '69-72-74 (-1)', '64-70-69 (-13)'][i]}`,
-                                `● Pos: ${['T9', 'T12', 'T24', 'T55', 'T38*', 'T3', '1', '3'][i]}`,
-                                [
-                                    `● Rank Impact ▲ 151`,
-                                    `● Rank Impact ▲ 28`,
-                                    `● Rank Impact ▼ 38`,
-                                    `● Rank Impact ▼ 98`,
-                                    null,
-                                    `● Rank Impact ▲ 142`,
-                                    `● Rank Impact ▲ 72`,
-                                    `● Rank Impact ▲ 43`
-                                ][i],
+                                `● Rounds: ${archiveRounds[i]}`,
+                                `● Pos: ${archivePositions[i]}`,
+                                archiveRankImpact[i],
                                 `-----------------------`,
-                                `● WAGR Pwr: ${['230.8799', '232.6656', '129.0694', '360.1597', '806.3420', '145.6033', '', '135.0209'][i]}`,
-                                `● Pts Earned: ${['5.3735', '4.9097', '3.3178', '3.1971', '6.1052', '6.5774', '9.2734', '6.7817'][i]}`
+                                `● WAGR Pwr: ${archiveWagrPower[i]}`,
+                                `● Pts Earned: ${archivePtsEarned[i]}`
                             ].filter(v => v !== null);
                         }
                     }
@@ -1543,7 +1628,7 @@
       </a>
     </div>
     <div style="font-size: 12px; color: #7f8c8d;">Iberostar Playa Paraiso - MX | Par 72/6,701 yards</div>
-    <div style="font-size: 11px; color: #777; font-weight: 700; margin-top: 2px;">
+    <div style="font-size: 11px; color: #777; font-weight: 600; margin-top: 2px;">
       Rank Impact: <span style="color:#16a34a;">▲</span> 142 | SG: 0.35 | Weighted Pts: 54.06<br>
       WAGR Pwr: 145.6033 | Pts Earned: 6.5774
     </div>
@@ -1576,7 +1661,7 @@
              </div>
               <div style="font-size: 12px; color: #7f8c8d;">TPC San Antonio Canyons - TX | Par 72 | 7,106 Yards</div>
           </div>
-               <div style="font-size: 11px; color: #777; font-weight: 700; margin-top: 2px;">
+               <div style="font-size: 11px; color: #777; font-weight: 600; margin-top: 2px;">
               Rank Impact: <span style="color:#16a34a;">▲</span> 72 | SG: 0.16 | Weighted Pts: 51.52<br>
               WAGR Pwr: 101.3382 | Pts Earned: 9.2734
               <div class="mobile-status-bar">
@@ -1607,7 +1692,7 @@
                   </div>
                   <div style="font-size: 12px; color: #7f8c8d;">The CC at Golden Nugget - LA | Par 72 | 6,909 Yards</div>
               </div>
-              <div style="font-size: 11px; color: #777; font-weight: 700; margin-top: 2px;">
+              <div style="font-size: 11px; color: #777; font-weight: 600; margin-top: 2px;">
               Rank Impact: <span style="color:#16a34a;">▲</span> 43 | SG: -0.23 | Weighted Pts: 46.78<br>
               WAGR Pwr: 135.0209 | Pts Earned: 6.7817
               <div class="mobile-status-bar">
@@ -1641,7 +1726,7 @@
                  <div style="font-size: 12px; color: #7f8c8d;">Tucson CC - AZ | Par 72 | 7,533 Yards</div>
               </div>
     
-               <div style="font-size: 11px; color: #777; font-weight: 700; margin-top: 2px;">
+               <div style="font-size: 11px; color: #777; font-weight: 600; margin-top: 2px;">
               Rank Impact: <span style="color:#16a34a;"> </span> TBD | SG: TBD | Weighted Pts: TBD<br>
               WAGR Pwr: TBD | Pts Earned: TBD
                  
@@ -1675,7 +1760,7 @@
               <div style="font-size: 12px; color: #7f8c8d;">Wigwam GC - AZ | Par 72 | 7,021 Yards</div>
               </div>
     
-               <div style="font-size: 11px; color: #777; font-weight: 700; margin-top: 2px;">
+               <div style="font-size: 11px; color: #777; font-weight: 600; margin-top: 2px;">
               Rank Impact: <span style="color:#16a34a;"> </span> TBD | SG: TBD | Weighted Pts: TBD<br>
               WAGR Pwr: TBD | Pts Earned: TBD
                  
@@ -1709,7 +1794,7 @@
               <div style="font-size: 12px; color: #7f8c8d;">The Club at Old Hawthorne - MO | Par 70 | 7,158 Yards</div>
               </div>
     
-               <div style="font-size: 11px; color: #777; font-weight: 700; margin-top: 2px;">
+               <div style="font-size: 11px; color: #777; font-weight: 600; margin-top: 2px;">
               Rank Impact: <span style="color:#16a34a;"> </span> TBD | SG: TBD | Weighted Pts: TBD<br>
               WAGR Pwr: TBD | Pts Earned: TBD
                  
@@ -1933,7 +2018,7 @@
 
           <tr>
             <td class="col-left">
-              <div style="color: #333; font-weight: 700; font-size: 11px;">Dec 2025</div>
+              <div style="color: #333; font-weight: 700; font-size: 11px;">Dec 29-31, 2025</div>
               <div style="display: flex; align-items: center; flex-wrap: wrap;">
                 <span style="font-weight: 800; color: #0c2340; font-size: 16px;">Patriot All-America Invitational</span>
                 <a href="https://www.golfgenius.com/pages/5776911" target="_blank" class="leaderboard-btn">
@@ -2001,14 +2086,14 @@
 
           <tr>
             <td class="col-left">
-              <div style="color: #333; font-weight: 700; font-size: 11px;">Oct 2025</div>
+              <div style="color: #333; font-weight: 700; font-size: 11px;">Oct 5-7, 2025</div>
               <div style="display: flex; align-items: center; flex-wrap: wrap;">
                 <span style="font-weight: 700; color: #333; font-size: 15px;">Trinity Forest Invitational</span>
                 <a href="https://scoreboard.clippd.com/tournaments/239449/scoring/player" target="_blank" class="leaderboard-btn">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0c2340" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                 </a>
               </div>
-              <div style="font-size: 11px; color: #777; font-weight: 700;margin-top: 2px;">
+              <div style="font-size: 11px; color: #7f8c8d; font-weight: 600;margin-top: 2px;">
                 Rank Impact: <span style="color: #e11d48;">▼</span> 98 | SG: -4.15 | Weighted Pts: 17.54<br>
                 WAGR Pwr: 360.1597 | Pts Earned: 3.1971</div>
               <div class="mobile-score-bar">
@@ -2026,14 +2111,14 @@
 
           <tr style="background: #fcfdfe;">
             <td class="col-left">
-              <div style="color: #333; font-weight: 700; font-size: 11px;">Oct 2025</div>
+              <div style="color: #333; font-weight: 700; font-size: 11px;">Sep 22-23, 2025</div>
               <div style="display: flex; align-items: center; flex-wrap: wrap;">
                 <span style="font-weight: 700; color: #333; font-size: 15px;">Badger Invitational</span>
                 <a href="https://scoreboard.clippd.com/tournaments/236150/scoring/player" target="_blank" class="leaderboard-btn">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0c2340" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                 </a>
               </div>
-              <div style="font-size: 11px; color: #777; font-weight: 700;margin-top: 2px;">
+              <div style="font-size: 11px; color:  #7f8c8d; font-weight: 600;margin-top: 2px;">
                 Rank Impact: <span style="color: #e11d48;">▼</span> 38 | SG: -2.80 | Weighted Pts: 24.60<br>
                 WAGR Pwr: 129.0694 | Pts Earned: 3.3178</div>
               <div class="mobile-score-bar">
@@ -2051,14 +2136,14 @@
 
           <tr>
             <td class="col-left">
-              <div style="color: #333; font-weight: 700; font-size: 11px;">Sep 2025</div>
+              <div style="color: #333; font-weight: 700; font-size: 11px;">Sep 15-16, 2025</div>
               <div style="display: flex; align-items: center; flex-wrap: wrap;">
                 <span style="font-weight: 700; color: #333; font-size: 15px;">Highlands Invitational</span>
                 <a href="https://scoreboard.clippd.com/tournaments/239590/scoring/player" target="_blank" class="leaderboard-btn">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0c2340" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                 </a>
               </div>
-              <div style="font-size: 11px; color: #777; font-weight: 700; margin-top: 2px;">
+              <div style="font-size: 11px; color:  #7f8c8d; font-weight: 600; margin-top: 2px;">
                 Rank Impact: <span style="color: #16a34a;">▲</span> 28 | SG: -0.88 | Weighted Pts: 32.68<br>
                 WAGR Pwr: 232.6656 | Pts Earned: 4.9097
               </div>  
@@ -2078,14 +2163,14 @@
 
           <tr style="background: rgba(12, 35, 64, 0.04);">
             <td class="col-left">
-              <div style="color: #0c2340; font-weight: 700; font-size: 11px;">Sep 2025</div>
+              <div style="color: #0c2340; font-weight: 700; font-size: 11px;">Sep 7-9, 2025 (College Debut)</div>
               <div style="display: flex; align-items: center; flex-wrap: wrap;">
                 <span style="font-weight: 800; color: #0c2340; font-size: 15px;">Argent Financial Invitational</span>
                 <a href="https://scoreboard.clippd.com/tournaments/239222/scoring/player" target="_blank" class="leaderboard-btn">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0c2340" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                 </a>
               </div>
-              <div style="font-size: 11px; color: #777; font-weight: 700; margin-top: 2px;">
+              <div style="font-size: 11px; color:  #7f8c8d; font-weight: 600; margin-top: 2px;">
                 Rank Impact: <span style="color: #16a34a;">▲</span> 151 | SG: -0.74 | Weighted Pts: 41.18<br>
                 WAGR Pwr: 230.8799 | Pts Earned: 5.3735
               </div>
