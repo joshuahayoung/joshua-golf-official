@@ -397,7 +397,7 @@
   </h1>
   
   <span style="color: #64748b; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; padding-bottom: 2px; white-space: nowrap;">
-    Last Updated: Mar 15, 2026
+    Last Updated: Mar 16, 2026
   </span>
 </div>
 
@@ -881,7 +881,7 @@
     const eventData = {
       eventNo: "8th Event",
       eventLabel: "Arizona Thunderbirds Intercollegiate",
-      status: "upcoming", // upcoming | ongoing | final | cancelled
+      status: "ongoing", // upcoming | ongoing | final | cancelled
 
       title: "Arizona Thunderbirds Intercollegiate (Arizona)",
       date: "Mar 16-17",
@@ -909,7 +909,7 @@
           date: "Mar 16, 2026",
           score: "TBD",
           par: "TBD",
-          status: "SCHEDULED",
+          status: "IN PROGRESS",
           pos: "TBD",
           pairingImg: "./images/freshman-2025-2026/joshua-hong-UTSA-Arizona-Thunderbirds-Pairing-1.jpg",
           _scorecardImg: "./images/freshman-2025-2026/joshua-hong-UTSA-Golden-Nugget-Scorecard.jpg"
@@ -1131,7 +1131,7 @@
         <div class="jt-wrap">
           <div class="jt-header-top">
             <div class="jt-header-row ${data.status}">
-              <h3>UPCOMING TOURNAMENT</h3>
+              <h3>ONGOING TOURNAMENT</h3>
               <span>${data.eventNo}: ${data.eventLabel}</span>
             </div>
           </div>
@@ -1990,8 +1990,9 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
         <div style="background: #ffffff; border: 1.5px solid #eeeeee; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); overflow: hidden; box-sizing: border-box; width: 100%;">
             <div style="padding: 20px 0 40px 0; box-sizing: border-box; text-align: center; width: 100%;">
                 <h2 style="margin: 0; color: #0c2340; font-size: 26px; letter-spacing: 0.5px; font-weight: 900; text-transform: uppercase;">Seasonal Finish Trend</h2>
-                <p style="font-size: 0.85em; color: #666; margin-bottom: 45px; font-family: 'Montserrat', sans-serif; letter-spacing: 1px; 
-                  font-weight: 400; text-transform: uppercase; margin-top: 8px;">Official Tournament Metrics</p>
+                <p style="font-size: 0.85em; color: #666; margin-bottom: 45px; font-family: 'Montserrat', sans-serif; letter-spacing: 1px; font-weight: 400; text-transform: uppercase; margin-top: 8px;">
+                7 NCAA Regular Season Events + 1 Winter Event (<span style="color:#F15A22; font-weight:700;">Patriot</span><span style="color:#F15A22; font-weight:700;">*</span>) / 24 Competitive Rounds
+            </p>
                 
                 <div style="width: 100%; padding: 0 20px; box-sizing: border-box; text-align: left;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 2px solid #0c2340; padding-bottom: 8px;">
@@ -2006,11 +2007,13 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
                         </div>
                         <canvas id="archiveOfficialChart"></canvas>
                         <div style="position: absolute; bottom: 12px; left: 15px; right: 15px; display: flex; justify-content: space-between; font-family: 'Montserrat', sans-serif; font-size: 0.72em; color: #888; border-top: 1px dashed #ccc; padding-top: 10px; font-weight: 600; text-transform: uppercase;">
-                            <span>SOURCE: SCOREBOARD.CLIPPD, WAGR & GOLFSTAT</span>
-                            <span>CUMULATIVE: 8 EVENTOS / 24 RONDAS</span>
-                        </div>
+                        <span>SOURCE: SCOREBOARD.CLIPPD, WAGR & GOLFSTAT</span>
+                        <span>CUMULATIVE: 8 EVENTOS / 24 RONDAS</span>
                     </div>
-                    <p style="font-family: 'Montserrat', sans-serif; font-size: 0.7em; color: #888; font-weight: 500; margin-top: 10px; padding-left: 5px;">* Special Invitational Event (Non-NCAA D1 Regular Season)</p>
+                    </div>
+                    <p style="font-family: 'Montserrat', sans-serif; font-size: 0.7em; color: #888; font-weight: 500; margin-top: 10px; padding-left: 5px;">
+  <span style="color: #F15A22; font-weight: 700;">Patriot*</span> Special Invitational Event (Non-NCAA D1 Regular Season)
+</p>
                 </div>
             </div>
         </div>
@@ -2127,18 +2130,20 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
                 tension: 0.3,
                 fill: true,
                 datalabels: {
-                    align: 'top',
-                    anchor: 'end',
-                    offset: isMobile ? 4 : 8,
-                    color: '#0c2340',
-                    font: {
-                        weight: '700',
-                        size: isMobile ? 10 : 13
-                    },
-                    formatter: function(value, context) {
-                        return archivePositions[context.dataIndex];
-                    }
-                }
+    align: 'top',
+    anchor: 'end',
+    offset: isMobile ? 4 : 8,
+    color: function(context) {
+        return context.dataIndex === 4 ? '#F15A22' : '#0c2340';
+    },
+    font: {
+        weight: '700',
+        size: isMobile ? 10 : 13
+    },
+    formatter: function(value, context) {
+        return archivePositions[context.dataIndex];
+    }
+}
             }]
         },
         options: {
@@ -2164,7 +2169,9 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
                 x: {
                     grid: { display: false },
                     ticks: {
-                        color: '#333',
+                            color: function(context) {
+        return context.index === 4 ? '#F15A22' : '#333';
+    },
                         font: { size: isMobile ? 8 : 10, weight: '500' },
                         autoSkip: false,
                         maxRotation: isMobile ? 60 : 45,
@@ -2212,6 +2219,12 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
 </script>
 
 
+
+
+
+
+
+  
 
 
 <div class="round-distribution-wrapper" style="width: 100%; margin: 15px 0 20px 0; padding: 0; background: transparent; box-sizing: border-box;">
