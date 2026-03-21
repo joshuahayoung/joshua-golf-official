@@ -536,17 +536,49 @@
       100% { opacity: 1; transform: scale(1); }
     }
 
+    #jh-tournament-card-block .jtc-title-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    #jh-tournament-card-block .jtc-title-line {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+      min-width: 0;
+    }
+
     #jh-tournament-card-block .jtc-title {
       color: #0c2340;
       margin: 0;
       font-size: 19px;
       font-weight: 800;
+      line-height: 1.25;
+      min-width: 0;
+    }
+
+    #jh-tournament-card-block .jtc-title-sep {
+      color: #94a3b8;
+      font-weight: 700;
+    }
+
+    #jh-tournament-card-block .jtc-date {
+      color: #64748b;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.2;
+      white-space: nowrap;
     }
 
     #jh-tournament-card-block .jtc-meta {
       font-size: 12px;
       color: #7f8c8d;
       font-weight: 600;
+      line-height: 1.45;
     }
 
     #jh-tournament-card-block .jtc-table {
@@ -784,7 +816,6 @@
         padding: 18px 16px;
       }
 
-      /* 모바일에서는 완전 표시 우선: 표를 카드형 행으로 전환 */
       #jh-tournament-card-block .jtc-table thead {
         display: none;
       }
@@ -829,7 +860,41 @@
         letter-spacing: 0.7px;
       }
 
-      /* footer는 모바일에서 2단 구조로 재배치 */
+      #jh-tournament-card-block .jtc-title-wrap {
+        gap: 6px;
+      }
+
+      #jh-tournament-card-block .jtc-title-line {
+        display: block;
+      }
+
+      #jh-tournament-card-block .jtc-title {
+        display: block;
+        font-size: 18px;
+        line-height: 1.28;
+      }
+
+      #jh-tournament-card-block .jtc-title-sep {
+        display: none;
+      }
+
+      #jh-tournament-card-block .jtc-date {
+        display: block;
+        margin-top: 2px;
+        font-size: 13px;
+        font-weight: 800;
+        color: #8b5e1a;
+        line-height: 1.25;
+        white-space: normal;
+      }
+
+      #jh-tournament-card-block .jtc-meta {
+        font-size: 13px;
+        color: #5b6b7f;
+        font-weight: 700;
+        line-height: 1.45;
+      }
+
       #jh-tournament-card-block .jtc-footer {
         padding: 14px 16px;
         display: grid;
@@ -867,8 +932,12 @@
             <span id="jtc-badge-dot" class="jtc-dot final"></span>
             <span id="jtc-badge-label">FINAL</span>
           </div>
-          <div>
-            <h2 id="jtc-title" class="jtc-title">Tournament Title</h2>
+          <div class="jtc-title-wrap">
+            <div class="jtc-title-line">
+              <h2 id="jtc-title-text" class="jtc-title" style="display:inline; margin:0;">Tournament Title</h2>
+              <span class="jtc-title-sep">|</span>
+              <span id="jtc-date" class="jtc-date">Mar 23-24</span>
+            </div>
             <div id="jtc-meta" class="jtc-meta">Venue | Location | Par | Yardage</div>
           </div>
         </div>
@@ -927,11 +996,6 @@
   </div>
 
   <script>
-    
-     /* =========================================================
-       UPDATE ONLY THIS OBJECT
-       ========================================================= */
-    
     const TOURNAMENT_CONFIG = {
       sectionTitle: "UPCOMING TOURNAMENT",
       eventNo: "9th Event",
@@ -1163,7 +1227,8 @@
       badgeDotEl.className = `jtc-dot ${badge.className}`;
 
       document.getElementById("jtc-badge-label").textContent = badge.label;
-      document.getElementById("jtc-title").textContent = `${data.title} | ${data.date}`;
+      document.getElementById("jtc-title-text").textContent = data.title;
+      document.getElementById("jtc-date").textContent = data.date;
       document.getElementById("jtc-meta").textContent = metaText;
 
       const roundsHtml = (data.rounds || []).map(round => jtcRoundRow(round, data.status)).join("");
@@ -2449,7 +2514,7 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
   The scoring range across all rounds displayed in this segment extends from 64 to 76 in the season log.
 </div>
 <div style="margin-bottom: 10px;">
-  This table includes eight event entries, with each row showing the three round scores recorded for that event and the corresponding event average.
+  This table includes nine event entries, with each row showing the three round scores recorded for that event and the corresponding event average.
 </div>
 <div style="margin-bottom: 10px;">
   The sequence is arranged with the most recent event first and the earliest event last, allowing the round record to be read in chronological reverse order.
@@ -3024,8 +3089,8 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
             <td class="col-left">
               <div style="font-weight: 600; font-size: 13px; color: #333;">Mar 23-24, 2026</div>
               <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 6px;">
-              <div style="font-weight: 800; color: #0c2340; font-size: 16px; margin: 2px 0;">Bell Bank "Pay it Forward" Collegiate</div>
-                     <a href="https://scoreboard.clippd.com/tournaments/239256/scoring/participants" target="_blank" style="display: flex; align-items: center; text-decoration: none;">
+              <div style="font-weight: 800; color: #0c2340; font-size: 16px; margin: 2px 0;">Bell Bank Collegiate (Minnesota)</div>
+             <a href="https://scoreboard.clippd.com/tournaments/239256/scoring/participants" target="_blank" style="display: flex; align-items: center; text-decoration: none;">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0c2340" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                   <polyline points="15 3 21 3 21 9"></polyline>
@@ -3034,7 +3099,7 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
                </a>
                   </div>
               
-              <div style="font-size: 12px; color: #7f8c8d;">Wigwam GC - AZ | Par 72 | 7,021 Yards</div>
+              <div style="font-size: 12px; color: #7f8c8d;">Wigwam GC - AZ | Par 72 | 7,345 Yards</div>
               </div>
     
                <div style="font-size: 11px; color: #777; font-weight: 600; margin-top: 2px;">
@@ -3091,7 +3156,7 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
           <tr style="background: rgba(201, 138, 46, 0.03);">
             <td class="col-left">
               <div style="font-weight: 600; font-size: 13px; color: #c98a2e;">Apr 27-29, 2026</div>
-              <div style="font-weight: 800; color: #0c2340; font-size: 16px; margin: 2px 0;">American Conference Championship</div>
+              <div style="font-weight: 800; color: #0c2340; font-size: 16px; margin: 2px 0;">American Athletic Conference Championship</div>
               <div style="font-size: 12px; color: #7f8c8d;">Ritz Carlton Members Club - FL</div>
               <div class="mobile-status-bar">
                 <div class="ms-item"><span class="ms-label" style="color: #c98a2e;">R1-R2-R3</span><span class="ms-value" style="color: #c98a2e; font-weight: 800;">-</span></div>
@@ -3488,7 +3553,7 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
             <td class="col-left">
               <div style="color: #333; font-weight: 700; font-size: 11px;">Oct 5-7, 2025</div>
               <div style="display: flex; align-items: center; flex-wrap: wrap;">
-                <span style="font-weight: 700; color: #333; font-size: 15px;">Trinity Forest Invitational</span>
+                <span style="font-weight: 700; color: #333; font-size: 15px;">Trinity Forest Invitational (SMU)</span>
                 <a href="https://scoreboard.clippd.com/tournaments/239449/scoring/player" target="_blank" class="leaderboard-btn">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0c2340" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                 </a>
@@ -3513,7 +3578,7 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
             <td class="col-left">
               <div style="color: #333; font-weight: 700; font-size: 11px;">Sep 22-23, 2025</div>
               <div style="display: flex; align-items: center; flex-wrap: wrap;">
-                <span style="font-weight: 700; color: #333; font-size: 15px;">Badger Invitational</span>
+                <span style="font-weight: 700; color: #333; font-size: 15px;">Badger Invitational (Wisconsin)</span>
                 <a href="https://scoreboard.clippd.com/tournaments/236150/scoring/player" target="_blank" class="leaderboard-btn">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0c2340" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                 </a>
@@ -3538,7 +3603,7 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
             <td class="col-left">
               <div style="color: #333; font-weight: 700; font-size: 11px;">Sep 15-16, 2025</div>
               <div style="display: flex; align-items: center; flex-wrap: wrap;">
-                <span style="font-weight: 700; color: #333; font-size: 15px;">Highlands Invitational</span>
+                <span style="font-weight: 700; color: #333; font-size: 15px;">Highlands Invitational (East Tennessee State)</span>
                 <a href="https://scoreboard.clippd.com/tournaments/239590/scoring/player" target="_blank" class="leaderboard-btn">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0c2340" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                 </a>
@@ -3565,7 +3630,7 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
             <td class="col-left">
               <div style="color: #0c2340; font-weight: 700; font-size: 11px;">Sep 7-9, 2025 (College Debut)</div>
               <div style="display: flex; align-items: center; flex-wrap: wrap;">
-                <span style="font-weight: 800; color: #0c2340; font-size: 15px;">Argent Financial Invitational</span>
+                <span style="font-weight: 800; color: #0c2340; font-size: 15px;">Argent Financial Invitational (Louisiana Tech)</span>
                 <a href="https://scoreboard.clippd.com/tournaments/239222/scoring/player" target="_blank" class="leaderboard-btn">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0c2340" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                 </a>
@@ -3625,6 +3690,9 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
       
  <div style="margin: 0; font-size: 14px; color: #4a5568; line-height: 1.8; text-align: justify; word-break: keep-all;">
 <p style="margin: 0 0 12px 0;">
+  <b>8th Tournament: Arizona Thunderbirds Intercollegiate</b> (Mar 16-17, 2026)<br>
+</p>
+<p style="margin: 0 0 12px 0;">
   <b>Performance Summary:</b> This event added a strong power-field sample under a demanding Division I setup and is best logged as a context-heavy evaluation rather than a pure scoreline result.
 </p>
 <p style="margin: 0 0 12px 0;">
@@ -3648,7 +3716,6 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
       </div>
       <div style="font-size: 13px; color: #4a5568; line-height: 1.7; text-align: justify; word-break: keep-all;">
   <p style="margin: 0 0 12px 0;">
-    <b>Date: March 7, 2026</b><br>
     <b>Session Objective: Postural Realignment and Stroke Calibration</b>
   </p>
   <p style="margin: 0 0 12px 0;">
@@ -3745,7 +3812,7 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
           <div style="font-size: 10px; color: #64748b; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Putter</div>
           <div style="font-size: 15px; font-weight: 900; color: #0c2340;">Phantom 9.5</div>
         </div>
-        <div style="font-size: 11px; color: #64748b; border-left: 2px solid #cbd5e1; padding-left: 12px; font-weight: 800; text-transform: uppercase;">Black</div>
+        <div style="font-size: 11px; color: #64748b; border-left: 2px solid #cbd5e1; padding-left: 12px; font-weight: 800; text-transform: uppercase;">Silver</div>
       </div>
       
       <div style="background: #ffffff; border: 2px solid #c98a2e; padding: 20px; border-radius: 12px; display: flex; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 4px 15px rgba(201, 138, 46, 0.1);">
