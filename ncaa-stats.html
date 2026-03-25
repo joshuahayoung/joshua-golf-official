@@ -410,7 +410,6 @@
 
 
 
-
 <div id="jh-tournament-card-block" style="width:100%; max-width:900px; margin:0 auto 60px; padding:0 0px; box-sizing:border-box; font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
 
   <style>
@@ -664,7 +663,6 @@
       font-weight: 800;
     }
 
-    /* desktop: 기존처럼 가로 배치 유지 */
     #jh-tournament-card-block .jtc-row-tools {
       display: flex;
       align-items: center;
@@ -924,11 +922,12 @@
         table-layout: fixed;
       }
 
-      #jh-tournament-card-block .jtc-col-info   { width: 40%; }
-      #jh-tournament-card-block .jtc-col-score  { width: 12%; }
+      /* status 폭 약간 축소 */
+      #jh-tournament-card-block .jtc-col-info   { width: 41%; }
+      #jh-tournament-card-block .jtc-col-score  { width: 13%; }
       #jh-tournament-card-block .jtc-col-par    { width: 11%; }
-      #jh-tournament-card-block .jtc-col-status { width: 21%; }
-      #jh-tournament-card-block .jtc-col-finish { width: 16%; }
+      #jh-tournament-card-block .jtc-col-status { width: 18%; }
+      #jh-tournament-card-block .jtc-col-finish { width: 17%; }
 
       #jh-tournament-card-block .jtc-table th {
         font-size: 8px;
@@ -957,7 +956,6 @@
         margin-top: 1px;
       }
 
-      /* mobile: 제목 옆에서 자연스럽게 세로 정렬 */
       #jh-tournament-card-block .jtc-row-tools {
         gap: 6px;
         align-items: flex-start;
@@ -965,21 +963,22 @@
         flex-wrap: nowrap;
       }
 
+      /* 모바일에서 버튼 왼쪽 정렬 */
       #jh-tournament-card-block .jtc-tool-stack {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         justify-content: flex-start;
         gap: 3px;
         margin-left: 6px;
       }
 
       #jh-tournament-card-block .jtc-tool-btn {
-        min-width: 56px;
+        min-width: 58px;
         padding: 1px 4px;
         gap: 3px;
         border-radius: 3px;
-        justify-content: center;
+        justify-content: flex-start;
       }
 
       #jh-tournament-card-block .jtc-tool-btn span {
@@ -1015,25 +1014,33 @@
       }
 
       #jh-tournament-card-block .jtc-summary {
-        min-width: 38px;
+        min-width: 44px;
       }
 
+      /* footer 라벨 키움 */
       #jh-tournament-card-block .jtc-summary-label {
-        font-size: 6px;
+        font-size: 7px;
         line-height: 1;
       }
 
+      /* footer 숫자 키움 */
       #jh-tournament-card-block .jtc-summary-value {
-        font-size: 11px;
-        line-height: 1.02;
+        font-size: 13px;
+        line-height: 1.05;
       }
 
-      /* 모바일에서 숫자 가독성 조금 확대 */
+      /* 모바일 숫자 가독성 확대 */
       #jh-tournament-card-block .jtc-table tbody td:nth-child(2),
       #jh-tournament-card-block .jtc-table tbody td:nth-child(3),
       #jh-tournament-card-block .jtc-table tbody td:nth-child(5) {
-        font-size: 11px;
+        font-size: 12px;
         font-weight: 900;
+      }
+
+      /* status는 숫자보다 조금 작게 유지 */
+      #jh-tournament-card-block .jtc-table tbody td:nth-child(4) {
+        font-size: 9px;
+        font-weight: 800;
       }
 
       #jh-tournament-card-block .jtc-modal-wrap {
@@ -1408,11 +1415,10 @@
 </div>
 
 
-
   
   
 
-<div class="analysis-section" style="max-width: 900px; margin: 0 auto 20px; padding: 0px; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+<div class="analysis-section" style="max-width: 900px; margin: 0 auto 10px; padding: 0px; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   
   <style>
     /* mobile style 600px o less */
@@ -1435,24 +1441,25 @@
  
  
 
-  <div style="width: 100%; max-width: 900px; margin: 0 auto 20px; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <div style="background: #F15A22; border-radius: 8px 8px 0 0; padding: 10px 25px; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; flex-wrap: wrap; gap: 10px;">
-  <div style="display: flex; align-items: center;">
-    <span style="color: #ffffff; font-weight: 800; font-size: 16px; letter-spacing: 1px;">Freshman Season Key Metrics</span>
-    <span style="margin-left: 15px; background: #0C2340; color: #ffffff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.5px;">Clippd </span>
-  </div>
- 
-</div>
-    
-<div class="master-container" style="width: 100%; margin-top: 25px; box-sizing: border-box;">
+<div style="width: 100%; max-width: 900px; margin: 0 auto 10px; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
 
-<div style="margin: -6px 0 20px 0; padding-left: 2px; font-family: 'Montserrat', sans-serif; box-sizing: border-box;">
-  <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 10px; color: #94a3b8; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">
-    <span>Auto-Synced from data.json</span>
-    <span style="opacity: 0.55;">|</span>
-    <span>2025–26 Competitive Record</span>
+  <div style="background: #F15A22; border-radius: 8px 8px 0 0; padding: 10px 25px; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; flex-wrap: wrap; gap: 10px;">
+    <div style="display: flex; align-items: center; flex-wrap: wrap;">
+      <span style="color: #ffffff; font-weight: 800; font-size: 16px; letter-spacing: 1px;">Freshman Season Key Metrics</span>
+      <span style="margin-left: 15px; background: #0C2340; color: #ffffff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.5px;">Clippd</span>
+    </div>
   </div>
-</div>
+
+  <div class="master-container" style="width: 100%; margin-top: 25px; box-sizing: border-box;">
+
+    <div style="margin: -6px 0 20px 0; padding-left: 25px; padding-right: 25px; font-family: 'Montserrat', sans-serif; box-sizing: border-box;">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 10px; color: #94a3b8; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; text-align: left;">
+        <span>Auto-Synced from data.json</span>
+        <span style="opacity: 0.55;">|</span>
+        <span>2025–26 Competitive Record</span>
+      </div>
+    </div>
+
   
     <div class="roster-standings-section" style="width: 100%; margin-bottom: 40px; box-sizing: border-box;">
       <div style="margin-bottom: 25px; box-sizing: border-box;">
@@ -1687,9 +1694,10 @@ async function updateMetrics() {
 window.addEventListener('DOMContentLoaded', updateMetrics);
 </script>
 
-</div>
-    
-    </div>
+     </div>
+</div>  
+
+  
 
 
 <div style="margin: 20px 0 30px 0; border-radius: 14px; background: #ffffff; border: 1px solid #dbe4ee; padding: 20px; box-shadow: 0 6px 18px rgba(12,35,64,0.06); width: 100%; box-sizing: border-box;">
@@ -2230,10 +2238,9 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
                         <span style="font-family: 'Oswald', sans-serif; font-size: 1.2em; font-weight: 700; color: #0c2340;">70.80</span>
                     </div>
                     <canvas id="archiveOfficialChart"></canvas>
-                    <div style="position: absolute; bottom: 12px; left: 15px; right: 15px; display: flex; justify-content: space-between; font-family: 'Montserrat', sans-serif; font-size: 0.72em; 
-                      color: #888; border-top: 1px dashed #ccc; padding-top: 10px; font-weight: 600; text-transform: uppercase;">
+                    <div style="position: absolute; bottom: 12px; left: 15px; right: 15px; display: flex; justify-content: center; font-family: 'Montserrat', sans-serif; font-size: 0.72em; color: #888; border-top: 1px dashed #ccc; 
+                        padding-top: 10px; font-weight: 600; text-transform: uppercase; text-align: center;">
                         <span>SOURCE: SCOREBOARD.CLIPPD, WAGR & GOLFSTAT</span>
-                        <span>2025–26 Competitive Record</span>
                     </div>
                 </div>
             </div>
@@ -2322,16 +2329,7 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
 
     // Mobile
     function mobileLabel(label) {
-        if (!isMobile) return label;
-        return label
-            .replace(' (Argent)', '')
-            .replace(' (Highlands)', '')
-            .replace(' (Badger)', '')
-            .replace(' (Trinity)', '')
-            .replace(' (Compadres)', '')
-            .replace(' (Military)', '')
-            .replace(' (Golden)', '')
-            .replace(' (Thunderbirds)', '');
+        return label;
     }
 
     const ctxOfficialArchive = document.getElementById('archiveOfficialChart').getContext('2d');
