@@ -470,7 +470,7 @@
     }
 
     #jh-tournament-card-block .jtc-card-head {
-      padding: 20px 25px;
+      padding: 20px 25px 18px 25px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -484,6 +484,7 @@
       align-items: center;
       gap: 12px;
       flex-wrap: wrap;
+      width: 100%;
     }
 
     #jh-tournament-card-block .jtc-badge {
@@ -544,6 +545,7 @@
       align-items: flex-start;
       gap: 4px;
       min-width: 0;
+      flex: 1 1 auto;
     }
 
     #jh-tournament-card-block .jtc-title-line {
@@ -583,107 +585,53 @@
       line-height: 1.45;
     }
 
-    #jh-tournament-card-block .jtc-table-scroll {
-      width: 100%;
-      overflow: visible;
-      background: #ffffff;
-    }
-
-    #jh-tournament-card-block .jtc-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-      table-layout: fixed;
-      margin-bottom: 0;
-      border: none;
-    }
-
-    #jh-tournament-card-block .jtc-table th {
-      background: #f8f9fa;
-      font-size: 12px;
-      color: #0c2340;
-      text-transform: uppercase;
-      padding: 14px 10px;
-      border-bottom: 2px solid #0c2340;
-      text-align: center;
-      white-space: nowrap;
-    }
-
-    #jh-tournament-card-block .jtc-table th.jtc-col-left,
-    #jh-tournament-card-block .jtc-table td.jtc-col-left {
-      text-align: left;
-      padding-left: 18px;
-    }
-
-    #jh-tournament-card-block .jtc-table td {
-      padding: 18px 10px;
-      border-bottom: 1px solid #edf2f7;
-      vertical-align: middle;
-      text-align: center;
-      white-space: nowrap;
-    }
-
-    #jh-tournament-card-block .jtc-col-info   { width: 30%; }
-    #jh-tournament-card-block .jtc-col-score  { width: 16%; }
-    #jh-tournament-card-block .jtc-col-par    { width: 14%; }
-    #jh-tournament-card-block .jtc-col-status { width: 18%; }
-    #jh-tournament-card-block .jtc-col-finish { width: 22%; }
-
-    #jh-tournament-card-block .jtc-round-title {
-      font-weight: 800;
-      color: #0c2340;
-      font-size: 17px;
-      line-height: 1.15;
-    }
-
-    #jh-tournament-card-block .jtc-round-date {
-      font-size: 13px;
-      color: #7f8c8d;
-      margin-top: 4px;
-      font-weight: 700;
-    }
-
-    #jh-tournament-card-block .jtc-score-under {
-      color: #e74c3c;
-      font-weight: 900;
-    }
-
-    #jh-tournament-card-block .jtc-score-even {
-      color: #2563eb;
-      font-weight: 900;
-    }
-
-    #jh-tournament-card-block .jtc-score-over {
-      color: #1e3a8a;
-      font-weight: 900;
-    }
-
-    #jh-tournament-card-block .jtc-text-neutral {
-      color: #0c2340;
-      font-weight: 800;
-    }
-
-    #jh-tournament-card-block .jtc-table tbody td:nth-child(2),
-    #jh-tournament-card-block .jtc-table tbody td:nth-child(3),
-    #jh-tournament-card-block .jtc-table tbody td:nth-child(5) {
-      font-size: 19px;
-      font-weight: 900;
-      line-height: 1;
-    }
-
-    #jh-tournament-card-block .jtc-table tbody td:nth-child(4) {
-      font-size: 13px;
-      font-weight: 800;
-      line-height: 1.1;
-    }
-
-    #jh-tournament-card-block .jtc-footer {
+    /* RESULT BAND */
+    #jh-tournament-card-block .jtc-result-band {
       background: #0c2340;
-      padding: 14px 18px;
       display: grid;
-      grid-template-columns: 30% 16% 14% 18% 22%;
+      grid-template-columns: 156px minmax(0, 1fr) 176px 86px;
       align-items: stretch;
       gap: 0;
+      padding: 14px 18px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    #jh-tournament-card-block .jtc-link-summary,
+    #jh-tournament-card-block .jtc-rounds-summary,
+    #jh-tournament-card-block .jtc-total-summary,
+    #jh-tournament-card-block .jtc-pos-summary {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 6px 8px;
+      text-align: center;
+    }
+
+    #jh-tournament-card-block .jtc-summary-label {
+      color: rgba(255,255,255,0.68);
+      font-size: 10px;
+      font-weight: 800;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      line-height: 1;
+      margin-bottom: 6px;
+      min-height: 10px;
+    }
+
+    #jh-tournament-card-block .jtc-summary-label.jtc-label-ghost {
+      visibility: hidden;
+    }
+
+    /* 핵심: 모든 body의 높이를 동일화 */
+    #jh-tournament-card-block .jtc-band-body {
+      min-height: 52px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     #jh-tournament-card-block .jtc-main-link {
@@ -693,18 +641,18 @@
       gap: 8px;
       color: #0c2340;
       text-decoration: none;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 900;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.7px;
       text-transform: uppercase;
       border: 1.5px solid #0c2340;
-      padding: 6px 12px;
+      padding: 8px 10px;
       border-radius: 6px;
       transition: all 0.2s ease;
       background: #ffffff;
-      justify-self: start;
-      align-self: center;
-      max-width: max-content;
+      width: 100%;
+      max-width: 134px;
+      min-height: 42px;
     }
 
     #jh-tournament-card-block .jtc-main-link-content {
@@ -713,7 +661,6 @@
       gap: 6px;
     }
 
-    /* 수정 핵심: 데스크탑에서는 두 줄을 한 줄처럼 같이 보이게 */
     #jh-tournament-card-block .jtc-main-link-label-stack {
       display: inline-flex;
       align-items: center;
@@ -746,37 +693,96 @@
       100% { opacity: 1; transform: scale(1); }
     }
 
-    #jh-tournament-card-block .jtc-summary {
-      text-align: center;
+    #jh-tournament-card-block .jtc-rounds-grid {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 6px;
+      flex-wrap: nowrap;
       min-width: 0;
+      width: 100%;
+    }
+
+    #jh-tournament-card-block .jtc-round-chip {
+      min-width: 0;
+      flex: 1 1 0;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 7px;
+      padding: 6px 5px 5px 5px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      padding: 8px 6px 6px 6px;
+      justify-content: center;
+      gap: 4px;
     }
 
-    #jh-tournament-card-block .jtc-summary-label {
+    #jh-tournament-card-block .jtc-round-chip-label {
       color: rgba(255,255,255,0.68);
-      font-size: 10px;
+      font-size: 8px;
       font-weight: 800;
-      display: block;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
+      letter-spacing: 0.55px;
       line-height: 1;
-      margin-bottom: 5px;
+      text-transform: uppercase;
     }
 
-    #jh-tournament-card-block .jtc-summary-value {
-      font-size: 23px;
+    #jh-tournament-card-block .jtc-round-chip-value {
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1;
+      color: #ffffff;
+      white-space: nowrap;
+    }
+
+    #jh-tournament-card-block .jtc-round-chip-value.red { color: #e74c3c; }
+    #jh-tournament-card-block .jtc-round-chip-value.blue { color: #60a5fa; }
+    #jh-tournament-card-block .jtc-round-chip-value.navy { color: #bfdbfe; }
+    #jh-tournament-card-block .jtc-round-chip-value.white { color: #ffffff; }
+
+    #jh-tournament-card-block .jtc-total-line {
+      display: inline-flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 4px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+
+    #jh-tournament-card-block .jtc-total-score {
+      font-size: 24px;
       font-weight: 900;
       line-height: 1.02;
+      color: #ffffff;
+      letter-spacing: -0.2px;
     }
 
-    #jh-tournament-card-block .jtc-summary-value.red   { color: #e74c3c; }
-    #jh-tournament-card-block .jtc-summary-value.blue  { color: #60a5fa; }
-    #jh-tournament-card-block .jtc-summary-value.navy  { color: #bfdbfe; }
-    #jh-tournament-card-block .jtc-summary-value.white { color: #ffffff; }
+    #jh-tournament-card-block .jtc-total-par-wrap {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0;
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1.02;
+      color: #ffffff;
+    }
+
+    #jh-tournament-card-block .jtc-total-par-wrap .paren {
+      color: #ffffff;
+    }
+
+    #jh-tournament-card-block .jtc-total-par-wrap .delta.red { color: #e74c3c; }
+    #jh-tournament-card-block .jtc-total-par-wrap .delta.blue { color: #60a5fa; }
+    #jh-tournament-card-block .jtc-total-par-wrap .delta.navy { color: #bfdbfe; }
+    #jh-tournament-card-block .jtc-total-par-wrap .delta.white { color: #ffffff; }
+
+    #jh-tournament-card-block .jtc-pos-value {
+      font-size: 27px;
+      font-weight: 900;
+      line-height: 1;
+      color: #ffffff;
+      white-space: nowrap;
+      letter-spacing: -0.3px;
+    }
 
     #jh-tournament-card-block .jtc-modal {
       display: none;
@@ -919,60 +925,42 @@
         font-weight: 700;
       }
 
-      #jh-tournament-card-block .jtc-table {
-        width: 100%;
-        min-width: 0;
-        table-layout: fixed;
+      /* 모바일도 같은 구조 유지 */
+      #jh-tournament-card-block .jtc-result-band {
+        grid-template-columns: 74px minmax(0, 1fr) 102px 48px;
+        padding: 10px 7px;
       }
 
-      #jh-tournament-card-block .jtc-col-info   { width: 31%; }
-      #jh-tournament-card-block .jtc-col-score  { width: 17%; }
-      #jh-tournament-card-block .jtc-col-par    { width: 14%; }
-      #jh-tournament-card-block .jtc-col-status { width: 18%; }
-      #jh-tournament-card-block .jtc-col-finish { width: 20%; }
-
-      #jh-tournament-card-block .jtc-table th {
-        font-size: 8px;
-        padding: 8px 3px;
-        letter-spacing: 0.45px;
+      #jh-tournament-card-block .jtc-link-summary,
+      #jh-tournament-card-block .jtc-rounds-summary,
+      #jh-tournament-card-block .jtc-total-summary,
+      #jh-tournament-card-block .jtc-pos-summary {
+        padding: 4px 3px;
       }
 
-      #jh-tournament-card-block .jtc-table td {
-        font-size: 10px;
-        padding: 10px 3px;
+      #jh-tournament-card-block .jtc-summary-label {
+        font-size: 7px;
+        margin-bottom: 4px;
+        min-height: 7px;
       }
 
-      #jh-tournament-card-block .jtc-table th.jtc-col-left,
-      #jh-tournament-card-block .jtc-table td.jtc-col-left {
-        padding-left: 8px;
-      }
-
-      #jh-tournament-card-block .jtc-round-title {
-        font-size: 12px;
-        line-height: 1.1;
-      }
-
-      #jh-tournament-card-block .jtc-round-date {
-        font-size: 9px;
-        line-height: 1.15;
-        margin-top: 2px;
-      }
-
-      #jh-tournament-card-block .jtc-footer {
-        padding: 10px 8px;
-        grid-template-columns: 31% 17% 14% 18% 20%;
+      #jh-tournament-card-block .jtc-band-body {
+        min-height: 38px;
       }
 
       #jh-tournament-card-block .jtc-main-link {
-        font-size: 8px;
-        letter-spacing: 0.4px;
-        padding: 4px 6px;
-        gap: 5px;
+        font-size: 6px;
+        letter-spacing: 0.22px;
+        padding: 5px 4px;
+        gap: 3px;
+        min-height: 32px;
+        width: 100%;
+        max-width: 60px;
       }
 
       #jh-tournament-card-block .jtc-main-link svg {
-        width: 9px;
-        height: 9px;
+        width: 8px;
+        height: 8px;
       }
 
       #jh-tournament-card-block .jtc-main-link-dot {
@@ -980,10 +968,9 @@
         height: 4px;
       }
 
-      /* 모바일에서만 세로 2줄 */
       #jh-tournament-card-block .jtc-main-link-content {
         align-items: center;
-        gap: 5px;
+        gap: 3px;
       }
 
       #jh-tournament-card-block .jtc-main-link-label-stack {
@@ -992,7 +979,7 @@
         align-items: flex-start;
         justify-content: center;
         gap: 1px;
-        line-height: 0.95;
+        line-height: 0.92;
         white-space: normal;
       }
 
@@ -1001,31 +988,35 @@
         display: block;
       }
 
-      #jh-tournament-card-block .jtc-summary {
-        padding: 6px 3px 5px 3px;
+      #jh-tournament-card-block .jtc-rounds-grid {
+        gap: 3px;
       }
 
-      #jh-tournament-card-block .jtc-summary-label {
-        font-size: 7px;
-        line-height: 1;
-        margin-bottom: 4px;
+      #jh-tournament-card-block .jtc-round-chip {
+        padding: 4px 2px 4px 2px;
+        border-radius: 6px;
+        gap: 3px;
       }
 
-      #jh-tournament-card-block .jtc-summary-value {
+      #jh-tournament-card-block .jtc-round-chip-label {
+        font-size: 6px;
+        letter-spacing: 0.45px;
+      }
+
+      #jh-tournament-card-block .jtc-round-chip-value {
+        font-size: 12px;
+      }
+
+      #jh-tournament-card-block .jtc-total-score {
         font-size: 16px;
-        line-height: 1.05;
       }
 
-      #jh-tournament-card-block .jtc-table tbody td:nth-child(2),
-      #jh-tournament-card-block .jtc-table tbody td:nth-child(3),
-      #jh-tournament-card-block .jtc-table tbody td:nth-child(5) {
-        font-size: 13px;
-        font-weight: 900;
+      #jh-tournament-card-block .jtc-total-par-wrap {
+        font-size: 14px;
       }
 
-      #jh-tournament-card-block .jtc-table tbody td:nth-child(4) {
-        font-size: 10px;
-        font-weight: 800;
+      #jh-tournament-card-block .jtc-pos-value {
+        font-size: 17px;
       }
 
       #jh-tournament-card-block .jtc-modal-wrap {
@@ -1070,54 +1061,50 @@
         </div>
       </div>
 
-      <div class="jtc-table-scroll">
-        <table class="jtc-table">
-          <thead>
-            <tr>
-              <th class="jtc-col-info jtc-col-left">Round</th>
-              <th class="jtc-col-score">Score</th>
-              <th class="jtc-col-par">Par</th>
-              <th class="jtc-col-status">Status</th>
-              <th class="jtc-col-finish">Pos</th>
-            </tr>
-          </thead>
-          <tbody id="jtc-rounds-body"></tbody>
-        </table>
-      </div>
+      <div class="jtc-result-band">
+        <div class="jtc-link-summary">
+          <span class="jtc-summary-label jtc-label-ghost">Action</span>
+          <div class="jtc-band-body">
+            <a id="jtc-main-link" href="#" target="_blank" class="jtc-main-link">
+              <span class="jtc-main-link-content">
+                <span id="jtc-main-link-dot" class="jtc-main-link-dot final"></span>
+                <span id="jtc-main-link-label" class="jtc-main-link-label-stack">
+                  <span class="line1">FINAL</span>
+                  <span class="line2">RESULTS</span>
+                </span>
+              </span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0C2340" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
 
-      <div class="jtc-footer">
-        <a id="jtc-main-link" href="#" target="_blank" class="jtc-main-link">
-          <span class="jtc-main-link-content">
-            <span id="jtc-main-link-dot" class="jtc-main-link-dot final"></span>
-            <span id="jtc-main-link-label" class="jtc-main-link-label-stack">
-              <span class="line1">VIEW</span>
-              <span class="line2">DETAILS</span>
-            </span>
-          </span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0C2340" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-            <polyline points="7 7 17 7 17 17"></polyline>
-          </svg>
-        </a>
+        <div class="jtc-rounds-summary">
+          <span class="jtc-summary-label">Rounds</span>
+          <div class="jtc-band-body">
+            <div id="jtc-rounds-grid" class="jtc-rounds-grid"></div>
+          </div>
+        </div>
 
-        <div class="jtc-summary">
+        <div class="jtc-total-summary">
           <span class="jtc-summary-label">Total</span>
-          <span id="jtc-summary-total" class="jtc-summary-value white">—</span>
+          <div class="jtc-band-body">
+            <div id="jtc-total-line" class="jtc-total-line">
+              <span id="jtc-total-score" class="jtc-total-score">—</span>
+              <span id="jtc-total-par-wrap" class="jtc-total-par-wrap">
+                <span class="paren">(</span><span id="jtc-total-par-delta" class="delta white">—</span><span class="paren">)</span>
+              </span>
+            </div>
+          </div>
         </div>
 
-        <div class="jtc-summary">
-          <span class="jtc-summary-label">Par</span>
-          <span id="jtc-summary-par" class="jtc-summary-value white">—</span>
-        </div>
-
-        <div class="jtc-summary">
-          <span class="jtc-summary-label">Status</span>
-          <span id="jtc-summary-status" class="jtc-summary-value white">—</span>
-        </div>
-
-        <div class="jtc-summary">
+        <div class="jtc-pos-summary">
           <span class="jtc-summary-label">Pos</span>
-          <span id="jtc-summary-pos" class="jtc-summary-value white">—</span>
+          <div class="jtc-band-body">
+            <span id="jtc-summary-pos" class="jtc-pos-value">—</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1214,7 +1201,7 @@
     }
 
     function jtcScoreClass(parValue) {
-      if (parValue === null || parValue === undefined) return "jtc-score-even";
+      if (parValue === null || parValue === undefined) return "blue";
       const value = String(parValue).trim().toUpperCase();
 
       if (
@@ -1226,19 +1213,11 @@
         value === "EVEN" ||
         value === "PAR" ||
         value === "0"
-      ) return "jtc-score-even";
+      ) return "blue";
 
-      if (value.startsWith("-")) return "jtc-score-under";
-      if (value.startsWith("+")) return "jtc-score-over";
-      return "jtc-score-even";
-    }
-
-    function jtcSummaryClass(parValue) {
-      const scoreClass = jtcScoreClass(parValue);
-      if (scoreClass === "jtc-score-under") return "red";
-      if (scoreClass === "jtc-score-over") return "navy";
-      if (scoreClass === "jtc-score-even") return "blue";
-      return "white";
+      if (value.startsWith("-")) return "red";
+      if (value.startsWith("+")) return "navy";
+      return "blue";
     }
 
     function jtcBadgeMap(status) {
@@ -1251,16 +1230,6 @@
       return map[status] || map.final;
     }
 
-    function jtcFooterStatus(status) {
-      const map = {
-        upcoming: "SCHEDULED",
-        ongoing: "LIVE",
-        final: "FINISH",
-        cancelled: "CANCELLED"
-      };
-      return map[status] || "—";
-    }
-
     function jtcSplitMainLinkLabel(label) {
       const clean = (label || "").trim();
       if (!clean) return { line1: "VIEW", line2: "DETAILS" };
@@ -1269,6 +1238,7 @@
 
       if (upper === "FINAL RESULTS") return { line1: "FINAL", line2: "RESULTS" };
       if (upper === "LIVE LEADERBOARD") return { line1: "LIVE", line2: "LEADERBOARD" };
+      if (upper === "TOURNAMENT DETAILS") return { line1: "TOURNAMENT", line2: "DETAILS" };
 
       const parts = upper.split(/\s+/);
       if (parts.length >= 2) {
@@ -1281,70 +1251,94 @@
       return { line1: upper, line2: "" };
     }
 
-    function jtcRoundDefaults(eventStatus, round) {
-      if (eventStatus === "upcoming") {
-        return {
-          score: jtcIsUsableValue(round.score) ? round.score : "—",
-          par: jtcIsUsableValue(round.par) ? round.par : "—",
-          status: jtcIsUsableValue(round.status) ? round.status : "SCHEDULED",
-          pos: jtcIsUsableValue(round.pos) ? round.pos : "—"
-        };
+    function jtcFormatParDelta(delta) {
+      if (delta === 0) return "E";
+      if (delta > 0) return `+${delta}`;
+      return `${delta}`;
+    }
+
+    function jtcParseNumber(value) {
+      if (!jtcIsUsableValue(value)) return null;
+      const num = Number(String(value).replace(/,/g, "").trim());
+      return Number.isFinite(num) ? num : null;
+    }
+
+    function jtcRoundShortLabel(round, index) {
+      const raw = String(round.round || "").trim();
+      const match = raw.match(/(\d+)/);
+      if (match) return `R${match[1]}`;
+      return `R${index + 1}`;
+    }
+
+    function jtcGetAllRounds(rounds) {
+      return Array.isArray(rounds) ? rounds : [];
+    }
+
+    function jtcResolveSummary(data) {
+      const rounds = jtcGetAllRounds(data.rounds);
+      const playedRounds = rounds.filter(round => jtcIsUsableValue(round.score));
+      const configPar = jtcParseNumber(data.par);
+      const summaryTotalRaw = data.summary && data.summary.total;
+      const summaryParRaw = data.summary && data.summary.par;
+      const summaryPosRaw = data.summary && data.summary.pos;
+
+      let resolvedTotal = jtcIsUsableValue(summaryTotalRaw) ? String(summaryTotalRaw).trim() : "—";
+      let resolvedPar = jtcIsUsableValue(summaryParRaw) ? String(summaryParRaw).trim() : "—";
+      let resolvedPos = jtcIsUsableValue(summaryPosRaw) ? String(summaryPosRaw).trim() : "—";
+
+      if (!jtcIsUsableValue(summaryTotalRaw) && playedRounds.length > 0) {
+        const totalScore = playedRounds.reduce((sum, round) => {
+          const scoreNum = jtcParseNumber(round.score);
+          return sum + (scoreNum !== null ? scoreNum : 0);
+        }, 0);
+        resolvedTotal = String(totalScore);
       }
 
-      if (eventStatus === "ongoing") {
-        return {
-          score: jtcIsUsableValue(round.score) ? round.score : "—",
-          par: jtcIsUsableValue(round.par) ? round.par : "—",
-          status: jtcIsUsableValue(round.status) ? round.status : "LIVE",
-          pos: jtcIsUsableValue(round.pos) ? round.pos : "—"
-        };
-      }
-
-      if (eventStatus === "final") {
-        return {
-          score: jtcIsUsableValue(round.score) ? round.score : "—",
-          par: jtcIsUsableValue(round.par) ? round.par : "—",
-          status: jtcIsUsableValue(round.status) ? round.status : "FINISH",
-          pos: jtcIsUsableValue(round.pos) ? round.pos : "—"
-        };
+      if (!jtcIsUsableValue(summaryParRaw) && playedRounds.length > 0 && configPar !== null) {
+        const totalScoreNum = jtcParseNumber(resolvedTotal);
+        if (totalScoreNum !== null) {
+          const expectedPar = configPar * playedRounds.length;
+          resolvedPar = jtcFormatParDelta(totalScoreNum - expectedPar);
+        }
       }
 
       return {
-        score: jtcIsUsableValue(round.score) ? round.score : "—",
-        par: jtcIsUsableValue(round.par) ? round.par : "—",
-        status: jtcIsUsableValue(round.status) ? round.status : "—",
-        pos: jtcIsUsableValue(round.pos) ? round.pos : "—"
+        total: resolvedTotal,
+        par: resolvedPar,
+        pos: resolvedPos
       };
     }
 
-    function jtcRoundRow(round, eventStatus) {
-      const values = jtcRoundDefaults(eventStatus, round);
-      const parClass = jtcScoreClass(values.par);
-
-      return `
-        <tr>
-          <td class="jtc-col-left">
-            <div class="jtc-round-title">${round.round}</div>
-            <div class="jtc-round-date">${jtcIsUsableValue(round.date) ? round.date : "TBD"}</div>
-          </td>
-          <td class="${parClass}">${values.score}</td>
-          <td class="${parClass}">${values.par}</td>
-          <td class="jtc-text-neutral">${values.status}</td>
-          <td class="jtc-text-neutral">${values.pos}</td>
-        </tr>
-      `;
-    }
-
-    function jtcRenderCard(data) {
-      const badge = jtcBadgeMap(data.status);
-      const metaText = [
+    function jtcComposeMetaText(data) {
+      const parts = [
         data.venue,
         data.location,
         `Par ${data.par}`,
         `${jtcIsUsableValue(data.yards) ? (String(data.yards).includes(",") ? data.yards : Number(data.yards).toLocaleString()) : "—"} Yards`,
         `Rating: ${data.rating}`,
         `Slope: ${data.slope}`
-      ].join(" | ");
+      ];
+      return parts.join(" | ");
+    }
+
+    function jtcBuildRoundSlots(rounds) {
+      const allRounds = jtcGetAllRounds(rounds);
+      return allRounds.map((round, index) => {
+        const label = jtcRoundShortLabel(round, index);
+        const value = jtcIsUsableValue(round.score) ? String(round.score).trim() : "—";
+        const colorClass = jtcIsUsableValue(round.par) ? jtcScoreClass(round.par) : "white";
+
+        return `
+          <div class="jtc-round-chip">
+            <span class="jtc-round-chip-label">${label}</span>
+            <span class="jtc-round-chip-value ${value === "—" ? "white" : colorClass}">${value}</span>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function jtcRenderCard(data) {
+      const badge = jtcBadgeMap(data.status);
 
       document.getElementById("jtc-section-title").textContent = data.sectionTitle || "TOURNAMENT";
       document.getElementById("jtc-section-meta").textContent = `${data.eventNo}: ${data.eventLabel}`;
@@ -1361,10 +1355,7 @@
       document.getElementById("jtc-badge-label").textContent = badge.label;
       document.getElementById("jtc-title-text").textContent = data.title;
       document.getElementById("jtc-date").textContent = data.date;
-      document.getElementById("jtc-meta").textContent = metaText;
-
-      const roundsHtml = (data.rounds || []).map(round => jtcRoundRow(round, data.status)).join("");
-      document.getElementById("jtc-rounds-body").innerHTML = roundsHtml;
+      document.getElementById("jtc-meta").textContent = jtcComposeMetaText(data);
 
       const mainLink = document.getElementById("jtc-main-link");
       const mainLinkDot = document.getElementById("jtc-main-link-dot");
@@ -1387,22 +1378,20 @@
         mainLink.style.display = "none";
       }
 
-      const summaryColor = jtcSummaryClass(data.summary?.par);
+      document.getElementById("jtc-rounds-grid").innerHTML = jtcBuildRoundSlots(data.rounds);
 
-      const totalEl = document.getElementById("jtc-summary-total");
-      const parEl = document.getElementById("jtc-summary-par");
-      const statusEl = document.getElementById("jtc-summary-status");
-      const posEl = document.getElementById("jtc-summary-pos");
+      const resolvedSummary = jtcResolveSummary(data);
+      const deltaClass = jtcIsUsableValue(resolvedSummary.par) ? jtcScoreClass(resolvedSummary.par) : "white";
 
-      totalEl.className = `jtc-summary-value ${summaryColor}`;
-      parEl.className = `jtc-summary-value ${summaryColor}`;
-      statusEl.className = `jtc-summary-value white`;
-      posEl.className = `jtc-summary-value white`;
+      document.getElementById("jtc-total-score").textContent =
+        jtcIsUsableValue(resolvedSummary.total) ? resolvedSummary.total : "—";
 
-      totalEl.textContent = jtcIsUsableValue(data.summary?.total) ? data.summary.total : "—";
-      parEl.textContent = jtcIsUsableValue(data.summary?.par) ? data.summary.par : "—";
-      statusEl.textContent = jtcFooterStatus(data.status);
-      posEl.textContent = jtcIsUsableValue(data.summary?.pos) ? data.summary.pos : "—";
+      const deltaEl = document.getElementById("jtc-total-par-delta");
+      deltaEl.textContent = jtcIsUsableValue(resolvedSummary.par) ? resolvedSummary.par : "—";
+      deltaEl.className = `delta ${deltaClass}`;
+
+      document.getElementById("jtc-summary-pos").textContent =
+        jtcIsUsableValue(resolvedSummary.pos) ? resolvedSummary.pos : "—";
     }
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -1410,7 +1399,6 @@
     });
   </script>
 </div>
-
   
 
 
