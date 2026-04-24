@@ -5454,6 +5454,15 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
         display: flex !important;
       }
 
+      #joshua-unique-section .bts-card-head {
+        gap: 14px;
+      }
+
+      #joshua-unique-section .bts-event-badge {
+        flex: 0 0 auto;
+        white-space: nowrap;
+      }
+
       @media (max-width: 960px) {
         #joshua-unique-section .jpp-topbar {
           flex-direction: column;
@@ -5519,6 +5528,17 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
           width: 40px;
           height: 40px;
         }
+
+        #joshua-unique-section .bts-card-head {
+          flex-direction: column !important;
+          align-items: flex-start !important;
+          justify-content: flex-start !important;
+          gap: 10px !important;
+        }
+
+        #joshua-unique-section .bts-event-badge {
+          align-self: flex-start;
+        }
       }
     </style>
 
@@ -5564,14 +5584,14 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
 
           <div class="insight-card-item" data-card-id="8" style="flex: 0 0 85%; min-width: 320px; max-width: 500px; scroll-snap-align: start; background: #111; border-radius: 25px; padding: 35px 30px; color: white; box-shadow: 0 15px 30px rgba(0,0,0,0.2); display: flex; flex-direction: column; justify-content: space-between; position: relative; border: 1px solid rgba(201,138,46,0.3);">
             <div>
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+              <div class="bts-card-head" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
                 <div style="display: flex; align-items: center;">
                   <div style="background: rgba(201,138,46,0.15); width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 15px; border: 1px solid rgba(201,138,46,0.4);">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c98a2e" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                   </div>
                   <h3 style="font-size: 20px; color: #c98a2e; margin: 0; font-weight: 800;">Beyond the Scorecard</h3>
                 </div>
-                <span style="font-size: 10px; font-weight: 800; color: #fff; background: #c98a2e; padding: 4px 12px; border-radius: 50px;">10th Event</span>
+                <span class="bts-event-badge" style="font-size: 10px; font-weight: 800; color: #fff; background: #c98a2e; padding: 4px 12px; border-radius: 50px;">10th Event</span>
               </div>
 
               <div style="font-size: 14px; line-height: 1.7; color: #efefef; border-left: 4px solid #c98a2e; padding-left: 20px; text-align: left;">
@@ -5608,16 +5628,17 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
 
           <div class="insight-card-item" data-card-id="7" style="flex: 0 0 85%; min-width: 320px; max-width: 500px; scroll-snap-align: start; background: #111; border-radius: 25px; padding: 35px 30px; color: white; box-shadow: 0 15px 30px rgba(0,0,0,0.2); display: flex; flex-direction: column; justify-content: space-between; position: relative; border: 1px solid rgba(201,138,46,0.3);">
             <div>
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+              <div class="bts-card-head" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
                 <div style="display: flex; align-items: center;">
                   <div style="background: rgba(201,138,46,0.15); width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 15px; border: 1px solid rgba(201,138,46,0.4);">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c98a2e" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                   </div>
                   <h3 style="font-size: 20px; color: #c98a2e; margin: 0; font-weight: 800;">Beyond the Scorecard</h3>
                 </div>
-                <span style="font-size: 10px; font-weight: 800; color: #fff; background: #c98a2e; padding: 4px 12px; border-radius: 50px;">9th Event</span>
+                <span class="bts-event-badge" style="font-size: 10px; font-weight: 800; color: #fff; background: #c98a2e; padding: 4px 12px; border-radius: 50px;"> 9th Event</span>
               </div>
 
+              
               <div style="font-size: 14px; line-height: 1.7; color: #efefef; border-left: 4px solid #c98a2e; padding-left: 20px; text-align: left;">
                 <p style="margin: 0 0 10px 0; color: #c98a2e; font-weight: 700; font-size: 16px;">Bell Bank “Pay It Forward” Collegiate — Litchfield Park, Arizona</p>
 
@@ -5652,14 +5673,14 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
 
           <div class="insight-card-item" data-card-id="6" style="flex: 0 0 85%; min-width: 320px; max-width: 500px; scroll-snap-align: start; background: #111; border-radius: 25px; padding: 35px 30px; color: white; box-shadow: 0 15px 30px rgba(0,0,0,0.2); display: flex; flex-direction: column; justify-content: space-between; position: relative; border: 1px solid rgba(201,138,46,0.3);">
             <div>
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+              <div class="bts-card-head" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
                 <div style="display: flex; align-items: center;">
                   <div style="background: rgba(201,138,46,0.15); width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 15px; border: 1px solid rgba(201,138,46,0.4);">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c98a2e" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                   </div>
                   <h3 style="font-size: 20px; color: #c98a2e; margin: 0; font-weight: 800;">Beyond the Scorecard</h3>
                 </div>
-                <span style="font-size: 10px; font-weight: 800; color: #fff; background: #c98a2e; padding: 4px 12px; border-radius: 50px;">8th Event</span>
+                <span class="bts-event-badge" style="font-size: 10px; font-weight: 800; color: #fff; background: #c98a2e; padding: 4px 12px; border-radius: 50px;"> 8th Event</span>
               </div>
 
               <div style="font-size: 14px; line-height: 1.7; color: #efefef; border-left: 4px solid #c98a2e; padding-left: 20px; text-align: left;">
@@ -5696,14 +5717,14 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
 
           <div class="insight-card-item" data-card-id="5" style="flex: 0 0 85%; min-width: 320px; max-width: 500px; scroll-snap-align: start; background: #111; border-radius: 25px; padding: 35px 30px; color: white; box-shadow: 0 15px 30px rgba(0,0,0,0.2); display: flex; flex-direction: column; justify-content: space-between; position: relative; border: 1px solid rgba(201,138,46,0.3);">
             <div>
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+              <div class="bts-card-head" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
                 <div style="display: flex; align-items: center;">
                   <div style="background: rgba(201,138,46,0.15); width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 15px; border: 1px solid rgba(201,138,46,0.4);">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c98a2e" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                   </div>
                   <h3 style="font-size: 20px; color: #c98a2e; margin: 0; font-weight: 800;">Beyond the Scorecard</h3>
                 </div>
-                <span style="font-size: 10px; font-weight: 800; color: #fff; background: #c98a2e; padding: 4px 12px; border-radius: 50px;">7th Event</span>
+                <span class="bts-event-badge" style="font-size: 10px; font-weight: 800; color: #fff; background: #c98a2e; padding: 4px 12px; border-radius: 50px;">7th Event</span>
               </div>
               <div style="font-size: 14px; line-height: 1.7; color: #efefef; border-left: 4px solid #c98a2e; padding-left: 20px; text-align: left;">
                 <p style="margin: 0 0 10px 0; color: #c98a2e; font-weight: 700; font-size: 16px;">
@@ -5742,14 +5763,14 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
 
           <div class="insight-card-item" data-card-id="4" style="flex: 0 0 85%; min-width: 320px; max-width: 500px; scroll-snap-align: start; background: #111; border-radius: 25px; padding: 35px 30px; color: white; box-shadow: 0 15px 30px rgba(0,0,0,0.2); display: flex; flex-direction: column; justify-content: space-between; position: relative; border: 1px solid rgba(201,138,46,0.3);">
             <div>
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+              <div class="bts-card-head" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
                 <div style="display: flex; align-items: center;">
                   <div style="background: rgba(201,138,46,0.15); width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 15px; border: 1px solid rgba(201,138,46,0.4);">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c98a2e" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                   </div>
                   <h3 style="font-size: 20px; color: #c98a2e; margin: 0; font-weight: 800;">Beyond the Scorecard</h3>
                 </div>
-                <span style="font-size: 10px; font-weight: 800; color: #fff; background: #c98a2e; padding: 4px 12px; border-radius: 50px;">6th Event</span>
+                <span class="bts-event-badge" style="font-size: 10px; font-weight: 800; color: #fff; background: #c98a2e; padding: 4px 12px; border-radius: 50px;">6th Event</span>
               </div>
               <div style="font-size: 14px; line-height: 1.7; color: #efefef; border-left: 4px solid #c98a2e; padding-left: 20px; text-align: left;">
                 <p style="margin: 0 0 10px 0; color: #c98a2e; font-weight: 700; font-size: 16px;">Military City Collegiate — San Antonio, Texas</p>
@@ -5769,20 +5790,20 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
 
           <div class="insight-card-item" data-card-id="3" style="flex: 0 0 85%; min-width: 320px; max-width: 500px; scroll-snap-align: start; background: #111; border-radius: 25px; padding: 35px 30px; color: white; box-shadow: 0 15px 30px rgba(0,0,0,0.2); display: flex; flex-direction: column; justify-content: space-between;">
             <div>
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+              <div class="bts-card-head" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
                 <div style="display: flex; align-items: center;">
                   <div style="background: rgba(201,138,46,0.15); width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 15px; border: 1px solid rgba(201,138,46,0.4);">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c98a2e" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
                   </div>
                   <h3 style="font-size: 22px; color: #c98a2e; margin: 0; font-weight: 800;">Beyond the Scorecard</h3>
                 </div>
-                <span style="display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 800; color: #27ae60; background: rgba(39,174,96,0.1); padding: 4px 12px; border-radius: 50px; border: 1px solid rgba(39,174,96,0.3);">
+                <span class="bts-event-badge" style="display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 800; color: #27ae60; background: rgba(39,174,96,0.1); padding: 4px 12px; border-radius: 50px; border: 1px solid rgba(39,174,96,0.3);">
                   <span style="width: 6px; height: 6px; background: #27ae60; border-radius: 50%;"></span>
                   SPRING OPENER
                 </span>
               </div>
               <div style="font-size: 15px; line-height: 1.7; color: #efefef; border-left: 4px solid #c98a2e; padding-left: 25px; text-align: left;">
-                <p style="margin: 0 0 15px 0; color: #c98a2e; font-weight: 700; font-size: 17px;">Spring Season Opener — Cancun, Mexico</p>
+                <p style="margin: 0 0 15px 0; color: #c98a2e; font-weight: 700; font-size: 17px;">Compadres Collegiate — Cancun, Mexico</p>
                 <p style="margin-bottom: 12px;">
                   Travel began before 4:00 a.m., including ground transportation from San Antonio to Austin, followed by connecting flights through Dallas to Cancun. Upon arrival, preparation focused on course and putting green familiarization ahead of competition.
                 </p>
@@ -5799,14 +5820,14 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
 
           <div class="insight-card-item" data-card-id="2" style="flex: 0 0 85%; min-width: 320px; max-width: 500px; scroll-snap-align: start; background: #111; border-radius: 25px; padding: 35px 30px; color: white; box-shadow: 0 15px 30px rgba(0,0,0,0.2); display: flex; flex-direction: column; justify-content: space-between;">
             <div>
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px;">
+              <div class="bts-card-head" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px;">
                 <div style="display: flex; align-items: center;">
                   <div style="background: rgba(201,138,46,0.15); width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 15px; border: 1px solid rgba(201,138,46,0.4);">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c98a2e" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
                   </div>
                   <h3 style="font-size: 22px; color: #c98a2e; margin: 0; font-weight: 800;">Beyond the Scorecard</h3>
                 </div>
-                <span style="display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 800; color: #27ae60; background: rgba(39,174,96,0.1); padding: 4px 12px; border-radius: 50px; border: 1px solid rgba(39,174,96,0.3);">
+                <span class="bts-event-badge" style="display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 800; color: #27ae60; background: rgba(39,174,96,0.1); padding: 4px 12px; border-radius: 50px; border: 1px solid rgba(39,174,96,0.3);">
                   <span style="width: 6px; height: 6px; background: #27ae60; border-radius: 50%;"></span>
                   CURRENT FOCUS
                 </span>
@@ -5897,7 +5918,7 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
     6: '8th Event — Arizona Thunderbirds Intercollegiate — Tucson, Arizona',
     5: '7th Event — Golden Nugget Invitational — Lake Charles, Louisiana',
     4: '6th Event — Military City Collegiate — San Antonio, Texas',
-    3: 'Spring Opener — Spring Season Opener — Cancun, Mexico',
+    3: 'Spring Opener — Compadres Collegiate — Cancun, Mexico',
     2: 'Current Focus — Winter Preparation & Competitive Assessment',
     1: 'Performance Archive — Fall Review & Strategic Focus',
     0: 'Freshman Fall Season — Opening Month — College Transition Phase'
