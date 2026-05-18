@@ -8,7 +8,7 @@
 <link rel="shortcut icon" href="https://raw.githubusercontent.com/joshuahayoung/joshua-golf-official/main/images/joshua-hong-logo.png">
 <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/joshuahayoung/joshua-golf-official/main/images/joshua-hong-logo.png">
 
-<title>Joshua Hong | Korean-Mexican NCAA D1 Golfer | UTSA</title>
+<title>Joshua Hong | Korean-Mexican NCAA D1 Golfer</title>
 <meta name="description" content="Official site of Joshua Hong, a Korean-Mexican NCAA Division I golfer at UTSA. Explore career records, tournament highlights, and latest media coverage.">
 <meta name="keywords" content="Joshua Hong Golf, Joshua Hong UTSA, 멕시코 골프 선수 자슈아 홍, 자슈아 홍 골프, Joshua Hong Mexico, NCAA D1 Golfer, UTSA Men's Golf">
 <link rel="canonical" href="https://www.joshuahonggolf.com/index.html">
@@ -202,8 +202,8 @@
       .nav-links a.active { background-color: #F15A22 !important; color: #fff !important; }
       .nav-links a:hover,
       .nav-links a.active {
-      background-color: #F15A22 !important;
-      color: #fff !important;
+        background-color: #F15A22 !important;
+        color: #fff !important;
       }
       .mobile-menu-logo { display: block; margin-bottom: 30px; } 
       .mobile-menu-logo img { height: 35px; }
@@ -223,6 +223,33 @@
       .nav-links { padding: 30px 25px; overflow-y: auto; }
       .menu-footer { margin-top: 30px; }
     }
+
+    /* Transfer Snapshot menu highlight */
+    .nav-links a[href="transfer-snapshot.html"] {
+      background-color: #0C2340 !important;
+      color: #ffffff !important;
+      border-radius: 999px;
+      font-weight: 600;
+      box-shadow: 0 6px 16px rgba(12, 35, 64, 0.16);
+    }
+
+    .nav-links a[href="transfer-snapshot.html"]:hover {
+      background-color: #12335d !important;
+      color: #ffffff !important;
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 1024px) {
+      .nav-links a[href="transfer-snapshot.html"] {
+        border-radius: 14px;
+        width: 100%;
+      }
+
+      .nav-links a[href="transfer-snapshot.html"]:hover {
+        background-color: #12335d !important;
+        color: #ffffff !important;
+      }
+    }
 </style>
 
   
@@ -230,7 +257,7 @@
 
 <body>
 <div class="sticky-top" id="mainHeader">
-<div class="top-bar">OFFICIAL WEBSITE OF JOSHUA HONG | UTSA </div>
+<div class="top-bar">OFFICIAL WEBSITE OF JOSHUA HONG</div>
 <header class="header-wrapper">
 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
@@ -247,15 +274,16 @@
 </a>
 </div>
 
-<a href="index.html" class="active">Home</a>
-<a href="ncaa-stats.html">NCAA Stats</a>
-<a href="news-media.html">News & Media</a>
-<a href="reference-links.html">Reference & Links</a>
-<a href="junior-career.html">Junior Career</a>
+        <a href="transfer-snapshot.html">Transfer Snapshot</a>
+		<a href="index.html" class="active">Home</a>
+        <a href="ncaa-stats.html">NCAA Stats</a>
+        <a href="news-media.html">News & Media</a>
+        <a href="reference-links.html">Reference & Links</a>
+        <a href="junior-career.html">Junior Career</a>
 
 <div class="menu-footer">
 <span class="footer-name">JOSHUA HONG</span>
-<span class="footer-team">UTSA MEN'S GOLF | FRESHMAN</span>
+<span class="footer-team">2025–26 UTSA GOLF</span>
 </div>
 </nav>
 </header>
@@ -273,14 +301,14 @@
       const header = document.getElementById('mainHeader');
       const currentScrollY = window.pageYOffset;
 
-      // 1. TOP 버튼 제어
+
       if (currentScrollY > 100) {
         btn.style.display = 'block';
       } else {
         btn.style.display = 'none';
       }
 
-      // 2. 헤더 우아한 제어 (300px 기준)
+
       if (currentScrollY > 300) {
         header.classList.add('scrolled');
         header.classList.remove('preparing');
@@ -305,7 +333,7 @@
     JOSHUA HONG
   </h1>
   <p style="font-size: 16px; color: #666; margin: 10px 0 0 0; font-weight: 600; letter-spacing: 2px;">
-    UTSA MEN'S GOLF | <span style="color: #0c2340; font-weight: 800;">FRESHMAN</span>
+    2025-26 UTSA MEN'S GOLF | <span style="color: #0c2340; font-weight: 800;">COMPLETED FRESHMAN SEASON</span>
   </p>
 </div>
 
@@ -326,640 +354,984 @@
 </div>
 
 
-<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: clamp(40px, 10vw, 80px); font-weight: 900; color: rgba(12, 35, 64, 0.04); white-space: nowrap; z-index: 1; pointer-events: none; letter-spacing: -2px;">
-</div>
 
-<div id="jh-tournament-card-block" style="width:100%; max-width:900px; margin:0 auto 24px; padding:0; box-sizing:border-box; font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-
-  <div id="jh-pga-table-shared"></div>
-
+<section class="transfer-snapshot-section" aria-labelledby="transferSnapshotTitle" data-portal-state="draft-copy">
   <style>
-    #jh-pga-table-shared,
-    #jh-pga-table-shared *,
-    #jh-pga-table-shared *::before,
-    #jh-pga-table-shared *::after {
-      box-sizing: border-box;
-    }
+    .transfer-snapshot-section {
+      --tsnap-navy: #0C2340;
+      --tsnap-orange: #F15A22;
+      --tsnap-gold: #c98a2e;
+      --tsnap-white: #ffffff;
+      --tsnap-white-soft: rgba(255,255,255,0.84);
+      --tsnap-white-muted: rgba(255,255,255,0.64);
+      --tsnap-line: rgba(255,255,255,0.11);
+      --tsnap-panel: rgba(255,255,255,0.065);
+      --tsnap-panel-strong: rgba(255,255,255,0.09);
+      --tsnap-shadow: 0 22px 52px rgba(0,0,0,0.24);
+      --tsnap-radius: 24px;
 
-    #jh-pga-table-shared {
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto 24px;
+      position: relative;
+      margin: 32px 0;
       padding: 0;
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      isolation: isolate;
+      font-family: inherit;
     }
 
-    #jh-pga-table-shared .jtc-last-updated-wrap {
+    .transfer-snapshot-last-updated-wrap {
       display: flex;
       justify-content: flex-end;
       align-items: center;
       width: 100%;
-      max-width: 900px;
-      margin: 0 auto 10px;
-      padding-right: 15px;
+      margin: 0 0 10px 0;
+      padding-right: 12px;
       box-sizing: border-box;
     }
 
-    #jh-pga-table-shared .jtc-last-updated {
+    .transfer-snapshot-last-updated {
       color: #64748b;
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.5px;
-      padding-bottom: 2px;
       white-space: nowrap;
     }
 
-    #jh-pga-table-shared .jtc-wrap {
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    #jh-pga-table-shared .jtc-header-top {
-      margin-bottom: 16px;
-      width: 100%;
-    }
-
-    #jh-pga-table-shared .jtc-header-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-      padding-left: 20px;
-      padding-right: 15px;
-      flex-wrap: wrap;
-      border-left: 5px solid #1e3a8a;
-    }
-
-    #jh-pga-table-shared .jtc-header-row.upcoming { border-left-color: #1e3a8a; }
-    #jh-pga-table-shared .jtc-header-row.ongoing { border-left-color: #22c55e; }
-    #jh-pga-table-shared .jtc-header-row.final { border-left-color: #e74c3c; }
-    #jh-pga-table-shared .jtc-header-row.cancelled { border-left-color: #7f1d1d; }
-
-    #jh-pga-table-shared .jtc-header-row h3 {
-      color: #0C2340;
-      margin: 0;
-      font-size: 1.3em;
-      line-height: 1.2;
-      font-family: 'Oswald', sans-serif;
-      text-transform: none;
-    }
-
-    #jh-pga-table-shared .jtc-header-row span {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.85em;
-      color: #888;
-    }
-
-    #jh-pga-table-shared .jtc-card {
-      background: #ffffff;
-      border: 2px solid #0c2340;
-      border-radius: 20px;
-      padding: 0;
-      box-shadow: 0 15px 45px rgba(12, 35, 64, 0.12);
+    .transfer-snapshot-shell {
+      position: relative;
       overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(241,90,34,0.15), transparent 30%),
+        radial-gradient(circle at 88% 82%, rgba(201,138,46,0.16), transparent 28%),
+        linear-gradient(135deg, #0C2340 0%, #112c50 52%, #0C2340 100%);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: var(--tsnap-radius);
+      box-shadow: var(--tsnap-shadow);
     }
 
-    #jh-pga-table-shared .jtc-card-head {
-      padding: 20px 25px 18px 25px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
-      background: #f8fafc;
+    .transfer-snapshot-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.055), rgba(255,255,255,0) 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0) 44%);
+      opacity: 0.75;
     }
 
-    #jh-pga-table-shared .jtc-head-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      width: 100%;
+    .transfer-snapshot-shell::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 3px;
+      background: linear-gradient(90deg, #F15A22 0%, #c98a2e 55%, #F15A22 100%);
+      opacity: 0.95;
     }
 
-    #jh-pga-table-shared .jtc-badge {
-      color: white;
-      padding: 4px 12px;
-      border-radius: 4px;
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: 1px;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-transform: uppercase;
-      margin-left: 4px;
-    }
-
-    #jh-pga-table-shared .jtc-badge.upcoming { background: #64748b; }
-    #jh-pga-table-shared .jtc-badge.ongoing { background: #0c2340; }
-    #jh-pga-table-shared .jtc-badge.final { background: #0c2340; }
-    #jh-pga-table-shared .jtc-badge.cancelled { background: #7f1d1d; }
-
-    #jh-pga-table-shared .jtc-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      display: inline-block;
-      flex-shrink: 0;
-    }
-
-    #jh-pga-table-shared .jtc-dot.upcoming {
-      background-color: #94a3b8;
-      box-shadow: 0 0 0 2px rgba(148, 163, 184, 0.18);
-    }
-
-    #jh-pga-table-shared .jtc-dot.ongoing {
-      background-color: #22c55e;
-      animation: jtc-live-pulse-green 1.6s infinite ease-in-out;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
-    }
-
-    #jh-pga-table-shared .jtc-dot.final { background-color: #e74c3c; }
-    #jh-pga-table-shared .jtc-dot.cancelled {
-      background-color: #7f1d1d;
-      opacity: 0.7;
-    }
-
-    @keyframes jtc-live-pulse-green {
-      0%   { opacity: 1; transform: scale(1); }
-      50%  { opacity: 0.35; transform: scale(0.9); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-
-    #jh-pga-table-shared .jtc-title-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 4px;
-      min-width: 0;
-      flex: 1 1 auto;
-    }
-
-    #jh-pga-table-shared .jtc-title-line {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      flex-wrap: wrap;
-      min-width: 0;
-    }
-
-    #jh-pga-table-shared .jtc-title {
-      color: #0c2340;
-      margin: 0;
-      font-size: 19px;
-      font-weight: 800;
-      line-height: 1.25;
-      min-width: 0;
-    }
-
-    #jh-pga-table-shared .jtc-title-sep {
-      color: #94a3b8;
-      font-weight: 700;
-    }
-
-    #jh-pga-table-shared .jtc-date {
-      color: #64748b;
-      font-size: 15px;
-      font-weight: 700;
-      line-height: 1.2;
-      white-space: nowrap;
-    }
-
-    #jh-pga-table-shared .jtc-meta {
-      font-size: 12px;
-      color: #7f8c8d;
-      font-weight: 600;
-      line-height: 1.45;
-    }
-
-    #jh-pga-table-shared .jtc-result-band {
-      background: #0c2340;
+    .transfer-snapshot-inner {
+      position: relative;
+      z-index: 1;
       display: grid;
-      grid-template-columns: 164px minmax(0, 1fr) 176px 86px;
-      align-items: stretch;
-      gap: 0;
-      padding: 14px 18px;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr);
+      gap: 30px;
+      align-items: start;
+      padding: 36px;
     }
 
-    #jh-pga-table-shared .jtc-link-summary,
-    #jh-pga-table-shared .jtc-rounds-summary,
-    #jh-pga-table-shared .jtc-total-summary,
-    #jh-pga-table-shared .jtc-pos-summary {
+    .transfer-snapshot-copy {
       min-width: 0;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      align-items: center;
-      padding: 6px 8px;
-      text-align: center;
+      gap: 18px;
     }
 
-    #jh-pga-table-shared .jtc-summary-label {
-      color: rgba(255,255,255,0.68);
-      font-size: 10px;
-      font-weight: 800;
-      display: block;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      line-height: 1;
-      margin-bottom: 6px;
-      min-height: 10px;
+    .transfer-snapshot-copy-main {
+      min-width: 0;
     }
 
-    #jh-pga-table-shared .jtc-summary-label.jtc-label-ghost {
-      visibility: hidden;
-    }
-
-    #jh-pga-table-shared .jtc-band-body {
-      min-height: 52px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #jh-pga-table-shared .jtc-main-link {
+    .transfer-snapshot-kicker {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      color: #0c2340;
-      text-decoration: none;
-      font-size: 10px;
+      width: fit-content;
+      gap: 11px;
+      margin: 0 0 18px 0;
+      padding: 10px 15px;
+      border: 1px solid rgba(241,90,34,0.52);
+      border-radius: 999px;
+      background: rgba(241,90,34,0.13);
+      color: var(--tsnap-orange);
+      font-size: 13.5px;
+      line-height: 1;
       font-weight: 900;
-      letter-spacing: 0.65px;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      border: 1.5px solid #0c2340;
-      padding: 8px 10px;
-      border-radius: 6px;
-      transition: all 0.2s ease;
-      background: #ffffff;
-      width: 100%;
-      max-width: 142px;
-      min-height: 42px;
+      white-space: nowrap;
+      box-shadow: 0 10px 24px rgba(241,90,34,0.13);
     }
 
-    #jh-pga-table-shared .jtc-main-link:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(12, 35, 64, 0.16);
-    }
-
-    #jh-pga-table-shared .jtc-main-link-content {
-      width: 100%;
-      display: grid;
-      grid-template-columns: 8px minmax(0, 1fr) 12px;
-      align-items: center;
-      column-gap: 6px;
-    }
-
-    #jh-pga-table-shared .jtc-main-link-label-stack {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1px;
-      line-height: 0.96;
-      text-align: center;
-      min-width: 0;
-      white-space: normal;
-    }
-
-    #jh-pga-table-shared .jtc-main-link-label-stack .line1,
-    #jh-pga-table-shared .jtc-main-link-label-stack .line2 {
-      display: block;
-      width: 100%;
-      text-align: center;
-    }
-
-    #jh-pga-table-shared .jtc-main-link-label-stack .line1 {
-      font-size: 1em;
-      letter-spacing: 0.7px;
-    }
-
-    #jh-pga-table-shared .jtc-main-link-label-stack .line2 {
-      font-size: 0.92em;
-      letter-spacing: 0.45px;
-    }
-
-    #jh-pga-table-shared .jtc-main-link-dot {
-      width: 5px;
-      height: 5px;
+    .transfer-snapshot-kicker-dot {
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
-      display: inline-block;
-      flex-shrink: 0;
-      justify-self: start;
-      align-self: center;
+      background: linear-gradient(180deg, #F15A22 0%, #c98a2e 100%);
+      box-shadow: 0 0 0 7px rgba(241,90,34,0.13);
+      flex: 0 0 auto;
     }
 
-    #jh-pga-table-shared .jtc-main-link-dot.upcoming { background-color: #94a3b8; }
-    #jh-pga-table-shared .jtc-main-link-dot.ongoing { background-color: #22c55e; animation: jtc-link-pulse-green 1.5s infinite; }
-    #jh-pga-table-shared .jtc-main-link-dot.final { background-color: #e74c3c; }
-    #jh-pga-table-shared .jtc-main-link-dot.cancelled { background-color: #7f1d1d; }
+    .transfer-snapshot-title {
+      margin: 0;
+      color: var(--tsnap-white);
+      font-size: clamp(30px, 3.5vw, 42px);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      font-weight: 850;
+      max-width: 760px;
+      text-wrap: balance;
+    }
 
-    #jh-pga-table-shared .jtc-main-link-arrow {
+    .transfer-snapshot-desc {
+      margin: 15px 0 0 0;
+      max-width: 760px;
+      color: var(--tsnap-white-soft);
+      font-size: 15.5px;
+      line-height: 1.72;
+      font-weight: 500;
+    }
+
+    .transfer-snapshot-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 220px));
+      gap: 10px;
+      margin: 24px 0 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .transfer-snapshot-points li {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      justify-self: end;
-      align-self: center;
-      flex-shrink: 0;
-    }
-
-    @keyframes jtc-link-pulse-green {
-      0%   { opacity: 1; transform: scale(1); }
-      50%  { opacity: 0.35; transform: scale(1.2); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-
-    #jh-pga-table-shared .jtc-rounds-grid {
-      display: flex;
-      justify-content: center;
-      align-items: stretch;
-      gap: 6px;
-      flex-wrap: nowrap;
-      min-width: 0;
-      width: 100%;
-    }
-
-    #jh-pga-table-shared .jtc-round-chip {
-      min-width: 0;
-      flex: 1 1 0;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 7px;
-      padding: 6px 5px 5px 5px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-    }
-
-    #jh-pga-table-shared .jtc-round-chip-label {
-      color: rgba(255,255,255,0.68);
-      font-size: 8px;
-      font-weight: 800;
-      letter-spacing: 0.55px;
+      gap: 8px;
+      min-height: 38px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--tsnap-line);
+      background: rgba(255,255,255,0.045);
+      color: rgba(255,255,255,0.91);
+      font-size: 12.5px;
       line-height: 1;
+      font-weight: 740;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .transfer-snapshot-points svg {
+      width: 14px;
+      height: 14px;
+      display: block;
+      color: var(--tsnap-gold);
+      flex: 0 0 auto;
+    }
+
+    .transfer-snapshot-review-panel {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 14px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.075) 0%, rgba(255,255,255,0.035) 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.075);
+    }
+
+    .transfer-snapshot-review-card {
+      display: grid;
+      gap: 8px;
+      min-height: 112px;
+      padding: 15px;
+      border-radius: 17px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.045);
+    }
+
+    .transfer-snapshot-review-label {
+      margin: 0;
+      color: rgba(255,255,255,0.62);
+      font-size: 10.5px;
+      line-height: 1;
+      font-weight: 850;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
     }
 
-    #jh-pga-table-shared .jtc-round-chip-value {
-      font-size: 18px;
-      font-weight: 900;
-      line-height: 1;
-      color: #ffffff;
-      white-space: nowrap;
+    .transfer-snapshot-review-text {
+      margin: 0;
+      color: rgba(255,255,255,0.91);
+      font-size: 13.2px;
+      line-height: 1.55;
+      font-weight: 600;
     }
 
-    #jh-pga-table-shared .jtc-round-chip-value.red { color: #e74c3c; }
-    #jh-pga-table-shared .jtc-round-chip-value.blue { color: #60a5fa; }
-    #jh-pga-table-shared .jtc-round-chip-value.navy { color: #bfdbfe; }
-    #jh-pga-table-shared .jtc-round-chip-value.white { color: #ffffff; }
+    .transfer-snapshot-review-note {
+      grid-column: 1 / -1;
+      margin: 0;
+      padding: 12px 14px 0;
+      border-top: 1px solid rgba(255,255,255,0.09);
+      color: rgba(255,255,255,0.60);
+      font-size: 11.7px;
+      line-height: 1.55;
+      font-weight: 500;
+    }
 
-    #jh-pga-table-shared .jtc-total-line {
+    .transfer-snapshot-resume-strip {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(241,90,34,0.28);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(241,90,34,0.15), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,0.080) 0%, rgba(255,255,255,0.035) 100%);
+      box-shadow:
+        0 12px 26px rgba(0,0,0,0.12),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .transfer-snapshot-resume-strip::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 3px;
+      background: linear-gradient(90deg, #F15A22 0%, #c98a2e 70%, rgba(255,255,255,0.24) 100%);
+    }
+
+    .transfer-snapshot-resume-strip-head {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .transfer-snapshot-resume-strip-title {
+      margin: 0;
+      color: rgba(255,255,255,0.78);
+      font-size: 10px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .transfer-snapshot-resume-strip-tag {
+      flex: 0 0 auto;
       display: inline-flex;
-      align-items: baseline;
+      align-items: center;
       justify-content: center;
-      gap: 4px;
-      flex-wrap: nowrap;
-      white-space: nowrap;
-    }
-
-    #jh-pga-table-shared .jtc-total-score {
-      font-size: 24px;
-      font-weight: 900;
-      line-height: 1.02;
-      color: #ffffff;
-      letter-spacing: -0.2px;
-    }
-
-    #jh-pga-table-shared .jtc-total-par-wrap {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 0;
-      font-size: 22px;
-      font-weight: 900;
-      line-height: 1.02;
-      color: #ffffff;
-    }
-
-    #jh-pga-table-shared .jtc-total-par-wrap .paren { color: #ffffff; }
-    #jh-pga-table-shared .jtc-total-par-wrap .delta.red { color: #e74c3c; }
-    #jh-pga-table-shared .jtc-total-par-wrap .delta.blue { color: #60a5fa; }
-    #jh-pga-table-shared .jtc-total-par-wrap .delta.navy { color: #bfdbfe; }
-    #jh-pga-table-shared .jtc-total-par-wrap .delta.white { color: #ffffff; }
-
-    #jh-pga-table-shared .jtc-pos-value {
-      font-size: 27px;
-      font-weight: 900;
+      padding: 6px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(201,138,46,0.32);
+      background: rgba(201,138,46,0.13);
+      color: rgba(255,255,255,0.82);
+      font-size: 8.5px;
       line-height: 1;
-      color: #ffffff;
+      font-weight: 900;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
       white-space: nowrap;
-      letter-spacing: -0.3px;
     }
 
-    @media (max-width: 768px) {
-      #jh-pga-table-shared {
-        padding: 0;
+    .transfer-snapshot-resume-mini-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .transfer-snapshot-resume-mini {
+      min-width: 0;
+      padding: 11px 10px 10px;
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(12,35,64,0.22);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.055);
+    }
+
+    .transfer-snapshot-resume-mini-value {
+      display: block;
+      color: #ffffff;
+      font-size: clamp(20px, 2.25vw, 27px);
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -0.04em;
+      margin-bottom: 6px;
+      white-space: nowrap;
+    }
+
+    .transfer-snapshot-resume-mini-value.is-accent {
+      color: #f6b15b;
+    }
+
+    .transfer-snapshot-resume-mini-label {
+      display: block;
+      color: rgba(255,255,255,0.72);
+      font-size: 10.8px;
+      line-height: 1.28;
+      font-weight: 700;
+    }
+
+    .transfer-snapshot-side {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .transfer-snapshot-side-panel {
+      display: grid;
+      gap: 13px;
+      height: auto;
+      align-content: start;
+      padding: 15px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.045) 100%);
+      backdrop-filter: blur(8px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .transfer-snapshot-card {
+      display: grid;
+      gap: 9px;
+      padding: 15px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.045);
+    }
+
+    .transfer-snapshot-card-label {
+      margin: 0;
+      color: rgba(255,255,255,0.66);
+      font-size: 10.5px;
+      line-height: 1;
+      font-weight: 850;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .transfer-snapshot-card-text {
+      margin: 0;
+      color: #ffffff;
+      font-size: 13.2px;
+      line-height: 1.56;
+      font-weight: 600;
+    }
+
+    .transfer-snapshot-status-module {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(241,90,34,0.36);
+      background:
+        linear-gradient(135deg, rgba(241,90,34,0.20) 0%, rgba(201,138,46,0.12) 48%, rgba(255,255,255,0.055) 100%);
+      box-shadow:
+        0 16px 34px rgba(0,0,0,0.18),
+        inset 0 1px 0 rgba(255,255,255,0.12);
+    }
+
+    .transfer-snapshot-status-module::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 5px;
+      background: linear-gradient(180deg, #F15A22 0%, #c98a2e 100%);
+      opacity: 0.96;
+    }
+
+    .transfer-snapshot-status-module::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 18% 8%, rgba(255,255,255,0.13), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0) 48%);
+      opacity: 0.75;
+    }
+
+    .transfer-snapshot-status-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 11px;
+    }
+
+    .transfer-snapshot-status-badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      gap: 8px;
+      margin: 0;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(12,35,64,0.28);
+      color: rgba(255,255,255,0.84);
+      font-size: 10px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .transfer-snapshot-status-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #F15A22;
+      box-shadow: 0 0 0 5px rgba(241,90,34,0.14);
+      flex: 0 0 auto;
+    }
+
+    .transfer-snapshot-status-headline {
+      margin: 0;
+      color: #ffffff;
+      font-size: 18px;
+      line-height: 1.23;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .transfer-snapshot-status-summary {
+      margin: 0;
+      color: rgba(255,255,255,0.78);
+      font-size: 12.6px;
+      line-height: 1.52;
+      font-weight: 560;
+    }
+
+    .transfer-snapshot-status-grid {
+      display: grid;
+      gap: 8px;
+      margin-top: 0;
+    }
+
+    .transfer-snapshot-status-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4px;
+      align-items: start;
+      padding: 10px 11px;
+      border-radius: 13px;
+      border: 1px solid rgba(255,255,255,0.115);
+      background: rgba(12,35,64,0.22);
+    }
+
+    .transfer-snapshot-status-key {
+      color: rgba(255,255,255,0.62);
+      font-size: 9.5px;
+      line-height: 1.3;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .transfer-snapshot-status-value {
+      color: rgba(255,255,255,0.94);
+      font-size: 12.3px;
+      line-height: 1.4;
+      font-weight: 650;
+    }
+
+    .transfer-snapshot-actions {
+      display: grid;
+      gap: 10px;
+    }
+
+    .transfer-snapshot-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      min-height: 52px;
+      padding: 13px 17px;
+      border-radius: 16px;
+      text-decoration: none;
+      cursor: pointer;
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease;
+      font: inherit;
+      box-sizing: border-box;
+    }
+
+    .transfer-snapshot-btn-primary {
+      min-height: 76px;
+      padding: 19px 18px;
+      border: 0;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #F15A22 0%, #c98a2e 100%);
+      color: #ffffff;
+      font-size: 15.5px;
+      line-height: 1.15;
+      font-weight: 900;
+      letter-spacing: 0.01em;
+      box-shadow: 0 16px 34px rgba(241,90,34,0.27);
+    }
+
+    .transfer-snapshot-btn-primary:hover,
+    .transfer-snapshot-btn-primary:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 20px 38px rgba(241,90,34,0.32);
+      outline: none;
+    }
+
+    .transfer-snapshot-btn-primary svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .transfer-snapshot-btn-secondary {
+      border: 1px solid rgba(255,255,255,0.13);
+      background: rgba(255,255,255,0.045);
+      color: rgba(255,255,255,0.90);
+      font-weight: 760;
+    }
+
+    .transfer-snapshot-btn-secondary:hover,
+    .transfer-snapshot-btn-secondary:focus-visible {
+      background: rgba(255,255,255,0.075);
+      border-color: rgba(255,255,255,0.20);
+      outline: none;
+    }
+
+    .transfer-snapshot-btn svg {
+      width: 16px;
+      height: 16px;
+      display: block;
+      flex: 0 0 auto;
+    }
+
+    .transfer-snapshot-note {
+      margin: 1px 0 0 0;
+      padding-top: 11px;
+      border-top: 1px solid rgba(255,255,255,0.09);
+      color: rgba(255,255,255,0.62);
+      font-size: 11.5px;
+      line-height: 1.5;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    @media (max-width: 920px) {
+      .transfer-snapshot-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 30px 24px;
       }
 
-      #jh-pga-table-shared .jtc-last-updated-wrap {
-        padding-right: 15px;
+      .transfer-snapshot-copy {
+        gap: 20px;
+      }
+
+      .transfer-snapshot-title {
+        max-width: none;
+      }
+
+      .transfer-snapshot-points {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .transfer-snapshot-points li {
+        justify-content: flex-start;
+      }
+
+      .transfer-snapshot-resume-mini-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .transfer-snapshot-side-panel {
+        height: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .transfer-snapshot-section {
+        margin: 24px 0;
+      }
+
+      .transfer-snapshot-last-updated-wrap {
         margin-bottom: 8px;
+        padding-right: 8px;
       }
 
-      #jh-pga-table-shared .jtc-last-updated {
+      .transfer-snapshot-last-updated {
         font-size: 11px;
       }
 
-      #jh-pga-table-shared .jtc-header-top {
-        margin-bottom: 10px;
+      .transfer-snapshot-shell {
+        border-radius: 20px;
       }
 
-      #jh-pga-table-shared .jtc-header-row {
-        gap: 6px;
-        margin-bottom: 12px;
-        padding-left: 10px;
-        padding-right: 15px;
-        border-left-width: 4px;
+      .transfer-snapshot-inner {
+        padding: 22px 16px 18px;
+        gap: 18px;
       }
 
-      #jh-pga-table-shared .jtc-header-row h3 {
-        font-size: 0.92em;
+      .transfer-snapshot-kicker {
+        margin-bottom: 14px;
+        padding: 9px 12px;
+        font-size: 11px;
+        letter-spacing: 0.13em;
+        box-shadow: 0 8px 18px rgba(241,90,34,0.10);
+      }
+
+      .transfer-snapshot-kicker-dot {
+        width: 8px;
+        height: 8px;
+        box-shadow: 0 0 0 6px rgba(241,90,34,0.12);
+      }
+
+      .transfer-snapshot-title {
+        font-size: clamp(24px, 8vw, 32px);
         line-height: 1.12;
       }
 
-      #jh-pga-table-shared .jtc-header-row span {
-        font-size: 0.66em;
-        line-height: 1.18;
+      .transfer-snapshot-desc {
+        margin-top: 12px;
+        font-size: 14px;
+        line-height: 1.65;
       }
 
-      #jh-pga-table-shared .jtc-card {
-        border-radius: 14px;
-        box-shadow: 0 10px 22px rgba(12, 35, 64, 0.10);
-      }
-
-      #jh-pga-table-shared .jtc-card-head {
-        padding: 12px 10px 10px 10px;
-        gap: 6px;
-      }
-
-      #jh-pga-table-shared .jtc-head-left {
+      .transfer-snapshot-points {
+        grid-template-columns: 1fr;
         gap: 8px;
+        margin-top: 18px;
+      }
+
+      .transfer-snapshot-points li {
         width: 100%;
+        min-height: 34px;
+        font-size: 12px;
+        padding: 8px 10px;
+      }
+
+      .transfer-snapshot-review-panel {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 12px;
+        border-radius: 18px;
+      }
+
+      .transfer-snapshot-review-card {
+        min-height: auto;
+        padding: 14px;
+        border-radius: 15px;
+      }
+
+      .transfer-snapshot-review-note {
+        padding: 10px 2px 0;
+        font-size: 11.3px;
+      }
+
+      .transfer-snapshot-resume-strip {
+        padding: 13px;
+        border-radius: 17px;
+        gap: 9px;
+      }
+
+      .transfer-snapshot-resume-strip-head {
         align-items: flex-start;
       }
 
-      #jh-pga-table-shared .jtc-badge {
-        padding: 3px 8px;
-        font-size: 8px;
-        letter-spacing: 0.75px;
-        gap: 6px;
-        margin-left: 4px;
-      }
-
-      #jh-pga-table-shared .jtc-dot {
-        width: 6px;
-        height: 6px;
-      }
-
-      #jh-pga-table-shared .jtc-title-wrap {
-        gap: 4px;
-        flex: 1 1 100%;
-      }
-
-      #jh-pga-table-shared .jtc-title-line {
-        display: flex;
-        align-items: baseline;
-        gap: 5px;
-        flex-wrap: wrap;
-      }
-
-      #jh-pga-table-shared .jtc-title {
-        font-size: 14px;
-        line-height: 1.18;
-      }
-
-      #jh-pga-table-shared .jtc-title-sep {
-        display: inline;
-        font-size: 12px;
-      }
-
-      #jh-pga-table-shared .jtc-date {
-        font-size: 11px;
-        font-weight: 800;
-        line-height: 1.15;
-        white-space: nowrap;
-      }
-
-      #jh-pga-table-shared .jtc-meta {
+      .transfer-snapshot-resume-strip-title {
         font-size: 9px;
-        line-height: 1.28;
-        font-weight: 700;
+        line-height: 1.2;
       }
 
-      #jh-pga-table-shared .jtc-result-band {
-        grid-template-columns: 84px minmax(0, 1fr) 96px 46px;
-        padding: 10px 7px;
+      .transfer-snapshot-resume-strip-tag {
+        font-size: 8px;
+        padding: 6px 8px;
       }
 
-      #jh-pga-table-shared .jtc-link-summary,
-      #jh-pga-table-shared .jtc-rounds-summary,
-      #jh-pga-table-shared .jtc-total-summary,
-      #jh-pga-table-shared .jtc-pos-summary {
-        padding: 4px 3px;
+      .transfer-snapshot-resume-mini-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
       }
 
-      #jh-pga-table-shared .jtc-summary-label {
-        font-size: 7px;
-        margin-bottom: 4px;
-        min-height: 7px;
+      .transfer-snapshot-resume-mini {
+        padding: 11px 12px;
       }
 
-      #jh-pga-table-shared .jtc-band-body {
-        min-height: 38px;
+      .transfer-snapshot-resume-mini-value {
+        font-size: 25px;
       }
 
-      #jh-pga-table-shared .jtc-main-link {
-        font-size: 6.4px;
-        letter-spacing: 0.2px;
-        padding: 5px 5px;
-        min-height: 32px;
-        width: 100%;
-        max-width: 72px;
+      .transfer-snapshot-resume-mini-label {
+        font-size: 11.2px;
       }
 
-      #jh-pga-table-shared .jtc-main-link-content {
-        grid-template-columns: 6px minmax(0, 1fr) 8px;
-        column-gap: 4px;
+      .transfer-snapshot-side-panel {
+        padding: 12px;
+        border-radius: 18px;
       }
 
-      #jh-pga-table-shared .jtc-main-link svg {
-        width: 8px;
-        height: 8px;
+      .transfer-snapshot-card {
+        padding: 14px;
+        border-radius: 15px;
       }
 
-      #jh-pga-table-shared .jtc-main-link-dot {
+      .transfer-snapshot-card-text {
+        font-size: 13px;
+        line-height: 1.58;
+      }
+
+      .transfer-snapshot-status-module {
+        padding: 15px;
+        border-radius: 16px;
+      }
+
+      .transfer-snapshot-status-module::before {
         width: 4px;
-        height: 4px;
       }
 
-      #jh-pga-table-shared .jtc-main-link-label-stack {
-        gap: 0;
-        line-height: 0.9;
+      .transfer-snapshot-status-badge {
+        font-size: 9px;
+        padding: 6px 9px;
+        letter-spacing: 0.11em;
       }
 
-      #jh-pga-table-shared .jtc-main-link-label-stack .line1 {
-        font-size: 1em;
-        letter-spacing: 0.35px;
+      .transfer-snapshot-status-headline {
+        font-size: 16.5px;
+        line-height: 1.28;
       }
 
-      #jh-pga-table-shared .jtc-main-link-label-stack .line2 {
-        font-size: 0.84em;
-        letter-spacing: 0.18px;
+      .transfer-snapshot-status-summary {
+        font-size: 12.4px;
+        line-height: 1.55;
       }
 
-      #jh-pga-table-shared .jtc-rounds-grid {
-        gap: 3px;
+      .transfer-snapshot-status-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        padding: 10px 11px;
+        border-radius: 12px;
       }
 
-      #jh-pga-table-shared .jtc-round-chip {
-        padding: 4px 2px 4px 2px;
-        border-radius: 6px;
-        gap: 3px;
+      .transfer-snapshot-status-value {
+        font-size: 12.4px;
       }
 
-      #jh-pga-table-shared .jtc-round-chip-label {
-        font-size: 6px;
-        letter-spacing: 0.45px;
+      .transfer-snapshot-btn {
+        min-height: 50px;
+        border-radius: 14px;
       }
 
-      #jh-pga-table-shared .jtc-round-chip-value {
-        font-size: 12px;
+      .transfer-snapshot-btn-primary {
+        min-height: 58px;
+        padding: 15px 16px;
+        border-radius: 15px;
+        font-size: 13.5px;
       }
 
-      #jh-pga-table-shared .jtc-total-score {
-        font-size: 16px;
+      .transfer-snapshot-btn-primary svg {
+        width: 16px;
+        height: 16px;
       }
 
-      #jh-pga-table-shared .jtc-total-par-wrap {
-        font-size: 14px;
+      .transfer-snapshot-note {
+        font-size: 11.3px;
       }
+    }
 
-      #jh-pga-table-shared .jtc-pos-value {
-        font-size: 17px;
+    @media (prefers-reduced-motion: reduce) {
+      .transfer-snapshot-btn {
+        transition: none;
       }
     }
   </style>
 
+  <div class="transfer-snapshot-last-updated-wrap" id="transferSnapshotLastUpdatedWrap" hidden>
+    <span class="transfer-snapshot-last-updated" id="transferSnapshotLastUpdated"></span>
+  </div>
+
+  <div class="transfer-snapshot-shell">
+    <div class="transfer-snapshot-inner">
+      <div class="transfer-snapshot-copy">
+        <div class="transfer-snapshot-copy-main">
+          <div class="transfer-snapshot-kicker">
+            <span class="transfer-snapshot-kicker-dot" aria-hidden="true"></span>
+            Transfer Snapshot
+          </div>
+
+          <h2 class="transfer-snapshot-title" id="transferSnapshotTitle">
+            Completed freshman-season profile organized for coach review.
+          </h2>
+
+          <p class="transfer-snapshot-desc">
+            A single-page summary of freshman-season results, rankings, scoring profile, and lineup-reliability indicators.
+          </p>
+
+          <ul class="transfer-snapshot-points" aria-label="Snapshot contents">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 19h16M7 16V9M12 16V5M17 16v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              Key Metrics
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12.5 9.2 16 19 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Tournament Results
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 19c5.5-9 8.5-12 14-14M7 14c1.2 0 2.2 1 2.2 2.2S8.2 18.4 7 18.4s-2.2-1-2.2-2.2S5.8 14 7 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Scoring Profile
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3 5 7v5c0 4.5 3 7 7 9 4-2 7-4.5 7-9V7l-7-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+              Lineup Reliability
+            </li>
+          </ul>
+        </div>
+
+        <div class="transfer-snapshot-review-panel" aria-label="Transfer snapshot review context">
+          <div class="transfer-snapshot-review-card">
+            <p class="transfer-snapshot-review-label">Review Scope</p>
+            <p class="transfer-snapshot-review-text">
+              Condenses freshman-season production, scoring record, rankings, and reliability indicators into one review point.
+            </p>
+          </div>
+
+          <div class="transfer-snapshot-review-card">
+            <p class="transfer-snapshot-review-label">Evaluation Use</p>
+            <p class="transfer-snapshot-review-text">
+              Provides a starting point before reviewing full NCAA statistics, tournament logs, and event-by-event results.
+            </p>
+          </div>
+
+          <p class="transfer-snapshot-review-note">
+            Formal transfer-related communication should follow official NCAA Transfer Portal listing.
+          </p>
+        </div>
+
+        <div class="transfer-snapshot-resume-strip" aria-label="Freshman resume snapshot">
+          <div class="transfer-snapshot-resume-strip-head">
+            <p class="transfer-snapshot-resume-strip-title">Freshman Resume Snapshot</p>
+            <span class="transfer-snapshot-resume-strip-tag">2025–26</span>
+          </div>
+
+          <div class="transfer-snapshot-resume-mini-grid">
+            <div class="transfer-snapshot-resume-mini">
+              <span class="transfer-snapshot-resume-mini-value is-accent">71.73</span>
+              <span class="transfer-snapshot-resume-mini-label">UTSA scoring average record</span>
+            </div>
+
+            <div class="transfer-snapshot-resume-mini">
+              <span class="transfer-snapshot-resume-mini-value">32 / 33</span>
+              <span class="transfer-snapshot-resume-mini-label">Counting team rounds</span>
+            </div>
+
+            <div class="transfer-snapshot-resume-mini">
+              <span class="transfer-snapshot-resume-mini-value">3 Years</span>
+              <span class="transfer-snapshot-resume-mini-label">Eligibility remaining</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="transfer-snapshot-side">
+        <div class="transfer-snapshot-side-panel">
+          <div class="transfer-snapshot-status-module" aria-label="Transfer process status">
+            <div class="transfer-snapshot-status-content">
+              <p class="transfer-snapshot-status-badge">
+                <span class="transfer-snapshot-status-badge-dot" aria-hidden="true"></span>
+                Transfer Process Status
+              </p>
+
+              <h3 class="transfer-snapshot-status-headline">
+                Written Request Submitted · Compliance Confirmation Pending
+              </h3>
+
+              <p class="transfer-snapshot-status-summary">
+                Joshua submitted a written transfer request to UTSA Compliance. Institutional confirmation remains pending.
+              </p>
+
+              <div class="transfer-snapshot-status-grid">
+                <div class="transfer-snapshot-status-item">
+                  <span class="transfer-snapshot-status-key">Listing</span>
+                  <span class="transfer-snapshot-status-value">
+                    Portal listing pending institutional processing during the men’s golf transfer window beginning June 4, 2026.
+                  </span>
+                </div>
+
+                <div class="transfer-snapshot-status-item">
+                  <span class="transfer-snapshot-status-key">Contact</span>
+                  <span class="transfer-snapshot-status-value">
+                    Formal transfer-related contact should follow official NCAA Transfer Portal listing.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="transfer-snapshot-card">
+            <p class="transfer-snapshot-card-label">Quick Access</p>
+            <p class="transfer-snapshot-card-text">
+              Open the snapshot for condensed performance, consistency, and lineup-reliability data.
+            </p>
+          </div>
+
+          <div class="transfer-snapshot-actions">
+            <a
+              class="transfer-snapshot-btn transfer-snapshot-btn-primary"
+              href="transfer-snapshot.html"
+            >
+              View Transfer Snapshot
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+
+            <a
+              class="transfer-snapshot-btn transfer-snapshot-btn-secondary"
+              href="ncaa-stats.html"
+            >
+              Review NCAA Stats & Results
+            </a>
+
+            <p class="transfer-snapshot-note">
+              Condensed profile for preliminary evaluation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     (function () {
-      const container = document.getElementById("jh-pga-table-shared");
-      if (!container) return;
+      const wrap = document.getElementById("transferSnapshotLastUpdatedWrap");
+      const target = document.getElementById("transferSnapshotLastUpdated");
+
+      if (!wrap || !target) return;
 
       function isUsableValue(value) {
         if (value === null || value === undefined) return false;
@@ -967,279 +1339,36 @@
         return cleaned !== "" && cleaned !== "-" && cleaned !== "—" && cleaned.toUpperCase() !== "TBD";
       }
 
-      function parseNumber(value) {
-        if (!isUsableValue(value)) return null;
-        const num = Number(String(value).replace(/,/g, "").trim());
-        return Number.isFinite(num) ? num : null;
-      }
-
-      function scoreClass(parValue) {
-        if (parValue === null || parValue === undefined) return "blue";
-        const value = String(parValue).trim().toUpperCase();
-
-        if (
-          value === "" ||
-          value === "-" ||
-          value === "—" ||
-          value === "TBD" ||
-          value === "E" ||
-          value === "EVEN" ||
-          value === "PAR" ||
-          value === "0"
-        ) return "blue";
-
-        if (value.startsWith("-")) return "red";
-        if (value.startsWith("+")) return "navy";
-        return "blue";
-      }
-
-      function badgeMap(status) {
-        const map = {
-          upcoming:  { label: "UPCOMING", className: "upcoming" },
-          ongoing:   { label: "ONGOING", className: "ongoing" },
-          final:     { label: "FINAL", className: "final" },
-          cancelled: { label: "CANCELLED", className: "cancelled" }
-        };
-        return map[status] || map.final;
-      }
-
-      function splitMainLinkLabel(label) {
-        const clean = (label || "").trim();
-        if (!clean) return { line1: "VIEW", line2: "DETAILS" };
-
-        const upper = clean.toUpperCase();
-
-        if (upper === "FINAL RESULTS") return { line1: "FINAL", line2: "RESULTS" };
-        if (upper === "LIVE LEADERBOARD") return { line1: "LIVE", line2: "LEADERBOARD" };
-        if (upper === "TOURNAMENT DETAILS") return { line1: "TOURNAMENT", line2: "DETAILS" };
-
-        const parts = upper.split(/\s+/);
-        if (parts.length >= 2) {
-          return {
-            line1: parts[0],
-            line2: parts.slice(1).join(" ")
-          };
-        }
-
-        return { line1: upper, line2: "" };
-      }
-
-      function roundShortLabel(round, index) {
-        const raw = String(round.round || "").trim();
-        const match = raw.match(/(\d+)/);
-        if (match) return `R${match[1]}`;
-        return `R${index + 1}`;
-      }
-
-      function getAllRounds(rounds) {
-        return Array.isArray(rounds) ? rounds : [];
-      }
-
-      function formatParDelta(delta) {
-        if (delta === 0) return "E";
-        if (delta > 0) return `+${delta}`;
-        return `${delta}`;
-      }
-
-      function resolveSummary(data) {
-        const rounds = getAllRounds(data.rounds);
-        const playedRounds = rounds.filter(round => isUsableValue(round.score));
-        const configPar = parseNumber(data.par);
-
-        const summaryTotalRaw = data.summary && data.summary.total;
-        const summaryParRaw = data.summary && data.summary.par;
-        const summaryPosRaw = data.summary && data.summary.pos;
-
-        let resolvedTotal = isUsableValue(summaryTotalRaw) ? String(summaryTotalRaw).trim() : "—";
-        let resolvedPar = isUsableValue(summaryParRaw) ? String(summaryParRaw).trim() : "—";
-        let resolvedPos = isUsableValue(summaryPosRaw) ? String(summaryPosRaw).trim() : "—";
-
-        if (!isUsableValue(summaryTotalRaw) && playedRounds.length > 0) {
-          const totalScore = playedRounds.reduce((sum, round) => {
-            const scoreNum = parseNumber(round.score);
-            return sum + (scoreNum !== null ? scoreNum : 0);
-          }, 0);
-          resolvedTotal = String(totalScore);
-        }
-
-        if (!isUsableValue(summaryParRaw) && playedRounds.length > 0 && configPar !== null) {
-          const totalScoreNum = parseNumber(resolvedTotal);
-          if (totalScoreNum !== null) {
-            const expectedPar = configPar * playedRounds.length;
-            resolvedPar = formatParDelta(totalScoreNum - expectedPar);
-          }
-        }
-
-        return {
-          total: resolvedTotal,
-          par: resolvedPar,
-          pos: resolvedPos
-        };
-      }
-
-      function composeMetaText(data) {
-        const parts = [];
-
-        if (isUsableValue(data.venue)) parts.push(data.venue);
-        if (isUsableValue(data.location)) parts.push(data.location);
-        if (isUsableValue(data.par)) parts.push(`Par ${data.par}`);
-        if (isUsableValue(data.yards)) parts.push(`${String(data.yards).includes(",") ? data.yards : Number(data.yards).toLocaleString()} Yards`);
-        if (isUsableValue(data.rating)) parts.push(`Rating: ${data.rating}`);
-        if (isUsableValue(data.slope)) parts.push(`Slope: ${data.slope}`);
-
-        return parts.join(" | ");
-      }
-
-      function buildRoundSlots(rounds) {
-        const allRounds = getAllRounds(rounds);
-
-        return allRounds.map((round, index) => {
-          const label = roundShortLabel(round, index);
-          const value = isUsableValue(round.score) ? String(round.score).trim() : "—";
-          const colorClass = isUsableValue(round.par) ? scoreClass(round.par) : "white";
-
-          return `
-            <div class="jtc-round-chip">
-              <span class="jtc-round-chip-label">${label}</span>
-              <span class="jtc-round-chip-value ${value === "—" ? "white" : colorClass}">${value}</span>
-            </div>
-          `;
-        }).join("");
-      }
-
-      function buildCardHtml(data) {
-        const badge = badgeMap(data.status);
-        const split = splitMainLinkLabel(
-          isUsableValue(data.mainLink && data.mainLink.label) ? data.mainLink.label : "VIEW DETAILS"
-        );
-        const summary = resolveSummary(data);
-        const deltaClass = isUsableValue(summary.par) ? scoreClass(summary.par) : "white";
-
-        const mainLinkHtml = isUsableValue(data.mainLink && data.mainLink.url)
-          ? `
-            <a href="${data.mainLink.url}" target="_blank" class="jtc-main-link">
-              <span class="jtc-main-link-content">
-                <span class="jtc-main-link-dot ${badge.className}"></span>
-                <span class="jtc-main-link-label-stack">
-                  <span class="line1">${split.line1}</span>
-                  <span class="line2">${split.line2}</span>
-                </span>
-                <span class="jtc-main-link-arrow" aria-hidden="true">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0C2340" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="7" y1="17" x2="17" y2="7"></line>
-                    <polyline points="7 7 17 7 17 17"></polyline>
-                  </svg>
-                </span>
-              </span>
-            </a>
-          `
-          : "";
-
-        const lastUpdatedHtml = isUsableValue(data.lastUpdated)
-          ? `
-            <div class="jtc-last-updated-wrap">
-              <span class="jtc-last-updated">Last Updated: ${data.lastUpdated}</span>
-            </div>
-          `
-          : "";
-
-        return `
-          ${lastUpdatedHtml}
-
-          <div class="jtc-wrap">
-            <div class="jtc-header-top">
-              <div class="jtc-header-row ${badge.className}">
-                <h3>${data.sectionTitle || "TOURNAMENT"}</h3>
-                <span>${isUsableValue(data.eventNo) ? data.eventNo : ""}${isUsableValue(data.eventLabel) ? `: ${data.eventLabel}` : ""}</span>
-              </div>
-            </div>
-
-            <div class="jtc-card">
-              <div class="jtc-card-head">
-                <div class="jtc-head-left">
-                  <div class="jtc-badge ${badge.className}">
-                    <span class="jtc-dot ${badge.className}"></span>
-                    <span>${badge.label}</span>
-                  </div>
-
-                  <div class="jtc-title-wrap">
-                    <div class="jtc-title-line">
-                      <h2 class="jtc-title" style="display:inline; margin:0;">${data.title || "Tournament Title"}</h2>
-                      <span class="jtc-title-sep">|</span>
-                      <span class="jtc-date">${data.date || "TBD"}</span>
-                    </div>
-                    <div class="jtc-meta">${composeMetaText(data)}</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="jtc-result-band">
-                <div class="jtc-link-summary">
-                  <span class="jtc-summary-label jtc-label-ghost">Action</span>
-                  <div class="jtc-band-body">
-                    ${mainLinkHtml}
-                  </div>
-                </div>
-
-                <div class="jtc-rounds-summary">
-                  <span class="jtc-summary-label">Rounds</span>
-                  <div class="jtc-band-body">
-                    <div class="jtc-rounds-grid">
-                      ${buildRoundSlots(data.rounds)}
-                    </div>
-                  </div>
-                </div>
-
-                <div class="jtc-total-summary">
-                  <span class="jtc-summary-label">Total</span>
-                  <div class="jtc-band-body">
-                    <div class="jtc-total-line">
-                      <span class="jtc-total-score">${isUsableValue(summary.total) ? summary.total : "—"}</span>
-                      <span class="jtc-total-par-wrap">
-                        <span class="paren">(</span><span class="delta ${deltaClass}">${isUsableValue(summary.par) ? summary.par : "—"}</span><span class="paren">)</span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="jtc-pos-summary">
-                  <span class="jtc-summary-label">Pos</span>
-                  <div class="jtc-band-body">
-                    <span class="jtc-pos-value">${isUsableValue(summary.pos) ? summary.pos : "—"}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        `;
-      }
-
-      async function renderSharedPgaTable() {
+      async function renderTransferSnapshotLastUpdated() {
         try {
           const res = await fetch("./data2.json?v=" + Date.now());
-          if (!res.ok) throw new Error("Failed to load data2.json");
+          if (!res.ok) return;
 
           const data = await res.json();
-          const pgaData = data.pgaTableShared;
+          const lastUpdated = data && data.pgaTableShared
+            ? data.pgaTableShared.lastUpdated
+            : "";
 
-          if (!pgaData) {
-            container.innerHTML = "";
-            return;
-          }
+          if (!isUsableValue(lastUpdated)) return;
 
-          container.innerHTML = buildCardHtml(pgaData);
+          target.textContent = "Last Updated: " + String(lastUpdated).trim();
+          wrap.hidden = false;
         } catch (error) {
-          console.error("PGA TABLE render error:", error);
-          container.innerHTML = "";
+          console.error("TRANSFER SNAPSHOT last updated render error:", error);
         }
       }
 
-      document.addEventListener("DOMContentLoaded", renderSharedPgaTable);
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", renderTransferSnapshotLastUpdated);
+      } else {
+        renderTransferSnapshotLastUpdated();
+      }
     })();
   </script>
+</section>
+    
 
-</div>    
- 
+
     
        
 <div id="jh-index-key-metrics-panel" style="max-width: 900px; margin: 0 auto 20px; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
@@ -2279,14 +2408,18 @@
 
     <div style="text-align: justify; word-break: keep-all;">
       <p style="font-size: 16.5px; margin: 0 0 18px 0; line-height: 1.85; color: #2d3748;">
-        <span style="font-weight: 800; color: #0c2340;">Joshua Hong</span> (b. 2007) is a Korean-Mexican collegiate golfer competing in NCAA Division I for the University of Texas at San Antonio (UTSA).
+        <span style="font-weight: 800; color: #0c2340;">Joshua Hong</span> (b. 2007) is a Korean-Mexican collegiate golfer who completed his freshman season in NCAA Division I at the University of Texas at San Antonio (UTSA).
       </p>
 
       <p style="font-size: 16.5px; margin: 0 0 18px 0; line-height: 1.85; color: #4a5568;">
-        He entered the UTSA men’s golf program in Fall 2025. Training and tournament participation are conducted within the UTSA program under
+        He entered the UTSA men’s golf program in Fall 2025 and competed for the Roadrunners during the 2025–26 season under
         <a href="https://goutsa.com/sports/mens-golf/roster/season/2025-26/staff/matt-wernecke" target="_blank" rel="noopener noreferrer" style="color: #4a5568; text-decoration: none; border-bottom: 1px solid #cbd5e0; font-weight: 600; transition: all 0.2s;" onmouseover="this.style.color='#2d3748'; this.style.borderBottomColor='#2d3748';" onmouseout="this.style.color='#4a5568'; this.style.borderBottomColor='#cbd5e0';">
           Head Coach Matt Wernecke
         </a>.
+      </p>
+
+      <p style="font-size: 16.5px; margin: 0 0 18px 0; line-height: 1.85; color: #4a5568;">
+        Following his completed freshman season at UTSA, Joshua submitted formal notice of his intent to enter the NCAA Transfer Portal and completed the required compliance process.
       </p>
 
       <p style="font-size: 16.5px; margin: 0 0 18px 0; line-height: 1.85; color: #4a5568;">
@@ -2337,7 +2470,7 @@
     <b style="color: #0c2340; font-size: 16px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">Competitive Development</b>
   </div>
 <p style="font-size: 14.5px; line-height: 1.7; color: #444; margin: 0;">
-  Joshua’s current development within the <b>UTSA men’s golf program</b> is centered on <b>repeatable performance</b>, <b>competitive growth</b>, and <b>long-term progression</b> within NCAA Division I golf. His profile is defined not only by finish position, but also by <b>consistency</b>, <b>field strength</b>, and <b>scoring reliability</b> across full-season play.
+  Joshua’s completed freshman season at <b>UTSA</b> reflected a process-driven approach to collegiate competition, with emphasis on <b>repeatable performance</b>, <b>competitive growth</b>, and <b>long-term progression</b> within NCAA Division I golf. Following that season, his profile remains defined not only by finish position, but also by <b>consistency</b>, <b>field strength</b>, and <b>scoring reliability</b> across full-season play.
 </p>
 </div>
 
@@ -2922,8 +3055,8 @@
             Joshua began playing golf at <b>age 12</b>. Prior to golf, he participated in other organized sports, which provided an athletic foundation for his transition to competitive golf.
           </p>
           <p style="margin: 0;">
-            His development has involved <b>structured training schedules</b>, repetitive skill work, and regular technical feedback from coaches. He currently competes as a member of the <b>UTSA men’s golf program</b>, maintaining a process-driven approach to collegiate competition.
-          </p>
+              His development has involved <b>structured training schedules</b>, repetitive skill work, and regular technical feedback from coaches. His completed freshman season at <b>UTSA</b> reflected a process-driven approach to collegiate competition and continued progression within NCAA Division I golf.
+            </p>
         </div>
       </div>
     </div>
@@ -3085,11 +3218,12 @@
     Career Overview <br> 
     Official Profile
   </p>
-         <p style="font-size: 10px; color: #94a3b8; line-height: 1.6; margin: 0; max-width: 760px; margin-left: auto; margin-right: auto;">
+   <p style="font-size: 10px; color: #94a3b8; line-height: 1.6; margin: 0; max-width: 760px; margin-left: auto; margin-right: auto;">
   This website is maintained solely as an independent personal record archive of Joshua Hong’s golf career.
   It is not commercial in nature and is not affiliated with, endorsed by, or operated by any university, athletic department, conference, or third-party brand.
   Images and materials are presented for personal archival and informational purposes only. All rights to third-party images and materials remain with their respective owners.
   </p>
+    
 </div>
 
 </div>
