@@ -1,1 +1,293 @@
+{
+  "meta": {
+    "lastUpdated": "May 18 2026",
+    "status": "season-complete"
+  },
 
+  "hero": {
+    "eyebrow": "Transfer Snapshot",
+    "title": "Joshua Hong",
+    "metaLine": "2025–26 Freshman Season | NCAA Division I",
+    "definition": "High-floor freshman scorer with verified Division I production, low round-to-round volatility, and room to grow into a higher team role.",
+    "supporting": "A completed freshman-season sample showing steady team-score contribution, controlled scoring range, and documented low-round capability."
+  },
+
+ "quickSummary": [
+    "Recorded a 71.20 Clippd-adjusted average and set UTSA’s single-season raw scoring record at 71.73 over 33 rounds.",
+    "32 of 33 team rounds counted, with a 64–76 scoring range across the completed freshman season.",
+    "Season production included one individual win, three top-3 finishes, and five top-10s across 11 NCAA tournaments.",
+    "Scoring ceiling was documented by a 64 (-8), a 134 (-10), and six sub-70 rounds."
+],
+
+  "heroStrip": [
+    {
+      "label": "Official Rounds",
+      "value": "33"
+    },
+    {
+      "label": "Low Score",
+      "value": "64 (-8)"
+    },
+    {
+      "label": "Par or Better",
+      "value": "19 / 33 (57.58%)"
+    },
+    {
+      "label": "Academic GPA",
+      "value": "3.4"
+    }
+  ],
+
+  "metrics": [
+    {
+      "label": "Clippd Adjusted Avg",
+      "value": "71.20",
+      "note": "Field-adjusted freshman scoring reference across 33 official rounds."
+    },
+    {
+      "label": "Raw Scoring Avg",
+      "value": "71.73",
+      "note": "UTSA single-season scoring average record over 33 rounds."
+    },
+    {
+      "label": "Counting Rate",
+      "value": "96.97%",
+      "accent": true,
+      "note": "32 of 33 team rounds counted across the completed freshman season."
+    },
+    {
+      "label": "Head-to-Head",
+      "value": "599-238-24",
+      "note": "69.57% win rate across the completed freshman-season sample."
+    },
+    {
+      "label": "Points Share",
+      "value": "28.20%",
+      "note": "403.10 of 1,429.21 weighted team points across 33 rounds."
+    },
+    {
+      "label": "Top Finishes",
+      "value": "1 / 3 / 5",
+      "note": "One win, three top-3s, and five top-10s across 11 NCAA tournaments."
+    },
+    {
+      "label": "WAGR",
+      "value": "508",
+      "note": "World amateur ranking reference as of May 13, 2026."
+    },
+    {
+      "label": "Clippd Rank",
+      "value": "370",
+      "note": "NCAA player ranking reference as of May 13, 2026."
+    }
+  ],
+
+  "progression": {
+  "stages": [
+    {
+      "phase": "NCAA Freshman Phase",
+      "title": "Junior-to-College Scoring Translation",
+      "desc": "Joshua’s first college season showed clear junior-to-NCAA scoring translation through steady team contribution, low-round capability, and a completed 33-round sample."
+    },
+    {
+      "phase": "Senior Junior Phase",
+      "title": "Back-to-Back Mexico Season Champion",
+      "desc": "Six consecutive wins and a second straight Mexico season title reinforced finishing ability, cumulative control, and long-form scoring value."
+    },
+    {
+      "phase": "Early Junior Phase",
+      "title": "Season Champion Before the Wins",
+      "desc": "The early profile separated through consistency, stability, and score accumulation before the later win volume arrived."
+    }
+  ]
+},
+
+"evidenceProjection": {
+  "cards": [
+    {
+      "badge": "Difficult-Condition Win",
+      "event": "Military City Collegiate",
+      "points": [
+        "Individual champion and only player under par in the field.",
+        "Won at TPC San Antonio in a field where par held clear scoring value.",
+        "Contributed to UTSA’s team title in the same event."
+      ]
+    },
+    {
+      "badge": "Scoring Ceiling",
+      "event": "Golden Nugget Invitational",
+      "points": [
+        "Solo 3rd finish with a 13-under 203 total.",
+        "64 (-8) tied the UTSA 18-hole program record.",
+        "134 (-10) tied the UTSA 36-hole program record."
+      ]
+    },
+    {
+      "badge": "Season-Long Team Role",
+      "event": "UTSA Freshman Season",
+      "points": [
+         "Held the team’s highest Clippd weighted contribution across the completed freshman season.",
+         "Counted in 32 of 33 team rounds as a freshman.",
+         "Freshman scoring profile remained contained across a completed 33-round sample."
+      ]
+    }
+    ],
+
+   
+"projectedRoleTitle": "College Role Read",
+"projectedRoleBody": "Lineup-ready profile with team-score stability, scoring-range control, and value in internal lineup competition.",
+"translationLabel": "Roster Translation",
+"translationText": "Reliable counting-score profile with low-round evidence and controlled round-to-round scoring risk.",
+"developmentLabel": "Development Outlook",
+"developmentText": "Freshman production, scoring progression, and low-round evidence support continued role expansion as the college schedule broadens."
+  },
+
+
+
+  "cultureFit": [
+  "Works within team structure and daily practice expectations.",
+  "Maintains consistent preparation habits across tournament weeks.",
+  "Responsive to coaching feedback and technical adjustments.",
+  "Handled meaningful team-score responsibility as a freshman.",
+  "Competitive preparation remained steady across the completed season."
+],
+
+"transferObjective": {
+  "body": "Evaluating a next-step program fit focused on continued player development, expanded competitive exposure, and long-term college golf progression, while carrying forward the competitive foundation and team experience gained during his freshman year at UTSA.",
+  "noteLabel": "Positioning Note",
+  "noteText": "Grateful for the UTSA freshman-year opportunity to compete, adapt, learn, and contribute within the program; the next-step review is framed around fit, timing, and long-term development path while respecting the foundation built at UTSA."
+},
+
+
+
+"awardsRecords": {
+  "kicker": "SEASON RECOGNITION & PROGRAM RECORDS",
+  "title": "Official Recognition, Program Records & Freshman Reliability",
+  "subtitle": "Verified conference and UTSA Athletics recognition, UTSA program-record markers, and season-long reliability indicators from the completed freshman season.",
+  "cards": [
+    {
+      "tier": "primary",
+      "badge": "Recognition",
+      "title": "Official Recognition",
+      "items": [
+        {
+          "label": "AAC Player of the Week",
+          "status": "Official",
+          "note": "Official conference recognition tied directly to tournament performance."
+        },
+        {
+          "label": "The Rowdys — Men’s Golf Strength & Conditioning Award",
+          "status": "Official",
+          "note": "UTSA Athletics recognition tied to training commitment, work standard, and team impact."
+        },
+        {
+          "label": "The Rowdys — Male Newcomer of the Year Nominee",
+          "status": "Official",
+          "note": "Listed by UTSA Athletics as a Male Newcomer of the Year nominee."
+        }
+      ]
+    },
+    {
+      "tier": "secondary",
+      "badge": "Records & Results",
+      "title": "Program Records & Competitive Results",
+      "items": [
+        {
+          "label": "18-hole program record",
+          "status": "Tied",
+          "note": "64 (-8) matched the current UTSA single-round benchmark."
+        },
+        {
+          "label": "36-hole program record",
+          "status": "Tied",
+          "note": "134 (-10) matched the current UTSA 36-hole benchmark."
+        },
+        {
+          "label": "Individual Win",
+          "status": "Verified",
+          "note": "Won the Military City Collegiate and finished as the only player under par in the field."
+        },
+        {
+          "label": "Team Title Contribution",
+          "status": "Verified",
+          "note": "Contributed to UTSA's team title at the Military City Collegiate."
+        }
+      ]
+    },
+    {
+      "tier": "tertiary",
+      "badge": "Season Markers",
+      "title": "Freshman Reliability & Season Scoring Record",
+      "items": [
+        {
+          "label": "UTSA single-season scoring average record",
+          "status": "Official",
+          "note": "71.73 over 33 rounds, surpassing the previous 71.94 mark."
+        },
+        {
+          "label": "Counting Score Reliability",
+          "status": "Verified",
+          "note": "32 of 33 team rounds counted during the completed freshman season."
+        },
+        {
+          "label": "Team Contribution Share",
+          "status": "Calculated",
+          "note": "28.20% Clippd points share across 33 rounds, with 403.10 weighted points."
+        },
+        {
+          "label": "Controlled Scoring Range",
+          "status": "Verified",
+          "note": "Completed 33-round freshman sample stayed within a 64–76 scoring range."
+        }
+      ]
+    }
+  ]
+},
+
+  
+  "links": [
+    {
+      "name": "NCAA Stats",
+      "url": "ncaa-stats.html",
+      "desc": "Full freshman-season log, results, and scoring archive."
+    },
+    {
+      "name": "News & Media",
+      "url": "news-media.html",
+      "desc": "External coverage and milestone-linked references."
+    },
+
+    {
+      "name": "Reference & Links",
+      "url": "reference-links.html",
+      "desc": "Official source hub for rankings, records, and event verification."
+    },
+
+    {
+      "name": "Junior Career",
+      "url": "junior-career.html",
+      "desc": "Pre-college progression and junior record archive."
+    },
+    
+    {
+      "name": "WAGR",
+      "url": "https://www.wagr.com/playerprofile/joshua-hong-40704",
+      "desc": "Official world amateur ranking reference."
+    },
+    
+    {
+      "name": "Clippd / Scoreboard",
+      "url": "https://scoreboard.clippd.com/players/38903?season=2026",
+      "desc": "Event-level scoring and field-relative verification."
+    }
+  ],
+
+"contact": {
+  "sectionTitle": "Program Contact",
+  "sectionSubtitle": "For direct program inquiries",
+  "body": "Direct transfer-related contact.",
+  "buttonLabel": "Email Joshua Directly",
+  "emailRef": "primary",
+  "subject": "Joshua Hong Transfer Inquiry"
+}
+}
