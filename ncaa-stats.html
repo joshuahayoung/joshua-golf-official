@@ -437,7 +437,6 @@
   }
 </style>
 
-
   <div class="jh-isolated-banner-card">
     <div class="jh-isolated-banner-media">
       <img id="jh-isolated-rotating-banner-img"
@@ -524,6 +523,7 @@
   
 
   
+  
 <div class="performance-log-section" style="max-width: 900px; margin: 0 auto 60px; padding: 0 15px; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <style>
     
@@ -550,7 +550,7 @@
       position: relative; 
       display: flex; 
       flex-direction: column;
-      overflow: hidden; /* 모서리 끊김 해결 */
+      overflow: hidden; 
     }
 
     
@@ -1625,6 +1625,7 @@
 </script>
 
 
+  
 
 
 
@@ -2365,6 +2366,633 @@
 </div>
   
 
+
+
+
+<!-- =========================================================
+  JH ISOLATED SUMMER RESULTS SECTION
+========================================================= 
+
+
+<section id="jh-summer-results-log-isolated" aria-label="2026 Summer Competition Results Log">
+  <style>
+    #jh-summer-results-log-isolated {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      margin: 26px 0 44px;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #0c2340;
+      clear: both;
+      contain: layout style paint;
+    }
+
+    #jh-summer-results-log-isolated,
+    #jh-summer-results-log-isolated * {
+      box-sizing: border-box;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-wrap {
+      width: 100%;
+      max-width: 100%;
+      border-radius: 20px;
+      border: 1px solid #dbe3ee;
+      background: #ffffff;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-head {
+      padding: 18px 20px 15px;
+      background:
+        linear-gradient(135deg, #0c2340 0%, #173b63 100%);
+      color: #ffffff;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-kicker {
+      margin: 0 0 6px;
+      color: rgba(255,255,255,0.72);
+      font-size: 10px;
+      line-height: 1.2;
+      font-weight: 900;
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-title {
+      margin: 0;
+      color: #ffffff;
+      font-size: 21px;
+      line-height: 1.18;
+      font-weight: 950;
+      letter-spacing: -0.55px;
+      text-transform: uppercase;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-subtitle {
+      margin: 7px 0 0;
+      max-width: 760px;
+      color: rgba(255,255,255,0.78);
+      font-size: 12px;
+      line-height: 1.45;
+      font-weight: 650;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-list {
+      width: 100%;
+      background: #f8fafc;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-row {
+      width: 100%;
+      padding: 14px 18px 13px;
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-row:last-child {
+      border-bottom: none;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-row:nth-child(even) {
+      background: #fbfdff;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-main {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 14px;
+      margin: 0 0 5px;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-event {
+      min-width: 0;
+      color: #0c2340;
+      font-size: 14px;
+      line-height: 1.35;
+      font-weight: 950;
+      letter-spacing: -0.15px;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-date {
+      flex: 0 0 auto;
+      color: #64748b;
+      font-size: 11px;
+      line-height: 1.3;
+      font-weight: 900;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-course {
+      margin: 0 0 8px;
+      color: #64748b;
+      font-size: 12px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-result-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px 9px;
+      margin: 0;
+      color: #334155;
+      font-size: 12px;
+      line-height: 1.55;
+      font-weight: 750;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-status {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(100, 116, 139, 0.10);
+      border: 1px solid rgba(100, 116, 139, 0.18);
+      color: #475569;
+      font-size: 10px;
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: 0.35px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-status.is-completed {
+      background: rgba(22, 101, 52, 0.10);
+      border-color: rgba(22, 101, 52, 0.18);
+      color: #166534;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-status.is-pending {
+      background: rgba(201, 138, 46, 0.12);
+      border-color: rgba(201, 138, 46, 0.24);
+      color: #8a5a14;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-score-unit {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 3px;
+      white-space: nowrap;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-label {
+      color: #64748b;
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.35px;
+      text-transform: uppercase;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-score {
+      font-weight: 950;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-under {
+      color: #b91c1c;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-even {
+      color: #1d4ed8;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-over {
+      color: #0c2340;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-muted {
+      color: #94a3b8;
+      font-weight: 850;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-sep {
+      color: #cbd5e1;
+      font-weight: 800;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-link {
+      color: #0c2340;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 950;
+      border-bottom: 1px solid rgba(12, 35, 64, 0.35);
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-link:hover,
+    #jh-summer-results-log-isolated .jh-srl-link:focus {
+      color: #163b66;
+      border-bottom-color: #163b66;
+    }
+
+    @media (max-width: 720px) {
+      #jh-summer-results-log-isolated {
+        margin: 22px 0 38px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-wrap {
+        border-radius: 17px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-head {
+        padding: 16px 15px 14px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-title {
+        font-size: 18px;
+        line-height: 1.22;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-subtitle {
+        font-size: 11.5px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-row {
+        padding: 13px 14px 12px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-main {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-event {
+        font-size: 13.5px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-date {
+        display: block;
+        margin-top: 3px;
+        white-space: normal;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-course {
+        font-size: 11.5px;
+        margin-bottom: 7px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-result-line {
+        font-size: 11.5px;
+        gap: 5px 7px;
+      }
+    }
+  </style>
+
+  <div class="jh-srl-wrap">
+    <header class="jh-srl-head">
+      <p class="jh-srl-kicker">Results Log</p>
+      <h2 class="jh-srl-title">2026 Summer Competition Results</h2>
+      <p class="jh-srl-subtitle">
+        Completed results will be updated here as each summer event concludes.
+        Pending fields remain marked as TBD or — until official results are available.
+      </p>
+    </header>
+
+    <div id="jh-summer-results-log-list" class="jh-srl-list"></div>
+  </div>
+
+  <script>
+    (function() {
+      const section = document.getElementById('jh-summer-results-log-isolated');
+      if (!section) return;
+
+      const list = section.querySelector('#jh-summer-results-log-list');
+      if (!list) return;
+
+      /*
+        UPDATE RULE
+        1. Keep the latest / later-scheduled event at the TOP.
+        2. Keep the earliest summer event at the BOTTOM.
+        3. Use numbers only after official results are available.
+        4. Use '-' or 'TBD' for pending results.
+        5. Under / even / over colors are automatic when scores are numbers.
+      */
+
+      const results = [
+        {
+          date: 'Aug 10 - 16',
+          tournament: 'U.S. Amateur Championship',
+          course: 'Merion Golf Club - Ardmore, PA',
+          status: 'Contingent',
+          statusType: 'pending',
+          par: null,
+          rounds: ['TBD'],
+          total: '-',
+          toPar: null,
+          finish: '-',
+          metrics: [
+            { label: 'Result', value: 'Contingent on Final Qualifying' }
+          ],
+          links: []
+        },
+        {
+          date: 'Jul 27 - Aug 1',
+          tournament: 'Western Amateur Championship',
+          course: 'Beverly Country Club - Chicago, IL',
+          status: 'Exemption Pending',
+          statusType: 'pending',
+          par: null,
+          rounds: ['TBD', 'TBD', 'TBD', 'TBD'],
+          total: '-',
+          toPar: null,
+          finish: '-',
+          metrics: [
+            { label: 'WAGR Pwr', value: 'TBD' },
+            { label: 'Earned Pts', value: 'TBD' }
+          ],
+          links: []
+        },
+        {
+          date: 'Jul 16 - 19',
+          tournament: 'Mexican Amateur Championship',
+          course: 'Mexico City, Mexico',
+          status: 'Registered',
+          statusType: 'pending',
+          par: null,
+          rounds: ['TBD', 'TBD', 'TBD', 'TBD'],
+          total: '-',
+          toPar: null,
+          finish: '-',
+          metrics: [
+            { label: 'WAGR Pwr', value: 'TBD' },
+            { label: 'Earned Pts', value: 'TBD' }
+          ],
+          links: []
+        },
+        {
+          date: 'Jul 13',
+          tournament: 'U.S. Amateur Final Qualifying',
+          course: 'Ruby Hill Golf Club - Pleasanton, CA',
+          status: 'Site Assignment Pending',
+          statusType: 'pending',
+          par: null,
+          rounds: ['TBD'],
+          total: '-',
+          toPar: null,
+          finish: '-',
+          metrics: [
+            { label: 'Result', value: 'TBD' }
+          ],
+          links: []
+        },
+        {
+          date: 'Jun 17 - 20',
+          tournament: 'The Dogwood Invitational',
+          course: 'Druid Hills Golf Club - Atlanta, GA',
+          status: 'Result Pending',
+          statusType: 'pending',
+          par: 72,
+          rounds: ['-', '-', '-', '-'],
+          total: '-',
+          toPar: null,
+          finish: '-',
+          metrics: [
+            { label: 'WAGR Pwr', value: 'TBD' },
+            { label: 'Earned Pts', value: 'TBD' }
+          ],
+          links: []
+        }
+
+        /*
+        DOGWOOD COMPLETED EXAMPLE
+
+        Replace the Dogwood object above with this after the result is official:
+
+        {
+          date: 'Jun 17 - 20',
+          tournament: 'The Dogwood Invitational',
+          course: 'Druid Hills Golf Club - Atlanta, GA',
+          status: 'Completed',
+          statusType: 'completed',
+          par: 72,
+          rounds: [69, 72, 73, 65],
+          total: 279,
+          toPar: -9,
+          finish: 'T3',
+          metrics: [
+            { label: 'WAGR Pwr', value: '380.8745' },
+            { label: 'Earned Pts', value: '9.8874' }
+          ],
+          links: [
+            { label: 'Official Results', url: 'OFFICIAL_RESULTS_URL_HERE' }
+          ]
+        }
+        */
+      ];
+
+      function escapeHtml(value) {
+        return String(value ?? '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      function isNumberValue(value) {
+        return typeof value === 'number' && Number.isFinite(value);
+      }
+
+      function formatToPar(delta) {
+        if (!isNumberValue(delta)) return '';
+        if (delta === 0) return 'E';
+        if (delta > 0) return '+' + delta;
+        return String(delta);
+      }
+
+      function scoreClass(delta) {
+        if (!isNumberValue(delta)) return 'jh-srl-muted';
+        if (delta < 0) return 'jh-srl-under';
+        if (delta === 0) return 'jh-srl-even';
+        return 'jh-srl-over';
+      }
+
+      function normalizeRound(round, index, eventPar) {
+        if (!isNumberValue(round)) {
+          return {
+            label: 'R' + (index + 1),
+            score: round,
+            toPar: null
+          };
+        }
+
+        if (!isNumberValue(eventPar)) {
+          return {
+            label: 'R' + (index + 1),
+            score: round,
+            toPar: null
+          };
+        }
+
+        return {
+          label: 'R' + (index + 1),
+          score: round,
+          toPar: round - eventPar
+        };
+      }
+
+      function getEventToPar(event) {
+        if (isNumberValue(event.toPar)) return event.toPar;
+
+        if (!isNumberValue(event.total)) return null;
+        if (!isNumberValue(event.par)) return null;
+        if (!Array.isArray(event.rounds)) return null;
+
+        const numericRounds = event.rounds.filter(isNumberValue);
+        if (!numericRounds.length) return null;
+
+        return event.total - (event.par * numericRounds.length);
+      }
+
+      function renderStatus(event) {
+        const type = event.statusType === 'completed' ? 'is-completed' : 'is-pending';
+
+        return (
+          '<span class="jh-srl-status ' + type + '">' +
+            escapeHtml(event.status || 'Pending') +
+          '</span>'
+        );
+      }
+
+      function renderRounds(event) {
+        const rounds = Array.isArray(event.rounds) ? event.rounds : [];
+
+        if (!rounds.length) {
+          return '<span class="jh-srl-score-unit"><span class="jh-srl-label">Rounds</span> <span class="jh-srl-muted">TBD</span></span>';
+        }
+
+        return rounds.map(function(round, index) {
+          const r = normalizeRound(round, index, event.par);
+          const cls = scoreClass(r.toPar);
+          const vsPar = formatToPar(r.toPar);
+          const scoreText = escapeHtml(r.score);
+
+          if (!isNumberValue(r.toPar)) {
+            return (
+              '<span class="jh-srl-score-unit">' +
+                '<span class="jh-srl-label">' + escapeHtml(r.label) + '</span>' +
+                '<span class="jh-srl-score jh-srl-muted">' + scoreText + '</span>' +
+              '</span>'
+            );
+          }
+
+          return (
+            '<span class="jh-srl-score-unit">' +
+              '<span class="jh-srl-label">' + escapeHtml(r.label) + '</span>' +
+              '<span class="jh-srl-score ' + cls + '">' + scoreText + '</span>' +
+              '<span class="' + cls + '">(' + escapeHtml(vsPar) + ')</span>' +
+            '</span>'
+          );
+        }).join('<span class="jh-srl-sep">·</span>');
+      }
+
+      function renderTotal(event) {
+        const eventToPar = getEventToPar(event);
+        const total = event.total;
+        const cls = scoreClass(eventToPar);
+        const vsPar = formatToPar(eventToPar);
+
+        if (!isNumberValue(total)) {
+          return (
+            '<span class="jh-srl-score-unit">' +
+              '<span class="jh-srl-label">Total</span>' +
+              '<span class="jh-srl-muted">' + escapeHtml(total || '-') + '</span>' +
+            '</span>'
+          );
+        }
+
+        return (
+          '<span class="jh-srl-score-unit">' +
+            '<span class="jh-srl-label">Total</span>' +
+            '<span class="jh-srl-score ' + cls + '">' + escapeHtml(total) + '</span>' +
+            '<span class="' + cls + '">(' + escapeHtml(vsPar) + ')</span>' +
+          '</span>'
+        );
+      }
+
+      function renderFinish(event) {
+        return (
+          '<span class="jh-srl-score-unit">' +
+            '<span class="jh-srl-label">Finish</span>' +
+            '<span class="' + (event.finish && event.finish !== '-' ? 'jh-srl-over' : 'jh-srl-muted') + '">' +
+              escapeHtml(event.finish || '-') +
+            '</span>' +
+          '</span>'
+        );
+      }
+
+      function renderMetrics(event) {
+        const metrics = Array.isArray(event.metrics) ? event.metrics : [];
+
+        if (!metrics.length) return '';
+
+        return metrics.map(function(metric) {
+          return (
+            '<span class="jh-srl-score-unit">' +
+              '<span class="jh-srl-label">' + escapeHtml(metric.label) + '</span>' +
+              '<span class="' + (metric.value === 'TBD' || metric.value === '-' ? 'jh-srl-muted' : 'jh-srl-over') + '">' +
+                escapeHtml(metric.value) +
+              '</span>' +
+            '</span>'
+          );
+        }).join('<span class="jh-srl-sep">·</span>');
+      }
+
+      function renderLinks(event) {
+        const links = Array.isArray(event.links) ? event.links : [];
+
+        const validLinks = links.filter(function(link) {
+          return link && link.url && link.url !== '#';
+        });
+
+        if (!validLinks.length) return '';
+
+        return validLinks.map(function(link) {
+          return (
+            '<a class="jh-srl-link" href="' + escapeHtml(link.url) + '" target="_blank" rel="noopener noreferrer">' +
+              escapeHtml(link.label || 'Official Results') +
+            '</a>'
+          );
+        }).join('<span class="jh-srl-sep">·</span>');
+      }
+
+      function renderRow(event) {
+        const lineParts = [
+          renderStatus(event),
+          renderRounds(event),
+          renderTotal(event),
+          renderFinish(event),
+          renderMetrics(event),
+          renderLinks(event)
+        ].filter(Boolean);
+
+        return (
+          '<article class="jh-srl-row">' +
+            '<div class="jh-srl-main">' +
+              '<div class="jh-srl-event">' + escapeHtml(event.tournament || '') + '</div>' +
+              '<div class="jh-srl-date">' + escapeHtml(event.date || '') + '</div>' +
+            '</div>' +
+            '<p class="jh-srl-course">' + escapeHtml(event.course || '') + '</p>' +
+            '<div class="jh-srl-result-line">' +
+              lineParts.join('<span class="jh-srl-sep">·</span>') +
+            '</div>' +
+          '</article>'
+        );
+      }
+
+      list.innerHTML = results.map(renderRow).join('');
+    })();
+  </script>
+</section>
+
+-->
+  
   
 
 <div class="performance-log-section" style="max-width: 900px; margin: 0 auto 30px; padding: 0px; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
@@ -4364,6 +4992,12 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
 
 
 
+
+
+
+
+
+
 <div id="joshua-unique-section" style="max-width: 900px; margin: 0 auto 70px; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; clear: both;">
   
     
@@ -4760,6 +5394,7 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
 
           <div class="jpp-select-wrap">
             <select class="jpp-select" id="jpp-select" aria-label="Jump to insight card">
+              <option value="12">Portal Listed</option>
               <option value="11">Season-End Process</option>
               <option value="10">Freshman Season Review</option>
               <option value="9">AAC Championship</option>
@@ -4786,6 +5421,216 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
       <div class="jpp-stage-wrap">
         <div class="jpp-stage" id="jpp-stage">
 
+
+ <div
+  class="insight-card-item"
+  data-card-id="12"
+  style="
+    flex: 0 0 85%;
+    min-width: 320px;
+    max-width: 500px;
+    scroll-snap-align: start;
+    background:
+      radial-gradient(circle at 8% 0%, rgba(34,197,94,0.18), transparent 34%),
+      radial-gradient(circle at 96% 100%, rgba(201,138,46,0.18), transparent 34%),
+      linear-gradient(180deg, #101010 0%, #080808 100%);
+    border-radius: 25px;
+    padding: 35px 30px;
+    color: white;
+    box-shadow:
+      0 18px 38px rgba(0,0,0,0.30),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    border: 1px solid rgba(34,197,94,0.38);
+  "
+>
+  <div>
+    <div
+      class="bts-card-head"
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        gap: 12px;
+      "
+    >
+      <div style="display: flex; align-items: center;">
+        <div
+          style="
+            background: rgba(34,197,94,0.13);
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            border: 1px solid rgba(34,197,94,0.42);
+            flex-shrink: 0;
+            box-shadow: 0 0 0 6px rgba(34,197,94,0.06);
+          "
+        >
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#22c55e"
+            stroke-width="2.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M6.8 12.4 10.2 15.7 17.4 8.6"></path>
+          </svg>
+        </div>
+
+        <h3
+          style="
+            font-size: 20px;
+            color: #c98a2e;
+            margin: 0;
+            font-weight: 800;
+          "
+        >
+          Beyond the Scorecard
+        </h3>
+      </div>
+
+      <span
+        class="bts-event-badge"
+        style="
+          font-size: 10px;
+          font-weight: 900;
+          color: #ffffff;
+          background: linear-gradient(135deg, #16a34a 0%, #c98a2e 100%);
+          padding: 5px 12px;
+          border-radius: 50px;
+          white-space: nowrap;
+          letter-spacing: 0.04em;
+          box-shadow: 0 8px 18px rgba(34,197,94,0.18);
+        "
+      >
+        Portal Listed
+      </span>
+    </div>
+
+    <div
+      style="
+        font-size: 14px;
+        line-height: 1.7;
+        color: #efefef;
+        border-left: 4px solid #22c55e;
+        padding-left: 20px;
+        text-align: left;
+      "
+    >
+      <p
+        style="
+          margin: 0 0 10px 0;
+          color: #22c55e;
+          font-weight: 800;
+          font-size: 16px;
+        "
+      >
+        Official Portal Listing Confirmed — Next Stage Begins
+      </p>
+
+      <div
+        style="
+          margin: 0 0 14px 0;
+          padding: 13px 14px;
+          border-radius: 16px;
+          border: 1px solid rgba(34,197,94,0.30);
+          background:
+            radial-gradient(circle at 0% 0%, rgba(34,197,94,0.16), transparent 35%),
+            linear-gradient(135deg, rgba(34,197,94,0.12) 0%, rgba(201,138,46,0.10) 100%);
+          box-shadow:
+            0 10px 22px rgba(0,0,0,0.16),
+            inset 0 1px 0 rgba(255,255,255,0.06);
+        "
+      >
+        <p
+          style="
+            margin: 0 0 5px 0;
+            color: rgba(255,255,255,0.70);
+            font-size: 10px;
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+          "
+        >
+          Confirmed Status Update
+        </p>
+
+        <p
+          style="
+            margin: 0;
+            color: #ffffff;
+            font-size: 14px;
+            line-height: 1.55;
+            font-weight: 750;
+          "
+        >
+          UTSA Compliance confirmed that Joshua was entered into the NCAA
+          Transfer Portal on June 4, 2026, at 8:00 a.m. His completed
+          freshman-season profile is now available for NCAA program review.
+        </p>
+      </div>
+
+<p style="margin-bottom: 10px;">
+  After completing his freshman season at UTSA and following the
+  institutional compliance process, Joshua is now officially listed in
+  the NCAA Transfer Portal.
+</p>
+
+<p style="margin-bottom: 10px;">
+  The next stage will involve appropriate communication with NCAA
+  programs during the men’s golf transfer window.
+</p>
+
+<p style="margin-bottom: 10px;">
+  The decision process will focus on identifying the right environment
+  for Joshua’s next stage: one aligned with his academic path, team
+  culture, competitive growth, and long-term player development.
+</p>
+
+<p style="margin-bottom: 10px;">
+  Joshua remains grateful for his freshman year at UTSA, the opportunity
+  to compete as a Roadrunner, and the coaches, staff, and teammates who
+  were part of his first Division I season.
+</p>
+
+      <p style="margin-bottom: 0; color: #ffffff; font-weight: 700;">
+        Confirmed updates and the final outcome of this process will be posted
+        here when appropriate.
+      </p>
+    </div>
+  </div>
+
+  <div
+    style="
+      text-align: right;
+      font-size: 11px;
+      color: #777;
+      font-weight: 800;
+      margin-top: 20px;
+      line-height: 1.55;
+    "
+  >
+    Status Note: NCAA Transfer Portal listing confirmed June 4, 2026, 8:00 a.m.
+    · Next-stage program review and communication may proceed · Posted On:
+    June 4, 2026
+  </div>
+</div>         
+          
+          
 
 <div
   class="insight-card-item"
@@ -4895,7 +5740,7 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
         Direct Coach Communication — Portal Entry Scheduled
       </p>
 
-<p style="margin-bottom: 10px;">
+     <p style="margin-bottom: 10px;">
   Following the completion of the 2025–26 season, Joshua closed his
   freshman year at UTSA through direct coach communication and the proper
   institutional transfer process.
@@ -5403,9 +6248,10 @@ window.addEventListener('DOMContentLoaded', updateMetrics);
   if (!stage || !prevBtn || !nextBtn || !select || !counter || !currentLabel) return;
 
   const cards = Array.from(stage.querySelectorAll('.insight-card-item'));
-  const orderedIds = [11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+  const orderedIds = [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
 
   const cardLabels = {
+    12: 'Official Portal Listing Confirmed — Next Stage Begins',
     11: 'Season-End Process — Freshman Season Closed Through Proper Process',
     10: 'Freshman Season Review — Completed First-Year Division I Season',
     9: 'AAC Championship — American Conference Championship — Sarasota, Florida',
