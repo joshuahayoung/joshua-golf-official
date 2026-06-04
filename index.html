@@ -355,12 +355,13 @@
 
 
 
-<section class="transfer-snapshot-section" aria-labelledby="transferSnapshotTitle" data-portal-state="draft-copy">
+<section class="transfer-snapshot-section" aria-labelledby="transferSnapshotTitle" data-portal-state="portal-listed">
   <style>
     .transfer-snapshot-section {
       --tsnap-navy: #0C2340;
       --tsnap-orange: #F15A22;
       --tsnap-gold: #c98a2e;
+      --tsnap-green: #16a34a;
       --tsnap-white: #ffffff;
       --tsnap-white-soft: rgba(255,255,255,0.84);
       --tsnap-white-muted: rgba(255,255,255,0.64);
@@ -377,6 +378,11 @@
       font-family: inherit;
     }
 
+    .transfer-snapshot-section,
+    .transfer-snapshot-section * {
+      box-sizing: border-box;
+    }
+
     .transfer-snapshot-last-updated-wrap {
       display: flex;
       justify-content: flex-end;
@@ -384,7 +390,6 @@
       width: 100%;
       margin: 0 0 10px 0;
       padding-right: 12px;
-      box-sizing: border-box;
     }
 
     .transfer-snapshot-last-updated {
@@ -399,10 +404,11 @@
       position: relative;
       overflow: hidden;
       background:
-        radial-gradient(circle at 12% 18%, rgba(241,90,34,0.15), transparent 30%),
-        radial-gradient(circle at 88% 82%, rgba(201,138,46,0.16), transparent 28%),
+        radial-gradient(circle at 12% 18%, rgba(241,90,34,0.17), transparent 30%),
+        radial-gradient(circle at 88% 82%, rgba(22,163,74,0.14), transparent 29%),
+        radial-gradient(circle at 70% 8%, rgba(201,138,46,0.16), transparent 24%),
         linear-gradient(135deg, #0C2340 0%, #112c50 52%, #0C2340 100%);
-      border: 1px solid rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.10);
       border-radius: var(--tsnap-radius);
       box-shadow: var(--tsnap-shadow);
     }
@@ -413,18 +419,18 @@
       inset: 0;
       pointer-events: none;
       background:
-        linear-gradient(90deg, rgba(255,255,255,0.055), rgba(255,255,255,0) 28%),
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0) 44%);
-      opacity: 0.75;
+        linear-gradient(90deg, rgba(255,255,255,0.060), rgba(255,255,255,0) 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.065), rgba(255,255,255,0) 44%);
+      opacity: 0.78;
     }
 
     .transfer-snapshot-shell::after {
       content: "";
       position: absolute;
       inset: auto 0 0 0;
-      height: 3px;
-      background: linear-gradient(90deg, #F15A22 0%, #c98a2e 55%, #F15A22 100%);
-      opacity: 0.95;
+      height: 4px;
+      background: linear-gradient(90deg, #16a34a 0%, #F15A22 44%, #c98a2e 74%, #16a34a 100%);
+      opacity: 0.98;
     }
 
     .transfer-snapshot-inner {
@@ -456,25 +462,25 @@
       gap: 11px;
       margin: 0 0 18px 0;
       padding: 10px 15px;
-      border: 1px solid rgba(241,90,34,0.52);
+      border: 1px solid rgba(22,163,74,0.45);
       border-radius: 999px;
-      background: rgba(241,90,34,0.13);
-      color: var(--tsnap-orange);
+      background: rgba(22,163,74,0.14);
+      color: #8ff0b0;
       font-size: 13.5px;
       line-height: 1;
       font-weight: 900;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       white-space: nowrap;
-      box-shadow: 0 10px 24px rgba(241,90,34,0.13);
+      box-shadow: 0 10px 24px rgba(22,163,74,0.12);
     }
 
     .transfer-snapshot-kicker-dot {
       width: 9px;
       height: 9px;
       border-radius: 50%;
-      background: linear-gradient(180deg, #F15A22 0%, #c98a2e 100%);
-      box-shadow: 0 0 0 7px rgba(241,90,34,0.13);
+      background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%);
+      box-shadow: 0 0 0 7px rgba(22,163,74,0.16);
       flex: 0 0 auto;
     }
 
@@ -496,6 +502,75 @@
       font-size: 15.5px;
       line-height: 1.72;
       font-weight: 500;
+    }
+
+    .transfer-snapshot-confirmed-bar {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      gap: 10px;
+      margin-top: 22px;
+      padding: 16px 17px;
+      border-radius: 20px;
+      border: 1px solid rgba(22,163,74,0.32);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(22,163,74,0.19), transparent 30%),
+        linear-gradient(135deg, rgba(22,163,74,0.16) 0%, rgba(241,90,34,0.12) 48%, rgba(255,255,255,0.055) 100%);
+      box-shadow:
+        0 14px 30px rgba(0,0,0,0.14),
+        inset 0 1px 0 rgba(255,255,255,0.12);
+    }
+
+    .transfer-snapshot-confirmed-bar::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 5px;
+      background: linear-gradient(180deg, #22c55e 0%, #F15A22 100%);
+    }
+
+    .transfer-snapshot-confirmed-label {
+      margin: 0;
+      color: rgba(255,255,255,0.72);
+      font-size: 10px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .transfer-snapshot-confirmed-text {
+      margin: 0;
+      color: #ffffff;
+      font-size: 16px;
+      line-height: 1.35;
+      font-weight: 900;
+      letter-spacing: -0.015em;
+    }
+
+    .transfer-snapshot-confirmed-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+    }
+
+    .transfer-snapshot-confirmed-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 27px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.13);
+      background: rgba(12,35,64,0.24);
+      color: rgba(255,255,255,0.84);
+      font-size: 10px;
+      line-height: 1;
+      font-weight: 850;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .transfer-snapshot-points {
@@ -577,7 +652,7 @@
       margin: 0;
       padding: 12px 14px 0;
       border-top: 1px solid rgba(255,255,255,0.09);
-      color: rgba(255,255,255,0.60);
+      color: rgba(255,255,255,0.66);
       font-size: 11.7px;
       line-height: 1.55;
       font-weight: 500;
@@ -739,9 +814,9 @@
       gap: 12px;
       padding: 16px;
       border-radius: 20px;
-      border: 1px solid rgba(241,90,34,0.36);
+      border: 1px solid rgba(22,163,74,0.38);
       background:
-        linear-gradient(135deg, rgba(241,90,34,0.20) 0%, rgba(201,138,46,0.12) 48%, rgba(255,255,255,0.055) 100%);
+        linear-gradient(135deg, rgba(22,163,74,0.22) 0%, rgba(241,90,34,0.17) 50%, rgba(255,255,255,0.060) 100%);
       box-shadow:
         0 16px 34px rgba(0,0,0,0.18),
         inset 0 1px 0 rgba(255,255,255,0.12);
@@ -752,8 +827,8 @@
       position: absolute;
       inset: 0 auto 0 0;
       width: 5px;
-      background: linear-gradient(180deg, #F15A22 0%, #c98a2e 100%);
-      opacity: 0.96;
+      background: linear-gradient(180deg, #22c55e 0%, #F15A22 100%);
+      opacity: 0.98;
     }
 
     .transfer-snapshot-status-module::after {
@@ -762,9 +837,9 @@
       inset: 0;
       pointer-events: none;
       background:
-        radial-gradient(circle at 18% 8%, rgba(255,255,255,0.13), transparent 28%),
-        linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0) 48%);
-      opacity: 0.75;
+        radial-gradient(circle at 18% 8%, rgba(255,255,255,0.15), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0) 48%);
+      opacity: 0.78;
     }
 
     .transfer-snapshot-status-content {
@@ -782,9 +857,9 @@
       margin: 0;
       padding: 7px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.18);
       background: rgba(12,35,64,0.28);
-      color: rgba(255,255,255,0.84);
+      color: rgba(255,255,255,0.88);
       font-size: 10px;
       line-height: 1;
       font-weight: 900;
@@ -796,25 +871,25 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: #F15A22;
-      box-shadow: 0 0 0 5px rgba(241,90,34,0.14);
+      background: #22c55e;
+      box-shadow: 0 0 0 5px rgba(22,163,74,0.17);
       flex: 0 0 auto;
     }
 
     .transfer-snapshot-status-headline {
       margin: 0;
       color: #ffffff;
-      font-size: 18px;
-      line-height: 1.23;
-      font-weight: 900;
-      letter-spacing: -0.02em;
+      font-size: 19px;
+      line-height: 1.22;
+      font-weight: 950;
+      letter-spacing: -0.025em;
     }
 
     .transfer-snapshot-status-summary {
       margin: 0;
-      color: rgba(255,255,255,0.78);
-      font-size: 12.6px;
-      line-height: 1.52;
+      color: rgba(255,255,255,0.81);
+      font-size: 12.7px;
+      line-height: 1.54;
       font-weight: 560;
     }
 
@@ -831,12 +906,12 @@
       align-items: start;
       padding: 10px 11px;
       border-radius: 13px;
-      border: 1px solid rgba(255,255,255,0.115);
-      background: rgba(12,35,64,0.22);
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(12,35,64,0.23);
     }
 
     .transfer-snapshot-status-key {
-      color: rgba(255,255,255,0.62);
+      color: rgba(255,255,255,0.64);
       font-size: 9.5px;
       line-height: 1.3;
       font-weight: 900;
@@ -845,9 +920,9 @@
     }
 
     .transfer-snapshot-status-value {
-      color: rgba(255,255,255,0.94);
+      color: rgba(255,255,255,0.95);
       font-size: 12.3px;
-      line-height: 1.4;
+      line-height: 1.42;
       font-weight: 650;
     }
 
@@ -874,7 +949,6 @@
         border-color 0.18s ease,
         color 0.18s ease;
       font: inherit;
-      box-sizing: border-box;
     }
 
     .transfer-snapshot-btn-primary {
@@ -928,7 +1002,7 @@
       margin: 1px 0 0 0;
       padding-top: 11px;
       border-top: 1px solid rgba(255,255,255,0.09);
-      color: rgba(255,255,255,0.62);
+      color: rgba(255,255,255,0.64);
       font-size: 11.5px;
       line-height: 1.5;
       text-align: center;
@@ -995,13 +1069,13 @@
         padding: 9px 12px;
         font-size: 11px;
         letter-spacing: 0.13em;
-        box-shadow: 0 8px 18px rgba(241,90,34,0.10);
+        box-shadow: 0 8px 18px rgba(22,163,74,0.10);
       }
 
       .transfer-snapshot-kicker-dot {
         width: 8px;
         height: 8px;
-        box-shadow: 0 0 0 6px rgba(241,90,34,0.12);
+        box-shadow: 0 0 0 6px rgba(22,163,74,0.13);
       }
 
       .transfer-snapshot-title {
@@ -1013,6 +1087,26 @@
         margin-top: 12px;
         font-size: 14px;
         line-height: 1.65;
+      }
+
+      .transfer-snapshot-confirmed-bar {
+        margin-top: 18px;
+        padding: 14px 14px 14px 16px;
+        border-radius: 17px;
+      }
+
+      .transfer-snapshot-confirmed-text {
+        font-size: 14.5px;
+        line-height: 1.36;
+      }
+
+      .transfer-snapshot-confirmed-meta {
+        gap: 7px;
+      }
+
+      .transfer-snapshot-confirmed-pill {
+        font-size: 9px;
+        padding: 7px 9px;
       }
 
       .transfer-snapshot-points {
@@ -1114,8 +1208,8 @@
       }
 
       .transfer-snapshot-status-headline {
-        font-size: 16.5px;
-        line-height: 1.28;
+        font-size: 16.8px;
+        line-height: 1.27;
       }
 
       .transfer-snapshot-status-summary {
@@ -1163,168 +1257,167 @@
     }
   </style>
 
-  <div class="transfer-snapshot-last-updated-wrap" id="transferSnapshotLastUpdatedWrap" hidden>
-    <span class="transfer-snapshot-last-updated" id="transferSnapshotLastUpdated"></span>
-  </div>
+ <div class="transfer-snapshot-last-updated-wrap" id="transferSnapshotLastUpdatedWrap" hidden>
+  <span class="transfer-snapshot-last-updated" id="transferSnapshotLastUpdated"></span>
+</div>
 
- <div class="transfer-snapshot-shell">
-    <div class="transfer-snapshot-inner">
-      <div class="transfer-snapshot-copy">
-        <div class="transfer-snapshot-copy-main">
-          <div class="transfer-snapshot-kicker">
-            <span class="transfer-snapshot-kicker-dot" aria-hidden="true"></span>
-            Transfer Snapshot
-          </div>
+<div class="transfer-snapshot-shell">
+  <div class="transfer-snapshot-inner">
+    <div class="transfer-snapshot-copy">
+      <div class="transfer-snapshot-copy-main">
+        <div class="transfer-snapshot-kicker">
+          <span class="transfer-snapshot-kicker-dot" aria-hidden="true"></span>
+          Official Portal Listing
+        </div>
 
-          <h2 class="transfer-snapshot-title" id="transferSnapshotTitle">
-            Completed freshman-season profile organized for coach review.
-          </h2>
+        <h2 class="transfer-snapshot-title" id="transferSnapshotTitle">
+          Officially listed in the NCAA Transfer Portal for coach review.
+        </h2>
 
-          <p class="transfer-snapshot-desc">
-            A single-page summary of freshman-season results, rankings, scoring profile, and lineup-reliability indicators.
+        <p class="transfer-snapshot-desc">
+          Completed freshman-season profile with verified Division I production, a UTSA single-season scoring average record, high lineup reliability, and three years of eligibility remaining.
+        </p>
+
+        <div class="transfer-snapshot-confirmed-bar" aria-label="Official transfer portal listing confirmation">
+          <p class="transfer-snapshot-confirmed-label">
+            Status Update
           </p>
 
-          <ul class="transfer-snapshot-points" aria-label="Snapshot contents">
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M4 19h16M7 16V9M12 16V5M17 16v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-              Key Metrics
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M5 12.5 9.2 16 19 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Tournament Results
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M5 19c5.5-9 8.5-12 14-14M7 14c1.2 0 2.2 1 2.2 2.2S8.2 18.4 7 18.4s-2.2-1-2.2-2.2S5.8 14 7 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              Scoring Profile
-            </li>
-            <li>
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 3 5 7v5c0 4.5 3 7 7 9 4-2 7-4.5 7-9V7l-7-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-              </svg>
-              Lineup Reliability
-            </li>
-          </ul>
-        </div>
-
-        <div class="transfer-snapshot-review-panel" aria-label="Transfer snapshot review context">
-          <div class="transfer-snapshot-review-card">
-            <p class="transfer-snapshot-review-label">Review Scope</p>
-            <p class="transfer-snapshot-review-text">
-              Condenses freshman-season production, scoring record, rankings, and reliability indicators into one review point.
-            </p>
-          </div>
-
-          <div class="transfer-snapshot-review-card">
-            <p class="transfer-snapshot-review-label">Evaluation Use</p>
-            <p class="transfer-snapshot-review-text">
-              Provides a starting point before reviewing full NCAA statistics, tournament logs, and event-by-event results.
-            </p>
-          </div>
-
-          <p class="transfer-snapshot-review-note">
-            Formal transfer-related communication should follow official NCAA Transfer Portal listing.
+          <p class="transfer-snapshot-confirmed-text">
+            UTSA Compliance has confirmed Joshua’s NCAA Transfer Portal entry was completed on June 4, 2026, at 8:00 a.m.
           </p>
-        </div>
 
-        <div class="transfer-snapshot-resume-strip" aria-label="Freshman resume snapshot">
-          <div class="transfer-snapshot-resume-strip-head">
-            <p class="transfer-snapshot-resume-strip-title">Freshman Resume Snapshot</p>
-            <span class="transfer-snapshot-resume-strip-tag">2025–26</span>
-          </div>
+          <div class="transfer-snapshot-confirmed-meta">
+            <span class="transfer-snapshot-confirmed-pill">
+              Officially Listed
+            </span>
 
-          <div class="transfer-snapshot-resume-mini-grid">
-            <div class="transfer-snapshot-resume-mini">
-              <span class="transfer-snapshot-resume-mini-value is-accent">71.73</span>
-              <span class="transfer-snapshot-resume-mini-label">UTSA scoring average record</span>
-            </div>
+            <span class="transfer-snapshot-confirmed-pill">
+              Coach Review Ready
+            </span>
 
-            <div class="transfer-snapshot-resume-mini">
-              <span class="transfer-snapshot-resume-mini-value">32 / 33</span>
-              <span class="transfer-snapshot-resume-mini-label">Counting team rounds</span>
-            </div>
-
-            <div class="transfer-snapshot-resume-mini">
-              <span class="transfer-snapshot-resume-mini-value">3 Years</span>
-              <span class="transfer-snapshot-resume-mini-label">Eligibility remaining</span>
-            </div>
+            <span class="transfer-snapshot-confirmed-pill">
+              3 Years Eligibility
+            </span>
           </div>
         </div>
+
+        <ul class="transfer-snapshot-points" aria-label="Snapshot contents">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12.5 9.2 16 19 6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Portal Listed
+          </li>
+
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 19h16M7 16V9M12 16V5M17 16v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Key Metrics
+          </li>
+
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 19c5.5-9 8.5-12 14-14M7 14c1.2 0 2.2 1 2.2 2.2S8.2 18.4 7 18.4s-2.2-1-2.2-2.2S5.8 14 7 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Scoring Profile
+          </li>
+
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3 5 7v5c0 4.5 3 7 7 9 4-2 7-4.5 7-9V7l-7-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+            Lineup Reliability
+          </li>
+        </ul>
       </div>
 
-      <div class="transfer-snapshot-side">
-        <div class="transfer-snapshot-side-panel">
-          <div class="transfer-snapshot-status-module" aria-label="Transfer process status">
-            <div class="transfer-snapshot-status-content">
-              <p class="transfer-snapshot-status-badge">
-                <span class="transfer-snapshot-status-badge-dot" aria-hidden="true"></span>
-                Transfer Process Status
-              </p>
+      <div class="transfer-snapshot-review-panel" aria-label="Transfer snapshot review context">
+        <div class="transfer-snapshot-review-card">
+          <p class="transfer-snapshot-review-label">Review Scope</p>
+          <p class="transfer-snapshot-review-text">
+            Condenses freshman-season production, scoring record, rankings, and reliability indicators into one coach-review point.
+          </p>
+        </div>
 
-              <h3 class="transfer-snapshot-status-headline">
-                Student-Side Transfer Requirements Completed · Portal Entry Scheduled
-              </h3>
+        <div class="transfer-snapshot-review-card">
+          <p class="transfer-snapshot-review-label">Evaluation Use</p>
+          <p class="transfer-snapshot-review-text">
+            Provides a starting point before reviewing full NCAA statistics, tournament logs, and event-by-event results.
+          </p>
+        </div>
+      </div>
+    </div>
 
-              <p class="transfer-snapshot-status-summary">
-                Joshua has submitted the required transfer notification materials to UTSA Compliance and completed the required NCAA transfer education module. UTSA Compliance has confirmed that Joshua is scheduled for NCAA Transfer Portal entry on June 4, 2026, at 8:00 a.m., the first day the men’s golf transfer window opens.
-              </p>
+    <div class="transfer-snapshot-side">
+      <div class="transfer-snapshot-side-panel">
+        <div class="transfer-snapshot-status-module" aria-label="Transfer process status">
+          <div class="transfer-snapshot-status-content">
+            <p class="transfer-snapshot-status-badge">
+              <span class="transfer-snapshot-status-badge-dot" aria-hidden="true"></span>
+              Confirmed Portal Status
+            </p>
 
-              <div class="transfer-snapshot-status-grid">
-                <div class="transfer-snapshot-status-item">
-                  <span class="transfer-snapshot-status-key">Listing</span>
-                  <span class="transfer-snapshot-status-value">
-                    Portal entry is scheduled for June 4, 2026, at 8:00 a.m.; official listing remains pending until institutional entry is completed.
-                  </span>
-                </div>
+            <h3 class="transfer-snapshot-status-headline">
+              Listed in the NCAA Transfer Portal
+            </h3>
 
-                <div class="transfer-snapshot-status-item">
-                  <span class="transfer-snapshot-status-key">Contact</span>
-                  <span class="transfer-snapshot-status-value">
-                    Formal transfer-related contact should follow official NCAA Transfer Portal listing.
-                  </span>
-                </div>
+            <p class="transfer-snapshot-status-summary">
+              Joshua’s transfer portal entry has been completed and confirmed by UTSA Compliance. His completed freshman-season profile is now available for transfer-related coach review.
+            </p>
+
+            <div class="transfer-snapshot-status-grid">
+              <div class="transfer-snapshot-status-item">
+                <span class="transfer-snapshot-status-key">Listing</span>
+                <span class="transfer-snapshot-status-value">
+                  Officially listed as of June 4, 2026, at 8:00 a.m.
+                </span>
+              </div>
+
+              <div class="transfer-snapshot-status-item">
+                <span class="transfer-snapshot-status-key">Contact</span>
+                <span class="transfer-snapshot-status-value">
+                  NCAA program communication may proceed following confirmed NCAA Transfer Portal listing.
+                </span>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="transfer-snapshot-card">
-            <p class="transfer-snapshot-card-label">Quick Access</p>
-            <p class="transfer-snapshot-card-text">
-              Open the snapshot for condensed performance, consistency, and lineup-reliability data.
-            </p>
-          </div>
+        <div class="transfer-snapshot-card">
+          <p class="transfer-snapshot-card-label">Quick Access</p>
+          <p class="transfer-snapshot-card-text">
+            Open the snapshot for condensed performance, consistency, and lineup-reliability data.
+          </p>
+        </div>
 
-          <div class="transfer-snapshot-actions">
-            <a
-              class="transfer-snapshot-btn transfer-snapshot-btn-primary"
-              href="transfer-snapshot.html"
-            >
-              View Transfer Snapshot
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
+        <div class="transfer-snapshot-actions">
+          <a
+            class="transfer-snapshot-btn transfer-snapshot-btn-primary"
+            href="transfer-snapshot.html"
+          >
+            View Transfer Snapshot
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
 
-            <a
-              class="transfer-snapshot-btn transfer-snapshot-btn-secondary"
-              href="ncaa-stats.html"
-            >
-              Review NCAA Stats & Results
-            </a>
+          <a
+            class="transfer-snapshot-btn transfer-snapshot-btn-secondary"
+            href="ncaa-stats.html"
+          >
+            Review NCAA Stats & Results
+          </a>
 
-            <p class="transfer-snapshot-note">
-              Condensed profile for preliminary evaluation.
-            </p>
-          </div>
+          <p class="transfer-snapshot-note">
+            Confirmed transfer profile for coach review.
+          </p>
         </div>
       </div>
     </div>
   </div>
+</div>
 
   <script>
     (function () {
@@ -1373,6 +1466,7 @@
   id="jh-resume-download-block"
   class="jh-resume-download-section"
   aria-labelledby="jh-resume-download-title"
+  data-portal-state="portal-listed"
 >
   <style>
     #jh-resume-download-block,
@@ -1404,6 +1498,11 @@
           circle at top left,
           rgba(241, 90, 34, 0.10),
           transparent 34%
+        ),
+        radial-gradient(
+          circle at bottom right,
+          rgba(22, 163, 74, 0.10),
+          transparent 32%
         ),
         linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
       box-shadow: 0 18px 42px rgba(12, 35, 64, 0.10);
@@ -1438,7 +1537,7 @@
     }
 
     #jh-resume-download-block .jhrd-subtitle {
-      max-width: 740px;
+      max-width: 760px;
       margin: 12px 0 0;
       color: #475569;
       font-size: 14.5px;
@@ -1461,6 +1560,75 @@
       text-transform: uppercase;
       white-space: nowrap;
       box-shadow: 0 10px 20px rgba(12, 35, 64, 0.16);
+    }
+
+    #jh-resume-download-block .jhrd-status-pill::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      margin-right: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.16);
+      flex: 0 0 auto;
+    }
+
+    #jh-resume-download-block .jhrd-portal-banner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+      margin: 0 30px;
+      padding: 15px 17px;
+      border-radius: 18px;
+      border: 1px solid rgba(22, 163, 74, 0.22);
+      background:
+        radial-gradient(
+          circle at top left,
+          rgba(22, 163, 74, 0.13),
+          transparent 34%
+        ),
+        linear-gradient(
+          135deg,
+          rgba(22, 163, 74, 0.09) 0%,
+          rgba(241, 90, 34, 0.055) 100%
+        );
+    }
+
+    #jh-resume-download-block .jhrd-portal-label {
+      margin: 0 0 5px;
+      color: #166534;
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 1.4px;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    #jh-resume-download-block .jhrd-portal-text {
+      margin: 0;
+      color: #0c2340;
+      font-size: 13.4px;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    #jh-resume-download-block .jhrd-portal-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 32px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #ecfdf5;
+      border: 1px solid rgba(22, 163, 74, 0.22);
+      color: #166534;
+      font-size: 9.5px;
+      font-weight: 950;
+      letter-spacing: 1px;
+      line-height: 1;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
     #jh-resume-download-block .jhrd-grid {
@@ -1667,11 +1835,10 @@
       line-height: 1.7;
     }
 
-	  #jh-resume-download-block .jhrd-footer
-.jhrd-contact-note {
-margin-top: 10px;
-}
-	  
+    #jh-resume-download-block .jhrd-footer .jhrd-contact-note {
+      margin-top: 10px;
+    }
+
     #jh-resume-download-block .jhrd-footer strong {
       color: #0c2340;
       font-weight: 900;
@@ -1693,6 +1860,17 @@ margin-top: 10px;
         width: fit-content;
         white-space: normal;
         text-align: center;
+      }
+
+      #jh-resume-download-block .jhrd-portal-banner {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 0 20px;
+        padding: 14px 15px;
+      }
+
+      #jh-resume-download-block .jhrd-portal-badge {
+        width: fit-content;
       }
 
       #jh-resume-download-block .jhrd-grid {
@@ -1759,16 +1937,36 @@ margin-top: 10px;
         </h2>
 
         <p class="jhrd-subtitle">
-          Two downloadable PDF references are provided for different
-          coach-review needs: a one-page transfer golf resume for fast
-          evaluation and a full athletic resume for extended background
-          review.
+          Two PDF references are provided for coach-review needs:
+          a one-page transfer golf resume for fast evaluation and a
+          full athletic resume for extended background review. Joshua
+          is officially listed in the NCAA Transfer Portal following
+          institutional compliance entry confirmation.
         </p>
       </div>
 
       <div class="jhrd-status-pill">
-        Resume PDFs
+        Officially Listed
       </div>
+    </div>
+
+    <div class="jhrd-portal-banner" aria-label="NCAA Transfer Portal listing confirmation">
+      <div>
+        <p class="jhrd-portal-label">
+          NCAA Transfer Portal Status
+        </p>
+
+        <p class="jhrd-portal-text">
+          UTSA Compliance has confirmed Joshua’s NCAA Transfer Portal
+          entry was completed on June 4, 2026, at 8:00 a.m. These
+          resume files are available for coach review during the men’s
+          golf transfer window.
+        </p>
+      </div>
+
+      <span class="jhrd-portal-badge">
+        Coach Review Ready
+      </span>
     </div>
 
     <div class="jhrd-grid">
@@ -1814,13 +2012,13 @@ margin-top: 10px;
 
           <div class="jhrd-action-row">
             <a
-  class="jhrd-download-btn"
-  href="https://joshuahonggolf.com/images/Joshua_Hong_2026_Transfer_Golf_Resume.pdf"
-  target="_blank"
-  rel="noopener"
-  data-resume-type="transfer"
->
-              <span>Download Resume</span>
+              class="jhrd-download-btn"
+              href="https://joshuahonggolf.com/images/Joshua_Hong_2026_Transfer_Golf_Resume.pdf"
+              target="_blank"
+              rel="noopener"
+              data-resume-type="transfer"
+            >
+              <span>View | Download PDF</span>
 
               <svg
                 viewBox="0 0 24 24"
@@ -1866,11 +2064,11 @@ margin-top: 10px;
             Full Athletic Resume
           </h3>
 
-          <p class="jhrd-card-text">
-			  A broader athletic profile including freshman-season data,
-			  junior background, development record, achievements, rankings,
-			  academic context, and official verification links.
-			</p>
+<p class="jhrd-card-text">
+  A broader athletic profile including freshman-season data,
+  junior background, development record, achievements, rankings,
+  academic context, and official verification links.
+</p>
 
           <div class="jhrd-points">
             <div class="jhrd-point">
@@ -1891,13 +2089,13 @@ margin-top: 10px;
 
           <div class="jhrd-action-row">
             <a
-  class="jhrd-download-btn"
-  href="https://joshuahonggolf.com/images/Joshua_Hong_Full_Athletic_Resume_2026.pdf"
-  target="_blank"
-  rel="noopener"
-  data-resume-type="full"
->
-              <span>Download Resume</span>
+              class="jhrd-download-btn"
+              href="https://joshuahonggolf.com/images/Joshua_Hong_Full_Athletic_Resume_2026.pdf"
+              target="_blank"
+              rel="noopener"
+              data-resume-type="full"
+            >
+              <span>View | Download PDF</span>
 
               <svg
                 viewBox="0 0 24 24"
@@ -1938,15 +2136,15 @@ margin-top: 10px;
   verification links.
 </p>
 
-  <p class="jhrd-contact-note">
-    <strong>Contact:</strong>
-    For compliance purposes, formal
-    transfer-related recruiting contact should
-    be made through the official NCAA Transfer
-    Portal listing once active.
-  </p>
-</div>
-	  
+      <p class="jhrd-contact-note">
+        <strong>Contact:</strong>
+        Joshua is officially listed in the NCAA Transfer
+        Portal following institutional compliance entry
+        confirmation. Transfer-related recruiting
+        communication may proceed through the official
+        NCAA Transfer Portal listing.
+      </p>
+    </div>
   </div>
 
   <script>
@@ -1966,6 +2164,226 @@ margin-top: 10px;
   </script>
 </section>
 
+
+<section style="margin:34px 0 24px;">
+  <style>
+    .jh-contact-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      padding-bottom: 14px;
+    }
+
+    .jh-contact-block {
+      width: 100%;
+      max-width: 980px;
+      background: linear-gradient(180deg, #0c2340 0%, #12335d 100%);
+      border: 1px solid #163a66;
+      border-radius: 26px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.14);
+      overflow: hidden;
+      position: relative;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      z-index: 2;
+    }
+
+    .jh-contact-block::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 26px;
+      pointer-events: none;
+    }
+
+    .jh-contact-accent {
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      bottom: 0;
+      height: 10px;
+      background: linear-gradient(90deg, #f15a22 0%, #ff7a45 100%);
+      border-radius: 0 0 18px 18px;
+      box-shadow: 0 10px 18px rgba(241, 90, 34, 0.28);
+      z-index: 1;
+    }
+
+    .jh-contact-head {
+      padding: 26px 28px 22px;
+      text-align: center;
+    }
+
+    .jh-contact-title {
+      margin: 0;
+      color: #ffffff;
+      font-size: 34px;
+      line-height: 1.02;
+      font-weight: 900;
+      letter-spacing: -0.8px;
+      text-transform: uppercase;
+    }
+
+    .jh-contact-subtitle {
+      margin: 10px auto 0;
+      max-width: 700px;
+      color: rgba(255,255,255,0.78);
+      font-size: 14px;
+      line-height: 1.65;
+      font-weight: 600;
+    }
+
+    .jh-contact-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .jh-contact-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 220px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: #f15a22;
+      border: 1px solid #f15a22;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: 0.25s ease;
+      cursor: pointer;
+      font-family: inherit;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .jh-contact-btn:hover {
+      background: #d94d1a;
+      border-color: #d94d1a;
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+      .jh-contact-wrap {
+        padding-bottom: 12px;
+      }
+
+      .jh-contact-block {
+        border-radius: 20px;
+      }
+
+      .jh-contact-block::before {
+        border-radius: 20px;
+      }
+
+      .jh-contact-accent {
+        left: 18px;
+        right: 18px;
+        height: 8px;
+        border-radius: 0 0 14px 14px;
+      }
+
+      .jh-contact-head {
+        padding: 22px 18px 20px;
+      }
+
+      .jh-contact-title {
+        font-size: 26px;
+        line-height: 1.05;
+      }
+
+      .jh-contact-subtitle {
+        max-width: 100%;
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .jh-contact-btn {
+        width: 100%;
+        max-width: 320px;
+      }
+    }
+  </style>
+
+  <div class="jh-contact-wrap">
+    <div class="jh-contact-block" aria-labelledby="jh-contact-title">
+      <div class="jh-contact-head">
+        <h2 class="jh-contact-title" id="jh-contact-title">Program Contact</h2>
+        <p class="jh-contact-subtitle">For direct transfer-related communication.</p>
+
+        <div class="jh-contact-actions">
+          <button
+            type="button"
+            class="jh-contact-btn"
+            data-jh-email-ref="primary"
+            data-jh-email-subject="Joshua Hong Transfer Inquiry"
+          >
+            Email Joshua Directly
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="jh-contact-accent" aria-hidden="true"></div>
+  </div>
+
+  <script>
+    (function () {
+      const jhProtectedEmails = {
+        primary: {
+          user: [106, 111, 115, 104, 117, 97, 104, 97, 121, 111, 117, 110, 103],
+          host: [104, 111, 116, 109, 97, 105, 108, 46, 99, 111, 109]
+        }
+      };
+
+      function jhDecodeEmailPart(codeArray) {
+        return codeArray.map(function (code) {
+          return String.fromCharCode(code);
+        }).join("");
+      }
+
+      function jhOpenProtectedEmail(emailRef, subjectText) {
+        const entry = jhProtectedEmails[emailRef];
+
+        if (!entry) {
+          return;
+        }
+
+        const user = jhDecodeEmailPart(entry.user);
+        const host = jhDecodeEmailPart(entry.host);
+        const email = user + "@" + host;
+        const subject = encodeURIComponent(subjectText || "");
+
+        window.location.href = "mailto:" + email + "?subject=" + subject;
+      }
+
+      document.addEventListener("click", function (event) {
+        const button = event.target.closest("[data-jh-email-ref]");
+
+        if (!button) {
+          return;
+        }
+
+        event.preventDefault();
+
+        const emailRef = button.getAttribute("data-jh-email-ref");
+        const subject = button.getAttribute("data-jh-email-subject");
+
+        jhOpenProtectedEmail(emailRef, subject);
+      });
+    })();
+  </script>
+</section>
+	
     
        
 <div id="jh-index-key-metrics-panel" style="max-width: 900px; margin: 0 auto 20px; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
@@ -3004,7 +3422,7 @@ margin-top: 10px;
     </div>
 
     <div style="text-align: justify; word-break: keep-all;">
-<p style="font-size: 16.5px; margin: 0 0 18px 0; line-height: 1.85; color: #2d3748;">
+     <p style="font-size: 16.5px; margin: 0 0 18px 0; line-height: 1.85; color: #2d3748;">
   <span style="font-weight: 800; color: #0c2340;">Joshua Hong</span> (b. 2007) is a Korean-Mexican collegiate golfer who completed his freshman season in NCAA Division I at the University of Texas at San Antonio (UTSA).
 </p>
 
@@ -3801,6 +4219,9 @@ margin-top: 10px;
     </a>
   </div>
 
+
+
+	
 <div style="text-align: center; border-top: 1px solid #eee; padding: 30px 20px 60px 20px;">
   <p style="color: #cbd5e1; font-size: 10px; font-weight: 400; letter-spacing: -0.2px; margin-bottom: 8px;">
     멕시코 한국인 골프 선수 자슈아 홍 (Joshua Hong Golf) 공식 기록 페이지
