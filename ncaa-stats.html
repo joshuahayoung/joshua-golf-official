@@ -607,6 +607,8 @@
   </span>
 </div>
 
+
+
 <div id="jh-pga-table-shared"></div>
 
 <style>
@@ -624,7 +626,6 @@
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   }
 
-
   #jh-pga-table-shared .jtc-last-updated-wrap,
   #jh-pga-table-shared .jtc-last-updated {
     display: none !important;
@@ -639,8 +640,7 @@
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
-}
-
+  }
 
   #jh-pga-table-shared .jtc-header-top {
     margin-bottom: 16px;
@@ -659,10 +659,21 @@
     border-left: 5px solid #1e3a8a;
   }
 
-  #jh-pga-table-shared .jtc-header-row.upcoming { border-left-color: #1e3a8a; }
-  #jh-pga-table-shared .jtc-header-row.ongoing { border-left-color: #22c55e; }
-  #jh-pga-table-shared .jtc-header-row.final { border-left-color: #e74c3c; }
-  #jh-pga-table-shared .jtc-header-row.cancelled { border-left-color: #7f1d1d; }
+  #jh-pga-table-shared .jtc-header-row.upcoming {
+    border-left-color: #1e3a8a;
+  }
+
+  #jh-pga-table-shared .jtc-header-row.ongoing {
+    border-left-color: #22c55e;
+  }
+
+  #jh-pga-table-shared .jtc-header-row.final {
+    border-left-color: #e74c3c;
+  }
+
+  #jh-pga-table-shared .jtc-header-row.cancelled {
+    border-left-color: #7f1d1d;
+  }
 
   #jh-pga-table-shared .jtc-header-row h3 {
     color: #0C2340;
@@ -719,10 +730,21 @@
     text-transform: uppercase;
   }
 
-  #jh-pga-table-shared .jtc-badge.upcoming { background: #64748b; }
-  #jh-pga-table-shared .jtc-badge.ongoing { background: #0c2340; }
-  #jh-pga-table-shared .jtc-badge.final { background: #0c2340; }
-  #jh-pga-table-shared .jtc-badge.cancelled { background: #7f1d1d; }
+  #jh-pga-table-shared .jtc-badge.upcoming {
+    background: #64748b;
+  }
+
+  #jh-pga-table-shared .jtc-badge.ongoing {
+    background: #0c2340;
+  }
+
+  #jh-pga-table-shared .jtc-badge.final {
+    background: #0c2340;
+  }
+
+  #jh-pga-table-shared .jtc-badge.cancelled {
+    background: #7f1d1d;
+  }
 
   #jh-pga-table-shared .jtc-dot {
     width: 7px;
@@ -743,16 +765,30 @@
     box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
   }
 
-  #jh-pga-table-shared .jtc-dot.final { background-color: #e74c3c; }
+  #jh-pga-table-shared .jtc-dot.final {
+    background-color: #e74c3c;
+  }
+
   #jh-pga-table-shared .jtc-dot.cancelled {
     background-color: #7f1d1d;
     opacity: 0.7;
   }
 
   @keyframes jtc-live-pulse-green {
-    0%   { opacity: 1; transform: scale(1); }
-    50%  { opacity: 0.35; transform: scale(0.9); }
-    100% { opacity: 1; transform: scale(1); }
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 0.35;
+      transform: scale(0.9);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   #jh-pga-table-shared .jtc-title-wrap {
@@ -852,15 +888,14 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
     color: #0c2340;
     text-decoration: none;
     font-size: 10px;
     font-weight: 900;
-    letter-spacing: 0.7px;
+    letter-spacing: 0.55px;
     text-transform: uppercase;
     border: 1.5px solid #0c2340;
-    padding: 8px 10px;
+    padding: 7px 8px;
     border-radius: 6px;
     transition: all 0.2s ease;
     background: #ffffff;
@@ -870,41 +905,105 @@
   }
 
   #jh-pga-table-shared .jtc-main-link-content {
-    display: inline-flex;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 12px minmax(0, 1fr) 14px;
+    grid-template-rows: auto auto;
     align-items: center;
-    gap: 6px;
+    justify-items: center;
+    column-gap: 5px;
+    row-gap: 2px;
   }
 
-  #jh-pga-table-shared .jtc-main-link-label-stack {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    line-height: 1;
-    white-space: nowrap;
-  }
-
-  #jh-pga-table-shared .jtc-main-link-label-stack .line1,
-  #jh-pga-table-shared .jtc-main-link-label-stack .line2 {
-    display: inline;
+  #jh-pga-table-shared .jtc-main-link-top-row,
+  #jh-pga-table-shared .jtc-main-link-bottom-row {
+    display: contents;
   }
 
   #jh-pga-table-shared .jtc-main-link-dot {
+    grid-column: 1;
+    grid-row: 1 / 3;
     width: 5px;
     height: 5px;
     border-radius: 50%;
     display: inline-block;
+    justify-self: center;
+    align-self: center;
     flex-shrink: 0;
   }
 
-  #jh-pga-table-shared .jtc-main-link-dot.upcoming { background-color: #94a3b8; }
-  #jh-pga-table-shared .jtc-main-link-dot.ongoing { background-color: #22c55e; animation: jtc-link-pulse-green 1.5s infinite; }
-  #jh-pga-table-shared .jtc-main-link-dot.final { background-color: #e74c3c; }
-  #jh-pga-table-shared .jtc-main-link-dot.cancelled { background-color: #7f1d1d; }
+  #jh-pga-table-shared .jtc-main-link-dot.upcoming {
+    background-color: #94a3b8;
+  }
+
+  #jh-pga-table-shared .jtc-main-link-dot.ongoing {
+    background-color: #22c55e;
+    animation: jtc-link-pulse-green 1.5s infinite;
+  }
+
+  #jh-pga-table-shared .jtc-main-link-dot.final {
+    background-color: #e74c3c;
+  }
+
+  #jh-pga-table-shared .jtc-main-link-dot.cancelled {
+    background-color: #7f1d1d;
+  }
+
+  #jh-pga-table-shared .jtc-main-link-live {
+    grid-column: 2;
+    grid-row: 1;
+    display: block;
+    width: 100%;
+    text-align: center;
+    line-height: 1;
+    white-space: nowrap;
+    min-width: 0;
+  }
+
+  #jh-pga-table-shared .jtc-main-link-board {
+    grid-column: 2;
+    grid-row: 2;
+    display: block;
+    width: 100%;
+    text-align: center;
+    line-height: 1;
+    white-space: nowrap;
+    min-width: 0;
+  }
+
+  #jh-pga-table-shared .jtc-main-link-arrow {
+    grid-column: 3;
+    grid-row: 1 / 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    align-self: center;
+    flex: 0 0 auto;
+    line-height: 1;
+  }
+
+  #jh-pga-table-shared .jtc-main-link-arrow svg {
+    display: block;
+    width: 12px;
+    height: 12px;
+  }
 
   @keyframes jtc-link-pulse-green {
-    0%   { opacity: 1; transform: scale(1); }
-    50%  { opacity: 0.35; transform: scale(1.2); }
-    100% { opacity: 1; transform: scale(1); }
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 0.35;
+      transform: scale(1.2);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   #jh-pga-table-shared .jtc-rounds-grid {
@@ -948,10 +1047,21 @@
     white-space: nowrap;
   }
 
-  #jh-pga-table-shared .jtc-round-chip-value.red { color: #e74c3c; }
-  #jh-pga-table-shared .jtc-round-chip-value.blue { color: #60a5fa; }
-  #jh-pga-table-shared .jtc-round-chip-value.navy { color: #bfdbfe; }
-  #jh-pga-table-shared .jtc-round-chip-value.white { color: #ffffff; }
+  #jh-pga-table-shared .jtc-round-chip-value.red {
+    color: #e74c3c;
+  }
+
+  #jh-pga-table-shared .jtc-round-chip-value.blue {
+    color: #60a5fa;
+  }
+
+  #jh-pga-table-shared .jtc-round-chip-value.navy {
+    color: #bfdbfe;
+  }
+
+  #jh-pga-table-shared .jtc-round-chip-value.white {
+    color: #ffffff;
+  }
 
   #jh-pga-table-shared .jtc-total-line {
     display: inline-flex;
@@ -980,11 +1090,25 @@
     color: #ffffff;
   }
 
-  #jh-pga-table-shared .jtc-total-par-wrap .paren { color: #ffffff; }
-  #jh-pga-table-shared .jtc-total-par-wrap .delta.red { color: #e74c3c; }
-  #jh-pga-table-shared .jtc-total-par-wrap .delta.blue { color: #60a5fa; }
-  #jh-pga-table-shared .jtc-total-par-wrap .delta.navy { color: #bfdbfe; }
-  #jh-pga-table-shared .jtc-total-par-wrap .delta.white { color: #ffffff; }
+  #jh-pga-table-shared .jtc-total-par-wrap .paren {
+    color: #ffffff;
+  }
+
+  #jh-pga-table-shared .jtc-total-par-wrap .delta.red {
+    color: #e74c3c;
+  }
+
+  #jh-pga-table-shared .jtc-total-par-wrap .delta.blue {
+    color: #60a5fa;
+  }
+
+  #jh-pga-table-shared .jtc-total-par-wrap .delta.navy {
+    color: #bfdbfe;
+  }
+
+  #jh-pga-table-shared .jtc-total-par-wrap .delta.white {
+    color: #ffffff;
+  }
 
   #jh-pga-table-shared .jtc-pos-value {
     font-size: 27px;
@@ -1108,43 +1232,75 @@
     }
 
     #jh-pga-table-shared .jtc-main-link {
-      font-size: 6px;
-      letter-spacing: 0.22px;
-      padding: 5px 4px;
-      gap: 3px;
-      min-height: 32px;
+      font-size: 6.4px;
+      letter-spacing: 0.14px;
+      padding: 4px 4px;
+      min-height: 34px;
       width: 100%;
-      max-width: 60px;
+      max-width: 64px;
     }
 
-    #jh-pga-table-shared .jtc-main-link svg {
-      width: 8px;
-      height: 8px;
+    #jh-pga-table-shared .jtc-main-link-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      row-gap: 2px;
+      width: 100%;
+    }
+
+    #jh-pga-table-shared .jtc-main-link-top-row,
+    #jh-pga-table-shared .jtc-main-link-bottom-row {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-width: 0;
+      text-align: center;
+      line-height: 1;
+    }
+
+    #jh-pga-table-shared .jtc-main-link-top-row {
+      gap: 3px;
+    }
+
+    #jh-pga-table-shared .jtc-main-link-bottom-row {
+      gap: 2px;
     }
 
     #jh-pga-table-shared .jtc-main-link-dot {
       width: 4px;
       height: 4px;
+      flex: 0 0 4px;
+      display: inline-block;
     }
 
-    #jh-pga-table-shared .jtc-main-link-content {
-      align-items: center;
-      gap: 3px;
-    }
-
-    #jh-pga-table-shared .jtc-main-link-label-stack {
+    #jh-pga-table-shared .jtc-main-link-live,
+    #jh-pga-table-shared .jtc-main-link-board,
+    #jh-pga-table-shared .jtc-main-link-arrow {
       display: inline-flex;
-      flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
-      gap: 1px;
-      line-height: 0.92;
-      white-space: normal;
+      width: auto;
+      grid-column: auto;
+      grid-row: auto;
     }
 
-    #jh-pga-table-shared .jtc-main-link-label-stack .line1,
-    #jh-pga-table-shared .jtc-main-link-label-stack .line2 {
-      display: block;
+    #jh-pga-table-shared .jtc-main-link-live {
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    #jh-pga-table-shared .jtc-main-link-board {
+      font-size: 0.84em;
+      letter-spacing: 0.04px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    #jh-pga-table-shared .jtc-main-link-arrow svg {
+      width: 7px;
+      height: 7px;
     }
 
     #jh-pga-table-shared .jtc-rounds-grid {
@@ -1352,16 +1508,21 @@
         ? `
           <a href="${data.mainLink.url}" target="_blank" class="jtc-main-link">
             <span class="jtc-main-link-content">
-              <span class="jtc-main-link-dot ${badge.className}"></span>
-              <span class="jtc-main-link-label-stack">
-                <span class="line1">${split.line1}</span>
-                <span class="line2">${split.line2}</span>
+              <span class="jtc-main-link-top-row">
+                <span class="jtc-main-link-dot ${badge.className}"></span>
+                <span class="jtc-main-link-live">${split.line1}</span>
+              </span>
+
+              <span class="jtc-main-link-bottom-row">
+                <span class="jtc-main-link-board">${split.line2}</span>
+                <span class="jtc-main-link-arrow" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0C2340" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </span>
               </span>
             </span>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0C2340" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="7" y1="17" x2="17" y2="7"></line>
-              <polyline points="7 7 17 7 17 17"></polyline>
-            </svg>
           </a>
         `
         : "";
