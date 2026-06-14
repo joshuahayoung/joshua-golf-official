@@ -2076,11 +2076,27 @@
 </style>
 
 <style id="jh-pga-table-shared-cardinal-identity">
+  /*
+    USC tournament card identity reset.
+    Scope: #jh-pga-table-shared only.
+
+    Final direction:
+    - Preserve UP NEXT / FINAL / ONGOING status as Cardinal Rojo.
+    - Remove navy-heavy result band.
+    - Do NOT use bright yellow as a wide surface.
+    - Use warm amber / orange-gold only as accent.
+  */
+
   #jh-pga-table-shared {
     --jtc-cardinal: #990000;
     --jtc-cardinal-dark: #650000;
-    --jtc-gold: #ffcc00;
-    --jtc-gold-soft: #fff5cc;
+    --jtc-cardinal-mid: #7a0000;
+
+    --jtc-amber: #c9892b;
+    --jtc-amber-deep: #8f4f16;
+    --jtc-amber-soft: #fff4e2;
+    --jtc-ivory: #fffaf2;
+
     --jtc-navy: #0c2340;
     --jtc-ink: #172033;
     --jtc-muted: #64748b;
@@ -2090,7 +2106,9 @@
     border-left-color: var(--jtc-cardinal) !important;
   }
 
-  #jh-pga-table-shared .jtc-header-row.upnext {
+  #jh-pga-table-shared .jtc-header-row.upnext,
+  #jh-pga-table-shared .jtc-header-row.ongoing,
+  #jh-pga-table-shared .jtc-header-row.final {
     border-left-color: var(--jtc-cardinal) !important;
   }
 
@@ -2106,9 +2124,10 @@
     position: relative;
     border: 1px solid rgba(153, 0, 0, 0.18) !important;
     border-top: 4px solid var(--jtc-cardinal) !important;
+    background: #ffffff !important;
     box-shadow:
-      0 16px 36px rgba(12, 35, 64, 0.12),
-      0 3px 10px rgba(153, 0, 0, 0.05) !important;
+      0 15px 34px rgba(12, 35, 64, 0.10),
+      0 4px 12px rgba(153, 0, 0, 0.055) !important;
   }
 
   #jh-pga-table-shared .jtc-card::before {
@@ -2122,8 +2141,8 @@
       linear-gradient(
         90deg,
         var(--jtc-cardinal-dark) 0%,
-        var(--jtc-cardinal) 42%,
-        var(--jtc-gold) 68%,
+        var(--jtc-cardinal) 46%,
+        var(--jtc-amber) 68%,
         var(--jtc-cardinal-dark) 100%
       );
     pointer-events: none;
@@ -2134,31 +2153,64 @@
     background:
       linear-gradient(
         135deg,
-        rgba(153, 0, 0, 0.045) 0%,
-        #ffffff 48%,
-        rgba(255, 204, 0, 0.16) 100%
+        rgba(153, 0, 0, 0.055) 0%,
+        #ffffff 50%,
+        rgba(201, 137, 43, 0.12) 100%
       ) !important;
-    border-bottom: 1px solid rgba(153, 0, 0, 0.12);
+    border-bottom: 1px solid rgba(153, 0, 0, 0.12) !important;
   }
 
-  #jh-pga-table-shared .jtc-badge.upnext {
+  /*
+    IMPORTANT:
+    UP NEXT stays Cardinal Rojo.
+    Do not convert this to gold/yellow.
+  */
+  #jh-pga-table-shared .jtc-badge.upnext,
+  #jh-pga-table-shared .jtc-badge.ongoing,
+  #jh-pga-table-shared .jtc-badge.final {
     background:
       linear-gradient(
         135deg,
         var(--jtc-cardinal) 0%,
         var(--jtc-cardinal-dark) 100%
       ) !important;
-    color: var(--jtc-gold) !important;
-    border: 1px solid rgba(255, 204, 0, 0.38);
-    border-radius: 999px;
-    box-shadow: 0 6px 14px rgba(153, 0, 0, 0.16);
+    color: #f7d08a !important;
+    border: 1px solid rgba(201, 137, 43, 0.52) !important;
+    border-radius: 999px !important;
+    box-shadow: 0 6px 14px rgba(153, 0, 0, 0.16) !important;
   }
 
-  #jh-pga-table-shared .jtc-dot.upnext {
-    background-color: var(--jtc-gold) !important;
+  #jh-pga-table-shared .jtc-dot.upnext,
+  #jh-pga-table-shared .jtc-dot.final {
+    background-color: #f0b35a !important;
     box-shadow:
-      0 0 0 3px rgba(255, 204, 0, 0.24),
-      0 0 10px rgba(255, 204, 0, 0.24) !important;
+      0 0 0 3px rgba(201, 137, 43, 0.20),
+      0 0 10px rgba(201, 137, 43, 0.20) !important;
+  }
+
+  #jh-pga-table-shared .jtc-dot.ongoing {
+    background-color: #f0b35a !important;
+    animation: jtc-live-pulse-amber 1.6s infinite ease-in-out !important;
+    box-shadow:
+      0 0 0 3px rgba(201, 137, 43, 0.22),
+      0 0 12px rgba(201, 137, 43, 0.22) !important;
+  }
+
+  @keyframes jtc-live-pulse-amber {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 0.50;
+      transform: scale(0.88);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   #jh-pga-table-shared .jtc-title {
@@ -2177,100 +2229,158 @@
     color: #475569 !important;
   }
 
+  /*
+    Replace navy band with Cardinal Rojo band.
+    Amber is only accent, not wide yellow surface.
+  */
   #jh-pga-table-shared .jtc-result-band {
     background:
       linear-gradient(
         135deg,
-        var(--jtc-navy) 0%,
-        #102b4c 54%,
-        var(--jtc-cardinal-dark) 100%
+        var(--jtc-cardinal-dark) 0%,
+        var(--jtc-cardinal) 52%,
+        var(--jtc-cardinal-mid) 78%,
+        #3f1414 100%
       ) !important;
-    border-top: 1px solid rgba(255, 204, 0, 0.24) !important;
+    border-top: 1px solid rgba(201, 137, 43, 0.34) !important;
   }
 
   #jh-pga-table-shared .jtc-link-summary,
   #jh-pga-table-shared .jtc-rounds-summary,
   #jh-pga-table-shared .jtc-total-summary,
   #jh-pga-table-shared .jtc-pos-summary {
-    border-left: 1px solid rgba(255, 204, 0, 0.10);
+    border-left: 1px solid rgba(201, 137, 43, 0.16) !important;
   }
 
   #jh-pga-table-shared .jtc-link-summary {
-    border-left: none;
+    border-left: none !important;
   }
 
   #jh-pga-table-shared .jtc-summary-label {
-    color: rgba(255, 204, 0, 0.78) !important;
+    color: rgba(247, 208, 138, 0.82) !important;
   }
 
   #jh-pga-table-shared .jtc-round-chip {
-    background: rgba(255, 255, 255, 0.055) !important;
-    border: 1px solid rgba(255, 204, 0, 0.18) !important;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.060) !important;
+    border: 1px solid rgba(201, 137, 43, 0.24) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
   }
 
   #jh-pga-table-shared .jtc-round-chip-label {
-    color: rgba(255, 204, 0, 0.72) !important;
+    color: rgba(247, 208, 138, 0.82) !important;
   }
 
-  #jh-pga-table-shared .jtc-round-chip-value.white {
-    color: rgba(255, 255, 255, 0.92) !important;
+  #jh-pga-table-shared .jtc-round-chip-value,
+  #jh-pga-table-shared .jtc-total-score,
+  #jh-pga-table-shared .jtc-total-par-wrap,
+  #jh-pga-table-shared .jtc-pos-value {
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
   }
 
+  #jh-pga-table-shared .jtc-round-chip-value.red,
+  #jh-pga-table-shared .jtc-total-par-wrap .delta.red {
+    color: #f7d08a !important;
+  }
+
+  #jh-pga-table-shared .jtc-round-chip-value.blue,
+  #jh-pga-table-shared .jtc-round-chip-value.navy,
+  #jh-pga-table-shared .jtc-round-chip-value.white,
+  #jh-pga-table-shared .jtc-total-par-wrap .delta.blue,
+  #jh-pga-table-shared .jtc-total-par-wrap .delta.navy,
+  #jh-pga-table-shared .jtc-total-par-wrap .delta.white {
+    color: #ffffff !important;
+  }
+
+  /*
+    Main link default:
+    Ivory/cream surface, Cardinal text, amber edge.
+    This keeps it readable without turning the whole button yellow.
+  */
   #jh-pga-table-shared .jtc-main-link {
     color: var(--jtc-cardinal-dark) !important;
     background:
       linear-gradient(
         180deg,
         #ffffff 0%,
-        #fffaf0 100%
+        var(--jtc-ivory) 100%
       ) !important;
-    border: 1px solid rgba(153, 0, 0, 0.34) !important;
-    box-shadow: 0 5px 12px rgba(12, 35, 64, 0.10);
+    border: 1px solid rgba(143, 79, 22, 0.34) !important;
+    box-shadow:
+      0 5px 12px rgba(12, 35, 64, 0.10),
+      inset 0 1px 0 rgba(255, 255, 255, 0.72) !important;
   }
 
-  #jh-pga-table-shared .jtc-main-link:hover {
-    color: var(--jtc-gold) !important;
+  #jh-pga-table-shared .jtc-main-link:hover,
+  #jh-pga-table-shared .jtc-main-link:focus {
+    color: #f7d08a !important;
     background:
       linear-gradient(
         135deg,
         var(--jtc-cardinal) 0%,
         var(--jtc-cardinal-dark) 100%
       ) !important;
-    border-color: rgba(255, 204, 0, 0.42) !important;
-    box-shadow: 0 8px 18px rgba(153, 0, 0, 0.22);
+    border-color: rgba(201, 137, 43, 0.52) !important;
+    box-shadow:
+      0 8px 18px rgba(153, 0, 0, 0.22),
+      0 3px 10px rgba(12, 35, 64, 0.10) !important;
   }
 
-  #jh-pga-table-shared .jtc-main-link-dot.upnext {
+  #jh-pga-table-shared .jtc-main-link-dot.upnext,
+  #jh-pga-table-shared .jtc-main-link-dot.final {
     background-color: var(--jtc-cardinal) !important;
-    box-shadow: 0 0 0 2px rgba(153, 0, 0, 0.16);
+    box-shadow: 0 0 0 2px rgba(153, 0, 0, 0.16) !important;
   }
 
-  #jh-pga-table-shared .jtc-main-link:hover .jtc-main-link-dot.upnext {
-    background-color: var(--jtc-gold) !important;
-    box-shadow: 0 0 0 2px rgba(255, 204, 0, 0.22);
+  #jh-pga-table-shared .jtc-main-link-dot.ongoing {
+    background-color: var(--jtc-cardinal) !important;
+    animation: jtc-link-pulse-cardinal 1.5s infinite ease-in-out !important;
+    box-shadow: 0 0 0 2px rgba(153, 0, 0, 0.16) !important;
+  }
+
+  @keyframes jtc-link-pulse-cardinal {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 0.48;
+      transform: scale(1.18);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  #jh-pga-table-shared .jtc-main-link:hover .jtc-main-link-dot.upnext,
+  #jh-pga-table-shared .jtc-main-link:hover .jtc-main-link-dot.ongoing,
+  #jh-pga-table-shared .jtc-main-link:hover .jtc-main-link-dot.final,
+  #jh-pga-table-shared .jtc-main-link:focus .jtc-main-link-dot.upnext,
+  #jh-pga-table-shared .jtc-main-link:focus .jtc-main-link-dot.ongoing,
+  #jh-pga-table-shared .jtc-main-link:focus .jtc-main-link-dot.final {
+    background-color: #f0b35a !important;
+    box-shadow:
+      0 0 0 2px rgba(201, 137, 43, 0.24),
+      0 0 10px rgba(201, 137, 43, 0.20) !important;
   }
 
   #jh-pga-table-shared .jtc-main-link-arrow svg {
     stroke: var(--jtc-cardinal-dark) !important;
   }
 
-  #jh-pga-table-shared .jtc-main-link:hover .jtc-main-link-arrow svg {
-    stroke: var(--jtc-gold) !important;
-  }
-
-  #jh-pga-table-shared .jtc-total-score,
-  #jh-pga-table-shared .jtc-total-par-wrap,
-  #jh-pga-table-shared .jtc-pos-value {
-    color: #ffffff !important;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);
+  #jh-pga-table-shared .jtc-main-link:hover .jtc-main-link-arrow svg,
+  #jh-pga-table-shared .jtc-main-link:focus .jtc-main-link-arrow svg {
+    stroke: #f7d08a !important;
   }
 
   @media (max-width: 768px) {
     #jh-pga-table-shared .jtc-card {
       border-top-width: 3px !important;
       box-shadow:
-        0 12px 24px rgba(12, 35, 64, 0.11),
+        0 12px 24px rgba(12, 35, 64, 0.10),
         0 2px 8px rgba(153, 0, 0, 0.045) !important;
     }
 
@@ -2280,52 +2390,27 @@
     }
 
     #jh-pga-table-shared .jtc-card-head {
-      padding: 12px 11px 11px 11px !important;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(153, 0, 0, 0.050) 0%,
+          #ffffff 52%,
+          rgba(201, 137, 43, 0.10) 100%
+        ) !important;
     }
 
-    #jh-pga-table-shared .jtc-badge.upnext {
-      border-radius: 999px;
-      box-shadow: 0 4px 10px rgba(153, 0, 0, 0.13);
+    #jh-pga-table-shared .jtc-badge.upnext,
+    #jh-pga-table-shared .jtc-badge.ongoing,
+    #jh-pga-table-shared .jtc-badge.final {
+      box-shadow: 0 4px 10px rgba(153, 0, 0, 0.13) !important;
     }
 
     #jh-pga-table-shared .jtc-result-band {
-      border-top: 1px solid rgba(255, 204, 0, 0.20) !important;
-    }
-
-    #jh-pga-table-shared .jtc-link-summary,
-    #jh-pga-table-shared .jtc-rounds-summary,
-    #jh-pga-table-shared .jtc-total-summary,
-    #jh-pga-table-shared .jtc-pos-summary {
-      border-left: 1px solid rgba(255, 204, 0, 0.08);
-    }
-
-    #jh-pga-table-shared .jtc-link-summary {
-      border-left: none;
-    }
-
-    #jh-pga-table-shared .jtc-round-chip {
-      border-color: rgba(255, 204, 0, 0.15) !important;
+      border-top: 1px solid rgba(201, 137, 43, 0.28) !important;
     }
 
     #jh-pga-table-shared .jtc-main-link {
-      border-color: rgba(153, 0, 0, 0.30) !important;
-      box-shadow: none;
-    }
-  }
-
-  @media (max-width: 480px) {
-    #jh-pga-table-shared .jtc-card-head {
-      padding: 11px 10px 10px 10px !important;
-    }
-
-    #jh-pga-table-shared .jtc-badge.upnext {
-      padding-left: 8px;
-      padding-right: 8px;
-    }
-
-    #jh-pga-table-shared .jtc-result-band {
-      padding-top: 10px;
-      padding-bottom: 10px;
+      box-shadow: none !important;
     }
   }
 </style>
@@ -2785,183 +2870,12 @@
   }
 </style>
 
-<style id="jh-pga-table-shared-ongoing-cardinal-live-polish">
-  #jh-pga-table-shared .jtc-badge.ongoing {
-    background:
-      linear-gradient(
-        135deg,
-        var(--jtc-cardinal) 0%,
-        var(--jtc-cardinal-dark) 100%
-      ) !important;
-    color: var(--jtc-gold) !important;
-    border: 1px solid rgba(255, 204, 0, 0.42) !important;
-    border-radius: 999px !important;
-    box-shadow:
-      0 7px 16px rgba(153, 0, 0, 0.18),
-      inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
-  }
-
-  #jh-pga-table-shared .jtc-dot.ongoing {
-    background-color: var(--jtc-gold) !important;
-    animation: jtc-live-pulse-gold 1.65s infinite ease-in-out !important;
-    box-shadow:
-      0 0 0 3px rgba(255, 204, 0, 0.22),
-      0 0 10px rgba(255, 204, 0, 0.24) !important;
-  }
-
-  @keyframes jtc-live-pulse-gold {
-    0% {
-      opacity: 1;
-      transform: scale(1);
-      box-shadow:
-        0 0 0 3px rgba(255, 204, 0, 0.22),
-        0 0 10px rgba(255, 204, 0, 0.24);
-    }
-
-    50% {
-      opacity: 0.52;
-      transform: scale(0.88);
-      box-shadow:
-        0 0 0 6px rgba(255, 204, 0, 0.10),
-        0 0 14px rgba(255, 204, 0, 0.30);
-    }
-
-    100% {
-      opacity: 1;
-      transform: scale(1);
-      box-shadow:
-        0 0 0 3px rgba(255, 204, 0, 0.22),
-        0 0 10px rgba(255, 204, 0, 0.24);
-    }
-  }
-
-  #jh-pga-table-shared .jtc-main-link-dot.ongoing {
-    background-color: var(--jtc-gold) !important;
-    animation: none !important;
-    box-shadow:
-      0 0 0 2px rgba(255, 204, 0, 0.20) !important;
-  }
-
-  #jh-pga-table-shared .jtc-main-link:hover .jtc-main-link-dot.ongoing,
-  #jh-pga-table-shared .jtc-main-link:focus .jtc-main-link-dot.ongoing {
-    background-color: var(--jtc-gold) !important;
-    box-shadow:
-      0 0 0 2px rgba(255, 204, 0, 0.26),
-      0 0 8px rgba(255, 204, 0, 0.22) !important;
-  }
-
-  @media (max-width: 768px) {
-    #jh-pga-table-shared .jtc-badge.ongoing {
-      box-shadow:
-        0 5px 12px rgba(153, 0, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
-    }
-
-    #jh-pga-table-shared .jtc-dot.ongoing {
-      box-shadow:
-        0 0 0 2px rgba(255, 204, 0, 0.20),
-        0 0 8px rgba(255, 204, 0, 0.22) !important;
-    }
-
-    #jh-pga-table-shared .jtc-main-link-dot.ongoing {
-      box-shadow:
-        0 0 0 1.5px rgba(255, 204, 0, 0.20) !important;
-    }
-  }
-</style>
 
 
-<style id="jh-pga-table-shared-ongoing-link-reverse-hover">
-  #jh-pga-table-shared .jtc-main-link:has(.jtc-main-link-dot.ongoing) {
-    color: var(--jtc-gold) !important;
-    background:
-      linear-gradient(
-        135deg,
-        var(--jtc-cardinal) 0%,
-        var(--jtc-cardinal-dark) 100%
-      ) !important;
-    border: 1px solid rgba(255, 204, 0, 0.44) !important;
-    box-shadow:
-      0 7px 16px rgba(153, 0, 0, 0.22),
-      inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
-  }
 
-  #jh-pga-table-shared .jtc-main-link:has(.jtc-main-link-dot.ongoing) .jtc-main-link-arrow svg {
-    stroke: var(--jtc-gold) !important;
-  }
 
-  #jh-pga-table-shared .jtc-main-link:has(.jtc-main-link-dot.ongoing):hover,
-  #jh-pga-table-shared .jtc-main-link:has(.jtc-main-link-dot.ongoing):focus {
-    color: var(--jtc-cardinal-dark) !important;
-    background:
-      linear-gradient(
-        180deg,
-        #ffffff 0%,
-        #fffaf0 100%
-      ) !important;
-    border-color: rgba(153, 0, 0, 0.34) !important;
-    box-shadow:
-      0 5px 12px rgba(12, 35, 64, 0.10) !important;
-    transform: translateY(-1px);
-  }
 
-  #jh-pga-table-shared .jtc-main-link:has(.jtc-main-link-dot.ongoing):hover .jtc-main-link-dot.ongoing,
-  #jh-pga-table-shared .jtc-main-link:has(.jtc-main-link-dot.ongoing):focus .jtc-main-link-dot.ongoing {
-    background-color: var(--jtc-cardinal) !important;
-    box-shadow:
-      0 0 0 2px rgba(153, 0, 0, 0.18) !important;
-  }
 
-  #jh-pga-table-shared .jtc-main-link:has(.jtc-main-link-dot.ongoing):hover .jtc-main-link-arrow svg,
-  #jh-pga-table-shared .jtc-main-link:has(.jtc-main-link-dot.ongoing):focus .jtc-main-link-arrow svg {
-    stroke: var(--jtc-cardinal-dark) !important;
-  }
-
-  @media (max-width: 768px) {
-    #jh-pga-table-shared .jtc-main-link:has(.jtc-main-link-dot.ongoing) {
-      box-shadow: none !important;
-    }
-  }
-</style>
-
-<style id="jh-pga-table-shared-final-match-upnext">
-  #jh-pga-table-shared .jtc-badge.final {
-    background:
-      linear-gradient(
-        135deg,
-        var(--jtc-cardinal) 0%,
-        var(--jtc-cardinal-dark) 100%
-      ) !important;
-    color: var(--jtc-gold) !important;
-    border: 1px solid rgba(255, 204, 0, 0.38) !important;
-    border-radius: 999px !important;
-    box-shadow: 0 6px 14px rgba(153, 0, 0, 0.16) !important;
-  }
-
-  #jh-pga-table-shared .jtc-dot.final {
-    background-color: var(--jtc-gold) !important;
-    box-shadow:
-      0 0 0 3px rgba(255, 204, 0, 0.24),
-      0 0 10px rgba(255, 204, 0, 0.24) !important;
-  }
-
-  #jh-pga-table-shared .jtc-main-link-dot.final {
-    background-color: var(--jtc-cardinal) !important;
-    box-shadow: 0 0 0 2px rgba(153, 0, 0, 0.16) !important;
-  }
-
-  #jh-pga-table-shared .jtc-main-link:hover .jtc-main-link-dot.final,
-  #jh-pga-table-shared .jtc-main-link:focus .jtc-main-link-dot.final {
-    background-color: var(--jtc-gold) !important;
-    box-shadow: 0 0 0 2px rgba(255, 204, 0, 0.22) !important;
-  }
-
-  @media (max-width: 768px) {
-    #jh-pga-table-shared .jtc-badge.final {
-      box-shadow: 0 4px 10px rgba(153, 0, 0, 0.13) !important;
-    }
-  }
-</style>
   
   
 <style id="jh-performance-log-cardinal-identity">
@@ -4939,843 +4853,795 @@
   
 
 
-
-
 <!-- =========================================================
   JH ISOLATED SUMMER RESULTS SECTION
+  Unified with 2026–27 USC Sophomore Season Schedule UI
+  Cardinal-first USC identity
 ========================================================= -->
-
 
 <section id="jh-summer-results-log-isolated" aria-label="2026 Summer Competition Results Log">
   <style>
-    #jh-summer-results-log-isolated {
-      display: block;
-      width: 100%;
-      max-width: 100%;
-      margin: 26px 0 44px;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      color: #0c2340;
-      clear: both;
-      contain: layout style paint;
-    }
-
     #jh-summer-results-log-isolated,
     #jh-summer-results-log-isolated * {
       box-sizing: border-box;
     }
 
-    #jh-summer-results-log-isolated .jh-srl-wrap {
+    #jh-summer-results-log-isolated {
+      --jh-srl-cardinal: #990000;
+      --jh-srl-cardinal-dark: #650000;
+      --jh-srl-cardinal-mid: #7a0000;
+      --jh-srl-gold: #ffcc00;
+      --jh-srl-gold-muted: #d6a642;
+      --jh-srl-navy: #0c2340;
+      --jh-srl-ink: #172033;
+      --jh-srl-muted: #64748b;
+      --jh-srl-line: #e2e8f0;
+      --jh-srl-soft: #f8fafc;
+
       width: 100%;
-      max-width: 100%;
-      border-radius: 20px;
-      border: 1px solid #dbe3ee;
-      background: #ffffff;
-      overflow: hidden;
-      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+      max-width: none;
+      margin: 30px 0 46px;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: var(--jh-srl-ink);
+      clear: both;
     }
 
-    #jh-summer-results-log-isolated .jh-srl-head {
-      padding: 18px 20px 15px;
+    #jh-summer-results-log-isolated .jh-srl-wrap {
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-main-head {
+      margin: 0 0 18px;
+      padding: 22px 24px;
+      border-radius: 22px;
       background:
-        linear-gradient(135deg, #0c2340 0%, #173b63 100%);
+        radial-gradient(circle at 12% 0%, rgba(255, 204, 0, 0.20), transparent 34%),
+        radial-gradient(circle at 92% 8%, rgba(255, 204, 0, 0.08), transparent 32%),
+        linear-gradient(
+          135deg,
+          var(--jh-srl-cardinal-dark) 0%,
+          var(--jh-srl-cardinal) 52%,
+          var(--jh-srl-cardinal-mid) 76%,
+          var(--jh-srl-navy) 100%
+        );
+      border: 1px solid rgba(255, 204, 0, 0.26);
+      box-shadow:
+        0 18px 42px rgba(153, 0, 0, 0.18),
+        0 6px 16px rgba(12, 35, 64, 0.10);
       color: #ffffff;
-      border-bottom: 1px solid rgba(255,255,255,0.12);
+      overflow: hidden;
+      position: relative;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-main-head::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 4px;
+      background:
+        linear-gradient(
+          90deg,
+          var(--jh-srl-cardinal-dark) 0%,
+          var(--jh-srl-gold) 48%,
+          var(--jh-srl-cardinal) 100%
+        );
     }
 
     #jh-summer-results-log-isolated .jh-srl-kicker {
-      margin: 0 0 6px;
-      color: rgba(255,255,255,0.72);
-      font-size: 10px;
+      margin: 0 0 8px;
+      color: var(--jh-srl-gold);
+      font-size: 11px;
       line-height: 1.2;
-      font-weight: 900;
-      letter-spacing: 0.9px;
+      font-weight: 650;
+      letter-spacing: 1.15px;
       text-transform: uppercase;
     }
 
     #jh-summer-results-log-isolated .jh-srl-title {
       margin: 0;
       color: #ffffff;
-      font-size: 21px;
+      font-size: 23px;
       line-height: 1.18;
-      font-weight: 950;
-      letter-spacing: -0.55px;
+      font-weight: 720;
+      letter-spacing: -0.35px;
       text-transform: uppercase;
     }
 
     #jh-summer-results-log-isolated .jh-srl-subtitle {
-      margin: 7px 0 0;
+      margin: 8px 0 0;
       max-width: 760px;
-      color: rgba(255,255,255,0.78);
-      font-size: 12px;
-      line-height: 1.45;
-      font-weight: 650;
+      color: rgba(255, 255, 255, 0.80);
+      font-size: 12.5px;
+      line-height: 1.5;
+      font-weight: 500;
     }
 
     #jh-summer-results-log-isolated .jh-srl-list {
+      display: grid;
+      gap: 12px;
       width: 100%;
-      background: #f8fafc;
     }
 
-    #jh-summer-results-log-isolated .jh-srl-row {
+    #jh-summer-results-log-isolated .jh-srl-card {
       width: 100%;
-      padding: 14px 18px 13px;
+      position: relative;
+      border-radius: 20px;
+      border: 1px solid rgba(153, 0, 0, 0.20);
+      border-top: 4px solid var(--jh-srl-cardinal);
       background: #ffffff;
-      border-bottom: 1px solid #e2e8f0;
+      overflow: hidden;
+      box-shadow:
+        0 14px 32px rgba(12, 35, 64, 0.08),
+        0 4px 12px rgba(153, 0, 0, 0.055);
     }
 
-    #jh-summer-results-log-isolated .jh-srl-row:last-child {
-      border-bottom: none;
+    #jh-summer-results-log-isolated .jh-srl-card::before {
+      content: "";
+      position: absolute;
+      top: -4px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background:
+        linear-gradient(
+          90deg,
+          var(--jh-srl-cardinal-dark) 0%,
+          var(--jh-srl-cardinal) 42%,
+          var(--jh-srl-gold) 70%,
+          var(--jh-srl-cardinal-dark) 100%
+        );
+      pointer-events: none;
+      z-index: 2;
     }
 
-    #jh-summer-results-log-isolated .jh-srl-row:nth-child(even) {
-      background: #fbfdff;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-main {
+    #jh-summer-results-log-isolated .jh-srl-card-head {
       display: flex;
-      align-items: baseline;
+      align-items: flex-start;
       justify-content: space-between;
       gap: 14px;
-      margin: 0 0 5px;
+      padding: 17px 19px 14px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(153, 0, 0, 0.070) 0%,
+          #ffffff 48%,
+          rgba(255, 204, 0, 0.16) 100%
+        );
+      border-bottom: 1px solid rgba(153, 0, 0, 0.14);
     }
 
-    #jh-summer-results-log-isolated .jh-srl-event {
+    #jh-summer-results-log-isolated .jh-srl-card-left {
       min-width: 0;
-      color: #0c2340;
-      font-size: 14px;
-      line-height: 1.35;
-      font-weight: 950;
-      letter-spacing: -0.15px;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-date {
-      flex: 0 0 auto;
-      color: #64748b;
-      font-size: 11px;
-      line-height: 1.3;
-      font-weight: 900;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-course {
-      margin: 0 0 8px;
-      color: #64748b;
-      font-size: 12px;
-      line-height: 1.35;
-      font-weight: 700;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-result-line {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 6px 9px;
-      margin: 0;
-      color: #334155;
-      font-size: 12px;
-      line-height: 1.55;
-      font-weight: 750;
+      flex: 1 1 auto;
     }
 
     #jh-summer-results-log-isolated .jh-srl-status {
       display: inline-flex;
       align-items: center;
-      padding: 4px 8px;
+      gap: 7px;
+      margin: 0 0 9px;
+      padding: 5px 9px;
       border-radius: 999px;
-      background: rgba(100, 116, 139, 0.10);
-      border: 1px solid rgba(100, 116, 139, 0.18);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.55px;
+      text-transform: uppercase;
+      line-height: 1;
+      border: 1px solid transparent;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      display: inline-block;
+      flex: 0 0 auto;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-status.is-scheduled {
+      color: #6f4f00;
+      background: rgba(255, 204, 0, 0.18);
+      border-color: rgba(255, 204, 0, 0.36);
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-status.is-scheduled .jh-srl-status-dot {
+      background: var(--jh-srl-gold);
+      box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.20);
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-status.is-ongoing,
+    #jh-summer-results-log-isolated .jh-srl-status.is-final {
+      color: var(--jh-srl-gold);
+      background:
+        linear-gradient(
+          135deg,
+          var(--jh-srl-cardinal) 0%,
+          var(--jh-srl-cardinal-dark) 100%
+        );
+      border-color: rgba(255, 204, 0, 0.42);
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-status.is-ongoing .jh-srl-status-dot {
+      background: var(--jh-srl-gold);
+      animation: jhSrlGoldPulse 1.65s infinite ease-in-out;
+      box-shadow:
+        0 0 0 3px rgba(255, 204, 0, 0.22),
+        0 0 10px rgba(255, 204, 0, 0.24);
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-status.is-final .jh-srl-status-dot {
+      background: var(--jh-srl-gold);
+      box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.20);
+    }
+
+    @keyframes jhSrlGoldPulse {
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.52;
+        transform: scale(0.88);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-event-title {
+      margin: 0;
+      color: var(--jh-srl-navy);
+      font-size: 18px;
+      line-height: 1.24;
+      font-weight: 720;
+      letter-spacing: -0.15px;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-event-meta {
+      margin: 6px 0 0;
       color: #475569;
+      font-size: 12px;
+      line-height: 1.45;
+      font-weight: 500;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-date-box {
+      flex: 0 0 auto;
+      min-width: 104px;
+      padding: 10px 11px;
+      border-radius: 14px;
+      background:
+        linear-gradient(
+          135deg,
+          var(--jh-srl-cardinal) 0%,
+          var(--jh-srl-cardinal-dark) 100%
+        );
+      border: 1px solid rgba(255, 204, 0, 0.34);
+      color: #ffffff;
+      text-align: center;
+      box-shadow:
+        0 6px 14px rgba(153, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-date-label {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--jh-srl-gold);
+      font-size: 8.5px;
+      font-weight: 650;
+      letter-spacing: 0.75px;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-date-value {
+      display: block;
+      color: #ffffff;
+      font-size: 12px;
+      line-height: 1.2;
+      font-weight: 650;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-result-band {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 120px 90px 92px;
+      gap: 0;
+      background:
+        linear-gradient(
+          135deg,
+          var(--jh-srl-cardinal-dark) 0%,
+          var(--jh-srl-cardinal) 48%,
+          var(--jh-srl-cardinal-mid) 72%,
+          var(--jh-srl-navy) 100%
+        );
+      color: #ffffff;
+      padding: 14px 16px;
+      border-top: 1px solid rgba(255, 204, 0, 0.28);
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-band-cell {
+      min-width: 0;
+      padding: 4px 8px;
+      text-align: center;
+      border-right: 1px solid rgba(255, 204, 0, 0.16);
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-band-cell:last-child {
+      border-right: none;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-band-label {
+      display: block;
+      margin-bottom: 7px;
+      color: rgba(255, 204, 0, 0.78);
+      font-size: 9px;
+      line-height: 1;
+      font-weight: 600;
+      letter-spacing: 0.55px;
+      text-transform: uppercase;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-rounds {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: nowrap;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-round-chip {
+      min-width: 0;
+      flex: 1 1 0;
+      max-width: 74px;
+      padding: 6px 6px 5px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.070);
+      border: 1px solid rgba(255, 204, 0, 0.20);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-round-label {
+      color: rgba(255, 204, 0, 0.78);
+      font-size: 8px;
+      line-height: 1;
+      font-weight: 600;
+      letter-spacing: 0.45px;
+      text-transform: uppercase;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-round-score {
+      color: #ffffff;
+      font-size: 17px;
+      line-height: 1;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-total-value,
+    #jh-summer-results-log-isolated .jh-srl-par-value,
+    #jh-summer-results-log-isolated .jh-srl-finish-value {
+      color: #ffffff;
+      font-size: 22px;
+      line-height: 1;
+      font-weight: 750;
+      white-space: nowrap;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-score-under {
+      color: var(--jh-srl-gold) !important;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-score-even {
+      color: #ffffff !important;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-score-over {
+      color: #bfdbfe !important;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-metrics {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 10px 16px 12px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(153, 0, 0, 0.045) 0%,
+          #ffffff 50%,
+          rgba(255, 204, 0, 0.13) 100%
+        );
+      border-top: 1px solid rgba(153, 0, 0, 0.13);
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-metric {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      min-height: 28px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(153, 0, 0, 0.070);
+      border: 1px solid rgba(153, 0, 0, 0.15);
+      color: var(--jh-srl-navy);
+      font-size: 11px;
+      line-height: 1.1;
+      font-weight: 600;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-metric-label {
+      color: var(--jh-srl-cardinal-dark);
+      font-size: 9.5px;
+      font-weight: 650;
+      letter-spacing: 0.28px;
+      text-transform: uppercase;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-results-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 28px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      color: var(--jh-srl-gold);
+      background:
+        linear-gradient(
+          135deg,
+          var(--jh-srl-cardinal) 0%,
+          var(--jh-srl-cardinal-dark) 100%
+        );
+      border: 1px solid rgba(255, 204, 0, 0.40);
+      box-shadow: 0 5px 12px rgba(153, 0, 0, 0.14);
+      text-decoration: none;
       font-size: 10px;
       line-height: 1;
-      font-weight: 950;
-      letter-spacing: 0.35px;
+      font-weight: 700;
+      letter-spacing: 0.22px;
       text-transform: uppercase;
-      white-space: nowrap;
+      transition:
+        background-color 0.18s ease,
+        color 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.18s ease;
     }
 
-    #jh-summer-results-log-isolated .jh-srl-status.is-completed {
-      background: rgba(22, 101, 52, 0.10);
-      border-color: rgba(22, 101, 52, 0.18);
-      color: #166534;
+    #jh-summer-results-log-isolated .jh-srl-results-link:hover,
+    #jh-summer-results-log-isolated .jh-srl-results-link:focus {
+      color: var(--jh-srl-cardinal-dark);
+      background:
+        linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #fffaf0 100%
+        );
+      border-color: rgba(153, 0, 0, 0.28);
+      box-shadow: 0 5px 12px rgba(12, 35, 64, 0.10);
+      transform: translateY(-1px);
     }
 
-    #jh-summer-results-log-isolated .jh-srl-status.is-pending {
-      background: rgba(201, 138, 46, 0.12);
-      border-color: rgba(201, 138, 46, 0.24);
-      color: #8a5a14;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-score-unit {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 3px;
-      white-space: nowrap;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-label {
-      color: #64748b;
-      font-size: 10px;
-      font-weight: 950;
-      letter-spacing: 0.35px;
-      text-transform: uppercase;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-score {
-      font-weight: 950;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-under {
-      color: #b91c1c;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-even {
-      color: #1d4ed8;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-over {
-      color: #0c2340;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-muted {
-      color: #94a3b8;
-      font-weight: 850;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-sep {
-      color: #cbd5e1;
-      font-weight: 800;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-link {
-      color: #0c2340;
-      text-decoration: none;
-      font-size: 11px;
-      font-weight: 950;
-      border-bottom: 1px solid rgba(12, 35, 64, 0.35);
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-link:hover,
-    #jh-summer-results-log-isolated .jh-srl-link:focus {
-      color: #163b66;
-      border-bottom-color: #163b66;
-    }
-
-    @media (max-width: 720px) {
+    @media (max-width: 768px) {
       #jh-summer-results-log-isolated {
-        margin: 22px 0 38px;
+        margin: 24px 0 42px;
       }
 
-      #jh-summer-results-log-isolated .jh-srl-wrap {
+      #jh-summer-results-log-isolated .jh-srl-main-head {
+        margin-bottom: 14px;
+        padding: 18px 18px;
         border-radius: 17px;
+        box-shadow:
+          0 13px 28px rgba(153, 0, 0, 0.16),
+          0 4px 12px rgba(12, 35, 64, 0.08);
       }
 
-      #jh-summer-results-log-isolated .jh-srl-head {
-        padding: 16px 15px 14px;
+      #jh-summer-results-log-isolated .jh-srl-kicker {
+        font-size: 10px;
+        letter-spacing: 0.95px;
       }
 
       #jh-summer-results-log-isolated .jh-srl-title {
-        font-size: 18px;
-        line-height: 1.22;
+        font-size: 19px;
+        line-height: 1.18;
       }
 
       #jh-summer-results-log-isolated .jh-srl-subtitle {
         font-size: 11.5px;
+        line-height: 1.42;
       }
 
-      #jh-summer-results-log-isolated .jh-srl-row {
-        padding: 13px 14px 12px;
+      #jh-summer-results-log-isolated .jh-srl-list {
+        gap: 11px;
       }
 
-      #jh-summer-results-log-isolated .jh-srl-main {
-        display: block;
+      #jh-summer-results-log-isolated .jh-srl-card {
+        border-radius: 16px;
+        border-top-width: 3px;
+        box-shadow:
+          0 11px 24px rgba(12, 35, 64, 0.08),
+          0 3px 9px rgba(153, 0, 0, 0.045);
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-card::before {
+        top: -3px;
+        height: 3px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-card-head {
+        padding: 14px 13px 12px;
+        gap: 10px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-status {
+        margin-bottom: 8px;
+        padding: 4px 8px;
+        font-size: 8.8px;
+        letter-spacing: 0.45px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-status-dot {
+        width: 6px;
+        height: 6px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-event-title {
+        font-size: 15px;
+        line-height: 1.18;
+        font-weight: 700;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-event-meta {
+        margin-top: 5px;
+        font-size: 10.5px;
+        line-height: 1.32;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-date-box {
+        min-width: 88px;
+        padding: 8px 8px;
+        border-radius: 12px;
+        box-shadow:
+          0 4px 10px rgba(153, 0, 0, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-date-label {
+        font-size: 7.6px;
+        margin-bottom: 4px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-date-value {
+        font-size: 10.4px;
+        line-height: 1.18;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-result-band {
+        grid-template-columns: minmax(0, 1fr) 78px 62px 64px;
+        padding: 10px 8px;
+        border-top: 1px solid rgba(255, 204, 0, 0.24);
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-band-cell {
+        padding: 3px 4px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-band-label {
         margin-bottom: 5px;
+        font-size: 7.2px;
+        letter-spacing: 0.42px;
       }
 
-      #jh-summer-results-log-isolated .jh-srl-event {
-        font-size: 13.5px;
+      #jh-summer-results-log-isolated .jh-srl-rounds {
+        gap: 3px;
       }
 
-      #jh-summer-results-log-isolated .jh-srl-date {
-        display: block;
-        margin-top: 3px;
-        white-space: normal;
+      #jh-summer-results-log-isolated .jh-srl-round-chip {
+        max-width: none;
+        padding: 5px 3px 4px;
+        border-radius: 6px;
+        gap: 3px;
       }
 
-      #jh-summer-results-log-isolated .jh-srl-course {
-        font-size: 11.5px;
-        margin-bottom: 7px;
+      #jh-summer-results-log-isolated .jh-srl-round-label {
+        font-size: 6.5px;
+        letter-spacing: 0.35px;
       }
 
-      #jh-summer-results-log-isolated .jh-srl-result-line {
-        font-size: 11.5px;
-        gap: 5px 7px;
+      #jh-summer-results-log-isolated .jh-srl-round-score {
+        font-size: 12.5px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-total-value,
+      #jh-summer-results-log-isolated .jh-srl-par-value,
+      #jh-summer-results-log-isolated .jh-srl-finish-value {
+        font-size: 15px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-metrics {
+        padding: 8px 10px 10px;
+        gap: 6px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-metric {
+        min-height: 26px;
+        padding: 5px 8px;
+        font-size: 10px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-metric-label {
+        font-size: 8px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-results-link {
+        min-height: 26px;
+        padding: 5px 10px;
+        font-size: 9px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #jh-summer-results-log-isolated {
+        margin: 22px 0 38px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-main-head {
+        padding: 16px 15px;
+        border-radius: 16px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-title {
+        font-size: 17.5px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-subtitle {
+        font-size: 10.8px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-card-head {
+        padding: 13px 11px 11px;
+        align-items: flex-start;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-event-title {
+        font-size: 14.2px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-event-meta {
+        font-size: 9.8px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-date-box {
+        min-width: 76px;
+        padding: 7px 6px;
+        border-radius: 10px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-date-label {
+        font-size: 7px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-date-value {
+        font-size: 9.4px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-result-band {
+        grid-template-columns: minmax(0, 1fr) 58px 50px 54px;
+        padding: 9px 6px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-band-cell {
+        padding: 3px 3px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-band-label {
+        font-size: 6.5px;
+        margin-bottom: 4px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-rounds {
+        gap: 2px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-round-chip {
+        padding: 4px 2px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-round-label {
+        font-size: 5.9px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-round-score {
+        font-size: 11.2px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-total-value,
+      #jh-summer-results-log-isolated .jh-srl-par-value,
+      #jh-summer-results-log-isolated .jh-srl-finish-value {
+        font-size: 13.2px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-metrics {
+        padding: 8px 9px 9px;
+        justify-content: flex-start;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-metric,
+      #jh-summer-results-log-isolated .jh-srl-results-link {
+        min-height: 25px;
+        font-size: 8.8px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-metric-label {
+        font-size: 7.4px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      #jh-summer-results-log-isolated .jh-srl-card-head {
+        gap: 8px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-event-title {
+        font-size: 13.4px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-event-meta {
+        font-size: 9.2px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-date-box {
+        min-width: 70px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-date-value {
+        font-size: 8.8px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-result-band {
+        grid-template-columns: minmax(0, 1fr) 54px 46px 50px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-round-score {
+        font-size: 10.4px;
+      }
+
+      #jh-summer-results-log-isolated .jh-srl-total-value,
+      #jh-summer-results-log-isolated .jh-srl-par-value,
+      #jh-summer-results-log-isolated .jh-srl-finish-value {
+        font-size: 12.4px;
       }
     }
   </style>
 
-<style id="jh-summer-results-log-cardinal-polish">
-  #jh-summer-results-log-isolated {
-    --jh-srl-cardinal: #990000;
-    --jh-srl-cardinal-dark: #650000;
-    --jh-srl-gold: #ffcc00;
-    --jh-srl-gold-soft: #fff5cc;
-    --jh-srl-navy: #0c2340;
-    --jh-srl-ink: #172033;
-    --jh-srl-muted: #64748b;
-    --jh-srl-border: rgba(153, 0, 0, 0.14);
-
-    margin: 34px 0 58px !important;
-    color: var(--jh-srl-navy) !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-wrap {
-    border-radius: 22px !important;
-    border: 1px solid rgba(153, 0, 0, 0.18) !important;
-    background: #ffffff !important;
-    box-shadow:
-      0 18px 38px rgba(12, 35, 64, 0.11),
-      0 4px 12px rgba(153, 0, 0, 0.045) !important;
-    overflow: hidden !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-head {
-    position: relative;
-    padding: 20px 22px 18px !important;
-    background:
-      linear-gradient(
-        135deg,
-        var(--jh-srl-cardinal-dark) 0%,
-        var(--jh-srl-cardinal) 45%,
-        var(--jh-srl-navy) 100%
-      ) !important;
-    border-bottom: 2px solid rgba(255, 204, 0, 0.42) !important;
-    overflow: hidden;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-head::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 3px;
-    background:
-      linear-gradient(
-        90deg,
-        var(--jh-srl-cardinal-dark) 0%,
-        var(--jh-srl-gold) 52%,
-        var(--jh-srl-cardinal) 100%
-      );
-    pointer-events: none;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-head::after {
-    content: "";
-    position: absolute;
-    right: -40px;
-    top: -60px;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    background: rgba(255, 204, 0, 0.08);
-    pointer-events: none;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-kicker {
-    position: relative;
-    z-index: 1;
-    margin: 0 0 7px !important;
-    color: var(--jh-srl-gold) !important;
-    font-size: 10.5px !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.9px !important;
-    line-height: 1.15 !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-title {
-    position: relative;
-    z-index: 1;
-    color: #ffffff !important;
-    font-size: 22px !important;
-    font-weight: 760 !important;
-    letter-spacing: -0.35px !important;
-    line-height: 1.16 !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-subtitle {
-    position: relative;
-    z-index: 1;
-    max-width: 800px !important;
-    margin-top: 8px !important;
-    color: rgba(255, 255, 255, 0.78) !important;
-    font-size: 12px !important;
-    font-weight: 500 !important;
-    line-height: 1.48 !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-list {
-    background:
-      linear-gradient(
-        180deg,
-        rgba(153, 0, 0, 0.035) 0%,
-        #ffffff 42%,
-        rgba(255, 204, 0, 0.055) 100%
-      ) !important;
-    padding: 12px !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-row {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.85fr);
-    grid-template-areas:
-      "main results"
-      "course results";
-    gap: 5px 16px;
-    align-items: center;
-    width: 100%;
-    margin: 0 0 10px !important;
-    padding: 15px 16px 14px 18px !important;
-    border: 1px solid rgba(153, 0, 0, 0.13) !important;
-    border-radius: 16px;
-    background:
-      linear-gradient(
-        135deg,
-        #ffffff 0%,
-        #ffffff 52%,
-        rgba(255, 204, 0, 0.070) 100%
-      ) !important;
-    box-shadow:
-      0 8px 18px rgba(12, 35, 64, 0.055),
-      0 2px 6px rgba(153, 0, 0, 0.030);
-    overflow: hidden;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-row:last-child {
-    margin-bottom: 0 !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-row::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 5px;
-    height: 100%;
-    background:
-      linear-gradient(
-        180deg,
-        var(--jh-srl-cardinal-dark) 0%,
-        var(--jh-srl-cardinal) 60%,
-        var(--jh-srl-gold) 100%
-      );
-    pointer-events: none;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-row:nth-child(even) {
-    background:
-      linear-gradient(
-        135deg,
-        rgba(153, 0, 0, 0.030) 0%,
-        #ffffff 48%,
-        rgba(255, 204, 0, 0.095) 100%
-      ) !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-main {
-    grid-area: main;
-    display: flex !important;
-    align-items: flex-start !important;
-    justify-content: space-between !important;
-    gap: 10px !important;
-    min-width: 0;
-    margin: 0 !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-event {
-    min-width: 0;
-    color: var(--jh-srl-navy) !important;
-    font-size: 14.5px !important;
-    font-weight: 720 !important;
-    letter-spacing: -0.12px !important;
-    line-height: 1.24 !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-date {
-    flex: 0 0 auto;
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    padding: 5px 8px;
-    border-radius: 999px;
-    background: rgba(153, 0, 0, 0.075);
-    border: 1px solid rgba(153, 0, 0, 0.16);
-    color: var(--jh-srl-cardinal-dark) !important;
-    font-size: 10px !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.1px !important;
-    line-height: 1.05 !important;
-    white-space: nowrap;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-course {
-    grid-area: course;
-    margin: 0 !important;
-    color: #475569 !important;
-    font-size: 11.6px !important;
-    font-weight: 500 !important;
-    line-height: 1.34 !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-result-line {
-    grid-area: results;
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: flex-end !important;
-    align-items: center !important;
-    gap: 7px !important;
-    margin: 0 !important;
-    color: #334155 !important;
-    font-size: 12px !important;
-    line-height: 1.25 !important;
-    font-weight: 600 !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-sep {
-    display: none !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-status,
-  #jh-summer-results-log-isolated .jh-srl-score-unit,
-  #jh-summer-results-log-isolated .jh-srl-link {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    min-height: 30px;
-    padding: 6px 9px !important;
-    border-radius: 999px;
-    white-space: nowrap;
-    line-height: 1.05 !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-status {
-    font-size: 9.8px !important;
-    font-weight: 750 !important;
-    letter-spacing: 0.25px !important;
-    text-transform: uppercase;
-    box-shadow: 0 4px 10px rgba(12, 35, 64, 0.045);
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-status.is-pending {
-    background: rgba(255, 204, 0, 0.18) !important;
-    border: 1px solid rgba(255, 204, 0, 0.40) !important;
-    color: #6f4f00 !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-status.is-completed {
-    background:
-      linear-gradient(
-        135deg,
-        var(--jh-srl-cardinal) 0%,
-        var(--jh-srl-cardinal-dark) 100%
-      ) !important;
-    border: 1px solid rgba(255, 204, 0, 0.42) !important;
-    color: var(--jh-srl-gold) !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-score-unit {
-    gap: 4px !important;
-    background: rgba(255, 255, 255, 0.88);
-    border: 1px solid rgba(153, 0, 0, 0.12);
-    color: var(--jh-srl-navy);
-    box-shadow: 0 3px 8px rgba(12, 35, 64, 0.035);
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-label {
-    color: rgba(101, 0, 0, 0.70) !important;
-    font-size: 9.2px !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.28px !important;
-    line-height: 1 !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-score {
-    font-weight: 750 !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-under {
-    color: var(--jh-srl-cardinal) !important;
-    font-weight: 750 !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-even {
-    color: #1e3a8a !important;
-    font-weight: 720 !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-over {
-    color: var(--jh-srl-navy) !important;
-    font-weight: 720 !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-muted {
-    color: #94a3b8 !important;
-    font-weight: 650 !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-link {
-    color: var(--jh-srl-cardinal-dark) !important;
-    background: #ffffff;
-    border: 1px solid rgba(153, 0, 0, 0.24) !important;
-    text-decoration: none !important;
-    font-size: 10px !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.18px !important;
-    transition:
-      background-color 0.18s ease,
-      color 0.18s ease,
-      border-color 0.18s ease,
-      transform 0.18s ease;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-link:hover,
-  #jh-summer-results-log-isolated .jh-srl-link:focus {
-    color: var(--jh-srl-gold) !important;
-    background: var(--jh-srl-cardinal) !important;
-    border-color: rgba(255, 204, 0, 0.46) !important;
-    transform: translateY(-1px);
-  }
-
-  @media (min-width: 721px) {
-    #jh-summer-results-log-isolated .jh-srl-row {
-      transition:
-        transform 0.18s ease,
-        box-shadow 0.18s ease,
-        border-color 0.18s ease;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-row:hover {
-      transform: translateY(-1px);
-      border-color: rgba(153, 0, 0, 0.20) !important;
-      box-shadow:
-        0 12px 24px rgba(12, 35, 64, 0.08),
-        0 3px 8px rgba(153, 0, 0, 0.045);
-    }
-  }
-
-  @media (max-width: 720px) {
-    #jh-summer-results-log-isolated {
-      margin: 28px 0 50px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-wrap {
-      border-radius: 18px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-head {
-      padding: 17px 15px 15px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-kicker {
-      font-size: 9.8px !important;
-      letter-spacing: 0.75px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-title {
-      font-size: 18.2px !important;
-      font-weight: 740 !important;
-      line-height: 1.18 !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-subtitle {
-      font-size: 11.3px !important;
-      line-height: 1.42 !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-list {
-      padding: 10px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-row {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      grid-template-areas:
-        "main"
-        "course"
-        "results";
-      gap: 6px;
-      padding: 13px 12px 12px 14px !important;
-      border-radius: 15px;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-row::before {
-      width: 4px;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-main {
-      display: flex !important;
-      align-items: flex-start !important;
-      justify-content: space-between !important;
-      gap: 8px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-event {
-      font-size: 13.4px !important;
-      font-weight: 720 !important;
-      line-height: 1.20 !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-date {
-      padding: 4px 7px;
-      font-size: 9.3px !important;
-      white-space: nowrap;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-course {
-      font-size: 11px !important;
-      line-height: 1.28 !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-result-line {
-      justify-content: flex-start !important;
-      display: grid !important;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 6px !important;
-      width: 100%;
-      margin-top: 2px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-status,
-    #jh-summer-results-log-isolated .jh-srl-score-unit,
-    #jh-summer-results-log-isolated .jh-srl-link {
-      width: 100%;
-      min-height: 30px;
-      padding: 6px 6px !important;
-      border-radius: 10px;
-      white-space: normal;
-      text-align: center;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-status {
-      font-size: 8.8px !important;
-      letter-spacing: 0.18px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-label {
-      font-size: 8.4px !important;
-      letter-spacing: 0.18px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-score-unit {
-      gap: 3px !important;
-      flex-wrap: wrap;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-link {
-      font-size: 9px !important;
-    }
-  }
-
-  @media (max-width: 480px) {
-    #jh-summer-results-log-isolated {
-      margin: 26px 0 46px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-head {
-      padding: 16px 14px 14px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-title {
-      font-size: 17px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-subtitle {
-      font-size: 10.8px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-list {
-      padding: 9px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-row {
-      padding: 12px 10px 11px 13px !important;
-      border-radius: 14px;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-event {
-      font-size: 12.8px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-date {
-      font-size: 8.7px !important;
-      padding: 4px 6px;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-course {
-      font-size: 10.5px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-result-line {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 5px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-status,
-    #jh-summer-results-log-isolated .jh-srl-score-unit,
-    #jh-summer-results-log-isolated .jh-srl-link {
-      min-height: 29px;
-      padding: 6px 5px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-status {
-      font-size: 8.2px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-label {
-      font-size: 7.9px !important;
-    }
-  }
-
-  @media (max-width: 390px) {
-    #jh-summer-results-log-isolated .jh-srl-title {
-      font-size: 16.2px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-event {
-      font-size: 12.2px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-date {
-      font-size: 8.2px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-course {
-      font-size: 10px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-status {
-      font-size: 7.8px !important;
-    }
-
-    #jh-summer-results-log-isolated .jh-srl-label {
-      font-size: 7.5px !important;
-    }
-  }
-</style>
-
-  
   <div class="jh-srl-wrap">
-    <header class="jh-srl-head">
-      <p class="jh-srl-kicker">Results Log</p>
-      <h2 class="jh-srl-title">2026 Summer Competition Results</h2>
+    <section class="jh-srl-main-head">
+      <p class="jh-srl-kicker">
+        Results Log
+      </p>
+
+      <h2 class="jh-srl-title">
+        2026 Summer Competition Results
+      </h2>
+
       <p class="jh-srl-subtitle">
         Completed results will be updated here as each summer event concludes.
         Pending fields remain marked as TBD or — until official results are available.
       </p>
-    </header>
+    </section>
 
     <div id="jh-summer-results-log-list" class="jh-srl-list"></div>
   </div>
@@ -5788,87 +5654,7 @@
       const list = section.querySelector('#jh-summer-results-log-list');
       if (!list) return;
 
-      /*
-        UPDATE RULE
-        1. Keep the latest / later-scheduled event at the TOP.
-        2. Keep the earliest summer event at the BOTTOM.
-        3. Use numbers only after official results are available.
-        4. Use '-' or 'TBD' for pending results.
-        5. Under / even / over colors are automatic when scores are numbers.
-      */
-
       const results = [
-
- /*
-    
-        {
-          date: 'Aug 10 - 16',
-          tournament: 'U.S. Amateur Championship',
-          course: 'Merion Golf Club - Ardmore, PA',
-          status: 'Contingent',
-          statusType: 'pending',
-          par: null,
-          rounds: ['TBD'],
-          total: '-',
-          toPar: null,
-          finish: '-',
-          metrics: [
-            { label: 'Result', value: 'Contingent on Final Qualifying' }
-          ],
-          links: []
-        },
-        {
-          date: 'Jul 27 - Aug 1',
-          tournament: 'Western Amateur Championship',
-          course: 'Beverly Country Club - Chicago, IL',
-          status: 'Exemption Pending',
-          statusType: 'pending',
-          par: null,
-          rounds: ['TBD', 'TBD', 'TBD', 'TBD'],
-          total: '-',
-          toPar: null,
-          finish: '-',
-          metrics: [
-            { label: 'WAGR Pwr', value: 'TBD' },
-            { label: 'Earned Pts', value: 'TBD' }
-          ],
-          links: []
-        },
-        {
-          date: 'Jul 16 - 19',
-          tournament: 'Mexican Amateur Championship',
-          course: 'Mexico City, Mexico',
-          status: 'Registered',
-          statusType: 'pending',
-          par: null,
-          rounds: ['TBD', 'TBD', 'TBD', 'TBD'],
-          total: '-',
-          toPar: null,
-          finish: '-',
-          metrics: [
-            { label: 'WAGR Pwr', value: 'TBD' },
-            { label: 'Earned Pts', value: 'TBD' }
-          ],
-          links: []
-        },
-        {
-          date: 'Jul 13',
-          tournament: 'U.S. Amateur Final Qualifying',
-          course: 'Ruby Hill Golf Club - Pleasanton, CA',
-          status: 'Site Assignment Pending',
-          statusType: 'pending',
-          par: null,
-          rounds: ['TBD'],
-          total: '-',
-          toPar: null,
-          finish: '-',
-          metrics: [
-            { label: 'Result', value: 'TBD' }
-          ],
-          links: []
-        },
-
- */   
         {
           date: 'Jun 17 - 20',
           tournament: 'The Dogwood Invitational',
@@ -5884,38 +5670,10 @@
             { label: 'WAGR Pwr', value: 'TBD' },
             { label: 'Earned Pts', value: 'TBD' }
           ],
-            
-    links: [ 
-            { label: 'Final Results', url: 'https://thedogwood.com/leaderboard' }
-                 ]
-        }
- 
-
-        /*
-        DOGWOOD COMPLETED EXAMPLE
-
-        Replace the Dogwood object above with this after the result is official:
-
-        {
-          date: 'Jun 17 - 20',
-          tournament: 'The Dogwood Invitational',
-          course: 'Druid Hills Golf Club - Atlanta, GA',
-          status: 'Completed',
-          statusType: 'completed',
-          par: 72,
-          rounds: [69, 72, 73, 65],
-          total: 279,
-          toPar: -9,
-          finish: 'T3',
-          metrics: [
-            { label: 'WAGR Pwr', value: '380.8745' },
-            { label: 'Earned Pts', value: '9.8874' }
-          ],
           links: [
-            { label: 'Official Results', url: 'OFFICIAL_RESULTS_URL_HERE' }
+            { label: 'Results', url: 'https://thedogwood.com/leaderboard' }
           ]
         }
-        */
       ];
 
       function escapeHtml(value) {
@@ -5931,26 +5689,69 @@
         return typeof value === 'number' && Number.isFinite(value);
       }
 
+      function isDisplayText(value) {
+        if (value === null || value === undefined) return false;
+        const cleaned = String(value).trim();
+        return cleaned !== '' && cleaned !== '—';
+      }
+
+      function normalizeStatusType(event) {
+        const raw = String(event.statusType || event.status || 'pending').trim().toLowerCase();
+
+        if (raw === 'completed' || raw === 'complete' || raw === 'final') return 'final';
+        if (raw === 'ongoing' || raw === 'live') return 'ongoing';
+
+        return 'scheduled';
+      }
+
       function formatToPar(delta) {
-        if (!isNumberValue(delta)) return '';
+        if (!isNumberValue(delta)) return '—';
         if (delta === 0) return 'E';
         if (delta > 0) return '+' + delta;
         return String(delta);
       }
 
-      function scoreClass(delta) {
-        if (!isNumberValue(delta)) return 'jh-srl-muted';
-        if (delta < 0) return 'jh-srl-under';
-        if (delta === 0) return 'jh-srl-even';
-        return 'jh-srl-over';
+      function scoreClass(parValue) {
+        if (parValue === null || parValue === undefined) return '';
+
+        const text = String(parValue).trim().toUpperCase();
+
+        if (text === 'E' || text === 'EVEN' || text === '0') return 'jh-srl-score-even';
+        if (text.startsWith('-')) return 'jh-srl-score-under';
+        if (text.startsWith('+')) return 'jh-srl-score-over';
+
+        if (isNumberValue(parValue)) {
+          if (parValue < 0) return 'jh-srl-score-under';
+          if (parValue === 0) return 'jh-srl-score-even';
+          return 'jh-srl-score-over';
+        }
+
+        return '';
+      }
+
+      function roundShortLabel(round, index) {
+        const raw = String(round && round.round ? round.round : '').trim();
+        const match = raw.match(/(\d+)/);
+
+        if (match) return 'R' + match[1];
+
+        return 'R' + (index + 1);
       }
 
       function normalizeRound(round, index, eventPar) {
+        if (round && typeof round === 'object') {
+          return {
+            label: roundShortLabel(round, index),
+            score: isDisplayText(round.score) ? round.score : '—',
+            par: isDisplayText(round.par) ? round.par : null
+          };
+        }
+
         if (!isNumberValue(round)) {
           return {
             label: 'R' + (index + 1),
-            score: round,
-            toPar: null
+            score: isDisplayText(round) ? round : '—',
+            par: null
           };
         }
 
@@ -5958,15 +5759,51 @@
           return {
             label: 'R' + (index + 1),
             score: round,
-            toPar: null
+            par: null
           };
         }
 
         return {
           label: 'R' + (index + 1),
           score: round,
-          toPar: round - eventPar
+          par: formatToPar(round - eventPar)
         };
+      }
+
+      function buildRoundBandLabel(event) {
+        const rounds = Array.isArray(event.rounds) ? event.rounds : [];
+
+        if (!rounds.length) return 'Round';
+        if (rounds.length === 1) return 'Round';
+
+        return rounds.map(function(round, index) {
+          return normalizeRound(round, index, event.par).label;
+        }).join('-');
+      }
+
+      function buildRoundChips(event) {
+        const rounds = Array.isArray(event.rounds) ? event.rounds : [];
+
+        if (!rounds.length) {
+          return (
+            '<div class="jh-srl-round-chip">' +
+              '<span class="jh-srl-round-label">Result</span>' +
+              '<span class="jh-srl-round-score">—</span>' +
+            '</div>'
+          );
+        }
+
+        return rounds.map(function(round, index) {
+          const item = normalizeRound(round, index, event.par);
+          const cls = scoreClass(item.par);
+
+          return (
+            '<div class="jh-srl-round-chip">' +
+              '<span class="jh-srl-round-label">' + escapeHtml(item.label) + '</span>' +
+              '<span class="jh-srl-round-score ' + cls + '">' + escapeHtml(item.score) + '</span>' +
+            '</div>'
+          );
+        }).join('');
       }
 
       function getEventToPar(event) {
@@ -5982,146 +5819,116 @@
         return event.total - (event.par * numericRounds.length);
       }
 
-      function renderStatus(event) {
-        const type = event.statusType === 'completed' ? 'is-completed' : 'is-pending';
-
-        return (
-          '<span class="jh-srl-status ' + type + '">' +
-            escapeHtml(event.status || 'Pending') +
-          '</span>'
-        );
-      }
-
-      function renderRounds(event) {
-        const rounds = Array.isArray(event.rounds) ? event.rounds : [];
-
-        if (!rounds.length) {
-          return '<span class="jh-srl-score-unit"><span class="jh-srl-label">Rounds</span> <span class="jh-srl-muted">TBD</span></span>';
-        }
-
-        return rounds.map(function(round, index) {
-          const r = normalizeRound(round, index, event.par);
-          const cls = scoreClass(r.toPar);
-          const vsPar = formatToPar(r.toPar);
-          const scoreText = escapeHtml(r.score);
-
-          if (!isNumberValue(r.toPar)) {
-            return (
-              '<span class="jh-srl-score-unit">' +
-                '<span class="jh-srl-label">' + escapeHtml(r.label) + '</span>' +
-                '<span class="jh-srl-score jh-srl-muted">' + scoreText + '</span>' +
-              '</span>'
-            );
-          }
-
-          return (
-            '<span class="jh-srl-score-unit">' +
-              '<span class="jh-srl-label">' + escapeHtml(r.label) + '</span>' +
-              '<span class="jh-srl-score ' + cls + '">' + scoreText + '</span>' +
-              '<span class="' + cls + '">(' + escapeHtml(vsPar) + ')</span>' +
-            '</span>'
-          );
-        }).join('<span class="jh-srl-sep">·</span>');
-      }
-
-      function renderTotal(event) {
-        const eventToPar = getEventToPar(event);
-        const total = event.total;
-        const cls = scoreClass(eventToPar);
-        const vsPar = formatToPar(eventToPar);
-
-        if (!isNumberValue(total)) {
-          return (
-            '<span class="jh-srl-score-unit">' +
-              '<span class="jh-srl-label">Total</span>' +
-              '<span class="jh-srl-muted">' + escapeHtml(total || '-') + '</span>' +
-            '</span>'
-          );
-        }
-
-        return (
-          '<span class="jh-srl-score-unit">' +
-            '<span class="jh-srl-label">Total</span>' +
-            '<span class="jh-srl-score ' + cls + '">' + escapeHtml(total) + '</span>' +
-            '<span class="' + cls + '">(' + escapeHtml(vsPar) + ')</span>' +
-          '</span>'
-        );
-      }
-
-      function renderFinish(event) {
-        return (
-          '<span class="jh-srl-score-unit">' +
-            '<span class="jh-srl-label">Finish</span>' +
-            '<span class="' + (event.finish && event.finish !== '-' ? 'jh-srl-over' : 'jh-srl-muted') + '">' +
-              escapeHtml(event.finish || '-') +
-            '</span>' +
-          '</span>'
-        );
-      }
-
-      function renderMetrics(event) {
+      function buildMetrics(event) {
         const metrics = Array.isArray(event.metrics) ? event.metrics : [];
-
-        if (!metrics.length) return '';
-
-        return metrics.map(function(metric) {
-          return (
-            '<span class="jh-srl-score-unit">' +
-              '<span class="jh-srl-label">' + escapeHtml(metric.label) + '</span>' +
-              '<span class="' + (metric.value === 'TBD' || metric.value === '-' ? 'jh-srl-muted' : 'jh-srl-over') + '">' +
-                escapeHtml(metric.value) +
-              '</span>' +
-            '</span>'
-          );
-        }).join('<span class="jh-srl-sep">·</span>');
-      }
-
-      function renderLinks(event) {
         const links = Array.isArray(event.links) ? event.links : [];
 
-        const validLinks = links.filter(function(link) {
-          return link && link.url && link.url !== '#';
-        });
-
-        if (!validLinks.length) return '';
-
-        return validLinks.map(function(link) {
+        const metricHtml = metrics.map(function(metric) {
           return (
-            '<a class="jh-srl-link" href="' + escapeHtml(link.url) + '" target="_blank" rel="noopener noreferrer">' +
-              escapeHtml(link.label || 'Official Results') +
-            '</a>'
+            '<span class="jh-srl-metric">' +
+              '<span class="jh-srl-metric-label">' + escapeHtml(metric.label) + '</span>' +
+              '<span>' + escapeHtml(metric.value || '—') + '</span>' +
+            '</span>'
           );
-        }).join('<span class="jh-srl-sep">·</span>');
-      }
+        }).join('');
 
-      function renderRow(event) {
-        const lineParts = [
-          renderStatus(event),
-          renderRounds(event),
-          renderTotal(event),
-          renderFinish(event),
-          renderMetrics(event),
-          renderLinks(event)
-        ].filter(Boolean);
+        const linkHtml = links
+          .filter(function(link) {
+            return link && link.url && link.url !== '#';
+          })
+          .map(function(link) {
+            return (
+              '<a class="jh-srl-results-link" href="' + escapeHtml(link.url) + '" target="_blank" rel="noopener noreferrer">' +
+                escapeHtml(link.label || 'Results') +
+              '</a>'
+            );
+          }).join('');
+
+        if (!metricHtml && !linkHtml) return '';
 
         return (
-          '<article class="jh-srl-row">' +
-            '<div class="jh-srl-main">' +
-              '<div class="jh-srl-event">' + escapeHtml(event.tournament || '') + '</div>' +
-              '<div class="jh-srl-date">' + escapeHtml(event.date || '') + '</div>' +
+          '<div class="jh-srl-metrics">' +
+            metricHtml +
+            linkHtml +
+          '</div>'
+        );
+      }
+
+      function buildEventCard(event) {
+        const statusClassName = normalizeStatusType(event);
+        const eventToPar = getEventToPar(event);
+        const parText = formatToPar(eventToPar);
+        const parClass = scoreClass(eventToPar);
+        const totalText = isDisplayText(event.total) ? event.total : '—';
+        const finishText = isDisplayText(event.finish) ? event.finish : '—';
+        const roundBandLabel = buildRoundBandLabel(event);
+
+        return (
+          '<article class="jh-srl-card">' +
+            '<header class="jh-srl-card-head">' +
+              '<div class="jh-srl-card-left">' +
+                '<div class="jh-srl-status is-' + statusClassName + '">' +
+                  '<span class="jh-srl-status-dot"></span>' +
+                  '<span>' + escapeHtml(event.status || 'Pending') + '</span>' +
+                '</div>' +
+
+                '<h3 class="jh-srl-event-title">' +
+                  escapeHtml(event.tournament || 'Tournament') +
+                '</h3>' +
+
+                '<p class="jh-srl-event-meta">' +
+                  escapeHtml(event.course || '') +
+                '</p>' +
+              '</div>' +
+
+              '<div class="jh-srl-date-box">' +
+                '<span class="jh-srl-date-label">Date</span>' +
+                '<span class="jh-srl-date-value">' + escapeHtml(event.date || 'TBD') + '</span>' +
+              '</div>' +
+            '</header>' +
+
+            '<div class="jh-srl-result-band">' +
+              '<div class="jh-srl-band-cell">' +
+                '<span class="jh-srl-band-label">' + escapeHtml(roundBandLabel) + '</span>' +
+                '<div class="jh-srl-rounds">' +
+                  buildRoundChips(event) +
+                '</div>' +
+              '</div>' +
+
+              '<div class="jh-srl-band-cell">' +
+                '<span class="jh-srl-band-label">Total</span>' +
+                '<div class="jh-srl-total-value">' +
+                  escapeHtml(totalText) +
+                '</div>' +
+              '</div>' +
+
+              '<div class="jh-srl-band-cell">' +
+                '<span class="jh-srl-band-label">Par</span>' +
+                '<div class="jh-srl-par-value ' + parClass + '">' +
+                  escapeHtml(parText) +
+                '</div>' +
+              '</div>' +
+
+              '<div class="jh-srl-band-cell">' +
+                '<span class="jh-srl-band-label">Finish</span>' +
+                '<div class="jh-srl-finish-value">' +
+                  escapeHtml(finishText) +
+                '</div>' +
+              '</div>' +
             '</div>' +
-            '<p class="jh-srl-course">' + escapeHtml(event.course || '') + '</p>' +
-            '<div class="jh-srl-result-line">' +
-              lineParts.join('<span class="jh-srl-sep">·</span>') +
-            '</div>' +
+
+            buildMetrics(event) +
           '</article>'
         );
       }
 
-      list.innerHTML = results.map(renderRow).join('');
+      list.innerHTML = results.map(buildEventCard).join('');
     })();
   </script>
 </section>
+
+
+
 
 
   
@@ -7268,60 +7075,61 @@
 
 <style id="jh-sophomore-season-usc-color-polish">
   /*
-    USC color polish pass.
+    USC sophomore season cardinal-first color polish.
     Scope: #jh-sophomore-season-page only.
     Purpose:
-    - Keep navy as the main base.
-    - Add controlled cardinal accents.
-    - Add restrained gold highlights.
-    - Avoid heavy red saturation.
+    - Match Summer Results cardinal-first identity.
+    - Keep the existing compact card structure and data untouched.
+    - Use cardinal as the primary base, gold as the accent, navy as support.
   */
 
   #jh-sophomore-season-page .jh-ss-main-head {
     background:
       radial-gradient(
-        circle at 10% 0%,
-        rgba(255, 204, 0, 0.18),
-        transparent 32%
+        circle at 12% 0%,
+        rgba(255, 204, 0, 0.20),
+        transparent 34%
       ),
       radial-gradient(
         circle at 92% 8%,
-        rgba(153, 0, 0, 0.30),
-        transparent 34%
+        rgba(255, 204, 0, 0.08),
+        transparent 32%
       ),
       linear-gradient(
         135deg,
-        #07172c 0%,
-        #0c2340 48%,
-        #650000 100%
+        #650000 0%,
+        #990000 52%,
+        #7a0000 76%,
+        #0c2340 100%
       ) !important;
-    border: 1px solid rgba(255, 204, 0, 0.18) !important;
+    border: 1px solid rgba(255, 204, 0, 0.26) !important;
     box-shadow:
-      0 16px 36px rgba(12, 35, 64, 0.16),
-      0 8px 22px rgba(153, 0, 0, 0.10) !important;
+      0 18px 42px rgba(153, 0, 0, 0.18),
+      0 6px 16px rgba(12, 35, 64, 0.10) !important;
   }
 
   #jh-sophomore-season-page .jh-ss-main-head::after {
     background:
       linear-gradient(
         90deg,
-        #990000 0%,
+        #650000 0%,
         #ffcc00 48%,
-        #650000 100%
+        #990000 100%
       ) !important;
     height: 4px !important;
   }
 
   #jh-sophomore-season-page .jh-ss-kicker {
-    color: rgba(255, 204, 0, 0.72) !important;
+    color: #ffcc00 !important;
   }
 
   #jh-sophomore-season-page .jh-ss-title {
     color: #ffffff !important;
   }
 
-  #jh-sophomore-season-page .jh-ss-meta {
-    color: rgba(255, 255, 255, 0.76) !important;
+  #jh-sophomore-season-page .jh-ss-meta,
+  #jh-sophomore-season-page .jh-ss-updated {
+    color: rgba(255, 255, 255, 0.80) !important;
   }
 
   #jh-sophomore-season-page .jh-ss-section-head {
@@ -7337,94 +7145,236 @@
   }
 
   #jh-sophomore-season-page .jh-ss-count-pill {
-    background: rgba(255, 204, 0, 0.10) !important;
-    border: 1px solid rgba(153, 0, 0, 0.18) !important;
+    background: rgba(255, 204, 0, 0.14) !important;
+    border: 1px solid rgba(153, 0, 0, 0.20) !important;
     color: #650000 !important;
     font-weight: 650 !important;
   }
 
   #jh-sophomore-season-page .jh-ss-card {
-    border-color: rgba(153, 0, 0, 0.12) !important;
+    position: relative;
+    border: 1px solid rgba(153, 0, 0, 0.20) !important;
+    border-top: 4px solid #990000 !important;
+    box-shadow:
+      0 14px 32px rgba(12, 35, 64, 0.08),
+      0 4px 12px rgba(153, 0, 0, 0.055) !important;
+  }
+
+  #jh-sophomore-season-page .jh-ss-card::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background:
+      linear-gradient(
+        90deg,
+        #650000 0%,
+        #990000 42%,
+        #ffcc00 70%,
+        #650000 100%
+      );
+    pointer-events: none;
+    z-index: 2;
   }
 
   #jh-sophomore-season-page .jh-ss-card-head {
     background:
       linear-gradient(
-        180deg,
-        #ffffff 0%,
-        #fffdf6 100%
+        135deg,
+        rgba(153, 0, 0, 0.070) 0%,
+        #ffffff 48%,
+        rgba(255, 204, 0, 0.16) 100%
       ) !important;
-    border-bottom: 1px solid rgba(153, 0, 0, 0.10) !important;
+    border-bottom: 1px solid rgba(153, 0, 0, 0.14) !important;
   }
 
   #jh-sophomore-season-page .jh-ss-status.is-scheduled {
-    color: #650000 !important;
-    background: rgba(153, 0, 0, 0.06) !important;
-    border: 1px solid rgba(153, 0, 0, 0.14) !important;
+    color: #6f4f00 !important;
+    background: rgba(255, 204, 0, 0.18) !important;
+    border: 1px solid rgba(255, 204, 0, 0.36) !important;
   }
 
-  #jh-sophomore-season-page
-  .jh-ss-status.is-scheduled
-  .jh-ss-status-dot {
-    background: #990000 !important;
-    box-shadow: 0 0 0 3px rgba(153, 0, 0, 0.10) !important;
+  #jh-sophomore-season-page .jh-ss-status.is-scheduled .jh-ss-status-dot {
+    background: #ffcc00 !important;
+    box-shadow:
+      0 0 0 3px rgba(255, 204, 0, 0.20) !important;
+  }
+
+  #jh-sophomore-season-page .jh-ss-status.is-ongoing {
+    color: #ffcc00 !important;
+    background:
+      linear-gradient(
+        135deg,
+        #990000 0%,
+        #650000 100%
+      ) !important;
+    border: 1px solid rgba(255, 204, 0, 0.42) !important;
+  }
+
+  #jh-sophomore-season-page .jh-ss-status.is-ongoing .jh-ss-status-dot {
+    background: #ffcc00 !important;
+    animation: jhSsGoldPulse 1.65s infinite ease-in-out !important;
+    box-shadow:
+      0 0 0 3px rgba(255, 204, 0, 0.22),
+      0 0 10px rgba(255, 204, 0, 0.24) !important;
+  }
+
+  #jh-sophomore-season-page .jh-ss-status.is-final {
+    color: #ffcc00 !important;
+    background:
+      linear-gradient(
+        135deg,
+        #990000 0%,
+        #650000 100%
+      ) !important;
+    border: 1px solid rgba(255, 204, 0, 0.38) !important;
+  }
+
+  #jh-sophomore-season-page .jh-ss-status.is-final .jh-ss-status-dot {
+    background: #ffcc00 !important;
+    box-shadow:
+      0 0 0 3px rgba(255, 204, 0, 0.20) !important;
+  }
+
+  @keyframes jhSsGoldPulse {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 0.52;
+      transform: scale(0.88);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   #jh-sophomore-season-page .jh-ss-event-title {
-    color: #172033 !important;
+    color: #0c2340 !important;
   }
 
   #jh-sophomore-season-page .jh-ss-event-meta {
-    color: #64748b !important;
+    color: #475569 !important;
   }
 
   #jh-sophomore-season-page .jh-ss-date-box {
     background:
       linear-gradient(
         135deg,
-        #0c2340 0%,
-        #111d34 50%,
+        #990000 0%,
         #650000 100%
       ) !important;
-    border: 1px solid rgba(255, 204, 0, 0.28) !important;
+    border: 1px solid rgba(255, 204, 0, 0.34) !important;
+    box-shadow:
+      0 6px 14px rgba(153, 0, 0, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
   }
 
   #jh-sophomore-season-page .jh-ss-date-label {
-    color: rgba(255, 204, 0, 0.78) !important;
+    color: #ffcc00 !important;
+  }
+
+  #jh-sophomore-season-page .jh-ss-date-value {
+    color: #ffffff !important;
   }
 
   #jh-sophomore-season-page .jh-ss-result-band {
     background:
       linear-gradient(
         135deg,
-        #0c2340 0%,
-        #101d33 50%,
-        #650000 100%
+        #650000 0%,
+        #990000 48%,
+        #7a0000 72%,
+        #0c2340 100%
       ) !important;
-    border-top: 1px solid rgba(255, 204, 0, 0.16) !important;
+    border-top: 1px solid rgba(255, 204, 0, 0.28) !important;
   }
 
-  #jh-sophomore-season-page .jh-ss-band-label {
-    color: rgba(255, 204, 0, 0.70) !important;
+  #jh-sophomore-season-page .jh-ss-band-cell {
+    border-right: 1px solid rgba(255, 204, 0, 0.16) !important;
+  }
+
+  #jh-sophomore-season-page .jh-ss-band-cell:last-child {
+    border-right: none !important;
+  }
+
+  #jh-sophomore-season-page .jh-ss-band-label,
+  #jh-sophomore-season-page .jh-ss-round-label {
+    color: rgba(255, 204, 0, 0.78) !important;
   }
 
   #jh-sophomore-season-page .jh-ss-round-chip {
-    background: rgba(255, 255, 255, 0.055) !important;
-    border-color: rgba(255, 204, 0, 0.12) !important;
+    background: rgba(255, 255, 255, 0.070) !important;
+    border: 1px solid rgba(255, 204, 0, 0.20) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.07) !important;
+  }
+
+  #jh-sophomore-season-page .jh-ss-round-score,
+  #jh-sophomore-season-page .jh-ss-total-value,
+  #jh-sophomore-season-page .jh-ss-par-value,
+  #jh-sophomore-season-page .jh-ss-finish-value {
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.16);
+  }
+
+  #jh-sophomore-season-page .jh-ss-round-score.red,
+  #jh-sophomore-season-page .jh-ss-total-value.red,
+  #jh-sophomore-season-page .jh-ss-par-value.red,
+  #jh-sophomore-season-page .jh-ss-finish-value.red {
+    color: #ffcc00 !important;
+  }
+
+  #jh-sophomore-season-page .jh-ss-round-score.blue,
+  #jh-sophomore-season-page .jh-ss-total-value.blue,
+  #jh-sophomore-season-page .jh-ss-par-value.blue,
+  #jh-sophomore-season-page .jh-ss-finish-value.blue {
+    color: #ffffff !important;
+  }
+
+  #jh-sophomore-season-page .jh-ss-round-score.navy,
+  #jh-sophomore-season-page .jh-ss-total-value.navy,
+  #jh-sophomore-season-page .jh-ss-par-value.navy,
+  #jh-sophomore-season-page .jh-ss-finish-value.navy {
+    color: #bfdbfe !important;
+  }
+
+  #jh-sophomore-season-page .jh-ss-round-score.white,
+  #jh-sophomore-season-page .jh-ss-total-value.white,
+  #jh-sophomore-season-page .jh-ss-par-value.white,
+  #jh-sophomore-season-page .jh-ss-finish-value.white {
+    color: rgba(255, 255, 255, 0.88) !important;
   }
 
   #jh-sophomore-season-page .jh-ss-metrics {
     background:
       linear-gradient(
-        180deg,
-        #ffffff 0%,
-        #fffdf6 100%
+        135deg,
+        rgba(153, 0, 0, 0.045) 0%,
+        #ffffff 50%,
+        rgba(255, 204, 0, 0.13) 100%
       ) !important;
-    border-top: 1px solid rgba(153, 0, 0, 0.08) !important;
+    border-top: 1px solid rgba(153, 0, 0, 0.13) !important;
+  }
+
+  #jh-sophomore-season-page .jh-ss-metric {
+    background: rgba(153, 0, 0, 0.070) !important;
+    border: 1px solid rgba(153, 0, 0, 0.15) !important;
+    color: #0c2340 !important;
+  }
+
+  #jh-sophomore-season-page .jh-ss-metric-label {
+    color: #650000 !important;
   }
 
   #jh-sophomore-season-page .jh-ss-notes {
-    border-color: rgba(153, 0, 0, 0.14) !important;
+    border-color: rgba(153, 0, 0, 0.18) !important;
     background:
       linear-gradient(
         180deg,
@@ -7437,9 +7387,9 @@
     background:
       linear-gradient(
         135deg,
-        #0c2340 0%,
-        #111d34 52%,
-        #650000 100%
+        #650000 0%,
+        #990000 52%,
+        #0c2340 100%
       ) !important;
     color: #ffffff !important;
     border-bottom: 3px solid #ffcc00 !important;
@@ -7452,14 +7402,38 @@
   @media (max-width: 768px) {
     #jh-sophomore-season-page .jh-ss-main-head {
       border-radius: 17px !important;
+      box-shadow:
+        0 13px 28px rgba(153, 0, 0, 0.16),
+        0 4px 12px rgba(12, 35, 64, 0.08) !important;
     }
 
-    #jh-sophomore-season-page .jh-ss-count-pill {
-      font-size: 9.5px !important;
+    #jh-sophomore-season-page .jh-ss-card {
+      border-top-width: 3px !important;
+      box-shadow:
+        0 11px 24px rgba(12, 35, 64, 0.08),
+        0 3px 9px rgba(153, 0, 0, 0.045) !important;
+    }
+
+    #jh-sophomore-season-page .jh-ss-card::before {
+      top: -3px;
+      height: 3px;
+    }
+
+    #jh-sophomore-season-page .jh-ss-date-box {
+      box-shadow:
+        0 4px 10px rgba(153, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+    }
+
+    #jh-sophomore-season-page .jh-ss-result-band {
+      border-top: 1px solid rgba(255, 204, 0, 0.24) !important;
+    }
+
+    #jh-sophomore-season-page .jh-ss-band-cell {
+      border-bottom-color: rgba(255, 204, 0, 0.14) !important;
     }
 
     #jh-sophomore-season-page .jh-ss-notes-head {
-      font-size: 13.5px !important;
       font-weight: 650 !important;
     }
   }
@@ -8482,315 +8456,381 @@ function splitSpringSchedule(events) {
   class="jh-sophomore-finish-trend"
   aria-label="2026-27 USC sophomore season finish trend"
 >
-  <style>
-    #jh-sophomore-finish-trend,
-    #jh-sophomore-finish-trend * {
-      box-sizing: border-box;
-    }
+<style>
+  #jh-sophomore-finish-trend,
+  #jh-sophomore-finish-trend * {
+    box-sizing: border-box;
+  }
 
+  #jh-sophomore-finish-trend {
+    --jhft-cardinal: #990000;
+    --jhft-cardinal-dark: #650000;
+    --jhft-cardinal-mid: #7a0000;
+
+    --jhft-amber: #c9892b;
+    --jhft-amber-deep: #8f4f16;
+    --jhft-amber-soft: #fff4e2;
+    --jhft-ivory: #fffaf2;
+
+    --jhft-navy: #0c2340;
+    --jhft-text: #172033;
+    --jhft-muted: #64748b;
+    --jhft-line: #e2e8f0;
+
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto 40px;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  #jh-sophomore-finish-trend .jhft-shell {
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid rgba(153, 0, 0, 0.16);
+    background: #ffffff;
+    overflow: hidden;
+    box-shadow:
+      0 14px 34px rgba(12, 35, 64, 0.070),
+      0 6px 18px rgba(153, 0, 0, 0.045);
+  }
+
+  #jh-sophomore-finish-trend .jhft-head {
+    padding: 20px 24px 17px;
+    background:
+      radial-gradient(circle at 10% 0%, rgba(201, 137, 43, 0.22), transparent 32%),
+      radial-gradient(circle at 94% 8%, rgba(153, 0, 0, 0.30), transparent 34%),
+      linear-gradient(
+        135deg,
+        var(--jhft-cardinal-dark) 0%,
+        var(--jhft-cardinal) 56%,
+        var(--jhft-cardinal-mid) 82%,
+        #3f1414 100%
+      );
+    color: #ffffff;
+    border-bottom: 4px solid var(--jhft-amber);
+  }
+
+  #jh-sophomore-finish-trend .jhft-kicker {
+    margin: 0 0 7px;
+    color: #f7d08a;
+    font-size: 10px;
+    line-height: 1.2;
+    font-weight: 650;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+  }
+
+  #jh-sophomore-finish-trend .jhft-title {
+    margin: 0;
+    color: #ffffff;
+    font-size: 24px;
+    line-height: 1.18;
+    font-weight: 750;
+    letter-spacing: -0.4px;
+    text-transform: uppercase;
+  }
+
+  #jh-sophomore-finish-trend .jhft-subtitle {
+    margin: 8px 0 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 12px;
+    line-height: 1.45;
+    font-weight: 650;
+    letter-spacing: 0.35px;
+    text-transform: uppercase;
+  }
+
+  #jh-sophomore-finish-trend .jhft-body {
+    padding: 22px;
+    background:
+      linear-gradient(
+        180deg,
+        #ffffff 0%,
+        var(--jhft-ivory) 100%
+      );
+  }
+
+  #jh-sophomore-finish-trend .jhft-chart-card {
+    position: relative;
+    width: 100%;
+    min-height: 440px;
+    border-radius: 16px;
+    border: 1px solid rgba(153, 0, 0, 0.14);
+    background:
+      radial-gradient(circle at 50% 0%, rgba(201, 137, 43, 0.10), transparent 36%),
+      linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #fffaf2 100%
+      );
+    overflow: hidden;
+    padding: 22px 18px 48px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.80);
+  }
+
+  #jh-sophomore-finish-trend .jhft-chart-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background:
+      linear-gradient(
+        90deg,
+        var(--jhft-cardinal-dark) 0%,
+        var(--jhft-cardinal) 52%,
+        var(--jhft-amber) 78%,
+        var(--jhft-cardinal-dark) 100%
+      );
+  }
+
+  #jh-sophomore-finish-trend .jhft-chart-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  #jh-sophomore-finish-trend .jhft-chart-title {
+    margin: 0;
+    color: var(--jhft-cardinal-dark);
+    font-size: 16px;
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  #jh-sophomore-finish-trend .jhft-chart-meta {
+    margin: 5px 0 0;
+    color: #806044;
+    font-size: 11px;
+    line-height: 1.4;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.45px;
+  }
+
+  #jh-sophomore-finish-trend .jhft-status-pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 26px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background:
+      linear-gradient(
+        135deg,
+        var(--jhft-cardinal) 0%,
+        var(--jhft-cardinal-dark) 100%
+      );
+    border: 1px solid rgba(201, 137, 43, 0.46);
+    color: #f7d08a;
+    font-size: 10px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  #jh-sophomore-finish-trend .jhft-canvas-wrap {
+    position: relative;
+    width: 100%;
+    height: 330px;
+    display: none;
+    z-index: 1;
+  }
+
+  #jh-sophomore-finish-trend .jhft-canvas-wrap.is-visible {
+    display: block;
+  }
+
+  #jh-sophomore-finish-trend canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  #jh-sophomore-finish-trend .jhft-empty {
+    display: none;
+    min-height: 300px;
+    border-radius: 14px;
+    border: 1px dashed rgba(153, 0, 0, 0.22);
+    background:
+      radial-gradient(circle at 50% 0%, rgba(201, 137, 43, 0.13), transparent 34%),
+      linear-gradient(
+        180deg,
+        #ffffff 0%,
+        var(--jhft-ivory) 100%
+      );
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 34px 22px;
+    position: relative;
+    z-index: 1;
+  }
+
+  #jh-sophomore-finish-trend .jhft-empty.is-visible {
+    display: flex;
+  }
+
+  #jh-sophomore-finish-trend .jhft-empty-inner {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  #jh-sophomore-finish-trend .jhft-empty-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 27px;
+    padding: 6px 11px;
+    border-radius: 999px;
+    background:
+      linear-gradient(
+        135deg,
+        var(--jhft-cardinal) 0%,
+        var(--jhft-cardinal-dark) 100%
+      );
+    border: 1px solid rgba(201, 137, 43, 0.42);
+    color: #f7d08a;
+    font-size: 10px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+  }
+
+  #jh-sophomore-finish-trend .jhft-empty-title {
+    margin: 14px 0 8px;
+    color: var(--jhft-cardinal-dark);
+    font-size: 22px;
+    line-height: 1.2;
+    font-weight: 750;
+    letter-spacing: -0.35px;
+  }
+
+  #jh-sophomore-finish-trend .jhft-empty-text {
+    margin: 0;
+    color: #806044;
+    font-size: 13px;
+    line-height: 1.65;
+    font-weight: 500;
+  }
+
+  #jh-sophomore-finish-trend .jhft-source {
+    position: absolute;
+    left: 18px;
+    right: 18px;
+    bottom: 14px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(153, 0, 0, 0.20);
+    color: rgba(101, 0, 0, 0.56);
+    font-size: 10px;
+    line-height: 1.35;
+    font-weight: 550;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  #jh-sophomore-finish-trend .jhft-summary-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  #jh-sophomore-finish-trend .jhft-summary-item {
+    min-width: 0;
+    padding: 12px 12px;
+    border-radius: 12px;
+    background:
+      linear-gradient(
+        180deg,
+        #ffffff 0%,
+        var(--jhft-ivory) 100%
+      );
+    border: 1px solid rgba(153, 0, 0, 0.16);
+    text-align: center;
+    box-shadow:
+      0 5px 14px rgba(12, 35, 64, 0.045),
+      0 2px 6px rgba(153, 0, 0, 0.035);
+  }
+
+  #jh-sophomore-finish-trend .jhft-summary-k {
+    color: rgba(101, 0, 0, 0.68);
+    font-size: 9px;
+    line-height: 1.15;
+    font-weight: 600;
+    letter-spacing: 0.55px;
+    text-transform: uppercase;
+  }
+
+  #jh-sophomore-finish-trend .jhft-summary-v {
+    margin-top: 5px;
+    color: var(--jhft-cardinal-dark);
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 750;
+  }
+
+  @media (max-width: 768px) {
     #jh-sophomore-finish-trend {
-  --jhft-cardinal: #990000;
-  --jhft-cardinal-dark: #650000;
-  --jhft-gold: #ffcc00;
-  --jhft-gold-muted: #d6a642;
-  --jhft-navy: #0c2340;
-  --jhft-text: #172033;
-  --jhft-muted: #64748b;
-  --jhft-line: #e2e8f0;
-  --jhft-soft: #f8fafc;
-
-  width: 100%;
-  max-width: 900px;
-  margin: 30px auto 40px;
-  padding: 0;
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-}
-
-    #jh-sophomore-finish-trend .jhft-shell {
-      width: 100%;
-      border-radius: 20px;
-      border: 1px solid var(--jhft-line);
-      background: #ffffff;
-      overflow: hidden;
-      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.07);
+      margin: 24px auto 34px;
+      padding: 0 14px;
     }
 
     #jh-sophomore-finish-trend .jhft-head {
-      padding: 20px 24px 17px;
-      background:
-        radial-gradient(circle at 10% 0%, rgba(255,204,0,0.20), transparent 32%),
-        linear-gradient(135deg, #0c2340 0%, #650000 100%);
-      color: #ffffff;
-      border-bottom: 4px solid var(--jhft-gold-muted);
-    }
-
-    #jh-sophomore-finish-trend .jhft-kicker {
-      margin: 0 0 7px;
-      color: rgba(255,255,255,0.65);
-      font-size: 10px;
-      line-height: 1.2;
-      font-weight: 900;
-      letter-spacing: 1.1px;
-      text-transform: uppercase;
+      padding: 18px 16px 15px;
     }
 
     #jh-sophomore-finish-trend .jhft-title {
-      margin: 0;
-      color: #ffffff;
-      font-size: 24px;
-      line-height: 1.18;
-      font-weight: 950;
-      letter-spacing: -0.4px;
-      text-transform: uppercase;
-    }
-
-    #jh-sophomore-finish-trend .jhft-subtitle {
-      margin: 8px 0 0;
-      color: rgba(255,255,255,0.74);
-      font-size: 12px;
-      line-height: 1.45;
-      font-weight: 750;
-      letter-spacing: 0.35px;
-      text-transform: uppercase;
+      font-size: 20px;
     }
 
     #jh-sophomore-finish-trend .jhft-body {
-      padding: 22px;
-      background: #ffffff;
+      padding: 16px 14px;
     }
 
     #jh-sophomore-finish-trend .jhft-chart-card {
-      position: relative;
-      width: 100%;
-      min-height: 440px;
-      border-radius: 16px;
-      border: 1px solid var(--jhft-line);
-      background:
-        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-      overflow: hidden;
-      padding: 22px 18px 48px;
-    }
-
-    #jh-sophomore-finish-trend .jhft-chart-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 18px;
-      flex-wrap: wrap;
-    }
-
-    #jh-sophomore-finish-trend .jhft-chart-title {
-      margin: 0;
-      color: var(--jhft-navy);
-      font-size: 16px;
-      line-height: 1.25;
-      font-weight: 950;
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-    }
-
-    #jh-sophomore-finish-trend .jhft-chart-meta {
-      margin: 5px 0 0;
-      color: var(--jhft-muted);
-      font-size: 11px;
-      line-height: 1.4;
-      font-weight: 750;
-      text-transform: uppercase;
-      letter-spacing: 0.45px;
-    }
-
-    #jh-sophomore-finish-trend .jhft-status-pill {
-      display: inline-flex;
-      align-items: center;
-      min-height: 26px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(153,0,0,0.08);
-      border: 1px solid rgba(153,0,0,0.16);
-      color: var(--jhft-cardinal);
-      font-size: 10px;
-      line-height: 1;
-      font-weight: 900;
-      letter-spacing: 0.7px;
-      text-transform: uppercase;
-      white-space: nowrap;
+      min-height: 390px;
+      padding: 18px 13px 46px;
     }
 
     #jh-sophomore-finish-trend .jhft-canvas-wrap {
-      position: relative;
-      width: 100%;
-      height: 330px;
-      display: none;
-    }
-
-    #jh-sophomore-finish-trend .jhft-canvas-wrap.is-visible {
-      display: block;
-    }
-
-    #jh-sophomore-finish-trend canvas {
-      width: 100% !important;
-      height: 100% !important;
+      height: 285px;
     }
 
     #jh-sophomore-finish-trend .jhft-empty {
-      display: none;
-      min-height: 300px;
-      border-radius: 14px;
-      border: 1px dashed #cbd5e1;
-      background:
-        radial-gradient(circle at 50% 0%, rgba(255,204,0,0.13), transparent 34%),
-        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 34px 22px;
-    }
-
-    #jh-sophomore-finish-trend .jhft-empty.is-visible {
-      display: flex;
-    }
-
-    #jh-sophomore-finish-trend .jhft-empty-inner {
-      max-width: 560px;
-      margin: 0 auto;
-    }
-
-    #jh-sophomore-finish-trend .jhft-empty-label {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 27px;
-      padding: 6px 11px;
-      border-radius: 999px;
-      background: rgba(12,35,64,0.06);
-      border: 1px solid rgba(12,35,64,0.10);
-      color: var(--jhft-navy);
-      font-size: 10px;
-      line-height: 1;
-      font-weight: 950;
-      letter-spacing: 0.9px;
-      text-transform: uppercase;
+      min-height: 265px;
+      padding: 28px 16px;
     }
 
     #jh-sophomore-finish-trend .jhft-empty-title {
-      margin: 14px 0 8px;
-      color: var(--jhft-navy);
-      font-size: 22px;
-      line-height: 1.2;
-      font-weight: 950;
-      letter-spacing: -0.35px;
+      font-size: 18px;
     }
 
     #jh-sophomore-finish-trend .jhft-empty-text {
-      margin: 0;
-      color: #64748b;
-      font-size: 13px;
-      line-height: 1.65;
-      font-weight: 700;
-    }
-
-    #jh-sophomore-finish-trend .jhft-source {
-      position: absolute;
-      left: 18px;
-      right: 18px;
-      bottom: 14px;
-      padding-top: 10px;
-      border-top: 1px dashed #cbd5e1;
-      color: #94a3b8;
-      font-size: 10px;
-      line-height: 1.35;
-      font-weight: 850;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-      text-align: center;
+      font-size: 12px;
     }
 
     #jh-sophomore-finish-trend .jhft-summary-row {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 14px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-
-    #jh-sophomore-finish-trend .jhft-summary-item {
-      min-width: 0;
-      padding: 12px 12px;
-      border-radius: 12px;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      text-align: center;
-    }
-
-    #jh-sophomore-finish-trend .jhft-summary-k {
-      color: #64748b;
-      font-size: 9px;
-      line-height: 1.15;
-      font-weight: 950;
-      letter-spacing: 0.55px;
-      text-transform: uppercase;
-    }
-
-    #jh-sophomore-finish-trend .jhft-summary-v {
-      margin-top: 5px;
-      color: var(--jhft-navy);
-      font-size: 18px;
-      line-height: 1;
-      font-weight: 950;
-    }
-
-    @media (max-width: 768px) {
-  #jh-sophomore-finish-trend {
-    margin: 24px auto 34px;
-    padding: 0 14px;
   }
 
-      #jh-sophomore-finish-trend .jhft-head {
-        padding: 18px 16px 15px;
-      }
-
-      #jh-sophomore-finish-trend .jhft-title {
-        font-size: 20px;
-      }
-
-      #jh-sophomore-finish-trend .jhft-body {
-        padding: 16px 14px;
-      }
-
-      #jh-sophomore-finish-trend .jhft-chart-card {
-        min-height: 390px;
-        padding: 18px 13px 46px;
-      }
-
-      #jh-sophomore-finish-trend .jhft-canvas-wrap {
-        height: 285px;
-      }
-
-      #jh-sophomore-finish-trend .jhft-empty {
-        min-height: 265px;
-        padding: 28px 16px;
-      }
-
-      #jh-sophomore-finish-trend .jhft-empty-title {
-        font-size: 18px;
-      }
-
-      #jh-sophomore-finish-trend .jhft-empty-text {
-        font-size: 12px;
-      }
-
-      #jh-sophomore-finish-trend .jhft-summary-row {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+  @media (max-width: 480px) {
+    #jh-sophomore-finish-trend {
+      padding-left: 12px;
+      padding-right: 12px;
     }
-
-    @media (max-width: 480px) {
-  #jh-sophomore-finish-trend {
-    padding-left: 12px;
-    padding-right: 12px;
   }
-}
-  </style>
+</style>
 
 <style id="jh-sophomore-finish-trend-font-softening">
     #jh-sophomore-finish-trend .jhft-kicker {
@@ -9293,8 +9333,8 @@ function splitSpringSchedule(events) {
               {
                 label: "Event Scoring Avg",
                 data: averages,
-                borderColor: "#0c2340",
-                backgroundColor: "rgba(12, 35, 64, 0.06)",
+                borderColor: "#990000",
+                backgroundColor: "rgba(255, 204, 0, 0.16)",
                 borderWidth: 2,
                 pointRadius: isMobile ? 4 : 6,
                 pointHoverRadius: isMobile ? 6 : 9,
@@ -9379,7 +9419,7 @@ function splitSpringSchedule(events) {
               },
               tooltip: {
                 enabled: true,
-                backgroundColor: "#0c2340",
+                backgroundColor: "#650000",
                 titleColor: "#ffcc00",
                 bodyColor: "#ffffff",
                 padding: 12,
@@ -9519,468 +9559,519 @@ function splitSpringSchedule(events) {
   class="jh-sophomore-key-metrics"
   aria-label="Sophomore season key metrics"
 >
-  <style>
-    #jh-sophomore-key-metrics,
-    #jh-sophomore-key-metrics * {
-      box-sizing: border-box;
-    }
 
-   #jh-sophomore-key-metrics {
-  --jhskm-cardinal: #990000;
-  --jhskm-cardinal-dark: #650000;
-  --jhskm-gold: #ffcc00;
-  --jhskm-gold-muted: #d6a642;
-  --jhskm-navy: #0c2340;
-  --jhskm-text: #172033;
-  --jhskm-muted: #64748b;
-  --jhskm-line: #e2e8f0;
-  --jhskm-soft: #f8fafc;
 
-  width: 100%;
-  max-width: none;
-  margin: 30px 0 40px;
-  padding: 0;
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-}
 
-    #jh-sophomore-key-metrics .jhskm-shell {
-      width: 100%;
-      border-radius: 20px;
-      border: 1px solid var(--jhskm-line);
-      background: #ffffff;
-      overflow: hidden;
-      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.07);
-    }
-
-    #jh-sophomore-key-metrics .jhskm-head {
-      padding: 18px 22px 16px;
-      background:
-        radial-gradient(circle at 10% 0%, rgba(255,204,0,0.20), transparent 30%),
-        linear-gradient(135deg, #0c2340 0%, #650000 100%);
-      color: #ffffff;
-      border-bottom: 4px solid var(--jhskm-gold-muted);
-    }
-
-    #jh-sophomore-key-metrics .jhskm-title-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-title {
-      margin: 0;
-      color: #ffffff;
-      font-size: 20px;
-      line-height: 1.2;
-      font-weight: 950;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-status-pill {
-      display: inline-flex;
-      align-items: center;
-      min-height: 26px;
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.18);
-      color: #ffffff;
-      font-size: 10px;
-      line-height: 1;
-      font-weight: 900;
-      letter-spacing: 0.7px;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-subhead {
-      margin-top: 8px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 6px 10px;
-      color: rgba(255,255,255,0.68);
-      font-size: 10px;
-      line-height: 1.4;
-      font-weight: 850;
-      letter-spacing: 0.7px;
-      text-transform: uppercase;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-body {
-      padding: 22px;
-      background: #ffffff;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-section-title {
-      margin: 0 0 14px;
-      padding-left: 14px;
-      border-left: 5px solid var(--jhskm-cardinal);
-      color: var(--jhskm-navy);
-      font-size: 15px;
-      line-height: 1.25;
-      font-weight: 950;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin-bottom: 26px;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-grid:last-child {
-      margin-bottom: 0;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-card {
-      min-width: 0;
-      min-height: 146px;
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-      border-radius: 14px;
-      border: 1px solid var(--jhskm-line);
-      background: #ffffff;
-      box-shadow: 0 5px 14px rgba(15, 23, 42, 0.035);
-    }
-
-    #jh-sophomore-key-metrics .jhskm-card.is-dark {
-      background: var(--jhskm-navy);
-      border-color: var(--jhskm-navy);
-      color: #ffffff;
-      box-shadow: 0 10px 24px rgba(12, 35, 64, 0.16);
-    }
-
-    #jh-sophomore-key-metrics .jhskm-card.is-cardinal {
-      background:
-        linear-gradient(135deg, #650000 0%, #990000 100%);
-      border-color: #990000;
-      color: #ffffff;
-      box-shadow: 0 10px 24px rgba(153, 0, 0, 0.14);
-    }
-
-    #jh-sophomore-key-metrics .jhskm-card.is-gold-line {
-      border-bottom: 4px solid var(--jhskm-gold-muted);
-    }
-
-    #jh-sophomore-key-metrics .jhskm-label {
-      display: block;
-      margin-bottom: 10px;
-      color: var(--jhskm-muted);
-      font-size: 10px;
-      line-height: 1.2;
-      font-weight: 900;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    #jh-sophomore-key-metrics .is-dark .jhskm-label,
-    #jh-sophomore-key-metrics .is-cardinal .jhskm-label {
-      color: rgba(255,255,255,0.62);
-    }
-
-    #jh-sophomore-key-metrics .jhskm-value {
-      color: var(--jhskm-navy);
-      font-size: 28px;
-      line-height: 1.05;
-      font-weight: 950;
-      letter-spacing: -0.6px;
-    }
-
-    #jh-sophomore-key-metrics .is-dark .jhskm-value,
-    #jh-sophomore-key-metrics .is-cardinal .jhskm-value {
-      color: #ffffff;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-sub {
-      margin-top: 10px;
-      padding-top: 11px;
-      border-top: 1px solid rgba(226,232,240,0.75);
-      color: var(--jhskm-muted);
-      font-size: 13px;
-      line-height: 1.45;
-      font-weight: 700;
-    }
-
-    #jh-sophomore-key-metrics .is-dark .jhskm-sub,
-    #jh-sophomore-key-metrics .is-cardinal .jhskm-sub {
-      border-top-color: rgba(255,255,255,0.14);
-      color: rgba(255,255,255,0.72);
-    }
-
-    #jh-sophomore-key-metrics .jhskm-mini-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid rgba(226,232,240,0.75);
-    }
-
-    #jh-sophomore-key-metrics .jhskm-mini-k {
-      color: var(--jhskm-muted);
-      font-size: 8.5px;
-      line-height: 1.2;
-      font-weight: 950;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-mini-v {
-      margin-top: 3px;
-      color: var(--jhskm-navy);
-      font-size: 18px;
-      line-height: 1;
-      font-weight: 950;
-    }
-
-    #jh-sophomore-key-metrics .is-cardinal .jhskm-mini-grid,
-    #jh-sophomore-key-metrics .is-dark .jhskm-mini-grid {
-      border-top-color: rgba(255,255,255,0.14);
-    }
-
-    #jh-sophomore-key-metrics .is-cardinal .jhskm-mini-k,
-    #jh-sophomore-key-metrics .is-dark .jhskm-mini-k {
-      color: rgba(255,255,255,0.62);
-    }
-
-    #jh-sophomore-key-metrics .is-cardinal .jhskm-mini-v,
-    #jh-sophomore-key-metrics .is-dark .jhskm-mini-v {
-      color: #ffffff;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-meta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: auto;
-      padding-top: 14px;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-meta-pill {
-      display: inline-flex;
-      align-items: center;
-      padding: 5px 8px;
-      border-radius: 999px;
-      background: var(--jhskm-soft);
-      border: 1px solid var(--jhskm-line);
-      color: #334155;
-      font-size: 10px;
-      font-weight: 850;
-      line-height: 1;
-      white-space: nowrap;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-footnote {
-      margin: 2px 0 0;
-      padding: 13px 16px;
-      border-radius: 13px;
-      background: #f8fafc;
-      border: 1px dashed #dbe3ee;
-      color: #64748b;
-      font-size: 11px;
-      line-height: 1.55;
-      font-weight: 700;
-    }
-
-    @media (max-width: 820px) {
-      #jh-sophomore-key-metrics .jhskm-grid {
-        grid-template-columns: 1fr;
-      }
-
-      #jh-sophomore-key-metrics .jhskm-body {
-        padding: 18px 15px;
-      }
-
-      #jh-sophomore-key-metrics .jhskm-head {
-        padding: 17px 16px 15px;
-      }
-
-      #jh-sophomore-key-metrics .jhskm-title {
-        font-size: 17px;
-      }
-
-      #jh-sophomore-key-metrics .jhskm-card {
-        min-height: 0;
-        padding: 18px;
-      }
-
-      #jh-sophomore-key-metrics .jhskm-value {
-        font-size: 26px;
-      }
-    }
-
-    @media (max-width: 960px) {
-  #jh-sophomore-key-metrics {
-    padding-left: 16px;
-    padding-right: 16px;
+<style>
+  #jh-sophomore-key-metrics,
+  #jh-sophomore-key-metrics * {
+    box-sizing: border-box;
   }
-}
 
-@media (max-width: 768px) {
   #jh-sophomore-key-metrics {
-    margin: 24px 0 34px;
-    padding-left: 14px;
-    padding-right: 14px;
+    --jhskm-cardinal: #990000;
+    --jhskm-cardinal-dark: #650000;
+    --jhskm-cardinal-mid: #7a0000;
+
+    --jhskm-gold: #c88a2e;
+    --jhskm-gold-deep: #a9671e;
+    --jhskm-gold-soft: #f4dcc0;
+    --jhskm-ivory: #fff8ee;
+    --jhskm-ivory-deep: #fff1df;
+
+    --jhskm-navy: #0c2340;
+    --jhskm-text: #172033;
+    --jhskm-muted: #64748b;
+    --jhskm-line: #e2e8f0;
+    --jhskm-soft: #f8fafc;
+
+    width: 100%;
+    max-width: none;
+    margin: 30px 0 40px;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   }
+
+  #jh-sophomore-key-metrics .jhskm-shell {
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid rgba(153, 0, 0, 0.14);
+    background: #ffffff;
+    overflow: hidden;
+    box-shadow:
+      0 16px 36px rgba(15, 23, 42, 0.065),
+      0 5px 14px rgba(153, 0, 0, 0.035);
+  }
+
+  /*
+    Premium metrics header:
+    - Ivory / warm report-card surface
+    - Cardinal Rojo typography
+    - muted gold foil accent
+    - Cardinal bottom rule
+  */
+  #jh-sophomore-key-metrics .jhskm-head {
+    position: relative;
+    padding: 20px 24px 17px;
+    background: #ffc72c;
+    color: var(--jhskm-cardinal-dark);
+    border-bottom: 4px solid var(--jhskm-cardinal);
+    overflow: hidden;
+  }
+
+  #jh-sophomore-key-metrics .jhskm-head::before,
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 5px;
+    background:
+      linear-gradient(
+        90deg,
+        var(--jhskm-cardinal-dark) 0%,
+        var(--jhskm-cardinal) 38%,
+        var(--jhskm-gold) 72%,
+        var(--jhskm-cardinal-dark) 100%
+      );
+  }
+
+ #jh-sophomore-key-metrics .jhskm-head::after {
+  display: none;
 }
 
-@media (max-width: 480px) {
-  #jh-sophomore-key-metrics {
-    padding-left: 12px;
-    padding-right: 12px;
+  #jh-sophomore-key-metrics .jhskm-title-row {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
   }
-}
-  </style>
 
-  <style id="jh-sophomore-key-metrics-font-softening">
-    #jh-sophomore-key-metrics .jhskm-title {
-      font-weight: 750 !important;
-      letter-spacing: 0.4px !important;
-    }
+  #jh-sophomore-key-metrics .jhskm-title {
+    margin: 0;
+    color: var(--jhskm-cardinal-dark);
+    font-size: 21px;
+    line-height: 1.2;
+    font-weight: 760;
+    letter-spacing: 0.18px;
+    text-transform: uppercase;
+  }
 
-    #jh-sophomore-key-metrics .jhskm-status-pill {
-      font-weight: 650 !important;
-      letter-spacing: 0.55px !important;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-subhead {
-      font-weight: 500 !important;
-      letter-spacing: 0.5px !important;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-section-title {
-      font-weight: 700 !important;
-      letter-spacing: 0.4px !important;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-label {
-      font-weight: 650 !important;
-      letter-spacing: 0.75px !important;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-value {
-      font-weight: 750 !important;
-      letter-spacing: -0.4px !important;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-sub {
-      font-weight: 500 !important;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-mini-k {
-      font-weight: 600 !important;
-      letter-spacing: 0.4px !important;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-mini-v {
-      font-weight: 700 !important;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-meta-pill {
-      font-weight: 600 !important;
-    }
-
-    #jh-sophomore-key-metrics .jhskm-footnote {
-      font-weight: 500 !important;
-    }
-
-    #jh-sophomore-key-metrics #jhskm-wagrImpact,
-    #jh-sophomore-key-metrics #jhskm-clippdImpact {
-      font-weight: 650 !important;
-    }
-
-    @media (max-width: 820px) {
-      #jh-sophomore-key-metrics .jhskm-title {
-        font-weight: 700 !important;
-      }
-
-      #jh-sophomore-key-metrics .jhskm-section-title {
-        font-weight: 700 !important;
-      }
-
-      #jh-sophomore-key-metrics .jhskm-value {
-        font-weight: 750 !important;
-      }
-
-      #jh-sophomore-key-metrics .jhskm-mini-v {
-        font-weight: 700 !important;
-      }
-    }
-  </style>
-
-  <style id="jh-sophomore-key-metrics-rank-impact-style">
-  #jh-sophomore-key-metrics #jhskm-wagrImpact,
-  #jh-sophomore-key-metrics #jhskm-clippdImpact {
+  /*
+    PRE-SEASON remains a status badge, not part of the gold-card treatment.
+  */
+  #jh-sophomore-key-metrics .jhskm-status-pill {
+    position: relative;
+    z-index: 3;
     display: inline-flex;
     align-items: center;
-    gap: 3px;
-    margin-left: 7px;
-    vertical-align: baseline;
-    font-size: 16px !important;
+    min-height: 26px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background:
+      linear-gradient(
+        135deg,
+        var(--jhskm-cardinal) 0%,
+        var(--jhskm-cardinal-dark) 100%
+      );
+    border: 1px solid rgba(200, 138, 46, 0.42);
+    color: #f4dcc0;
+    font-size: 10px;
     line-height: 1;
-    font-weight: 650 !important;
+    font-weight: 750;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
 
-  #jh-sophomore-key-metrics .jhskm-impact {
+  #jh-sophomore-key-metrics .jhskm-subhead {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 9px;
+    color: rgba(101, 0, 0, 0.68);
+    font-size: 11px;
+    line-height: 1.45;
+    font-weight: 550;
+    letter-spacing: 0.42px;
+    text-transform: uppercase;
+  }
+
+  #jh-sophomore-key-metrics .jhskm-body {
+    padding: 22px;
+    background:
+      linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #fffaf5 100%
+      );
+  }
+
+  #jh-sophomore-key-metrics .jhskm-section-title {
+    margin: 0 0 14px;
+    padding-left: 13px;
+    border-left: 5px solid var(--jhskm-cardinal);
+    color: var(--jhskm-cardinal-dark);
+    font-size: 15px;
+    line-height: 1.25;
+    font-weight: 720;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  #jh-sophomore-key-metrics .jhskm-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 26px;
+  }
+
+  #jh-sophomore-key-metrics .jhskm-grid:last-child {
+    margin-bottom: 0;
+  }
+
+  #jh-sophomore-key-metrics .jhskm-card {
+    min-width: 0;
+    min-height: 146px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(153, 0, 0, 0.12);
+    background:
+      linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #fffdf9 100%
+      );
+    box-shadow:
+      0 7px 18px rgba(15, 23, 42, 0.035),
+      0 2px 8px rgba(153, 0, 0, 0.025);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #jh-sophomore-key-metrics .jhskm-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background:
+      linear-gradient(
+        90deg,
+        var(--jhskm-cardinal-dark) 0%,
+        var(--jhskm-cardinal) 54%,
+        var(--jhskm-gold) 100%
+      );
+  }
+
+  /*
+    Clippd Adj. Avg card remains a light premium card.
+  */
+  #jh-sophomore-key-metrics .jhskm-card.is-gold-line {
+    border-bottom: 4px solid var(--jhskm-gold);
+    background:
+      radial-gradient(circle at 92% 0%, rgba(200, 138, 46, 0.09), transparent 30%),
+      linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #fffdf7 100%
+      );
+  }
+
+  /*
+    Target cards:
+    - Scoring Summary
+    - Counting Score Record
+    - Clippd NCAA Ranking
+
+    Replaces the cheap large orange surface with a premium ivory stat card.
+  */
+  #jh-sophomore-key-metrics .jhskm-card.is-dark {
+    background:
+      radial-gradient(circle at 92% 0%, rgba(200, 138, 46, 0.13), transparent 31%),
+      radial-gradient(circle at 0% 100%, rgba(153, 0, 0, 0.055), transparent 36%),
+      linear-gradient(
+        180deg,
+        #ffffff 0%,
+        var(--jhskm-ivory) 100%
+      );
+    border: 1px solid rgba(153, 0, 0, 0.15);
+    color: var(--jhskm-cardinal-dark);
+    box-shadow:
+      0 9px 22px rgba(15, 23, 42, 0.048),
+      0 3px 10px rgba(153, 0, 0, 0.032);
+  }
+
+  #jh-sophomore-key-metrics .jhskm-card.is-dark::before {
+    height: 5px;
+    background:
+      linear-gradient(
+        90deg,
+        var(--jhskm-cardinal-dark) 0%,
+        var(--jhskm-cardinal) 48%,
+        var(--jhskm-gold) 76%,
+        var(--jhskm-cardinal-dark) 100%
+      );
+  }
+
+  /*
+    Performance Profile remains the one Cardinal Rojo anchor card.
+  */
+  #jh-sophomore-key-metrics .jhskm-card.is-cardinal {
+    background:
+      radial-gradient(circle at 90% 0%, rgba(200, 138, 46, 0.18), transparent 31%),
+      linear-gradient(
+        135deg,
+        var(--jhskm-cardinal) 0%,
+        var(--jhskm-cardinal-dark) 100%
+      );
+    border-color: rgba(153, 0, 0, 0.24);
+    color: #ffffff;
+    box-shadow:
+      0 8px 20px rgba(153, 0, 0, 0.15),
+      0 3px 8px rgba(101, 0, 0, 0.10);
+  }
+
+  #jh-sophomore-key-metrics .jhskm-card.is-cardinal::before {
+    background:
+      linear-gradient(
+        90deg,
+        var(--jhskm-cardinal-dark) 0%,
+        var(--jhskm-cardinal) 55%,
+        var(--jhskm-gold) 100%
+      );
+  }
+
+  #jh-sophomore-key-metrics .jhskm-label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--jhskm-muted);
+    font-size: 10px;
+    line-height: 1.2;
+    font-weight: 650;
+    letter-spacing: 0.75px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  #jh-sophomore-key-metrics .is-dark .jhskm-label,
+  #jh-sophomore-key-metrics .is-gold-line .jhskm-label {
+    color: rgba(101, 0, 0, 0.66);
+  }
+
+  #jh-sophomore-key-metrics .is-cardinal .jhskm-label {
+    color: rgba(255,255,255,0.72);
+  }
+
+  #jh-sophomore-key-metrics .jhskm-value {
+    color: var(--jhskm-navy);
+    font-size: 28px;
+    line-height: 1.05;
+    font-weight: 760;
+    letter-spacing: -0.35px;
+    position: relative;
+    z-index: 1;
+  }
+
+  #jh-sophomore-key-metrics .is-dark .jhskm-value,
+  #jh-sophomore-key-metrics .is-gold-line .jhskm-value {
+    color: var(--jhskm-cardinal-dark);
+  }
+
+  #jh-sophomore-key-metrics .is-cardinal .jhskm-value {
+    color: #ffffff;
+  }
+
+  #jh-sophomore-key-metrics .jhskm-sub {
+    margin-top: 10px;
+    padding-top: 11px;
+    border-top: 1px solid var(--jhskm-line);
+    color: var(--jhskm-muted);
+    font-size: 13px;
+    line-height: 1.45;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+  }
+
+  #jh-sophomore-key-metrics .is-dark .jhskm-sub,
+  #jh-sophomore-key-metrics .is-gold-line .jhskm-sub {
+    border-top-color: rgba(153, 0, 0, 0.12);
+    color: rgba(101, 0, 0, 0.64);
+  }
+
+  #jh-sophomore-key-metrics .is-cardinal .jhskm-sub {
+    border-top-color: rgba(255,255,255,0.16);
+    color: rgba(255,255,255,0.74);
+  }
+
+  #jh-sophomore-key-metrics .jhskm-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--jhskm-line);
+    position: relative;
+    z-index: 1;
+  }
+
+  #jh-sophomore-key-metrics .jhskm-mini-k {
+    color: var(--jhskm-muted);
+    font-size: 8.5px;
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+
+  #jh-sophomore-key-metrics .jhskm-mini-v {
+    margin-top: 3px;
+    color: var(--jhskm-navy);
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 700;
+  }
+
+  #jh-sophomore-key-metrics .is-dark .jhskm-mini-grid,
+  #jh-sophomore-key-metrics .is-gold-line .jhskm-mini-grid {
+    border-top-color: rgba(153, 0, 0, 0.12);
+  }
+
+  #jh-sophomore-key-metrics .is-dark .jhskm-mini-k,
+  #jh-sophomore-key-metrics .is-gold-line .jhskm-mini-k {
+    color: rgba(101, 0, 0, 0.58);
+  }
+
+  #jh-sophomore-key-metrics .is-dark .jhskm-mini-v,
+  #jh-sophomore-key-metrics .is-gold-line .jhskm-mini-v {
+    color: var(--jhskm-cardinal-dark);
+  }
+
+  #jh-sophomore-key-metrics .is-cardinal .jhskm-mini-grid {
+    border-top-color: rgba(255,255,255,0.16);
+  }
+
+  #jh-sophomore-key-metrics .is-cardinal .jhskm-mini-k {
+    color: rgba(255,255,255,0.64);
+  }
+
+  #jh-sophomore-key-metrics .is-cardinal .jhskm-mini-v {
+    color: #ffffff;
+  }
+
+  #jh-sophomore-key-metrics .jhskm-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  #jh-sophomore-key-metrics .jhskm-meta-pill {
     display: inline-flex;
     align-items: center;
-    gap: 3px;
+    padding: 5px 8px;
+    border-radius: 999px;
+    background:
+      linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #fffaf2 100%
+      );
+    border: 1px solid rgba(153, 0, 0, 0.13);
+    color: var(--jhskm-cardinal-dark);
+    font-size: 10px;
+    font-weight: 600;
     line-height: 1;
     white-space: nowrap;
   }
 
-  #jh-sophomore-key-metrics .jhskm-impact-arrow {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-    line-height: 1;
-    font-weight: 800;
-    transform: translateY(-1px);
+  #jh-sophomore-key-metrics .is-cardinal .jhskm-meta-pill {
+    background: rgba(255,255,255,0.10);
+    border-color: rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.88);
   }
 
-  #jh-sophomore-key-metrics .jhskm-impact-value {
-    display: inline-block;
-    font-size: 16px;
-    line-height: 1;
-    font-weight: 650;
-  }
-
-  #jh-sophomore-key-metrics .jhskm-impact.is-up {
-    color: #16a34a;
-  }
-
-  #jh-sophomore-key-metrics .jhskm-impact.is-down {
-    color: #dc2626;
-  }
-
-  #jh-sophomore-key-metrics .jhskm-impact.is-neutral {
+  #jh-sophomore-key-metrics .jhskm-footnote {
+    margin: 2px 0 0;
+    padding: 13px 16px;
+    border-radius: 13px;
+    background:
+      linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #fffaf6 100%
+      );
+    border: 1px dashed rgba(153, 0, 0, 0.18);
     color: #64748b;
+    font-size: 11px;
+    line-height: 1.55;
+    font-weight: 500;
   }
 
   @media (max-width: 820px) {
-    #jh-sophomore-key-metrics #jhskm-wagrImpact,
-    #jh-sophomore-key-metrics #jhskm-clippdImpact {
-      font-size: 15px !important;
-      margin-left: 6px;
+    #jh-sophomore-key-metrics .jhskm-grid {
+      grid-template-columns: 1fr;
     }
 
-    #jh-sophomore-key-metrics .jhskm-impact-value {
-      font-size: 15px;
+    #jh-sophomore-key-metrics .jhskm-body {
+      padding: 18px 15px;
     }
 
-    #jh-sophomore-key-metrics .jhskm-impact-arrow {
-      font-size: 10px;
+    #jh-sophomore-key-metrics .jhskm-head {
+      padding: 18px 16px 15px;
+    }
+
+    #jh-sophomore-key-metrics .jhskm-head::after {
+      width: 24px;
+    }
+
+    #jh-sophomore-key-metrics .jhskm-title {
+      font-size: 17px;
+      max-width: calc(100% - 30px);
+    }
+
+    #jh-sophomore-key-metrics .jhskm-card {
+      min-height: 0;
+      padding: 18px;
+    }
+
+    #jh-sophomore-key-metrics .jhskm-value {
+      font-size: 26px;
+    }
+  }
+
+  @media (max-width: 960px) {
+    #jh-sophomore-key-metrics {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    #jh-sophomore-key-metrics {
+      margin: 24px 0 34px;
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #jh-sophomore-key-metrics {
+      padding-left: 12px;
+      padding-right: 12px;
     }
   }
 </style>
+  
 
   <div class="jhskm-shell">
     <header class="jhskm-head">
