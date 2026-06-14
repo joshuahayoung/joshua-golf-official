@@ -2785,6 +2785,185 @@
   }
 </style>
 
+<style id="jh-pga-table-shared-ongoing-cardinal-live-polish">
+  #jh-pga-table-shared .jtc-badge.ongoing {
+    background:
+      linear-gradient(
+        135deg,
+        var(--jtc-cardinal) 0%,
+        var(--jtc-cardinal-dark) 100%
+      ) !important;
+    color: var(--jtc-gold) !important;
+    border: 1px solid rgba(255, 204, 0, 0.42) !important;
+    border-radius: 999px !important;
+    box-shadow:
+      0 7px 16px rgba(153, 0, 0, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
+  }
+
+  #jh-pga-table-shared .jtc-dot.ongoing {
+    background-color: var(--jtc-gold) !important;
+    animation: jtc-live-pulse-gold 1.65s infinite ease-in-out !important;
+    box-shadow:
+      0 0 0 3px rgba(255, 204, 0, 0.22),
+      0 0 10px rgba(255, 204, 0, 0.24) !important;
+  }
+
+  @keyframes jtc-live-pulse-gold {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+      box-shadow:
+        0 0 0 3px rgba(255, 204, 0, 0.22),
+        0 0 10px rgba(255, 204, 0, 0.24);
+    }
+
+    50% {
+      opacity: 0.52;
+      transform: scale(0.88);
+      box-shadow:
+        0 0 0 6px rgba(255, 204, 0, 0.10),
+        0 0 14px rgba(255, 204, 0, 0.30);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+      box-shadow:
+        0 0 0 3px rgba(255, 204, 0, 0.22),
+        0 0 10px rgba(255, 204, 0, 0.24);
+    }
+  }
+
+  #jh-pga-table-shared .jtc-main-link-dot.ongoing {
+    background-color: var(--jtc-gold) !important;
+    animation: none !important;
+    box-shadow:
+      0 0 0 2px rgba(255, 204, 0, 0.20) !important;
+  }
+
+  #jh-pga-table-shared .jtc-main-link:hover .jtc-main-link-dot.ongoing,
+  #jh-pga-table-shared .jtc-main-link:focus .jtc-main-link-dot.ongoing {
+    background-color: var(--jtc-gold) !important;
+    box-shadow:
+      0 0 0 2px rgba(255, 204, 0, 0.26),
+      0 0 8px rgba(255, 204, 0, 0.22) !important;
+  }
+
+  @media (max-width: 768px) {
+    #jh-pga-table-shared .jtc-badge.ongoing {
+      box-shadow:
+        0 5px 12px rgba(153, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+    }
+
+    #jh-pga-table-shared .jtc-dot.ongoing {
+      box-shadow:
+        0 0 0 2px rgba(255, 204, 0, 0.20),
+        0 0 8px rgba(255, 204, 0, 0.22) !important;
+    }
+
+    #jh-pga-table-shared .jtc-main-link-dot.ongoing {
+      box-shadow:
+        0 0 0 1.5px rgba(255, 204, 0, 0.20) !important;
+    }
+  }
+</style>
+
+
+<style id="jh-pga-table-shared-ongoing-link-reverse-hover">
+  #jh-pga-table-shared .jtc-main-link:has(.jtc-main-link-dot.ongoing) {
+    color: var(--jtc-gold) !important;
+    background:
+      linear-gradient(
+        135deg,
+        var(--jtc-cardinal) 0%,
+        var(--jtc-cardinal-dark) 100%
+      ) !important;
+    border: 1px solid rgba(255, 204, 0, 0.44) !important;
+    box-shadow:
+      0 7px 16px rgba(153, 0, 0, 0.22),
+      inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
+  }
+
+  #jh-pga-table-shared .jtc-main-link:has(.jtc-main-link-dot.ongoing) .jtc-main-link-arrow svg {
+    stroke: var(--jtc-gold) !important;
+  }
+
+  #jh-pga-table-shared .jtc-main-link:has(.jtc-main-link-dot.ongoing):hover,
+  #jh-pga-table-shared .jtc-main-link:has(.jtc-main-link-dot.ongoing):focus {
+    color: var(--jtc-cardinal-dark) !important;
+    background:
+      linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #fffaf0 100%
+      ) !important;
+    border-color: rgba(153, 0, 0, 0.34) !important;
+    box-shadow:
+      0 5px 12px rgba(12, 35, 64, 0.10) !important;
+    transform: translateY(-1px);
+  }
+
+  #jh-pga-table-shared .jtc-main-link:has(.jtc-main-link-dot.ongoing):hover .jtc-main-link-dot.ongoing,
+  #jh-pga-table-shared .jtc-main-link:has(.jtc-main-link-dot.ongoing):focus .jtc-main-link-dot.ongoing {
+    background-color: var(--jtc-cardinal) !important;
+    box-shadow:
+      0 0 0 2px rgba(153, 0, 0, 0.18) !important;
+  }
+
+  #jh-pga-table-shared .jtc-main-link:has(.jtc-main-link-dot.ongoing):hover .jtc-main-link-arrow svg,
+  #jh-pga-table-shared .jtc-main-link:has(.jtc-main-link-dot.ongoing):focus .jtc-main-link-arrow svg {
+    stroke: var(--jtc-cardinal-dark) !important;
+  }
+
+  @media (max-width: 768px) {
+    #jh-pga-table-shared .jtc-main-link:has(.jtc-main-link-dot.ongoing) {
+      box-shadow: none !important;
+    }
+  }
+</style>
+
+<style id="jh-pga-table-shared-final-match-upnext">
+  #jh-pga-table-shared .jtc-badge.final {
+    background:
+      linear-gradient(
+        135deg,
+        var(--jtc-cardinal) 0%,
+        var(--jtc-cardinal-dark) 100%
+      ) !important;
+    color: var(--jtc-gold) !important;
+    border: 1px solid rgba(255, 204, 0, 0.38) !important;
+    border-radius: 999px !important;
+    box-shadow: 0 6px 14px rgba(153, 0, 0, 0.16) !important;
+  }
+
+  #jh-pga-table-shared .jtc-dot.final {
+    background-color: var(--jtc-gold) !important;
+    box-shadow:
+      0 0 0 3px rgba(255, 204, 0, 0.24),
+      0 0 10px rgba(255, 204, 0, 0.24) !important;
+  }
+
+  #jh-pga-table-shared .jtc-main-link-dot.final {
+    background-color: var(--jtc-cardinal) !important;
+    box-shadow: 0 0 0 2px rgba(153, 0, 0, 0.16) !important;
+  }
+
+  #jh-pga-table-shared .jtc-main-link:hover .jtc-main-link-dot.final,
+  #jh-pga-table-shared .jtc-main-link:focus .jtc-main-link-dot.final {
+    background-color: var(--jtc-gold) !important;
+    box-shadow: 0 0 0 2px rgba(255, 204, 0, 0.22) !important;
+  }
+
+  @media (max-width: 768px) {
+    #jh-pga-table-shared .jtc-badge.final {
+      box-shadow: 0 4px 10px rgba(153, 0, 0, 0.13) !important;
+    }
+  }
+</style>
+  
+  
 <style id="jh-performance-log-cardinal-identity">
   .performance-log-section {
     --jh-log-cardinal: #990000;
@@ -4764,7 +4943,7 @@
 
 <!-- =========================================================
   JH ISOLATED SUMMER RESULTS SECTION
-========================================================= 
+========================================================= -->
 
 
 <section id="jh-summer-results-log-isolated" aria-label="2026 Summer Competition Results Log">
@@ -5619,6 +5798,9 @@
       */
 
       const results = [
+
+ /*
+    
         {
           date: 'Aug 10 - 16',
           tournament: 'U.S. Amateur Championship',
@@ -5685,6 +5867,8 @@
           ],
           links: []
         },
+
+ */   
         {
           date: 'Jun 17 - 20',
           tournament: 'The Dogwood Invitational',
@@ -5693,15 +5877,19 @@
           statusType: 'pending',
           par: 72,
           rounds: ['-', '-', '-', '-'],
-          total: '-',
+          total: 'TBD',
           toPar: null,
-          finish: '-',
+          finish: 'TBD',
           metrics: [
             { label: 'WAGR Pwr', value: 'TBD' },
             { label: 'Earned Pts', value: 'TBD' }
           ],
-          links: []
+            
+    links: [ 
+            { label: 'Final Results', url: 'https://thedogwood.com/leaderboard' }
+                 ]
         }
+ 
 
         /*
         DOGWOOD COMPLETED EXAMPLE
@@ -5935,7 +6123,7 @@
   </script>
 </section>
 
--->
+
   
 </div>
   
