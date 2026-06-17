@@ -4,7 +4,7 @@
     "sectionTitle": "2026 OFF-SEASON SUMMER",
     "eventNo": "Invitation-Based Major Amateur Event",
     "eventLabel": "Summer Amateur",
-    "status": "upnext",
+    "status": "ongoing",
     "title": "The Dogwood Invitational",
     "date": "Jun 17-20",
     "venue": "Druid Hills Golf Club",
@@ -14,7 +14,7 @@
     "rating": 73.7,
     "slope": 142,
     "mainLink": {
-      "url": "https://thedogwood.com/players",
+      "url": "https://thedogwood.com/leaderboard",
       "label": "Live Leaderboard"
     },
     "summary": {
