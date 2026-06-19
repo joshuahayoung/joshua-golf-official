@@ -566,6 +566,8 @@
   }
 </style>
 
+
+
 <div class="jh-home-usc-hero-banner-frame" style="margin-bottom: 20px; border-radius: 20px; overflow: hidden; box-shadow: 0 18px 38px rgba(153,0,0,0.13), 0 10px 24px rgba(12,35,64,0.10); background: linear-gradient(135deg, #990000 0%, #0c2340 55%, #c98a2e 100%); border: 1px solid rgba(153,0,0,0.20); position: relative;">
   <a href="./images/sophomore-2026-27/home-usc-commited-banner-01.jpg" target="_blank" style="display:block; text-decoration: none;">
     <img 
@@ -580,6 +582,7 @@
     
     <div class="jh-home-usc-hero-banner-overlay"></div>
   </a>
+
 </div>
 
 <style id="jh-home-usc-hero-banner-responsive-fix">
@@ -642,30 +645,288 @@
   }
 </style>
 
-<div
-  id="jhHeroLastUpdatedWrap"
-  class="jh-hero-last-updated-wrap"
-  hidden
->
-  <span
-    id="jhHeroLastUpdated"
-    class="jh-hero-last-updated-text"
-  ></span>
+
+
+<div class="jh-hero-utility-row" aria-label="Current tournament status and update timestamp">
+  <a
+    id="jhIndexTournamentSignal"
+    class="jh-index-tournament-signal"
+    href="./ncaa-stats.html#jh-pga-table-shared"
+    aria-label="View current tournament status on NCAA Stats page"
+    hidden
+  >
+    <span class="jhits-dot" aria-hidden="true"></span>
+    <span class="jhits-status">STATUS</span>
+    <span class="jhits-sep" aria-hidden="true">·</span>
+    <span class="jhits-title">Tournament</span>
+    <span class="jhits-sep jhits-detail-sep" aria-hidden="true">·</span>
+    <span class="jhits-detail">Details</span>
+    <span class="jhits-arrow" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <line x1="7" y1="17" x2="17" y2="7"></line>
+        <polyline points="7 7 17 7 17 17"></polyline>
+      </svg>
+    </span>
+  </a>
+
+  <div
+    id="jhHeroLastUpdatedWrap"
+    class="jh-hero-last-updated-wrap"
+    hidden
+  >
+    <span id="jhHeroLastUpdated" class="jh-hero-last-updated-text"></span>
+  </div>
 </div>
 
-<style id="jh-hero-last-updated-style">
+	
+<style id="jh-hero-utility-row-style">
+  .jh-hero-utility-row,
+  .jh-hero-utility-row * {
+    box-sizing: border-box;
+  }
+
+  .jh-hero-utility-row {
+    width: 100%;
+    max-width: 900px;
+    margin: -4px auto 20px auto;
+    padding: 0 20px 0 4px;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 14px;
+
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  .jh-index-tournament-signal,
+  .jh-index-tournament-signal * {
+    box-sizing: border-box;
+  }
+
+  .jh-index-tournament-signal {
+    justify-self: start;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    width: fit-content;
+    max-width: 100%;
+    min-height: 34px;
+    padding: 8px 13px;
+
+    border-radius: 999px;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size: 10.8px;
+    line-height: 1;
+    font-weight: 750;
+    letter-spacing: 0.42px;
+    text-transform: uppercase;
+
+    box-shadow:
+      0 10px 24px rgba(12, 35, 64, 0.18),
+      0 4px 10px rgba(153, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18);
+
+    transition:
+      transform 0.18s ease,
+      box-shadow 0.18s ease,
+      background-color 0.18s ease,
+      border-color 0.18s ease,
+      color 0.18s ease;
+  }
+
+  .jh-index-tournament-signal[hidden] {
+    display: none !important;
+  }
+
+  .jh-index-tournament-signal:hover,
+  .jh-index-tournament-signal:focus {
+    transform: translateY(-1px);
+    text-decoration: none;
+    outline: none;
+  }
+
+  .jh-index-tournament-signal .jhits-dot {
+    width: 8px;
+    height: 8px;
+    flex: 0 0 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .jh-index-tournament-signal .jhits-status,
+  .jh-index-tournament-signal .jhits-title,
+  .jh-index-tournament-signal .jhits-detail,
+  .jh-index-tournament-signal .jhits-sep,
+  .jh-index-tournament-signal .jhits-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    line-height: 1;
+  }
+
+  .jh-index-tournament-signal .jhits-title,
+  .jh-index-tournament-signal .jhits-detail {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .jh-index-tournament-signal .jhits-title {
+    max-width: 260px;
+  }
+
+  .jh-index-tournament-signal .jhits-detail {
+    flex: 0 0 auto;
+  }
+
+  .jh-index-tournament-signal .jhits-arrow {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1px;
+    color: currentColor;
+  }
+
+  .jh-index-tournament-signal .jhits-arrow svg {
+    display: block;
+    width: 15px;
+    height: 15px;
+  }
+
+  .jh-index-tournament-signal .jhits-arrow svg line,
+  .jh-index-tournament-signal .jhits-arrow svg polyline {
+    stroke: currentColor;
+    stroke-width: 3.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .jh-index-tournament-signal.is-upnext {
+    color: #650000;
+    background: rgba(255, 253, 247, 0.96);
+    border: 1px solid rgba(153, 0, 0, 0.24);
+  }
+
+  .jh-index-tournament-signal.is-upnext .jhits-dot {
+    background: #ffc72c;
+    box-shadow:
+      0 0 0 3px rgba(255, 199, 44, 0.20),
+      0 0 10px rgba(153, 0, 0, 0.10);
+  }
+
+  .jh-index-tournament-signal.is-ongoing {
+    color: #ffc72c;
+    background: #990000;
+    border: 1px solid rgba(255, 199, 44, 0.54);
+  }
+
+  .jh-index-tournament-signal.is-ongoing .jhits-dot {
+    background: #ffc72c;
+    animation: jh-index-live-pulse 1.45s infinite ease-in-out;
+    box-shadow:
+      0 0 0 4px rgba(255, 199, 44, 0.22),
+      0 0 12px rgba(255, 199, 44, 0.22);
+  }
+
+  .jh-index-tournament-signal.is-final {
+    color: #650000;
+    background: #ffc72c;
+    border: 1px solid rgba(101, 0, 0, 0.46);
+  }
+
+  .jh-index-tournament-signal.is-final .jhits-dot {
+    background: #650000;
+    box-shadow:
+      0 0 0 3px rgba(101, 0, 0, 0.14),
+      0 0 10px rgba(101, 0, 0, 0.12);
+  }
+
+  .jh-index-tournament-signal.is-cancelled {
+    color: #fff3c4;
+    background: #7f1d1d;
+    border: 1px solid rgba(255, 199, 44, 0.30);
+    opacity: 0.88;
+  }
+
+  .jh-index-tournament-signal.is-cancelled .jhits-dot {
+    background: #fff3c4;
+    box-shadow: 0 0 0 3px rgba(255, 243, 196, 0.16);
+  }
+
+  .jh-index-tournament-signal.is-upnext:hover,
+  .jh-index-tournament-signal.is-upnext:focus {
+    background: #ffc72c;
+    color: #650000;
+    border-color: rgba(101, 0, 0, 0.46);
+    box-shadow:
+      0 12px 26px rgba(153, 0, 0, 0.18),
+      0 4px 12px rgba(12, 35, 64, 0.10);
+  }
+
+  .jh-index-tournament-signal.is-ongoing:hover,
+  .jh-index-tournament-signal.is-ongoing:focus {
+    background: #650000;
+    color: #ffcc00;
+    border-color: rgba(255, 204, 0, 0.68);
+    box-shadow:
+      0 13px 28px rgba(153, 0, 0, 0.24),
+      0 5px 14px rgba(12, 35, 64, 0.12);
+  }
+
+  .jh-index-tournament-signal.is-final:hover,
+  .jh-index-tournament-signal.is-final:focus {
+    background: #990000;
+    color: #ffc72c;
+    border-color: rgba(255, 199, 44, 0.62);
+    box-shadow:
+      0 13px 28px rgba(153, 0, 0, 0.22),
+      0 5px 14px rgba(12, 35, 64, 0.11);
+  }
+
+  @keyframes jh-index-live-pulse {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 0.45;
+      transform: scale(1.18);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
   .jh-hero-last-updated-wrap,
   .jh-hero-last-updated-wrap * {
     box-sizing: border-box;
   }
 
   .jh-hero-last-updated-wrap {
-    width: 100%;
-    max-width: 900px;
-    margin: -4px auto 20px auto;
-    padding: 0 20px 0 4px;
+    justify-self: end;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: 0;
     text-align: right;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  .jh-hero-last-updated-wrap[hidden] {
+    display: none !important;
   }
 
   .jh-hero-last-updated-text {
@@ -675,12 +936,52 @@
     line-height: 1.35;
     font-weight: 500;
     letter-spacing: 0.2px;
+    white-space: nowrap;
   }
 
   @media (max-width: 768px) {
-    .jh-hero-last-updated-wrap {
+    .jh-hero-utility-row {
       margin: -2px auto 18px auto;
       padding: 0 20px 0 4px;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+    }
+
+    .jh-index-tournament-signal {
+      max-width: 100%;
+      min-height: 32px;
+      padding: 7px 11px;
+      gap: 6px;
+      font-size: 10px;
+      letter-spacing: 0.32px;
+    }
+
+    .jh-index-tournament-signal .jhits-title,
+    .jh-index-tournament-signal .jhits-title + .jhits-detail-sep {
+      display: none !important;
+    }
+
+    .jh-index-tournament-signal .jhits-dot {
+      width: 7px;
+      height: 7px;
+      flex: 0 0 7px;
+    }
+
+    .jh-index-tournament-signal .jhits-detail {
+      max-width: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .jh-index-tournament-signal .jhits-arrow {
+      width: 15px;
+      height: 15px;
+      flex: 0 0 15px;
+    }
+
+    .jh-index-tournament-signal .jhits-arrow svg {
+      width: 14px;
+      height: 14px;
     }
 
     .jh-hero-last-updated-text {
@@ -688,7 +989,76 @@
       line-height: 1.35;
     }
   }
+
+  @media (max-width: 520px) {
+    .jh-hero-utility-row {
+      margin: -2px auto 16px auto;
+      padding: 0 18px 0 4px;
+      gap: 8px;
+    }
+
+    .jh-index-tournament-signal {
+      min-height: 31px;
+      padding: 7px 10px;
+      gap: 5px;
+      font-size: 9.4px;
+      letter-spacing: 0.24px;
+    }
+
+    .jh-index-tournament-signal .jhits-detail {
+      max-width: 128px;
+    }
+
+    .jh-index-tournament-signal .jhits-arrow {
+      width: 14px;
+      height: 14px;
+      flex-basis: 14px;
+    }
+
+    .jh-index-tournament-signal .jhits-arrow svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .jh-hero-last-updated-text {
+      font-size: 10px;
+    }
+  }
+
+  @media (max-width: 390px) {
+    .jh-hero-utility-row {
+      padding-right: 16px;
+      gap: 6px;
+    }
+
+    .jh-index-tournament-signal {
+      min-height: 30px;
+      padding-left: 9px;
+      padding-right: 9px;
+      font-size: 8.8px;
+    }
+
+    .jh-index-tournament-signal .jhits-detail {
+      max-width: 104px;
+    }
+
+    .jh-hero-last-updated-text {
+      font-size: 9.5px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .jh-index-tournament-signal,
+    .jh-index-tournament-signal .jhits-dot {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
 </style>
+
+
+
+
 	
 <script>
   (function () {
@@ -732,6 +1102,337 @@
     }
   })();
 </script>
+
+<script id="jh-index-tournament-signal-script">
+  (function () {
+    const signal = document.getElementById("jhIndexTournamentSignal");
+
+    if (!signal) return;
+
+    const statusEl = signal.querySelector(".jhits-status");
+    const titleEl = signal.querySelector(".jhits-title");
+    const detailEl = signal.querySelector(".jhits-detail");
+
+    function isUsableValue(value) {
+      if (value === null || value === undefined) return false;
+
+      const cleaned = String(value).trim();
+
+      return cleaned !== "" &&
+        cleaned !== "-" &&
+        cleaned !== "—" &&
+        cleaned.toUpperCase() !== "TBD";
+    }
+
+    function normalizeStatus(status) {
+      const value = String(status || "").trim().toLowerCase();
+
+      if (
+        value === "upnext" ||
+        value === "up-next" ||
+        value === "scheduled" ||
+        value === "preseason" ||
+        value === "pre-season"
+      ) {
+        return "upnext";
+      }
+
+      if (
+        value === "ongoing" ||
+        value === "live" ||
+        value === "in-progress" ||
+        value === "in_progress"
+      ) {
+        return "ongoing";
+      }
+
+      if (
+        value === "final" ||
+        value === "completed" ||
+        value === "complete"
+      ) {
+        return "final";
+      }
+
+      if (
+        value === "cancelled" ||
+        value === "canceled"
+      ) {
+        return "cancelled";
+      }
+
+      return "upnext";
+    }
+
+    function statusLabel(status) {
+      const map = {
+        upnext: "UP NEXT",
+        ongoing: "ONGOING",
+        final: "FINAL RESULTS",
+        cancelled: "CANCELLED"
+      };
+
+      return map[status] || "UP NEXT";
+    }
+
+    function shortTitle(title) {
+      const clean = String(title || "").trim();
+
+      if (!clean) return "Tournament";
+
+      return clean;
+    }
+
+    function getTodayDateOnly() {
+      const now = new Date();
+
+      return new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate()
+      );
+    }
+
+    function parseDateOnly(value) {
+      if (!isUsableValue(value)) return null;
+
+      const parsed = new Date(String(value).trim() + "T00:00:00");
+
+      if (Number.isNaN(parsed.getTime())) return null;
+
+      return new Date(
+        parsed.getFullYear(),
+        parsed.getMonth(),
+        parsed.getDate()
+      );
+    }
+
+    function buildPgaDetail(data, status) {
+      const summary = data && data.summary ? data.summary : {};
+      const total = isUsableValue(summary.total) ? String(summary.total).trim() : "";
+      const par = isUsableValue(summary.par) ? String(summary.par).trim() : "";
+      const pos = isUsableValue(summary.pos) ? String(summary.pos).trim() : "";
+      const date = isUsableValue(data.date) ? String(data.date).trim() : "";
+
+      if (status === "ongoing" || status === "final") {
+        if (pos && total && par) return `${pos} · ${total} (${par})`;
+        if (pos && par) return `${pos} · ${par}`;
+        if (total && par) return `${total} (${par})`;
+        if (pos) return pos;
+      }
+
+      if (date) return date;
+
+      if (pos && par) return `${pos} · ${par}`;
+
+      return "View NCAA Stats";
+    }
+
+    function hasRenderablePgaData(data) {
+      if (!data || typeof data !== "object") return false;
+
+      if (data.active === false) return false;
+
+      return isUsableValue(data.status) ||
+        isUsableValue(data.title) ||
+        isUsableValue(data.date) ||
+        Boolean(data.summary);
+    }
+
+    function mapPgaDataToSignal(data) {
+      const status = normalizeStatus(data.status);
+
+      return {
+        status,
+        label: statusLabel(status),
+        title: shortTitle(data.title),
+        detail: buildPgaDetail(data, status),
+        href: "./ncaa-stats.html#jh-pga-table-shared",
+        source: "pgaTableShared"
+      };
+    }
+
+    function normalizeSeasonEventStatus(event) {
+      if (!event || typeof event !== "object") return "upnext";
+
+      return normalizeStatus(event.status || event.statusLabel);
+    }
+
+    function buildSeasonEventDetail(event, status) {
+      const summary = event && event.summary ? event.summary : {};
+      const total = isUsableValue(summary.total) ? String(summary.total).trim() : "";
+      const par = isUsableValue(summary.par) ? String(summary.par).trim() : "";
+      const finish = isUsableValue(summary.finish) ? String(summary.finish).trim() : "";
+      const date = isUsableValue(event.date) ? String(event.date).trim() : "";
+
+      if (status === "ongoing" || status === "final") {
+        if (finish && total && par) return `${finish} · ${total} (${par})`;
+        if (finish && par) return `${finish} · ${par}`;
+        if (total && par) return `${total} (${par})`;
+        if (finish) return finish;
+      }
+
+      if (date) return date;
+
+      return "View NCAA Stats";
+    }
+
+    function collectSeasonEvents(seasonData) {
+      const events = [];
+
+      if (seasonData && Array.isArray(seasonData.fallSchedule)) {
+        events.push(...seasonData.fallSchedule);
+      }
+
+      if (seasonData && Array.isArray(seasonData.springSchedule)) {
+        events.push(...seasonData.springSchedule);
+      }
+
+      return events.filter(event =>
+        event &&
+        typeof event === "object" &&
+        (
+          isUsableValue(event.tournament) ||
+          isUsableValue(event.status) ||
+          isUsableValue(event.startDate)
+        )
+      );
+    }
+
+    function chooseSeasonFallbackEvent(seasonData) {
+      const events = collectSeasonEvents(seasonData);
+
+      if (!events.length) return null;
+
+      const today = getTodayDateOnly();
+
+      const withDates = events.map(event => {
+        const start = parseDateOnly(event.startDate);
+        const end = parseDateOnly(event.endDate) || start;
+        const status = normalizeSeasonEventStatus(event);
+
+        return {
+          event,
+          start,
+          end,
+          status
+        };
+      });
+
+      const explicitOngoing = withDates.find(item => item.status === "ongoing");
+      if (explicitOngoing) return explicitOngoing.event;
+
+      const inDateWindow = withDates.find(item => {
+        if (!item.start || !item.end) return false;
+        return item.start <= today && today <= item.end;
+      });
+
+      if (inDateWindow) return inDateWindow.event;
+
+      const upcoming = withDates
+        .filter(item => item.start && item.start >= today)
+        .sort((a, b) => a.start - b.start)[0];
+
+      if (upcoming) return upcoming.event;
+
+      const latestFinal = withDates
+        .filter(item => item.status === "final" && item.start)
+        .sort((a, b) => b.start - a.start)[0];
+
+      if (latestFinal) return latestFinal.event;
+
+      return null;
+    }
+
+    function mapSeasonEventToSignal(event) {
+      const rawStatus = normalizeSeasonEventStatus(event);
+
+      const status = rawStatus === "scheduled" ? "upnext" : rawStatus;
+      const label = statusLabel(status);
+      const title = shortTitle(event.tournament || "USC Season Event");
+      const detail = buildSeasonEventDetail(event, status);
+
+      return {
+        status,
+        label,
+        title,
+        detail,
+        href: "./ncaa-stats.html#jh-pga-table-shared",
+        source: "sophomoreSeason"
+      };
+    }
+
+    function renderSignal(model) {
+      if (!model) {
+        signal.hidden = true;
+        return;
+      }
+
+      signal.classList.remove("is-upnext", "is-ongoing", "is-final", "is-cancelled");
+      signal.classList.add(`is-${model.status}`);
+
+      if (statusEl) statusEl.textContent = model.label;
+      if (titleEl) titleEl.textContent = model.title;
+      if (detailEl) detailEl.textContent = model.detail;
+
+      signal.href = model.href || "./ncaa-stats.html";
+      signal.setAttribute(
+        "aria-label",
+        `${model.label}: ${model.title}. ${model.detail}. View NCAA Stats.`
+      );
+      signal.setAttribute(
+        "title",
+        `${model.label} · ${model.title} · ${model.detail}`
+      );
+
+      signal.hidden = false;
+    }
+
+    async function fetchJson(url) {
+      const response = await fetch(url + "?v=" + Date.now());
+
+      if (!response.ok) return null;
+
+      return response.json();
+    }
+
+    async function loadTournamentSignal() {
+      try {
+        const data2 = await fetchJson("./data2.json");
+
+        const pgaData = data2 && data2.pgaTableShared
+          ? data2.pgaTableShared
+          : null;
+
+        if (hasRenderablePgaData(pgaData)) {
+          renderSignal(mapPgaDataToSignal(pgaData));
+          return;
+        }
+
+        const seasonData = await fetchJson("./sophomore-season-2026-27.json");
+        const fallbackEvent = chooseSeasonFallbackEvent(seasonData);
+
+        if (fallbackEvent) {
+          renderSignal(mapSeasonEventToSignal(fallbackEvent));
+          return;
+        }
+
+        signal.hidden = true;
+      } catch (error) {
+        console.error("Index tournament signal render error:", error);
+        signal.hidden = true;
+      }
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", loadTournamentSignal);
+    } else {
+      loadTournamentSignal();
+    }
+  })();
+</script>
+
+
 
 <section class="usc-commit-section" aria-labelledby="uscCommitTitle">
   <style>
