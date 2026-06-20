@@ -5056,7 +5056,71 @@
     }
   }
 </style>
-  
+
+<style id="jh-offseason-schedule-completed-event-style">
+  #jh-offseason-schedule .jhos-row-completed td:nth-child(1),
+  #jh-offseason-schedule .jhos-row-completed td:nth-child(2),
+  #jh-offseason-schedule .jhos-row-completed td:nth-child(3) {
+    background:
+      linear-gradient(
+        180deg,
+        #f8fafc 0%,
+        #f1f5f9 100%
+      ) !important;
+  }
+
+  #jh-offseason-schedule .jhos-row-completed td {
+    border-bottom: 1px solid rgba(100, 116, 139, 0.18) !important;
+  }
+
+  #jh-offseason-schedule .jhos-row-completed .jhos-date {
+    background: #e2e8f0 !important;
+    border-color: rgba(100, 116, 139, 0.24) !important;
+    color: #475569 !important;
+    box-shadow: none !important;
+  }
+
+  #jh-offseason-schedule .jhos-row-completed .jhos-event-name {
+    color: #475569 !important;
+  }
+
+  #jh-offseason-schedule .jhos-row-completed .jhos-event-location {
+    color: #94a3b8 !important;
+  }
+
+  #jh-offseason-schedule .jhos-row-completed a[title*="View"] {
+    color: #64748b !important;
+    background: rgba(100, 116, 139, 0.08) !important;
+    border-color: rgba(100, 116, 139, 0.22) !important;
+  }
+
+  #jh-offseason-schedule .jhos-row-completed a[title*="View"]:hover,
+  #jh-offseason-schedule .jhos-row-completed a[title*="View"]:focus {
+    color: #ffffff !important;
+    background: #64748b !important;
+    border-color: #64748b !important;
+  }
+
+  #jh-offseason-schedule .jhos-status.is-final-muted {
+    color: #475569 !important;
+    background: #e2e8f0 !important;
+    border-color: rgba(100, 116, 139, 0.28) !important;
+  }
+
+  @media (min-width: 701px) {
+    #jh-offseason-schedule .jhos-table tbody tr.jhos-row-completed:hover td:nth-child(1),
+    #jh-offseason-schedule .jhos-table tbody tr.jhos-row-completed:hover td:nth-child(2),
+    #jh-offseason-schedule .jhos-table tbody tr.jhos-row-completed:hover td:nth-child(3) {
+      background:
+        linear-gradient(
+          180deg,
+          #f8fafc 0%,
+          #f1f5f9 100%
+        ) !important;
+    }
+  }
+</style>
+ 
 <div class="jhos-title-row">
   <h4 class="jhos-title">
     2026 Summer Amateur Schedule & Results
@@ -5092,75 +5156,7 @@
     </thead>
 
     <tbody>
-      <tr>
-        <td>
-          <div class="jhos-cell jhos-cell-date">
-            <div class="jhos-date">
-              Jun 17–20
-            </div>
-          </div>
-        </td>
-
-        <td>
-          <div class="jhos-cell jhos-cell-event">
-            <div class="jhos-event-block">
-              <div class="jhos-event-name">
-                The Dogwood Invitational
-                <a
-                  href="https://thedogwood.com/leaderboard"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="View The Dogwood Invitational players page"
-                  title="View The Dogwood Invitational players page"
-                  style="
-                    display: inline-flex;
-                    align-items: center;
-                    justify-content: center;
-                    width: 17px;
-                    height: 17px;
-                    margin-left: 5px;
-                    vertical-align: -2px;
-                    color: #c98a2e;
-                    text-decoration: none;
-                  "
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    width="17"
-                    height="17"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                    focusable="false"
-                  >
-                    <path d="M14 4h6v6"></path>
-                    <path d="M10 14 20 4"></path>
-                    <path d="M20 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h5"></path>
-                  </svg>
-                </a>
-              </div>
-
-              <div class="jhos-event-location">
-                Druid Hills GC, Atlanta, GA
-              </div>
-            </div>
-          </div>
-        </td>
-
-        <td>
-          <div class="jhos-cell jhos-cell-status">
-            <div class="jhos-status-wrap">
-              <span class="jhos-status is-gray">
-                <span class="jhos-status-line">INVITED |</span>
-                <span class="jhos-status-line">FINAL</span>
-              </span>
-            </div>
-          </div>
-        </td>
-      </tr>
+      
 
       <tr>
         <td>
@@ -5362,6 +5358,77 @@
           </div>
         </td>
       </tr>
+
+
+<tr class="jhos-row-completed">
+  <td>
+    <div class="jhos-cell jhos-cell-date">
+      <div class="jhos-date">
+        Jun 17–20
+      </div>
+    </div>
+  </td>
+
+  <td>
+    <div class="jhos-cell jhos-cell-event">
+      <div class="jhos-event-block">
+        <div class="jhos-event-name">
+          The Dogwood Invitational
+          <a
+            href="https://thedogwood.com/leaderboard"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View The Dogwood Invitational final results"
+            title="View The Dogwood Invitational final results"
+            style="
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              width: 17px;
+              height: 17px;
+              margin-left: 5px;
+              vertical-align: -2px;
+              color: #64748b;
+              text-decoration: none;
+            "
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="17"
+              height="17"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M14 4h6v6"></path>
+              <path d="M10 14 20 4"></path>
+              <path d="M20 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h5"></path>
+            </svg>
+          </a>
+        </div>
+
+        <div class="jhos-event-location">
+          Druid Hills GC, Atlanta, GA
+        </div>
+      </div>
+    </div>
+  </td>
+
+  <td>
+    <div class="jhos-cell jhos-cell-status">
+      <div class="jhos-status-wrap">
+        <span class="jhos-status is-final-muted">
+          <span class="jhos-status-line">FINAL</span>
+        </span>
+      </div>
+    </div>
+  </td>
+</tr>
+     
     </tbody>
   </table>
 </div>
@@ -11280,7 +11347,7 @@ function setImpact(id, value) {
         </div>
 
         <div id="Current-Focus" class="jhcf-posted-wrap">
-          <span class="jhcf-posted-pill">Update Pending</span>
+          <span class="jhcf-posted-pill">Posted On: June 20, 2026</span>
         </div>
       </div>
     </div>
@@ -11288,64 +11355,72 @@ function setImpact(id, value) {
     <!-- Body -->
     <div class="jhcf-body">
 
-      <!-- Section 01 -->
-      <div class="jhcf-section">
-        <div class="jhcf-section-head">
-          <div class="jhcf-no jhcf-no-navy">01</div>
-          <h4>Technical Notes</h4>
-        </div>
+<!-- Section 01 -->
+<div class="jhcf-section">
+  <div class="jhcf-section-head">
+    <div class="jhcf-no jhcf-no-navy">01</div>
+    <h4>Post-Dogwood Technical Notes</h4>
+  </div>
 
-        <div class="jhcf-text-block">
-          <p class="jhcf-text-line jhcf-text-line-last">
-            This section is currently being held for the next technical update. The current focus log will be updated after the Dogwood Invitational is completed.
-          </p>
-        </div>
-      </div>
+  <div class="jhcf-text-block">
+    <p class="jhcf-text-line">
+      <strong>Dogwood Invitational Review:</strong> Joshua Hong completed the Dogwood Invitational with four consecutive under-par rounds, posting 69-71-69-70 for a 279 total, 9-under par. The week provided a measured summer competition sample after his USC commitment and a clear technical reference point before the next stretch of national-level events.
+    </p>
 
-      <!-- Section 02 -->
-      <div class="jhcf-section">
-        <div class="jhcf-section-head">
-          <div class="jhcf-no jhcf-no-gold">02</div>
-          <h4>Competitive Status &amp; Next Technical Focus</h4>
-        </div>
+    <p class="jhcf-text-line">
+      <strong>Scoring Structure:</strong> The result was built on consistency rather than one isolated low round. Each round stayed under par, and the scoring floor remained controlled across four tournament days. The final number also left room for further scoring improvement, especially because several makeable birdie opportunities and short-range conversions did not fall during the week.
+    </p>
 
-        <div class="jhcf-text-block">
-          <p class="jhcf-text-line jhcf-text-line-last">
-            Detailed competitive notes and next technical priorities are pending post-tournament review.
-          </p>
-        </div>
-      </div>
+    <p class="jhcf-text-line">
+      <strong>Tee-to-Green Baseline:</strong> The strongest technical signal came from repeated green-in-regulation control. Round 2 included 16 greens in regulation, and Round 3 included all 18 greens in regulation. Those rounds showed that Joshua created enough scoring opportunities on a course that rewarded precise approach control but punished missed greens.
+    </p>
 
-      <div class="jhcf-divider"></div>
+    <p class="jhcf-text-line">
+      <strong>Putting Conversion:</strong> Putting remains the primary scoring-efficiency focus. The week did not suggest a lack of opportunity creation; it showed a gap between opportunities created and opportunities converted. The next stage should focus on short-range confidence, mid-range conversion, lag-speed control, and avoiding three-putt cost when green speeds change during competition.
+    </p>
 
-      <!-- upnext Focus -->
-      <div class="jhcf-upnext-wrap">
-        <div class="jhcf-upnext-tab">Inserted Focus Note</div>
+    <p class="jhcf-text-line jhcf-text-line-last">
+      <strong>Round Management:</strong> The four-day structure was positive. Joshua stayed inside red numbers each round and avoided the type of high-cost round that can move a player down quickly in a strong field. The next step is not changing the profile, but making more scoring value out of the same quality of tee-to-green work.
+    </p>
+  </div>
+</div>
 
-        <div class="jhcf-upnext">
-          <div class="jhcf-upnext-head">
-            <div class="jhcf-upnext-title-wrap">
-              <h5>Current Focus — Update Pending</h5>
-            </div>
 
-            <div class="jhcf-upnext-pill">
-              Post-Dogwood Review Pending
-            </div>
-          </div>
+<!-- Section 02 -->
+<div class="jhcf-section">
+  <div class="jhcf-section-head">
+    <div class="jhcf-no jhcf-no-gold">02</div>
+    <h4>Competitive Status &amp; Next Technical Focus</h4>
+  </div>
 
-          <div class="jhcf-upnext-lines">
-            <p class="jhcf-upnext-last">This section will be updated after the Dogwood Invitational is completed and reviewed.</p>
-          </div>
-        </div>
-      </div>
+  <div class="jhcf-text-block">
+    <p class="jhcf-text-line">
+      <strong class="jhcf-gold-strong">Competitive Status:</strong> The Dogwood Invitational provided a steady four-round summer-amateur sample after Joshua’s USC commitment. The finish was not a top-end result, but four under-par rounds and strong tee-to-green control give the next phase a clear reference point.
+    </p>
 
-      <div class="jhcf-footer-note">Joshua's Memo Note</div>
+    <p class="jhcf-text-line">
+      <strong class="jhcf-gold-strong">Technical Priority:</strong> The main focus remains scoring efficiency. Joshua created enough opportunities through ball-striking; the next step is converting more makeable putts, strengthening short-range routine, and reducing avoidable three-putt cost.
+    </p>
+
+    <p class="jhcf-text-line">
+      <strong class="jhcf-gold-strong">Next Event:</strong> Preparation now shifts to U.S. Amateur Championship Final Qualifying on July 13. The goal is to carry forward the Dogwood tee-to-green baseline while making the scoring conversion cleaner.
+    </p>
+
+    <p class="jhcf-text-line jhcf-text-line-last">
+      <strong class="jhcf-gold-strong">Summer Sequence:</strong> After Final Qualifying, Joshua is scheduled to travel directly to Mexico City for the Mexican Amateur Championship. This stretch becomes part of the summer development bridge between his completed freshman season and the next collegiate chapter.
+    </p>
+  </div>
+</div>
+
+
+<div class="jhcf-divider"></div>
+
+      <div class="jhcf-footer-note">Joshua's Memo</div>
     </div>
 
   </div>
 </div>
 
-  
 <style>
 #jh-current-focus-block,
 #jh-current-focus-block * {
@@ -11667,7 +11742,7 @@ function setImpact(id, value) {
 
 /* responsive */
 @media (max-width: 768px) {
-    #jh-current-focus-block {
+  #jh-current-focus-block {
     padding-left: 14px !important;
     padding-right: 14px !important;
   }
@@ -11750,7 +11825,7 @@ function setImpact(id, value) {
   }
 }
 
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
   #jh-current-focus-block {
     padding-left: 12px !important;
     padding-right: 12px !important;
@@ -11917,9 +11992,11 @@ function setImpact(id, value) {
       font-weight: 650 !important;
     }
   }
-</style> 
+</style>
 
-  
+
+
+
 <div id="joshua-unique-section" style="width: 100%; max-width: 900px; margin: 0 auto 70px; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; clear: both;">
 
   <style>
@@ -12585,110 +12662,131 @@ function setImpact(id, value) {
     }
   </style>
 
-  <div class="intro-section">
-    <h2>
-      <div class="intro-icon-wrap">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffcc00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
-          <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
-        </svg>
-        <span class="pulse-dot"></span>
-      </div>
-      Present Process &amp; Progress
-    </h2>
-
-    <div class="intro-badge-wrap">
-      <div class="intro-badge-inner">
-        <span class="intro-badge">Insight Archive</span>
-      </div>
+ <div class="intro-section">
+  <h2>
+    <div class="intro-icon-wrap">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffcc00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+        <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
+      </svg>
+      <span class="pulse-dot"></span>
     </div>
+    Present Process &amp; Progress
+  </h2>
 
-    <div class="intro-bottom-line"></div>
+  <div class="intro-badge-wrap">
+    <div class="intro-badge-inner">
+      <span class="intro-badge">Insight Archive</span>
+    </div>
   </div>
 
-  <div class="jpp-shell">
-    <div class="jpp-topbar">
-      <div class="jpp-archive-head">
-        <div class="jpp-title-stack">
-          <div class="jpp-eyebrow">Insight Archive</div>
-          <div class="jpp-current" id="jpp-current-label">Update Pending</div>
-        </div>
-
-        <div class="jpp-counter" id="jpp-counter">1 / 1</div>
-      </div>
-
-      <div class="jpp-controls">
-        <button type="button" class="jpp-btn" id="jpp-prev" aria-label="Previous insight card">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </button>
-
-        <div class="jpp-select-wrap">
-          <select class="jpp-select" id="jpp-select" aria-label="Jump to insight card">
-            <option value="0">Update Pending</option>
-          </select>
-        </div>
-
-        <button type="button" class="jpp-btn" id="jpp-next" aria-label="Next insight card">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-<div class="jpp-stage-wrap">
-  <div class="jpp-stage" id="jpp-stage">
-
-    <div class="insight-card-item" data-card-id="0" style="display: flex; flex-direction: column; justify-content: space-between; gap: 18px;">
-      <div>
-        <div class="bts-card-head" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; width: 100%; margin: 0 0 18px 0;">
-          <div class="bts-title-row" style="display: flex; align-items: center; gap: 10px; min-width: 0;">
-            <div class="bts-icon-wrap" style="flex: 0 0 auto;">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffcc00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polyline points="12 6 12 12 16 14"></polyline>
-              </svg>
-            </div>
-
-            <h3 class="bts-title" style="margin: 0; min-width: 0;">
-              Beyond the Scorecard
-            </h3>
-          </div>
-
-          <span class="bts-event-badge" style="flex: 0 0 auto; margin-left: auto; white-space: nowrap;">
-            Pending
-          </span>
-        </div>
-
-        <div class="bts-body">
-          <p class="bts-lead">
-            Insight Archive Update Pending
-          </p>
-
-          <p style="margin: 0 0 10px 0;">
-            This section is currently being held for the next confirmed archive update.
-          </p>
-
-          <p style="margin: 0 0 10px 0;">
-            Previous insight notes have been temporarily removed while the next site update is prepared.
-          </p>
-
-          <p class="bts-final" style="margin: 0;">
-            New content may be posted after the next confirmed transition update or after the Dogwood Invitational review is completed.
-          </p>
-        </div>
-      </div>
-
-      <div class="bts-status-note" style="width: 100%; margin: 0; padding-top: 14px; border-top: 1px solid rgba(255, 204, 0, 0.22); align-self: stretch;">
-        Status Note: Archive content pending · New update to be posted when confirmed
-      </div>
-    </div>
-
-  </div>
+  <div class="intro-bottom-line"></div>
 </div>
 
+<div class="jpp-shell">
+  <div class="jpp-topbar">
+    <div class="jpp-archive-head">
+      <div class="jpp-title-stack">
+        <div class="jpp-eyebrow">Beyond the Scorecard</div>
+        <div class="jpp-current" id="jpp-current-label">Dogwood Invitational — Four Under-Par Rounds</div>
+      </div>
+
+      <div class="jpp-counter" id="jpp-counter">1 / 1</div>
+    </div>
+
+    <div class="jpp-controls">
+      <button type="button" class="jpp-btn" id="jpp-prev" aria-label="Previous insight card">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <div class="jpp-select-wrap">
+        <select class="jpp-select" id="jpp-select" aria-label="Jump to insight card">
+          <option value="0">Dogwood Invitational</option>
+        </select>
+      </div>
+
+      <button type="button" class="jpp-btn" id="jpp-next" aria-label="Next insight card">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="jpp-stage-wrap">
+    <div class="jpp-stage" id="jpp-stage">
+
+      <div class="insight-card-item" data-card-id="0" style="display: flex; flex-direction: column; justify-content: space-between; gap: 18px;">
+        <div>
+          <div class="bts-card-head" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; width: 100%; margin: 0 0 18px 0;">
+            <div class="bts-title-row" style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+              <div class="bts-icon-wrap" style="flex: 0 0 auto;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffcc00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+
+              <h3 class="bts-title" style="margin: 0; min-width: 0;">
+                Beyond the Scorecard
+              </h3>
+            </div>
+
+            <span class="bts-event-badge" style="flex: 0 0 auto; margin-left: auto; white-space: nowrap;">
+              Dogwood Invitational
+            </span>
+          </div>
+
+          <div class="bts-body">
+            <p class="bts-lead">
+              Four Under-Par Rounds, Strong-Field Sample, and a Week Shaped by Hospitality
+            </p>
+
+            <p style="margin: 0 0 10px 0;">
+              The Dogwood Invitational became more than a tournament result. For Joshua Hong, it was the first major summer amateur competition after committing to USC, and it provided both a competitive test and a meaningful experience inside a respected traditional invitational setting.
+            </p>
+
+            <p style="margin: 0 0 10px 0;">
+              Joshua completed the week with rounds of 69, 71, 69, and 70, finishing T18 at 279, 9-under par. Across four rounds, he stayed under par each day. The result showed consistency in a strong field while also leaving clear room for future scoring growth, especially through putting conversion.
+            </p>
+
+            <p style="margin: 0 0 10px 0;">
+              The strongest technical signal came from tee-to-green control. Round 2 included 16 greens in regulation, and Round 3 included all 18 greens in regulation. Those numbers gave the week a deeper meaning than the final score alone: the ball-striking created enough chances to suggest that the scoring ceiling remains higher than the recorded total.
+            </p>
+
+            <p style="margin: 0 0 10px 0;">
+              The week also carried a personal layer. Joshua was able to share the tournament experience with his friend Tobey, who also competed in the event, making the week meaningful not only as a competitive test but also as a shared summer amateur golf experience.
+            </p>
+
+            <p style="margin: 0 0 10px 0;">
+              Joshua and his family are especially grateful to Andy Brock, Drew Brock, and The Brock Family for their generosity throughout the Dogwood Invitational. After a storm delay of more than two hours, Andy still came to the airport, welcomed Joshua, and helped him get directly to the golf course, where he was able to play five holes after arrival.
+            </p>
+
+            <p style="margin: 0 0 10px 0;">
+              That welcome continued through the entire week. The Brock Family provided meals, a warm place to stay, and a home environment that helped Joshua compete with peace and stability away from home. Andy and Drew also supported him as caddies during the event, adding another layer of care to an already generous week.
+            </p>
+
+            <p style="margin: 0 0 10px 0;">
+              For Joshua, the Dogwood Invitational was not only four tournament rounds. It was a week of competition, adjustment, gratitude, friendship, and connection with people who helped make the experience possible.
+            </p>
+
+            <p class="bts-final" style="margin: 0;">
+              As Joshua continues into the summer schedule, this week becomes part of his growing identity as a player: a competitor learning to turn strong ball-striking into deeper scoring, a student-athlete beginning his USC chapter, and a young golfer learning to carry gratitude with him as part of the journey.
+            </p>
+          </div>
+        </div>
+
+        <div class="bts-status-note" style="width: 100%; margin: 0; padding-top: 14px; border-top: 1px solid rgba(255, 204, 0, 0.22); align-self: stretch;">
+          Posted On: June 20, 2026
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+ 
   <script>
     (function() {
       const stage = document.getElementById('jpp-stage');
@@ -12704,7 +12802,7 @@ function setImpact(id, value) {
       const orderedIds = [0];
 
       const cardLabels = {
-        0: 'Insight Archive Update Pending'
+        0: 'Dogwood Invitational — Four Under-Par Rounds'
       };
 
       const cardMap = {};
@@ -12817,6 +12915,8 @@ function setImpact(id, value) {
   </script>
 
 </div>
+
+
 
 
 <div class="witb-section">
@@ -13277,6 +13377,60 @@ function setImpact(id, value) {
     .thumb-img { width: 100%; aspect-ratio: 1 / 1.1; object-fit: cover; object-position: center 15%; border-radius: 16px; cursor: pointer; border: 1px solid #f1f1f1; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: all 0.3s ease; display: block; }
     .thumb-img:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
     .pos-center { object-position: center center !important; }
+   .thumb-placeholder {
+  width: 100%;
+  aspect-ratio: 1 / 1.1;
+  border-radius: 16px;
+  border: 1px dashed rgba(153, 0, 0, 0.18);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(153, 0, 0, 0.035) 0%,
+      #ffffff 48%,
+      rgba(255, 204, 0, 0.10) 100%
+    );
+  box-shadow: 0 8px 18px rgba(12, 35, 64, 0.045);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  text-align: center;
+  cursor: default;
+  pointer-events: none;
+  user-select: none;
+}
+
+.thumb-placeholder-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  color: #64748b;
+}
+
+.thumb-placeholder-kicker {
+  color: #990000;
+  font-size: 9px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.thumb-placeholder-text {
+  color: #0c2340;
+  font-size: 11px;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.thumb-placeholder-sub {
+  color: #94a3b8;
+  font-size: 9px;
+  line-height: 1.25;
+  font-weight: 500;
+}
     .scroll-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; background: #ffffff; border: 1px solid #0c2340; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: all 0.3s ease; color: #0c2340; }
     .scroll-nav:hover { background: #0c2340; color: #fff; }
     .scroll-nav.prev { left: 10px; }
@@ -13430,7 +13584,8 @@ function setImpact(id, value) {
     }
   </style>
 
-  
+<style> /* JOURNEY IN PHOTOS */ </style>
+ 
   <div id="thumbWrapper">
     <div class="scroll-nav prev" onclick="scrollThumbs(-1)">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
@@ -13441,10 +13596,108 @@ function setImpact(id, value) {
     <div class="scroll-viewport">
       <div id="thumbScroll">
         <div class="thumb-page">
-          
-          <img src="./images/sophomore-2026-27/USC-Sophomore-Joshua-Hong-Commited-1.jpg" onclick="popupGallery(this)" class="thumb-img" alt="Joshua Hong USC Men’s Golf commitment photo for the 2026–27 sophomore season" title="Joshua Hong — USC Men’s Golf Commitment" loading="lazy" decoding="async">
-    
-          </div>
+
+  <img 
+    src="./images/sophomore-2026-27/the-dogwood-invitational-thanks-to-the-brock-family.jpeg" 
+    onclick="popupGallery(this)" 
+    class="thumb-img" 
+    alt="The Dogwood Invitational thank-you graphic featuring Joshua Hong with the Brock Family at Druid Hills Golf Club" 
+    title="The Dogwood Invitational — Special Thanks to The Brock Family" 
+    loading="lazy" 
+    decoding="async"
+  >
+
+  <img 
+    src="./images/sophomore-2026-27/USC-Sophomore-Joshua-Hong-Commited-1.jpg" 
+    onclick="popupGallery(this)" 
+    class="thumb-img" 
+    alt="Joshua Hong USC Men’s Golf commitment photo for the 2026–27 sophomore season" 
+    title="Joshua Hong — USC Men’s Golf Commitment" 
+    loading="lazy" 
+    decoding="async"
+  >
+
+  <div class="thumb-placeholder" aria-hidden="true">
+    <div class="thumb-placeholder-inner">
+      <span class="thumb-placeholder-kicker">Photo Archive</span>
+      <span class="thumb-placeholder-text">Coming Soon</span>
+      <span class="thumb-placeholder-sub">2026</span>
+    </div>
+  </div>
+
+  <div class="thumb-placeholder" aria-hidden="true">
+    <div class="thumb-placeholder-inner">
+      <span class="thumb-placeholder-kicker">Photo Archive</span>
+      <span class="thumb-placeholder-text">Coming Soon</span>
+      <span class="thumb-placeholder-sub">2026</span>
+    </div>
+  </div>
+
+  <div class="thumb-placeholder" aria-hidden="true">
+    <div class="thumb-placeholder-inner">
+      <span class="thumb-placeholder-kicker">Photo Archive</span>
+      <span class="thumb-placeholder-text">Coming Soon</span>
+      <span class="thumb-placeholder-sub">2026</span>
+    </div>
+  </div>
+
+  <div class="thumb-placeholder" aria-hidden="true">
+    <div class="thumb-placeholder-inner">
+      <span class="thumb-placeholder-kicker">Photo Archive</span>
+      <span class="thumb-placeholder-text">Coming Soon</span>
+      <span class="thumb-placeholder-sub">2026</span>
+    </div>
+  </div>
+
+  <div class="thumb-placeholder" aria-hidden="true">
+    <div class="thumb-placeholder-inner">
+      <span class="thumb-placeholder-kicker">Photo Archive</span>
+      <span class="thumb-placeholder-text">Coming Soon</span>
+      <span class="thumb-placeholder-sub">2026</span>
+    </div>
+  </div>
+
+  <div class="thumb-placeholder" aria-hidden="true">
+    <div class="thumb-placeholder-inner">
+      <span class="thumb-placeholder-kicker">Photo Archive</span>
+      <span class="thumb-placeholder-text">Coming Soon</span>
+      <span class="thumb-placeholder-sub">2026</span>
+    </div>
+  </div>
+
+  <div class="thumb-placeholder" aria-hidden="true">
+    <div class="thumb-placeholder-inner">
+      <span class="thumb-placeholder-kicker">Photo Archive</span>
+      <span class="thumb-placeholder-text">Coming Soon</span>
+      <span class="thumb-placeholder-sub">2026</span>
+    </div>
+  </div>
+
+  <div class="thumb-placeholder" aria-hidden="true">
+    <div class="thumb-placeholder-inner">
+      <span class="thumb-placeholder-kicker">Photo Archive</span>
+      <span class="thumb-placeholder-text">Coming Soon</span>
+      <span class="thumb-placeholder-sub">2026</span>
+    </div>
+  </div>
+
+  <div class="thumb-placeholder" aria-hidden="true">
+    <div class="thumb-placeholder-inner">
+      <span class="thumb-placeholder-kicker">Photo Archive</span>
+      <span class="thumb-placeholder-text">Coming Soon</span>
+      <span class="thumb-placeholder-sub">2026</span>
+    </div>
+  </div>
+
+  <div class="thumb-placeholder" aria-hidden="true">
+    <div class="thumb-placeholder-inner">
+      <span class="thumb-placeholder-kicker">Photo Archive</span>
+      <span class="thumb-placeholder-text">Coming Soon</span>
+      <span class="thumb-placeholder-sub">2026</span>
+    </div>
+  </div>
+
+</div>
 
 
 
