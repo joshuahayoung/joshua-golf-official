@@ -430,7 +430,7 @@
 
 
 <section id="jh-ncaa-sophomore-hero" class="jh-ncaa-sophomore-hero">
-  <style>
+<style>
   #jh-ncaa-sophomore-hero {
     width: 100%;
     max-width: 900px;
@@ -463,11 +463,6 @@
     text-transform: uppercase !important;
   }
 
-  #jh-ncaa-sophomore-hero .jh-ncaa-hero-title-accent {
-    color: #990000 !important;
-    font-weight: 800 !important;
-  }
-
   #jh-ncaa-sophomore-hero .jh-ncaa-hero-subtitle {
     margin: 6px 0 0 0 !important;
     color: #777777 !important;
@@ -485,13 +480,12 @@
     height: 3px;
     margin: 15px auto 0;
     border-radius: 999px;
-    background:
-      linear-gradient(
-        90deg,
-        #990000 0%,
-        #ffcc00 50%,
-        #650000 100%
-      );
+    background: linear-gradient(
+      90deg,
+      #990000 0%,
+      #ffcc00 50%,
+      #650000 100%
+    );
   }
 
   #jh-ncaa-sophomore-hero .jh-ncaa-hero-frame {
@@ -509,22 +503,10 @@
   #jh-ncaa-sophomore-hero .jh-ncaa-hero-img {
     display: block;
     width: 100%;
+    aspect-ratio: 16 / 9;
     height: auto;
-    aspect-ratio: 1916 / 821;
     object-fit: cover;
     object-position: center center;
-  }
-
-  #jh-ncaa-sophomore-hero .jh-ncaa-hero-sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
   }
 
   @media (max-width: 960px) {
@@ -546,8 +528,6 @@
   @media (max-width: 768px) {
     #jh-ncaa-sophomore-hero {
       padding: 128px 14px 0 14px;
-      margin-bottom: 18px;
-      scroll-margin-top: 140px;
     }
 
     #jh-ncaa-sophomore-hero .jh-ncaa-hero-title-block {
@@ -565,8 +545,6 @@
     #jh-ncaa-sophomore-hero .jh-ncaa-hero-subtitle {
       margin-top: 6px !important;
       font-size: 12.5px !important;
-      line-height: 1.35 !important;
-      font-weight: 500 !important;
       letter-spacing: 0.7px !important;
     }
 
@@ -581,18 +559,18 @@
     }
 
     #jh-ncaa-sophomore-hero .jh-ncaa-hero-img {
-      width: 100%;
-      height: clamp(185px, 50vw, 215px);
-      aspect-ratio: auto;
-      object-fit: cover;
-      object-position: center center;
-    }
+  display: block;
+  width: 100%;
+  height: auto !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+  object-position: center center;
+}
   }
 
   @media (max-width: 480px) {
     #jh-ncaa-sophomore-hero {
       padding: 120px 12px 0 12px;
-      margin-bottom: 16px;
     }
 
     #jh-ncaa-sophomore-hero .jh-ncaa-hero-title-block {
@@ -621,16 +599,14 @@
     }
 
     #jh-ncaa-sophomore-hero .jh-ncaa-hero-img {
-      height: clamp(180px, 49vw, 205px);
-      object-position: center center;
-    }
+  height: auto !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+  object-position: center center;
+}
   }
 
   @media (max-width: 390px) {
-    #jh-ncaa-sophomore-hero {
-      padding-top: 118px;
-    }
-
     #jh-ncaa-sophomore-hero .jh-ncaa-hero-title {
       font-size: 25px !important;
     }
@@ -639,10 +615,12 @@
       font-size: 11.5px !important;
     }
 
-    #jh-ncaa-sophomore-hero .jh-ncaa-hero-img {
-      height: 188px;
-      object-position: center center;
-    }
+   #jh-ncaa-sophomore-hero .jh-ncaa-hero-img {
+  height: auto !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+  object-position: center center;
+}
   }
 </style>
 
@@ -662,8 +640,8 @@
       src="images/sophomore-2026-27/ncaa-usc-banner-01.jpg"
       alt="Joshua Hong NCAA Stats hero banner for the 2026–27 USC sophomore season, featuring USC Men’s Golf, B1G Conference, schedule, results, and seasonal metrics."
       title="Joshua Hong — NCAA Stats | 2026–27 USC Sophomore Season"
-      width="1916"
-      height="821"
+      width="1672"
+      height="941"
       loading="eager"
       fetchpriority="high"
       decoding="async"
@@ -5213,7 +5191,7 @@
 <div class="jhos-topbar">
   <div class="jhos-topbar-inner">
     <span class="jhos-topbar-title">
-  Invitational · EAGS · USGA · FMG Events
+  Summer Amateur · USGA · FMG · CBGolfe Events
 </span>
 
     <span class="jhos-topbar-badge">
@@ -5255,28 +5233,60 @@
             <div class="jhos-event-block">
               <div class="jhos-event-name">
                 U.S. Amateur Final Qualifying
+                <a
+                  href="https://www.bluegolf.com/amateur/events/ncga26137/index.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View U.S. Amateur Final Qualifying page"
+                  title="View U.S. Amateur Final Qualifying page"
+                  style="
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 17px;
+                    height: 17px;
+                    margin-left: 5px;
+                    vertical-align: -2px;
+                    color: #c98a2e;
+                    text-decoration: none;
+                  "
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="17"
+                    height="17"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path d="M14 4h6v6"></path>
+                    <path d="M10 14 20 4"></path>
+                    <path d="M20 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h5"></path>
+                  </svg>
+                </a>
               </div>
 
               <div class="jhos-event-location">
-                First-Choice Site: Ruby Hill GC, Pleasanton, CA
+                Ruby Hill GC, Pleasanton, CA
               </div>
             </div>
           </div>
         </td>
 
         <td>
-          <div class="jhos-cell jhos-cell-status">
-            <div class="jhos-status-wrap">
-              <span class="jhos-status is-gray">
-                <span class="jhos-status-line">REGISTERED</span>
-              </span>
-              <span class="jhos-status is-gold">
-                <span class="jhos-status-line">SITE ASSIGNMENT</span>
-                <span class="jhos-status-line">EXPECTED</span>
-              </span>
-            </div>
-          </div>
-        </td>
+  <div class="jhos-cell jhos-cell-status">
+    <div class="jhos-status-wrap">
+      <span class="jhos-status is-gold">
+        <span class="jhos-status-line">FINAL QUALIFYING</span>
+        <span class="jhos-status-line">SITE ASSIGNED</span>
+      </span>
+    </div>
+  </div>
+</td>
       </tr>
 
       <tr>
@@ -5368,44 +5378,54 @@
         </td>
       </tr>
 
-      <tr>
-        <td>
-          <div class="jhos-cell jhos-cell-date">
-            <div class="jhos-date">
-              Jul 27–Aug 1
-            </div>
-          </div>
-        </td>
+    <tr>
+  <td>
+    <div class="jhos-cell jhos-cell-date">
+      <div class="jhos-date">
+        Jul 30–Aug 2
+      </div>
+    </div>
+  </td>
 
-        <td>
-          <div class="jhos-cell jhos-cell-event">
-            <div class="jhos-event-block">
-              <div class="jhos-event-name">
-                Western Amateur Championship (EAGS)
-              </div>
+  <td>
+    <div class="jhos-cell jhos-cell-event">
+      <div class="jhos-event-block">
+        <div class="jhos-event-name">
+          Brazilian Amateur Golf Championship
+        </div>
 
-              <div class="jhos-event-location">
-                Beverly CC, Chicago, IL
-              </div>
-            </div>
-          </div>
-        </td>
+        <div class="jhos-event-location">
+          Alphaville Graciosa Clube, Pinhais, Paraná, Brazil
+        </div>
 
-  		<td>
-       <div class="jhos-cell jhos-cell-status">
-            <div class="jhos-status-wrap">
-              <span class="jhos-status is-gray">
-                <span class="jhos-status-line">ENTRY SUBMITTED</span>
-              </span>
+        <div
+          class="jhos-event-location"
+          style="
+            color: #1f365d;
+            font-weight: 800;
+          "
+        >
+          95th Campeonato Amador de Golfe do Brasil · CBGolfe
+        </div>
+      </div>
+    </div>
+  </td>
 
-              <span class="jhos-status is-gold">
-                <span class="jhos-status-line">EXEMPTION</span>
-                <span class="jhos-status-line">PENDING</span>
-              </span>
-            </div>
-          </div>
-        </td>
-      </tr>
+  <td>
+    <div class="jhos-cell jhos-cell-status">
+      <div class="jhos-status-wrap">
+        <span class="jhos-status is-gray">
+          <span class="jhos-status-line">MEXICO</span>
+          <span class="jhos-status-line">REPRESENTATIVE</span>
+        </span>
+
+        <span class="jhos-status is-gold">
+          <span class="jhos-status-line">CONFIRMED</span>
+        </span>
+      </div>
+    </div>
+  </td>
+</tr>
 
       <tr class="jhos-row-muted">
         <td>
@@ -5505,7 +5525,7 @@
     <div class="jhos-cell jhos-cell-status">
       <div class="jhos-status-wrap">
         <span class="jhos-status is-final-muted">
-          <span class="jhos-status-line">FINAL</span>
+          <span class="jhos-status-line">FINAL · T18 (-9)</span>
         </span>
       </div>
     </div>
@@ -6451,9 +6471,28 @@
           .replace(/'/g, '&#039;');
       }
 
-      function isNumberValue(value) {
-        return typeof value === 'number' && Number.isFinite(value);
-      }
+     function isNumberValue(value) {
+  if (typeof value === 'number') {
+    return Number.isFinite(value);
+  }
+
+  if (typeof value === 'string') {
+    const cleaned = value.trim();
+
+    if (
+      cleaned === '' ||
+      cleaned === '-' ||
+      cleaned === '—' ||
+      cleaned.toUpperCase() === 'TBD'
+    ) {
+      return false;
+    }
+
+    return Number.isFinite(Number(cleaned));
+  }
+
+  return false;
+}
 
       function isDisplayText(value) {
         if (value === null || value === undefined) return false;
@@ -6663,7 +6702,7 @@
 
               '<div class="jh-srl-band-cell">' +
                 '<span class="jh-srl-band-label">Total</span>' +
-                '<div class="jh-srl-total-value">' +
+                '<div class="jh-srl-total-value ' + parClass + '">' +
                   escapeHtml(totalText) +
                 '</div>' +
               '</div>' +
@@ -8844,7 +8883,7 @@
 
               <div class="jh-ss-band-cell">
                 <span class="jh-ss-band-label">Total</span>
-                <div class="jh-ss-total-value">
+                <div class="jh-ss-total-value ${parClass}">
                   ${escapeHtml(summary.total || "—")}
                 </div>
               </div>
@@ -13741,7 +13780,18 @@ function setImpact(id, value, rankId) {
       <div id="thumbScroll">
         <div class="thumb-page">
 
-   <img 
+
+  <img 
+    src="./images/sophomore-2026-27/home-hero-signed-banner-01.jpg" 
+    onclick="popupGallery(this)" 
+    class="thumb-img" 
+    alt="Joshua Hong USC Men’s Golf signing announcement graphic" 
+    title="Joshua Hong — USC Men’s Golf Signing Announcement" 
+    loading="lazy" 
+    decoding="async"
+  >
+          
+  <img 
     src="./images/sophomore-2026-27/USC-Sophomore-Joshua-Hong-Signed-1.jpg" 
     onclick="popupGallery(this)" 
     class="thumb-img" 
@@ -13772,13 +13822,6 @@ function setImpact(id, value, rankId) {
   >
 
 
-  <div class="thumb-placeholder" aria-hidden="true">
-    <div class="thumb-placeholder-inner">
-      <span class="thumb-placeholder-kicker">Photo Archive</span>
-      <span class="thumb-placeholder-text">Coming Soon</span>
-      <span class="thumb-placeholder-sub">2026</span>
-    </div>
-  </div>
 
   <div class="thumb-placeholder" aria-hidden="true">
     <div class="thumb-placeholder-inner">
@@ -15465,10 +15508,14 @@ document.head.appendChild(style);
       font-weight: 700 !important;
     }
 
-    #jh-pga-table-shared .jtc-round-chip-value,
+        #jh-pga-table-shared .jtc-round-chip-value,
     #jh-pga-table-shared .jtc-total-score,
     #jh-pga-table-shared .jtc-total-par-wrap,
-    #jh-pga-table-shared .jtc-pos-value,
+    #jh-pga-table-shared .jtc-pos-value {
+      color: var(--jh-balance-navy) !important;
+      text-shadow: none !important;
+    }
+
     #jh-summer-results-log-isolated .jh-srl-round-score,
     #jh-summer-results-log-isolated .jh-srl-total-value,
     #jh-summer-results-log-isolated .jh-srl-par-value,
@@ -15479,6 +15526,48 @@ document.head.appendChild(style);
     #jh-sophomore-season-page .jh-ss-finish-value {
       color: var(--jh-balance-navy) !important;
       text-shadow: none !important;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-round-score.jh-srl-score-under,
+    #jh-summer-results-log-isolated .jh-srl-total-value.jh-srl-score-under,
+    #jh-summer-results-log-isolated .jh-srl-par-value.jh-srl-score-under,
+    #jh-summer-results-log-isolated .jh-srl-finish-value.jh-srl-score-under {
+      color: var(--jh-balance-cardinal) !important;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-round-score.jh-srl-score-even,
+    #jh-summer-results-log-isolated .jh-srl-total-value.jh-srl-score-even,
+    #jh-summer-results-log-isolated .jh-srl-par-value.jh-srl-score-even,
+    #jh-summer-results-log-isolated .jh-srl-finish-value.jh-srl-score-even {
+      color: var(--jh-balance-navy) !important;
+    }
+
+    #jh-summer-results-log-isolated .jh-srl-round-score.jh-srl-score-over,
+    #jh-summer-results-log-isolated .jh-srl-total-value.jh-srl-score-over,
+    #jh-summer-results-log-isolated .jh-srl-par-value.jh-srl-score-over,
+    #jh-summer-results-log-isolated .jh-srl-finish-value.jh-srl-score-over {
+      color: #475569 !important;
+    }
+
+    #jh-sophomore-season-page .jh-ss-round-score.jh-ss-score-under,
+    #jh-sophomore-season-page .jh-ss-total-value.jh-ss-score-under,
+    #jh-sophomore-season-page .jh-ss-par-value.jh-ss-score-under,
+    #jh-sophomore-season-page .jh-ss-finish-value.jh-ss-score-under {
+      color: var(--jh-balance-cardinal) !important;
+    }
+
+    #jh-sophomore-season-page .jh-ss-round-score.jh-ss-score-even,
+    #jh-sophomore-season-page .jh-ss-total-value.jh-ss-score-even,
+    #jh-sophomore-season-page .jh-ss-par-value.jh-ss-score-even,
+    #jh-sophomore-season-page .jh-ss-finish-value.jh-ss-score-even {
+      color: var(--jh-balance-navy) !important;
+    }
+
+    #jh-sophomore-season-page .jh-ss-round-score.jh-ss-score-over,
+    #jh-sophomore-season-page .jh-ss-total-value.jh-ss-score-over,
+    #jh-sophomore-season-page .jh-ss-par-value.jh-ss-score-over,
+    #jh-sophomore-season-page .jh-ss-finish-value.jh-ss-score-over {
+      color: #475569 !important;
     }
   }
 
@@ -17409,25 +17498,7 @@ document.head.appendChild(style);
   } 
 </style> 
 
-<style id="jh-summer-results-log-par-color-final-lock">
-  /*
-    Final color lock for Summer Amateur Event Results PAR value.
-    Keeps under-par / even / over-par color correct on desktop and mobile.
-    Scope: Results Log only.
-  */
 
-  #jh-summer-results-log-isolated .jh-srl-par-value.jh-srl-score-under {
-    color: var(--jh-balance-cardinal, #990000) !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-par-value.jh-srl-score-even {
-    color: var(--jh-balance-navy, #0c2340) !important;
-  }
-
-  #jh-summer-results-log-isolated .jh-srl-par-value.jh-srl-score-over {
-    color: #475569 !important;
-  }
-</style>
  
  <div class="jh-ncaa-legal-footer">
     
