@@ -12177,6 +12177,7 @@ function setImpact(id, value, rankId) {
 
 
 
+
 <div id="joshua-unique-section" style="width: 100%; max-width: 900px; margin: 0 auto 70px; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; clear: both;">
 
   <style>
@@ -12459,61 +12460,167 @@ function setImpact(id, value, rankId) {
       transform: none;
     }
 
-    #joshua-unique-section .jpp-select-wrap {
-      position: relative;
-      width: 100%;
-      min-width: 0;
-      max-width: 260px;
-    }
+   /* ===== Custom Insight Dropdown ===== */
 
-    #joshua-unique-section .jpp-select-wrap::after {
-      content: "";
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      width: 8px;
-      height: 8px;
-      border-right: 2px solid var(--usc-gold);
-      border-bottom: 2px solid var(--usc-gold);
-      transform: translateY(-62%) rotate(45deg);
-      pointer-events: none;
-    }
+#joshua-unique-section .jpp-custom-select-wrap {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  max-width: 260px;
+  z-index: 20;
+}
 
-    #joshua-unique-section .jpp-select {
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      width: 100%;
-      height: 42px;
-      padding: 0 42px 0 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 204, 0, 0.22);
-      background: rgba(255,255,255,0.08);
-      color: var(--usc-white);
-      font-size: 13px;
-      font-weight: 650;
-      letter-spacing: 0.1px;
-      outline: none;
-      box-shadow: none;
-      cursor: pointer;
-      text-align: center;
-    }
+#joshua-unique-section .jpp-custom-select-trigger {
+  width: 100%;
+  height: 42px;
+  padding: 0 15px 0 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 204, 0, 0.46);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(153, 0, 0, 0.92) 0%,
+      rgba(101, 0, 0, 0.96) 100%
+    );
+  color: var(--usc-white);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1px;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  text-align: left;
+  box-shadow:
+    0 6px 14px rgba(63, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
+}
 
-    #joshua-unique-section .jpp-select:hover {
-      border-color: rgba(255, 204, 0, 0.55);
-      background: rgba(255,255,255,0.10);
-    }
+#joshua-unique-section .jpp-custom-select-trigger:hover,
+#joshua-unique-section .jpp-custom-select-trigger:focus {
+  border-color: rgba(255, 204, 0, 0.82);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(101, 0, 0, 0.98) 0%,
+      rgba(63, 0, 0, 1) 100%
+    );
+  box-shadow:
+    0 8px 18px rgba(63, 0, 0, 0.26),
+    0 0 0 3px rgba(255, 204, 0, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
 
-    #joshua-unique-section .jpp-select:focus {
-      border-color: rgba(255, 204, 0, 0.70);
-      box-shadow: 0 0 0 3px rgba(255,204,0,0.13);
-    }
+#joshua-unique-section .jpp-custom-select-trigger:active {
+  transform: translateY(1px);
+}
 
-    #joshua-unique-section .jpp-select option {
-      background: var(--usc-cardinal-dark);
-      color: var(--usc-white);
-      font-weight: 500;
-    }
+#joshua-unique-section #jpp-custom-select-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#joshua-unique-section .jpp-custom-select-arrow {
+  flex: 0 0 auto;
+  color: var(--usc-gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.18s ease;
+}
+
+#joshua-unique-section .jpp-custom-select-arrow svg {
+  stroke: currentColor !important;
+}
+
+#joshua-unique-section .jpp-custom-select-wrap.is-open .jpp-custom-select-arrow {
+  transform: rotate(180deg);
+}
+
+#joshua-unique-section .jpp-custom-select-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 7px);
+  display: none;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 204, 0, 0.48);
+  background: #650000;
+  box-shadow:
+    0 14px 28px rgba(63, 0, 0, 0.34),
+    0 6px 14px rgba(12, 35, 64, 0.16);
+  z-index: 50;
+}
+
+#joshua-unique-section .jpp-custom-select-wrap.is-open .jpp-custom-select-menu {
+  display: block;
+}
+
+#joshua-unique-section .jpp-custom-select-option {
+  width: 100%;
+  min-height: 38px;
+  padding: 10px 14px;
+  border: none;
+  border-bottom: 1px solid rgba(255, 204, 0, 0.18);
+  background: #650000;
+  color: #fff8dc;
+  font-size: 12.5px;
+  font-weight: 650;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+  display: block;
+  transition:
+    background 0.16s ease,
+    color 0.16s ease;
+}
+
+#joshua-unique-section .jpp-custom-select-option:last-child {
+  border-bottom: none;
+}
+
+#joshua-unique-section .jpp-custom-select-option:hover,
+#joshua-unique-section .jpp-custom-select-option:focus {
+  background: var(--usc-gold);
+  color: #650000;
+  outline: none;
+}
+
+#joshua-unique-section .jpp-custom-select-option.is-active {
+  background: #7a0000;
+  color: var(--usc-gold);
+  font-weight: 800;
+  box-shadow: inset 0 0 0 1px rgba(255, 204, 0, 0.65);
+}
+
+    /* Dropdown option color control */
+#joshua-unique-section .jpp-select option {
+  background-color: #650000 !important;
+  color: #ffcc00 !important;
+}
+
+/* Selected option */
+#joshua-unique-section .jpp-select option:checked {
+  background-color: #ffcc00 !important;
+  color: #650000 !important;
+  font-weight: 700 !important;
+}
+
+/* Some browsers respect this, some do not */
+#joshua-unique-section .jpp-select option:hover {
+  background-color: #ffcc00 !important;
+  color: #650000 !important;
+}
 
     #joshua-unique-section .jpp-stage-wrap {
       padding: 12px;
@@ -12754,14 +12861,19 @@ function setImpact(id, value, rankId) {
         gap: 8px;
       }
 
-      #joshua-unique-section .jpp-select-wrap {
-        max-width: none;
-      }
+     #joshua-unique-section .jpp-custom-select-wrap {
+  max-width: none;
+}
 
-      #joshua-unique-section .jpp-select {
-        height: 40px;
-        font-size: 12.5px;
-      }
+#joshua-unique-section .jpp-custom-select-trigger {
+  height: 40px;
+  font-size: 12.5px;
+}
+
+#joshua-unique-section .jpp-custom-select-option {
+  min-height: 38px;
+  font-size: 12px;
+}
 
       #joshua-unique-section .jpp-btn {
         width: 40px;
@@ -12842,7 +12954,7 @@ function setImpact(id, value, rankId) {
     }
   </style>
 
- <div class="intro-section">
+<div class="intro-section">
   <h2>
     <div class="intro-icon-wrap">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffcc00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -12859,7 +12971,6 @@ function setImpact(id, value, rankId) {
       <span class="intro-badge">Insight Archive</span>
     </div>
   </div>
-
   <div class="intro-bottom-line"></div>
 </div>
 
@@ -12868,10 +12979,12 @@ function setImpact(id, value, rankId) {
     <div class="jpp-archive-head">
       <div class="jpp-title-stack">
         <div class="jpp-eyebrow">Beyond the Scorecard</div>
-        <div class="jpp-current" id="jpp-current-label">Dogwood Invitational — Four Under-Par Rounds</div>
+        <div class="jpp-current" id="jpp-current-label">
+          June 2026 Transfer Process — USC Commitment and Signing
+        </div>
       </div>
 
-      <div class="jpp-counter" id="jpp-counter">1 / 1</div>
+      <div class="jpp-counter" id="jpp-counter">1 / 2</div>
     </div>
 
     <div class="jpp-controls">
@@ -12881,11 +12994,32 @@ function setImpact(id, value, rankId) {
         </svg>
       </button>
 
-      <div class="jpp-select-wrap">
-        <select class="jpp-select" id="jpp-select" aria-label="Jump to insight card">
-          <option value="0">Dogwood Invitational</option>
-        </select>
-      </div>
+      <div class="jpp-custom-select-wrap">
+  <button
+    type="button"
+    class="jpp-custom-select-trigger"
+    id="jpp-custom-select-trigger"
+    aria-haspopup="listbox"
+    aria-expanded="false"
+  >
+    <span id="jpp-custom-select-label">
+      Select Insight
+    </span>
+
+    <span class="jpp-custom-select-arrow" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </span>
+  </button>
+
+  <div
+    class="jpp-custom-select-menu"
+    id="jpp-custom-select-menu"
+    role="listbox"
+    aria-label="Jump to insight card"
+  ></div>
+</div>
 
       <button type="button" class="jpp-btn" id="jpp-next" aria-label="Next insight card">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -12898,7 +13032,103 @@ function setImpact(id, value, rankId) {
   <div class="jpp-stage-wrap">
     <div class="jpp-stage" id="jpp-stage">
 
-      <div class="insight-card-item" data-card-id="0" style="display: flex; flex-direction: column; justify-content: space-between; gap: 18px;">
+      <!-- insight card 
+        CARD OPERATING RULE:
+        1. Add every new Insight card directly under this comment, above older cards.
+        2. Do not edit old cards.
+        3. Do not edit the dropdown, counter, or JavaScript.
+        4. The script reads the HTML order automatically: top card = newest = first display.
+        5. Archive numbers follow posting order, not display order:
+           - Dogwood Jun 20 = Archive 1
+           - USC Signing Jun 22 = Archive 2
+           - Next new Insight = Archive 3
+        6. For each new card, set only:
+           - data-card-id
+           - data-archive-no
+           - data-card-title
+           - data-option-label
+           - data-posted-date
+      -->
+
+      <!-- CARD: USC COMMITMENT AND SIGNING | Posted On: June 22, 2026 | Latest cards stay above older cards -->
+      <div class="insight-card-item" data-card-id="usc-commitment-signing-2026-06-22" data-archive-no="2" data-card-title="June 2026 Transfer Process — USC Commitment and Signing" data-option-label="USC Commitment and Signing" data-posted-date="2026-06-22" style="flex-direction: column; justify-content: space-between; gap: 18px;">
+        <div>
+          <div class="bts-card-head" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; width: 100%; margin: 0 0 18px 0;">
+            <div class="bts-title-row" style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+              <div class="bts-icon-wrap" style="flex: 0 0 auto;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffcc00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+
+              <h3 class="bts-title" style="margin: 0; min-width: 0;">
+                Beyond the Scorecard
+              </h3>
+            </div>
+
+            <span class="bts-event-badge" style="flex: 0 0 auto; margin-left: auto; white-space: nowrap;">
+              USC Commitment and Signing
+            </span>
+          </div>
+
+          <div class="bts-body">
+            <p class="bts-lead">
+              From Portal Entry to USC Signing — A June 2026 Transition Timeline
+            </p>
+
+          <p style="margin: 0 0 10px 0;">
+  USC Men’s Golf became the clear fit for Joshua Hong’s next stage of development during the opening hours of the transfer process. After conversations with Coach Mark Hankins and Coach Kolton Lapa, Joshua committed to USC Men’s Golf on June 4, 2026.
+</p>
+
+<p style="margin: 0 0 10px 0;">
+  The decision represented more than a change of program. It marked a new development path, a higher competitive environment, and an opportunity to continue growing as a student-athlete within USC Men’s Golf.
+</p>
+
+<p style="margin: 0 0 10px 0;">
+  After completing his freshman season at UTSA, Joshua entered the NCAA Transfer Portal on June 4, 2026.
+</p>
+
+<p style="margin: 0 0 10px 0;">
+  Joshua and his family had been waiting based on a Mexico morning timeline, expecting the portal entry to become visible later that morning. Instead, the entry became active earlier than anticipated; by the time Joshua woke up in Mexico, calls and communication around the transfer process had already begun.
+</p>
+
+<p style="margin: 0 0 10px 0;">
+  The early timing gave the process an immediate pace. Shortly after the entry became visible, the transfer process moved quickly, and USC became the right fit for Joshua’s next chapter.
+</p>
+
+<p style="margin: 0 0 10px 0;">
+  The commitment was followed by the required administrative, academic, compliance, and transfer steps. On June 22, 2026, Joshua officially signed with USC Men’s Golf, confirming the next chapter of his collegiate golf career.
+</p>
+
+<p style="margin: 0 0 10px 0;">
+  Joshua is especially grateful to UTSA Men’s Golf Head Coach Matt Wernecke for his guidance, support, and positive recommendation during the transfer process. That backing carried significant meaning for Joshua and his family.
+</p>
+
+<p style="margin: 0 0 10px 0;">
+  He also appreciates the UTSA Men’s Golf staff and his teammates for the opportunity, trust, and competitive foundation established during his freshman season.
+</p>
+
+<p class="bts-final" style="margin: 0;">
+  Joshua is thankful to USC Men’s Golf for the opportunity and vision for his continued development, while recognizing the meaningful foundation built at UTSA during his first NCAA season.
+</p>
+            
+          </div>
+        </div>
+
+        <div class="bts-status-note" style="width: 100%; margin: 0; padding-top: 14px; border-top: 1px solid rgba(255, 204, 0, 0.22); align-self: stretch;">
+  <div style="margin: 0 0 5px 0;">
+    Status Note: USC Men’s Golf commitment confirmed June 4, 2026 · Signing completed June 22, 2026
+  </div>
+
+  <div style="margin: 0; color: rgba(255, 248, 220, 0.78); font-weight: 750;">
+    Posted On: June 23, 2026
+  </div>
+</div>
+      </div>
+
+      <!-- CARD: DOGWOOD INVITATIONAL | Posted On: June 20, 2026 | Older card stays below newer cards -->
+     <div class="insight-card-item" data-card-id="dogwood-invitational-2026-06-20" data-archive-no="1" data-card-title="Dogwood Invitational — Four Under-Par Rounds" data-option-label="Dogwood Invitational" data-posted-date="2026-06-20" style="flex-direction: column; justify-content: space-between; gap: 18px;">
         <div>
           <div class="bts-card-head" style="display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; width: 100%; margin: 0 0 18px 0;">
             <div class="bts-title-row" style="display: flex; align-items: center; gap: 10px; min-width: 0;">
@@ -12924,40 +13154,37 @@ function setImpact(id, value, rankId) {
               Four Under-Par Rounds, Strong-Field Sample, and a Week Shaped by Hospitality
             </p>
 
+            <p style="margin: 0 0 10px 0;">
+              The Dogwood Invitational became more than a tournament result. For Joshua Hong, it was the first major summer amateur competition after committing to USC, and it provided both a competitive test and a meaningful experience inside a respected traditional invitational setting.
+            </p>
 
-<p style="margin: 0 0 10px 0;">
-  The Dogwood Invitational became more than a tournament result. For Joshua Hong, it was the first major summer amateur competition after committing to USC, and it provided both a competitive test and a meaningful experience inside a respected traditional invitational setting.
-</p>
+            <p style="margin: 0 0 10px 0;">
+              Joshua completed the week with rounds of 69, 71, 69, and 70, finishing T18 at 279, 9-under par. Across four rounds, he stayed under par each day. The result showed consistency in a strong field while also leaving clear room for future scoring growth, especially through putting conversion.
+            </p>
 
-<p style="margin: 0 0 10px 0;">
-  Joshua completed the week with rounds of 69, 71, 69, and 70, finishing T18 at 279, 9-under par. Across four rounds, he stayed under par each day. The result showed consistency in a strong field while also leaving clear room for future scoring growth, especially through putting conversion.
-</p>
+            <p style="margin: 0 0 10px 0;">
+              The strongest technical signal came from tee-to-green control. Round 2 included 16 greens in regulation, and Round 3 included all 18 greens in regulation. Those numbers gave the week a deeper meaning than the final score alone: the ball-striking created enough chances to suggest that the scoring ceiling remains higher than the recorded total.
+            </p>
 
-<p style="margin: 0 0 10px 0;">
-  The strongest technical signal came from tee-to-green control. Round 2 included 16 greens in regulation, and Round 3 included all 18 greens in regulation. Those numbers gave the week a deeper meaning than the final score alone: the ball-striking created enough chances to suggest that the scoring ceiling remains higher than the recorded total.
-</p>
+            <p style="margin: 0 0 10px 0;">
+              The week also carried a personal layer. Joshua was able to share the tournament experience with his friend Tobey, who also competed in the event, making the week meaningful not only as a competitive test but also as a shared summer amateur golf experience.
+            </p>
 
-<p style="margin: 0 0 10px 0;">
-  The week also carried a personal layer. Joshua was able to share the tournament experience with his friend Tobey, who also competed in the event, making the week meaningful not only as a competitive test but also as a shared summer amateur golf experience.
-</p>
+            <p style="margin: 0 0 10px 0;">
+              Joshua and his family are especially grateful to Andy Brock, Cristy Brock, Drew Brock, and The Brock Family for their generosity throughout the Dogwood Invitational. After a storm delay of more than two hours, Andy still came to the airport, welcomed Joshua, and helped him get directly to the golf course, where he was able to play five holes after arrival.
+            </p>
 
-<p style="margin: 0 0 10px 0;">
-  Joshua and his family are especially grateful to Andy Brock, Cristy Brock, Drew Brock, and The Brock Family for their generosity throughout the Dogwood Invitational. After a storm delay of more than two hours, Andy still came to the airport, welcomed Joshua, and helped him get directly to the golf course, where he was able to play five holes after arrival.
-</p>
+            <p style="margin: 0 0 10px 0;">
+              Throughout the week, Joshua was welcomed with meals, a warm place to stay, and a home environment that helped him feel settled away from home. Andy and Drew also supported him as caddies during the event, adding a meaningful layer of care to the competition experience.
+            </p>
 
-<p style="margin: 0 0 10px 0;">
-  Throughout the week, Joshua was welcomed with meals, a warm place to stay, and a home environment that helped him feel settled away from home. Andy and Drew also supported him as caddies during the event, adding a meaningful layer of care to the competition experience.
-</p>
+            <p style="margin: 0 0 10px 0;">
+              For Joshua, the Dogwood Invitational was not only four tournament rounds. It was a week of competition, adjustment, gratitude, friendship, and connection with people who helped make the experience possible.
+            </p>
 
-<p style="margin: 0 0 10px 0;">
-  For Joshua, the Dogwood Invitational was not only four tournament rounds. It was a week of competition, adjustment, gratitude, friendship, and connection with people who helped make the experience possible.
-</p>
-
-<p class="bts-final" style="margin: 0;">
-  As Joshua continues into the summer schedule, this week becomes part of his growing identity as a player: a competitor learning to turn strong ball-striking into deeper scoring, a student-athlete beginning his next chapter, and a young golfer learning to carry gratitude with him as part of the journey.
-</p>
-
-
+            <p class="bts-final" style="margin: 0;">
+              As Joshua continues into the summer schedule, this week becomes part of his growing identity as a player: a competitor learning to turn strong ball-striking into deeper scoring, a student-athlete beginning his next chapter, and a young golfer learning to carry gratitude with him as part of the journey.
+            </p>
           </div>
         </div>
 
@@ -12969,135 +13196,293 @@ function setImpact(id, value, rankId) {
     </div>
   </div>
 </div>
- 
+
+  
   <script>
-    (function() {
-      const stage = document.getElementById('jpp-stage');
-      const prevBtn = document.getElementById('jpp-prev');
-      const nextBtn = document.getElementById('jpp-next');
-      const select = document.getElementById('jpp-select');
-      const counter = document.getElementById('jpp-counter');
-      const currentLabel = document.getElementById('jpp-current-label');
+  (function() {
+    const section = document.getElementById('joshua-unique-section');
+    const stage = document.getElementById('jpp-stage');
+    const prevBtn = document.getElementById('jpp-prev');
+    const nextBtn = document.getElementById('jpp-next');
+    const counter = document.getElementById('jpp-counter');
+    const currentLabel = document.getElementById('jpp-current-label');
 
-      if (!stage || !prevBtn || !nextBtn || !select || !counter || !currentLabel) return;
+    const dropdownWrap = document.querySelector('#joshua-unique-section .jpp-custom-select-wrap');
+    const dropdownTrigger = document.getElementById('jpp-custom-select-trigger');
+    const dropdownLabel = document.getElementById('jpp-custom-select-label');
+    const dropdownMenu = document.getElementById('jpp-custom-select-menu');
 
-      const cards = Array.from(stage.querySelectorAll('.insight-card-item'));
-      const orderedIds = [0];
+    if (
+      !section ||
+      !stage ||
+      !prevBtn ||
+      !nextBtn ||
+      !counter ||
+      !currentLabel ||
+      !dropdownWrap ||
+      !dropdownTrigger ||
+      !dropdownLabel ||
+      !dropdownMenu
+    ) return;
 
-      const cardLabels = {
-        0: 'Dogwood Invitational — Four Under-Par Rounds'
-      };
+    /*
+      EASY INSIGHT ARCHIVE OPERATION:
 
-      const cardMap = {};
-      cards.forEach(card => {
-        cardMap[Number(card.getAttribute('data-card-id'))] = card;
-      });
+      1. The card order is controlled only by the HTML order inside #jpp-stage.
+      2. The top .insight-card-item is treated as the newest Insight and appears first.
+      3. Older cards stay below.
+      4. When adding a new Insight, paste the new .insight-card-item above the current top card.
+      5. Do not update this script.
+      6. Do not manually add dropdown items.
+      7. Do not manually change the counter.
+    */
 
-      let currentDisplayIndex = 0;
+    const cards = Array.from(stage.querySelectorAll('.insight-card-item'));
 
-      function showCardByDisplayIndex(displayIndex) {
-        const safeDisplayIndex = Math.max(0, Math.min(displayIndex, orderedIds.length - 1));
-        currentDisplayIndex = safeDisplayIndex;
+    let currentDisplayIndex = 0;
 
-        const activeId = orderedIds[safeDisplayIndex];
+    function getCardTitle(card, index) {
+      if (!card) return '';
 
-        cards.forEach(card => {
-          const cardId = Number(card.getAttribute('data-card-id'));
-          if (cardId === activeId) {
-            card.classList.add('active');
-          } else {
-            card.classList.remove('active');
-          }
+      const explicitTitle = card.getAttribute('data-card-title');
+      if (explicitTitle) return explicitTitle;
+
+      const lead = card.querySelector('.bts-lead');
+      if (lead && lead.textContent.trim()) return lead.textContent.trim();
+
+      const badge = card.querySelector('.bts-event-badge');
+      if (badge && badge.textContent.trim()) return badge.textContent.trim();
+
+      return 'Insight ' + (index + 1);
+    }
+
+    function getOptionLabel(card, index) {
+      if (!card) return 'Insight ' + (index + 1);
+
+      const explicitOptionLabel = card.getAttribute('data-option-label');
+      if (explicitOptionLabel) return explicitOptionLabel;
+
+      const explicitTitle = card.getAttribute('data-card-title');
+      if (explicitTitle) return explicitTitle;
+
+      const badge = card.querySelector('.bts-event-badge');
+      if (badge && badge.textContent.trim()) return badge.textContent.trim();
+
+      return 'Insight ' + (index + 1);
+    }
+
+    function getCounterText(index, total, card) {
+  if (total <= 0) return '0 Insights';
+
+  const archiveNo = card && card.getAttribute('data-archive-no')
+    ? card.getAttribute('data-archive-no')
+    : String(total - index);
+
+  if (index === 0) {
+    return 'Latest · Archive ' + archiveNo;
+  }
+
+  return 'Archive ' + archiveNo + ' · ' + (index + 1) + ' of ' + total;
+}
+    
+    function closeDropdown() {
+      dropdownWrap.classList.remove('is-open');
+      dropdownTrigger.setAttribute('aria-expanded', 'false');
+    }
+
+    function openDropdown() {
+      dropdownWrap.classList.add('is-open');
+      dropdownTrigger.setAttribute('aria-expanded', 'true');
+    }
+
+    function toggleDropdown() {
+      if (dropdownWrap.classList.contains('is-open')) {
+        closeDropdown();
+      } else {
+        openDropdown();
+      }
+    }
+
+    function buildDropdown() {
+      dropdownMenu.innerHTML = '';
+
+      cards.forEach(function(card, index) {
+        const optionButton = document.createElement('button');
+
+        optionButton.type = 'button';
+        optionButton.className = 'jpp-custom-select-option';
+        optionButton.setAttribute('role', 'option');
+        optionButton.setAttribute('aria-selected', 'false');
+        optionButton.setAttribute('data-display-index', String(index));
+        optionButton.textContent = getOptionLabel(card, index);
+
+        optionButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          showCardByDisplayIndex(index);
+          closeDropdown();
         });
 
-        select.value = String(activeId);
-        counter.textContent = (safeDisplayIndex + 1) + ' / ' + orderedIds.length;
-        currentLabel.textContent = cardLabels[activeId] || '';
-
-        prevBtn.disabled = safeDisplayIndex === 0;
-        nextBtn.disabled = safeDisplayIndex === orderedIds.length - 1;
-      }
-
-      function showCardById(cardId) {
-        const displayIndex = orderedIds.indexOf(Number(cardId));
-        if (displayIndex !== -1) {
-          showCardByDisplayIndex(displayIndex);
-        }
-      }
-
-      prevBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        showCardByDisplayIndex(currentDisplayIndex - 1);
+        dropdownMenu.appendChild(optionButton);
       });
+    }
 
-      nextBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        showCardByDisplayIndex(currentDisplayIndex + 1);
-      });
+    function updateDropdownActiveState(activeIndex) {
+      const options = Array.from(dropdownMenu.querySelectorAll('.jpp-custom-select-option'));
 
-      select.addEventListener('change', function() {
-        showCardById(parseInt(select.value, 10));
-      });
-
-      let touchStartX = 0;
-      let touchStartY = 0;
-      let touchEndX = 0;
-      let touchEndY = 0;
-
-      stage.addEventListener('touchstart', function(e) {
-        if (!e.touches || e.touches.length !== 1) return;
-
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-      }, { passive: true });
-
-      stage.addEventListener('touchend', function(e) {
-        if (!e.changedTouches || e.changedTouches.length !== 1) return;
-
-        touchEndX = e.changedTouches[0].clientX;
-        touchEndY = e.changedTouches[0].clientY;
-
-        const diffX = touchEndX - touchStartX;
-        const diffY = touchEndY - touchStartY;
-
-        const minSwipeDistance = 55;
-        const maxVerticalDrift = 45;
-
-        if (Math.abs(diffX) < minSwipeDistance) return;
-        if (Math.abs(diffY) > maxVerticalDrift) return;
-
-        if (diffX < 0) {
-          showCardByDisplayIndex(currentDisplayIndex + 1);
+      options.forEach(function(option, index) {
+        if (index === activeIndex) {
+          option.classList.add('is-active');
+          option.setAttribute('aria-selected', 'true');
         } else {
-          showCardByDisplayIndex(currentDisplayIndex - 1);
+          option.classList.remove('is-active');
+          option.setAttribute('aria-selected', 'false');
         }
-      }, { passive: true });
+      });
+    }
 
-      document.addEventListener('keydown', function(e) {
-        const section = document.getElementById('joshua-unique-section');
-        if (!section) return;
+    function showCardByDisplayIndex(displayIndex) {
+      if (!cards.length) {
+        currentLabel.textContent = '';
+        dropdownLabel.textContent = 'No Insights';
+        counter.textContent = '0 Insights';
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+        dropdownMenu.innerHTML = '';
+        return;
+      }
 
-        const active = document.activeElement;
-        if (active && !section.contains(active) && active !== document.body) return;
+      const safeDisplayIndex = Math.max(0, Math.min(displayIndex, cards.length - 1));
+      currentDisplayIndex = safeDisplayIndex;
 
-        if (e.key === 'ArrowLeft') {
-          e.preventDefault();
-          showCardByDisplayIndex(currentDisplayIndex - 1);
-        }
-
-        if (e.key === 'ArrowRight') {
-          e.preventDefault();
-          showCardByDisplayIndex(currentDisplayIndex + 1);
+      cards.forEach(function(card, index) {
+        if (index === safeDisplayIndex) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
         }
       });
 
-      showCardByDisplayIndex(0);
-    })();
-  </script>
+      const activeCard = cards[safeDisplayIndex];
+
+      currentLabel.textContent = getCardTitle(activeCard, safeDisplayIndex);
+      dropdownLabel.textContent = getOptionLabel(activeCard, safeDisplayIndex);
+      counter.textContent = getCounterText(safeDisplayIndex, cards.length, activeCard);
+
+      prevBtn.disabled = safeDisplayIndex === 0;
+      nextBtn.disabled = safeDisplayIndex === cards.length - 1;
+
+      updateDropdownActiveState(safeDisplayIndex);
+    }
+
+    dropdownTrigger.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleDropdown();
+    });
+
+    prevBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      showCardByDisplayIndex(currentDisplayIndex - 1);
+      closeDropdown();
+    });
+
+    nextBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      showCardByDisplayIndex(currentDisplayIndex + 1);
+      closeDropdown();
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!dropdownWrap.contains(e.target)) {
+        closeDropdown();
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      const active = document.activeElement;
+
+      if (e.key === 'Escape') {
+        closeDropdown();
+        dropdownTrigger.blur();
+        return;
+      }
+
+      if (active && !section.contains(active) && active !== document.body) return;
+
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        showCardByDisplayIndex(currentDisplayIndex - 1);
+        closeDropdown();
+      }
+
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        showCardByDisplayIndex(currentDisplayIndex + 1);
+        closeDropdown();
+      }
+
+      if (
+        dropdownWrap.classList.contains('is-open') &&
+        (e.key === 'ArrowDown' || e.key === 'ArrowUp')
+      ) {
+        e.preventDefault();
+
+        if (e.key === 'ArrowDown') {
+          showCardByDisplayIndex(currentDisplayIndex + 1);
+        }
+
+        if (e.key === 'ArrowUp') {
+          showCardByDisplayIndex(currentDisplayIndex - 1);
+        }
+      }
+    });
+
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+
+    stage.addEventListener('touchstart', function(e) {
+      if (!e.touches || e.touches.length !== 1) return;
+
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    stage.addEventListener('touchend', function(e) {
+      if (!e.changedTouches || e.changedTouches.length !== 1) return;
+
+      touchEndX = e.changedTouches[0].clientX;
+      touchEndY = e.changedTouches[0].clientY;
+
+      const diffX = touchEndX - touchStartX;
+      const diffY = touchEndY - touchStartY;
+
+      const minSwipeDistance = 55;
+      const maxVerticalDrift = 45;
+
+      if (Math.abs(diffX) < minSwipeDistance) return;
+      if (Math.abs(diffY) > maxVerticalDrift) return;
+
+      if (diffX < 0) {
+        showCardByDisplayIndex(currentDisplayIndex + 1);
+      } else {
+        showCardByDisplayIndex(currentDisplayIndex - 1);
+      }
+
+      closeDropdown();
+    }, { passive: true });
+
+    buildDropdown();
+    showCardByDisplayIndex(0);
+  })();
+</script>
 
 </div>
+  
 
 
 
