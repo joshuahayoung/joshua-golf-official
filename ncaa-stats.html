@@ -2821,16 +2821,21 @@
   }
 </style>
 
-<style id="jh-pga-table-mobile-live-link-bottom">
+
+  
+
+<style id="jh-pga-table-mobile-live-link-bottom-final-lock">
   /*
-    Mobile-only placement override.
-    Desktop layout is untouched.
-    Moves LIVE LEADERBOARD action to the bottom of the mobile scoreboard tray.
+    FINAL MOBILE LOCK
+    Desktop is untouched.
+    Data, scores, rounds, total, position, title, and link URL are untouched.
+    This only moves LIVE LEADERBOARD to the bottom on mobile.
   */
 
   @media (max-width: 768px) {
     #jh-pga-table-shared .jtc-result-band {
-      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.35fr) !important;
+      display: grid !important;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
       grid-template-areas:
         "rounds rounds"
         "total pos"
