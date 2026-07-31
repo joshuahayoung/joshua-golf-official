@@ -1,6 +1,6 @@
 {
   "pgaTableShared": {
-    "lastUpdated": "July 30, 2026",
+    "lastUpdated": "July 31, 2026",
     "sectionTitle": "ONGOING TOURNAMENT",
     "eventNo": "BRAZILIAN AMATEUR CHAMPIONSHIP",
     "eventLabel": "CBGolfe",
@@ -14,7 +14,7 @@
     "rating": 71.3,
     "slope": 134,
     "mainLink": {
-      "url": "https://scoring.datagolf.pt/live-br/Home/ls_classifDisplay?ctr=BR&c=CB00&t=00002&r=1&lang=GB&mode=#L_48",
+      "url": "https://scoring.datagolf.pt/live-br/Home/ls_classif.aspx",
       "label": "LIVE LEADERBOARD"
     },
     "summary": {
