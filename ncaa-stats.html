@@ -5397,8 +5397,7 @@
             '</header>' +
 
             '<div class="jh-srl-result-band">' +
-              '<div class="jh-srl-band-cell">' +
-                '<span class="jh-srl-band-label">' + escapeHtml(roundBandLabel) + '</span>' +
+             '<div class="jh-srl-band-cell">' +
                 '<div class="jh-srl-rounds">' +
                   buildRoundChips(event) +
                 '</div>' +
@@ -5891,12 +5890,13 @@
     }
 
     #jh-sophomore-season-page .jh-ss-metrics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      padding: 13px 16px 15px;
-      background: #ffffff;
-    }
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: 8px;
+  padding: 13px 16px 15px;
+  background: #ffffff;
+}
 
     #jh-sophomore-season-page .jh-ss-metric {
       display: inline-flex;
@@ -5919,6 +5919,27 @@
       letter-spacing: 0.35px;
       font-size: 9px;
     }
+
+    #jh-sophomore-season-page .jh-ss-metrics > * {
+  min-width: 0;
+}
+
+#jh-sophomore-season-page .jh-ss-metrics > :nth-child(1) {
+  justify-self: start;
+}
+
+#jh-sophomore-season-page .jh-ss-metrics > :nth-child(2) {
+  justify-self: center;
+}
+
+#jh-sophomore-season-page .jh-ss-metrics > :nth-child(3) {
+  justify-self: end;
+}
+
+#jh-sophomore-season-page .jh-ss-results-link {
+  text-decoration: none;
+  white-space: nowrap;
+}
 
     #jh-sophomore-season-page .jh-ss-notes {
       margin-top: 24px;
@@ -6033,11 +6054,19 @@
       #jh-sophomore-season-page .jh-ss-metrics {
         padding: 12px 14px 14px;
       }
+      #jh-sophomore-season-page .jh-ss-metrics {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
+  gap: 6px;
+  padding: 12px 14px 14px;
+}
 
-      #jh-sophomore-season-page .jh-ss-metric {
-        width: 100%;
-        justify-content: space-between;
-      }
+#jh-sophomore-season-page .jh-ss-metric,
+#jh-sophomore-season-page .jh-ss-results-link {
+  width: auto;
+  max-width: 100%;
+  justify-content: center;
+}
     }
 
     @media (max-width: 480px) {
@@ -6339,21 +6368,52 @@
   }
 
   /*
-    Hide bottom metrics text such as:
-    Rank Impact / SG / Weighted Pts / WAGR Pwr / Pts Earned.
-    Keep only a thin white strip under the navy-cardinal band.
+    Bottom metrics row restored.
+    Scope: Sophomore Season schedule cards only.
+    Shows WAGR Pwr / Earned Pts / Results without changing event data,
+    result band, round chips, totals, dates, or other sections.
   */
   #jh-sophomore-season-page .jh-ss-metrics {
-    display: block !important;
-    min-height: 10px !important;
-    padding: 0 !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    align-items: center !important;
+    gap: 8px !important;
+    min-height: 0 !important;
+    padding: 10px 14px 12px !important;
     margin: 0 !important;
     background: #ffffff !important;
     border-top: 1px solid rgba(153, 0, 0, 0.08) !important;
   }
 
+  #jh-sophomore-season-page .jh-ss-metrics > * {
+    min-width: 0 !important;
+  }
+
+  #jh-sophomore-season-page .jh-ss-metrics > :nth-child(1) {
+    justify-self: start !important;
+  }
+
+  #jh-sophomore-season-page .jh-ss-metrics > :nth-child(2) {
+    justify-self: center !important;
+  }
+
+  #jh-sophomore-season-page .jh-ss-metrics > :nth-child(3) {
+    justify-self: end !important;
+  }
+
   #jh-sophomore-season-page .jh-ss-metric {
-    display: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
+    min-height: 28px !important;
+    padding: 5px 9px !important;
+    border-radius: 999px !important;
+    white-space: nowrap !important;
+  }
+
+  #jh-sophomore-season-page .jh-ss-results-link {
+    text-decoration: none !important;
   }
 
   @media (max-width: 768px) {
@@ -6388,8 +6448,25 @@
       font-size: 10.8px !important;
     }
 
-    #jh-sophomore-season-page .jh-ss-metrics {
-      min-height: 9px !important;
+   #jh-sophomore-season-page .jh-ss-metrics {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      align-items: center !important;
+      gap: 6px !important;
+      min-height: 0 !important;
+      padding: 8px 9px 9px !important;
+    }
+
+    #jh-sophomore-season-page .jh-ss-metric,
+    #jh-sophomore-season-page .jh-ss-results-link {
+      width: auto !important;
+      max-width: 100% !important;
+      justify-content: center !important;
+      font-size: 8.8px !important;
+    }
+
+    #jh-sophomore-season-page .jh-ss-metric-label {
+      font-size: 7.4px !important;
     }
   }
 </style>
@@ -7453,15 +7530,15 @@
         return "";
       }
 
-      function buildMeta(event) {
-        const parts = [];
+     function buildMeta(event) {
+  const parts = [];
 
-        if (isDisplayText(event.venue)) parts.push(event.venue);
-        if (isDisplayText(event.location)) parts.push(event.location);
-        if (isDisplayText(event.estimatedWagr)) parts.push("Est. WAGR " + event.estimatedWagr);
-
-        return parts.join(" | ");
-      }
+  if (isDisplayText(event.venue)) parts.push(event.venue);
+  if (isDisplayText(event.location)) parts.push(event.location);
+  if (isDisplayText(event.courseMeta)) parts.push(event.courseMeta);
+ 
+  return parts.join(" | ");
+}
 
       function buildRoundLabel(event) {
         const rounds = Array.isArray(event.rounds) ? event.rounds : [];
@@ -7517,35 +7594,58 @@
       }
 
       function metric(label, value) {
-        if (!isDisplayText(value)) return "";
+  const displayValue = isDisplayText(value) ? value : "—";
 
-        return `
-          <span class="jh-ss-metric">
-            <span class="jh-ss-metric-label">${escapeHtml(label)}</span>
-            <span>${escapeHtml(value)}</span>
-          </span>
-        `;
-      }
+  return `
+    <span class="jh-ss-metric">
+      <span class="jh-ss-metric-label">${escapeHtml(label)}</span>
+      <span>${escapeHtml(displayValue)}</span>
+    </span>
+  `;
+}
 
-      function buildMetrics(event) {
-        const metrics = event.metrics || {};
+function resultItem(event) {
+  const links = event.links || {};
 
-        const items = [
-          metric("Rank Impact", metrics.rankImpact),
-          metric("SG", metrics.strokesGained),
-          metric("Weighted Pts", metrics.weightedPts),
-          metric("WAGR Pwr", metrics.wagrPower || event.estimatedWagr),
-          metric("Pts Earned", metrics.pointsEarned)
-        ].filter(Boolean);
+  if (isDisplayText(links.results)) {
+    return `
+      <a class="jh-ss-metric jh-ss-results-link" href="${escapeHtml(links.results)}" target="_blank" rel="noopener noreferrer">
+        Final Results
+      </a>
+    `;
+  }
 
-        if (!items.length) return "";
+  if (isDisplayText(links.leaderboard)) {
+    return `
+      <a class="jh-ss-metric jh-ss-results-link" href="${escapeHtml(links.leaderboard)}" target="_blank" rel="noopener noreferrer">
+        Leaderboard
+      </a>
+    `;
+  }
 
-        return `
-          <div class="jh-ss-metrics">
-            ${items.join("")}
-          </div>
-        `;
-      }
+  return `
+    <span class="jh-ss-metric">
+      <span class="jh-ss-metric-label">Results</span>
+      <span>Pending</span>
+    </span>
+  `;
+}
+
+function buildMetrics(event) {
+  const metrics = event.metrics || {};
+
+  const items = [
+    metric("WAGR Pwr", metrics.wagrPower || event.estimatedWagr),
+    metric("Earned Pts", metrics.pointsEarned),
+    resultItem(event)
+  ].filter(Boolean);
+
+  return `
+    <div class="jh-ss-metrics">
+      ${items.join("")}
+    </div>
+  `;
+}
 
       function buildEventCard(event) {
         const status = normalizeStatus(event.status);
@@ -7579,11 +7679,10 @@
 
             <div class="jh-ss-result-band">
               <div class="jh-ss-band-cell">
-                <span class="jh-ss-band-label">${escapeHtml(roundBandLabel)}</span>
-                <div class="jh-ss-rounds">
-                  ${buildRoundChips(event)}
-                </div>
-              </div>
+  <div class="jh-ss-rounds">
+    ${buildRoundChips(event)}
+  </div>
+</div>
 
               <div class="jh-ss-band-cell">
                 <span class="jh-ss-band-label">Total</span>
@@ -7900,20 +7999,20 @@ function splitSpringSchedule(events) {
       <p class="jh-ss-meta">
         ${escapeHtml(
           meta.dataStatus ||
-          "Pre-season schedule loaded. Results pending official tournament completion."
+          "Official USC schedule and tournament results are tracked throughout the 2026–27 season. Results are added after each event is completed."
         )}
       </p>
     </section>
 
     ${buildSection(
   "2026 Fall Season",
-  "USC sophomore season schedule and results",
+  "REGULAR-SEASON FALL TOURNAMENTS AND RESULTS",
   data.fallSchedule,
   {
     id: "jh-ss-2026-fall-season",
     sectionClass: "jh-ss-section-fall",
     collapsible: true,
-    defaultOpen: false,
+    defaultOpen: true,
     collapsedNote: "Click the arrow to expand the 2026 fall regular-season schedule.",
     expandedNote: "Click the arrow to collapse the 2026 fall regular-season schedule."
   }
@@ -10215,7 +10314,6 @@ function setImpact(id, value, rankId) {
 </div>
 
 
-
 <div id="jh-current-focus-block" style="width:100%; max-width:none; margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <a id="current-focus"></a>
 
@@ -10231,7 +10329,7 @@ function setImpact(id, value, rankId) {
         </div>
 
         <div id="Current-Focus" class="jhcf-posted-wrap">
-          <span class="jhcf-posted-pill">Posted On: July 19, 2026</span>
+          <span class="jhcf-posted-pill">Posted On: August 2, 2026</span>
         </div>
       </div>
     </div>
@@ -10243,27 +10341,26 @@ function setImpact(id, value, rankId) {
       <div class="jhcf-section">
         <div class="jhcf-section-head">
           <div class="jhcf-no jhcf-no-navy">01</div>
-          <h4>Mexican Amateur Championship Review</h4>
+          <h4>Brazil Championship Review</h4>
         </div>
 
         <div class="jhcf-text-block">
 
-          <p class="jhcf-text-line">
-            <strong>Tournament Result:</strong> Joshua Hong finished the Mexican Amateur Championship with rounds of 77 and 73 for a 36-hole total of 150 (+8), missing the cut by one stroke. The result did not reflect the competitive standard he established throughout his freshman collegiate season.
-          </p>
+         <p class="jhcf-text-line">
+  <strong>Recent Context:</strong> The Brazil Amateur Championship provided a four-round review of Joshua’s competitive condition following a summer stretch that included disrupted preparation and international travel.
+</p>
 
-          <p class="jhcf-text-line">
-            <strong>Performance Assessment:</strong> Throughout tournament preparation and competition, the driver and overall ball-striking were noticeably below their normal level. The inconsistency continued from the U.S. Amateur Final Qualifying after preparation had been affected by a significant cold during an already demanding summer schedule.
-          </p>
+<p class="jhcf-text-line">
+  <strong>Tournament Result:</strong> Joshua recorded rounds of 65, 67, 74, and 70 for a 72-hole total of 276 (-8), finishing fourth at the 95th Campeonato Amador de Golfe do Brasil.
+</p>
 
-          <p class="jhcf-text-line">
-            <strong>Perspective:</strong> Every competitive season includes tournaments that fall below expectations. One difficult championship does not redefine the level demonstrated over an entire season, nor does it diminish the progress made through NCAA competition and international amateur events.
-          </p>
+<p class="jhcf-text-line">
+  <strong>Performance Direction:</strong> Driver control and overall ball-striking returned closer to their normal competitive range. Joshua completed three of the four rounds under par.
+</p>
 
-          <p class="jhcf-text-line jhcf-text-line-last">
-            <strong>Current Priority:</strong> The objective is not technical reconstruction, but restoring physical condition, normal ball-striking rhythm, and competitive consistency before the next international event.
-          </p>
-
+<p class="jhcf-text-line jhcf-text-line-last">
+  <strong>Team Mexico:</strong> Joshua represented Mexico alongside returning USC teammate Nicolas Dominguez. The pair finished second in the international team competition, one stroke behind Colombia.
+</p>
         </div>
       </div>
 
@@ -10272,31 +10369,26 @@ function setImpact(id, value, rankId) {
       <div class="jhcf-section">
         <div class="jhcf-section-head">
           <div class="jhcf-no jhcf-no-gold">02</div>
-          <h4>Next Phase – Brazil</h4>
+          <h4>Next Phase – USC Preparation</h4>
         </div>
 
         <div class="jhcf-text-block">
 
           <p class="jhcf-text-line">
-            <strong class="jhcf-gold-strong">Recovery Window:</strong> With approximately ten days remaining before the next championship in Brazil, the immediate focus shifts toward full physical recovery, rebuilding normal practice rhythm, and leaving the previous tournament behind.
-          </p>
+  <strong class="jhcf-gold-strong">Competition Review:</strong> The individual and team results provided a complete four-round reference point before Joshua’s transition into the USC Men’s Golf environment.
+</p>
 
-          <p class="jhcf-text-line">
-            <strong class="jhcf-gold-strong">Seasonal Adjustment:</strong> Unlike recent events in the United States and Mexico, the upcoming tournament will be played during the Brazilian winter. Preparation will include adapting to cooler temperatures while maintaining the current technical foundation.
-          </p>
+<p class="jhcf-text-line">
+  <strong class="jhcf-gold-strong">USC Connection:</strong> Joshua valued the opportunity to represent Mexico alongside returning USC teammate Nicolas Dominguez before joining the USC program.
+</p>
 
-          <p class="jhcf-text-line">
-            <strong class="jhcf-gold-strong">Representing Mexico:</strong> Joshua will compete as a member of Team Mexico alongside USC teammate <a href="https://usctrojans.com/sports/mens-golf/roster/nicolas-dominguez/18634"
-     target="_blank"
-     rel="noopener noreferrer"
-     style="color:#990000; text-decoration:underline; text-underline-offset:3px;">
-    @Nicolas Dominguez
-  </a>. The focus is to return to his normal competitive standard and represent Mexico with discipline, consistency, and professionalism.
-          </p>
+<p class="jhcf-text-line">
+  <strong class="jhcf-gold-strong">Development Priorities:</strong> Driving and short-game performance were the most consistent strengths. Continued work will focus on approach proximity, putting conversion, and greater scoring stability across four-round events.
+</p>
 
-          <p class="jhcf-text-line jhcf-text-line-last">
-            <strong class="jhcf-gold-strong">Looking Ahead:</strong> The Mexican Amateur Championship is now part of the season's record. Attention turns entirely toward the next opportunity, with the goal of arriving in Brazil healthy, prepared, and ready to compete at the level expected of him.
-          </p>
+<p class="jhcf-text-line jhcf-text-line-last">
+  <strong class="jhcf-gold-strong">Next Phase:</strong> The immediate priority is recovery from competition and travel, followed by maintaining normal practice rhythm before joining USC Men’s Golf.
+</p>
 
         </div>
       </div>
@@ -10309,6 +10401,7 @@ function setImpact(id, value, rankId) {
 
   </div>
 </div>
+
   
 <style>
 #jh-current-focus-block,
@@ -11689,7 +11782,7 @@ function setImpact(id, value, rankId) {
       <div class="jpp-title-stack">
         <div class="jpp-eyebrow">Beyond the Scorecard</div>
         <div class="jpp-current" id="jpp-current-label">
-          Mexican Amateur Championship
+          Brazil Amateur Championship
         </div>
       </div>
 
@@ -11759,6 +11852,130 @@ function setImpact(id, value, rankId) {
            - data-posted-date
       -->
 
+
+<!-- CARD: BRAZIL AMATEUR CHAMPIONSHIP INSIGHT | Posted On: August 2, 2026 | Latest cards stay above older cards -->
+<div class="insight-card-item"
+     data-card-id="brazil-amateur-championship-insight-2026-08-02"
+     data-archive-no="5"
+     data-card-title="Brazil Amateur Championship — Four-Round Competition Record"
+     data-option-label="Brazil Amateur Championship"
+     data-posted-date="2026-08-02"
+     style="flex-direction: column; justify-content: space-between; gap: 18px;">
+
+  <div>
+
+    <div class="bts-card-head"
+         style="display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; width: 100%; margin: 0 0 18px 0;">
+
+      <div class="bts-title-row"
+           style="display: flex; align-items: center; gap: 10px; min-width: 0;">
+
+        <div class="bts-icon-wrap" style="flex: 0 0 auto;">
+          <svg width="22"
+               height="22"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="#ffcc00"
+               stroke-width="2"
+               stroke-linecap="round"
+               stroke-linejoin="round"
+               aria-hidden="true">
+
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+
+        <h3 class="bts-title" style="margin: 0; min-width: 0;">
+          Beyond the Scorecard
+        </h3>
+      </div>
+
+      <span class="bts-event-badge"
+            style="flex: 0 0 auto; margin-left: auto; white-space: nowrap;">
+        Brazil Amateur Championship
+      </span>
+
+    </div>
+
+    <div class="bts-body">
+
+      <p class="bts-lead">
+        Brazil Amateur Championship — Four-Round Competition Record
+      </p>
+
+      <p style="margin: 0 0 10px 0;">
+        Joshua Hong recorded rounds of 65, 67, 74, and 70 for a 72-hole total of 276 (-8), finishing fourth at the
+        <a href="https://cbgolfe.com.br/torneio-interna/?cod_torneio=612"
+           target="_blank"
+           rel="noopener noreferrer"
+           style="
+             display: inline-flex;
+             align-items: center;
+             gap: 4px;
+             color: #ffffff;
+             text-decoration: underline;
+             text-underline-offset: 3px;
+           ">
+          95th Campeonato Amador de Golfe do Brasil
+
+          <svg
+            viewBox="0 0 16 16"
+            aria-hidden="true"
+            style="
+              width: 0.85em;
+              height: 0.85em;
+              flex: 0 0 auto;
+              fill: none;
+              stroke: currentColor;
+              stroke-width: 1.6;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              transform: translateY(-1px);
+            ">
+            <path d="M5 11L11 5"></path>
+            <path d="M6 5H11V10"></path>
+          </svg>
+        </a>.
+      </p>
+
+      <p style="margin: 0 0 10px 0;">
+        The opening-round 65 was bogey-free and included +3.7 strokes gained on approach. The second-round 67 included +2.5 strokes gained around the green and a four-under finish over the final six holes.
+      </p>
+
+      <p style="margin: 0 0 10px 0;">
+        The third-round 74 included 91% fairways and +1.1 strokes gained off the tee. The main scoring loss came on the greens, with 35 putts and -4.4 strokes gained putting. The round also included one out-of-bounds penalty.
+      </p>
+
+      <p style="margin: 0 0 10px 0;">
+        Joshua completed the championship with a final-round 70. He recorded 91% fairways and 88% greens in regulation. Driving and short-game performance remained positive, while approach proximity and putting conversion limited the final score.
+      </p>
+
+      <p style="margin: 0 0 10px 0;">
+        Based on the available strokes-gained tracking, Joshua gained approximately 2.5 strokes off the tee and 5.0 strokes around the green across four rounds. Approach play finished approximately two strokes below the reference level, while putting produced the largest cumulative loss at approximately 6.3 strokes.
+      </p>
+
+      <p style="margin: 0 0 10px 0;">
+        He recorded 18 birdies, 46 pars, seven bogeys, and one triple bogey across 72 holes.
+      </p>
+
+      <p class="bts-final" style="margin: 0;">
+        Joshua competed for Mexico alongside Nicolas Dominguez. Joshua finished at -8 and Nicolas at -6 for a combined team score of -14. Mexico finished second in the international team competition, one stroke behind Colombia.
+      </p>
+
+    </div>
+  </div>
+
+  <div class="bts-status-note"
+       style="width: 100%; margin: 0; padding-top: 14px; border-top: 1px solid rgba(255, 204, 0, 0.22); align-self: stretch;">
+
+    <div style="margin: 0; color: rgba(255, 248, 220, 0.78); font-weight: 750;">
+      Posted On: August 2, 2026
+    </div>
+
+  </div>
+</div>
+      
 <!-- CARD: MEXICAN AMATEUR CHAMPIONSHIP INSIGHT | Posted On: July 19, 2026 | Latest cards stay above older cards -->
 <div class="insight-card-item"
      data-card-id="mexican-amateur-championship-insight-2026-07-19"
@@ -12172,16 +12389,7 @@ function setImpact(id, value, rankId) {
     return 'Insight ' + (index + 1);
   }
 
-  /*
-    HTML 순서는 최신 → 과거이므로
-    실제 Archive 번호는 total - index로 계산합니다.
 
-    카드 4개:
-    index 0 = 4/4
-    index 1 = 3/4
-    index 2 = 2/4
-    index 3 = 1/4 (DOGWOOD)
-  */
   function getCounterText(index, total) {
     if (total <= 0) return '0/0';
 
@@ -13114,6 +13322,16 @@ function setImpact(id, value, rankId) {
 
 
  <img 
+    src="./images/sophomore-2026-27/joshua-hong-brazil-am-2026-Final-276-8-4.jpeg" 
+    onclick="popupGallery(this)" 
+    class="thumb-img" 
+    alt="Joshua Hong finishes 4th at the 2026 Brazilian Amateur Championship with a 276 (-8) total, while Team Mexico finishes 2nd in the Taça Mario Gonzalez team competition" 
+    title="Joshua Hong · Brazil Amateur 2026 · Final 276 (-8) · 4th · Team Mexico 2nd - August 2, 2026" 
+    loading="lazy" 
+    decoding="async"
+  >
+          
+  <img 
     src="./images/sophomore-2026-27/joshua-hong-brazil-am-2026-R2-67-132-T1.jpeg" 
     onclick="popupGallery(this)" 
     class="thumb-img" 
@@ -13142,17 +13360,7 @@ function setImpact(id, value, rankId) {
     loading="lazy" 
     decoding="async"
   >
-          
-  <img 
-    src="./images/sophomore-2026-27/joshua-hong-brazil-amateur-2026.jpeg" 
-    onclick="popupGallery(this)" 
-    class="thumb-img" 
-    alt="USC sophomore Joshua Hong represents Mexico at the 2026 Brazilian Amateur Championship alongside Nicolas Dominguez in Brazil." 
-    title="Joshua Hong Represents Mexico at the 2026 Brazilian Amateur Championship-July 27, 2026" 
-    loading="lazy" 
-    decoding="async"
-  >
-          
+                   
   <img 
     src="./images/sophomore-2026-27/home-hero-signed-banner-01.jpg" 
     onclick="popupGallery(this)" 
