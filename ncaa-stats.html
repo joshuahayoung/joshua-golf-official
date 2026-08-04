@@ -4647,48 +4647,91 @@
     text-transform: uppercase;
   }
 
-  #jh-summer-results-log-isolated .jh-srl-results-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 28px;
-    padding: 5px 11px;
-    border-radius: 999px;
-    color: #ffc72c;
-    background:
-      linear-gradient(
-        135deg,
-        var(--jh-srl-cardinal) 0%,
-        var(--jh-srl-cardinal-dark) 100%
-      );
-    border: 1px solid rgba(255, 199, 44, 0.40);
-    box-shadow: 0 5px 12px rgba(153, 0, 0, 0.14);
-    text-decoration: none;
-    font-size: 10px;
-    line-height: 1;
-    font-weight: 700;
-    letter-spacing: 0.22px;
-    text-transform: uppercase;
-    transition:
-      background-color 0.18s ease,
-      color 0.18s ease,
-      border-color 0.18s ease,
-      transform 0.18s ease;
-  }
+#jh-summer-results-log-isolated .jh-srl-results-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 28px;
+  padding: 5px 8px 5px 11px;
+  border-radius: 999px;
+  color: #ffc72c;
+  background:
+    linear-gradient(
+      135deg,
+      var(--jh-srl-cardinal) 0%,
+      var(--jh-srl-cardinal-dark) 100%
+    );
+  border: 1px solid rgba(255, 199, 44, 0.40);
+  box-shadow: 0 5px 12px rgba(153, 0, 0, 0.14);
+  text-decoration: none;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.22px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
+}
 
-  #jh-summer-results-log-isolated .jh-srl-results-link:hover,
-  #jh-summer-results-log-isolated .jh-srl-results-link:focus {
-    color: var(--jh-srl-cardinal-dark);
-    background:
-      linear-gradient(
-        180deg,
-        #ffffff 0%,
-        #fffaf0 100%
-      );
-    border-color: rgba(153, 0, 0, 0.28);
-    box-shadow: 0 5px 12px rgba(12, 35, 64, 0.10);
-    transform: translateY(-1px);
-  }
+#jh-summer-results-log-isolated .jh-srl-link-text {
+  display: inline-block;
+  line-height: 1;
+}
+
+#jh-summer-results-log-isolated .jh-srl-link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 999px;
+  color: currentColor;
+  background: rgba(255, 199, 44, 0.14);
+  border: 1px solid rgba(255, 199, 44, 0.32);
+  flex: 0 0 auto;
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+
+#jh-summer-results-log-isolated .jh-srl-link-icon svg {
+  display: block;
+  width: 9.5px;
+  height: 9.5px;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#jh-summer-results-log-isolated .jh-srl-results-link:hover,
+#jh-summer-results-log-isolated .jh-srl-results-link:focus {
+  color: var(--jh-srl-cardinal-dark);
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #fffaf0 100%
+    );
+  border-color: rgba(153, 0, 0, 0.28);
+  box-shadow: 0 5px 12px rgba(12, 35, 64, 0.10);
+  transform: translateY(-1px);
+}
+
+#jh-summer-results-log-isolated .jh-srl-results-link:hover .jh-srl-link-icon,
+#jh-summer-results-log-isolated .jh-srl-results-link:focus .jh-srl-link-icon {
+  transform: translateX(2px);
+  background: rgba(153, 0, 0, 0.08);
+  border-color: rgba(153, 0, 0, 0.26);
+}
+    
 
   /* =========================================================
      MOBILE
@@ -5323,40 +5366,48 @@
         return event.total - (event.par * numericRounds.length);
       }
 
-      function buildMetrics(event) {
-        const metrics = Array.isArray(event.metrics) ? event.metrics : [];
-        const links = Array.isArray(event.links) ? event.links : [];
+function buildMetrics(event) {
+  const metrics = Array.isArray(event.metrics) ? event.metrics : [];
+  const links = Array.isArray(event.links) ? event.links : [];
 
-        const metricHtml = metrics.map(function(metric) {
-          return (
-            '<span class="jh-srl-metric">' +
-              '<span class="jh-srl-metric-label">' + escapeHtml(metric.label) + '</span>' +
-              '<span>' + escapeHtml(metric.value || '—') + '</span>' +
-            '</span>'
-          );
-        }).join('');
+  const metricHtml = metrics.map(function(metric) {
+    return (
+      '<span class="jh-srl-metric">' +
+        '<span class="jh-srl-metric-label">' + escapeHtml(metric.label) + '</span>' +
+        '<span>' + escapeHtml(metric.value || '—') + '</span>' +
+      '</span>'
+    );
+  }).join('');
 
-        const linkHtml = links
-          .filter(function(link) {
-            return link && link.url && link.url !== '#';
-          })
-          .map(function(link) {
-            return (
-              '<a class="jh-srl-results-link" href="' + escapeHtml(link.url) + '" target="_blank" rel="noopener noreferrer">' +
-                escapeHtml(link.label || 'Results') +
-              '</a>'
-            );
-          }).join('');
+  const linkHtml = links
+    .filter(function(link) {
+      return link && link.url && link.url !== '#';
+    })
+    .map(function(link) {
+      const label = link.label || 'Results';
 
-        if (!metricHtml && !linkHtml) return '';
+      return (
+        '<a class="jh-srl-results-link" href="' + escapeHtml(link.url) + '" target="_blank" rel="noopener noreferrer" aria-label="' + escapeHtml(label) + '">' +
+          '<span class="jh-srl-link-text">' + escapeHtml(label) + '</span>' +
+          '<span class="jh-srl-link-icon" aria-hidden="true">' +
+            '<svg viewBox="0 0 24 24" fill="none" focusable="false">' +
+              '<path d="M5 12h14"></path>' +
+              '<path d="M13 6l6 6-6 6"></path>' +
+            '</svg>' +
+          '</span>' +
+        '</a>'
+      );
+    }).join('');
 
-        return (
-          '<div class="jh-srl-metrics">' +
-            metricHtml +
-            linkHtml +
-          '</div>'
-        );
-      }
+  if (!metricHtml && !linkHtml) return '';
+
+  return (
+    '<div class="jh-srl-metrics">' +
+      metricHtml +
+      linkHtml +
+    '</div>'
+  );
+}
 
       function buildEventCard(event) {
         const statusClassName = normalizeStatusType(event);
@@ -5937,8 +5988,142 @@
 }
 
 #jh-sophomore-season-page .jh-ss-results-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 30px;
+  padding: 6px 9px 6px 12px;
+  border-radius: 999px;
   text-decoration: none;
   white-space: nowrap;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.34px;
+  font-weight: 750 !important;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+#jh-sophomore-season-page .jh-ss-results-link.is-tournament-info,
+#jh-sophomore-season-page .jh-ss-results-link.is-result {
+  background:
+    linear-gradient(
+      135deg,
+      var(--jh-usc-cardinal) 0%,
+      var(--jh-usc-cardinal-dark) 100%
+    ) !important;
+  color: var(--jh-usc-gold) !important;
+  border: 1px solid rgba(255, 204, 0, 0.42) !important;
+  box-shadow:
+    0 5px 12px rgba(153, 0, 0, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+}
+
+#jh-sophomore-season-page .jh-ss-results-link.is-leaderboard {
+  background: #0c2340 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(12, 35, 64, 0.18) !important;
+  box-shadow:
+    0 5px 12px rgba(12, 35, 64, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
+}
+
+#jh-sophomore-season-page .jh-ss-link-text {
+  display: inline-block;
+  line-height: 1;
+}
+
+#jh-sophomore-season-page .jh-ss-link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  border-radius: 999px;
+  color: currentColor;
+  background: rgba(255, 204, 0, 0.14);
+  border: 1px solid rgba(255, 204, 0, 0.32);
+  flex: 0 0 auto;
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+
+#jh-sophomore-season-page .jh-ss-link-icon svg {
+  display: block;
+  width: 11px;
+  height: 11px;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+#jh-sophomore-season-page .jh-ss-results-link:hover,
+#jh-sophomore-season-page .jh-ss-results-link:focus {
+  transform: translateY(-1px);
+}
+
+#jh-sophomore-season-page .jh-ss-results-link.is-tournament-info:hover,
+#jh-sophomore-season-page .jh-ss-results-link.is-tournament-info:focus,
+#jh-sophomore-season-page .jh-ss-results-link.is-result:hover,
+#jh-sophomore-season-page .jh-ss-results-link.is-result:focus {
+  background:
+    linear-gradient(
+      135deg,
+      #7a0000 0%,
+      #990000 52%,
+      #650000 100%
+    ) !important;
+  color: #fff3c4 !important;
+  border-color: rgba(255, 204, 0, 0.62) !important;
+  box-shadow:
+    0 8px 18px rgba(153, 0, 0, 0.22),
+    0 2px 7px rgba(12, 35, 64, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14) !important;
+}
+
+#jh-sophomore-season-page .jh-ss-results-link.is-leaderboard:hover,
+#jh-sophomore-season-page .jh-ss-results-link.is-leaderboard:focus {
+  background: var(--jh-usc-cardinal) !important;
+  color: var(--jh-usc-gold) !important;
+  border-color: rgba(255, 204, 0, 0.42) !important;
+  box-shadow:
+    0 8px 18px rgba(153, 0, 0, 0.18),
+    0 2px 7px rgba(12, 35, 64, 0.10) !important;
+}
+
+#jh-sophomore-season-page .jh-ss-results-link:hover .jh-ss-link-icon,
+#jh-sophomore-season-page .jh-ss-results-link:focus .jh-ss-link-icon {
+  transform: translateX(2px);
+  background: rgba(255, 204, 0, 0.22);
+  border-color: rgba(255, 204, 0, 0.56);
+}
+
+@media (max-width: 480px) {
+  #jh-sophomore-season-page .jh-ss-results-link {
+    gap: 5px;
+    min-height: 28px;
+    padding: 6px 8px 6px 10px;
+    font-size: 9.5px;
+    letter-spacing: 0.22px;
+  }
+
+  #jh-sophomore-season-page .jh-ss-link-icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  #jh-sophomore-season-page .jh-ss-link-icon svg {
+    width: 9.5px;
+    height: 9.5px;
+  }
 }
 
     #jh-sophomore-season-page .jh-ss-notes {
@@ -7607,20 +7792,44 @@
 function resultItem(event) {
   const links = event.links || {};
 
-  if (isDisplayText(links.results)) {
+  const resultUrl = isDisplayText(links.results)
+    ? links.results
+    : "";
+
+  const tournamentInfoUrl = isDisplayText(links.tournamentInfo)
+    ? links.tournamentInfo
+    : isDisplayText(links["Tournament Info"])
+      ? links["Tournament Info"]
+      : "";
+
+  const leaderboardUrl = isDisplayText(links.leaderboard)
+    ? links.leaderboard
+    : "";
+
+  function linkButton(url, label, className) {
     return `
-      <a class="jh-ss-metric jh-ss-results-link" href="${escapeHtml(links.results)}" target="_blank" rel="noopener noreferrer">
-        Final Results
+      <a class="jh-ss-metric jh-ss-results-link ${className}" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(label)}">
+        <span class="jh-ss-link-text">${escapeHtml(label)}</span>
+        <span class="jh-ss-link-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" focusable="false">
+            <path d="M5 12h14"></path>
+            <path d="M13 6l6 6-6 6"></path>
+          </svg>
+        </span>
       </a>
     `;
   }
 
-  if (isDisplayText(links.leaderboard)) {
-    return `
-      <a class="jh-ss-metric jh-ss-results-link" href="${escapeHtml(links.leaderboard)}" target="_blank" rel="noopener noreferrer">
-        Leaderboard
-      </a>
-    `;
+  if (isDisplayText(resultUrl)) {
+    return linkButton(resultUrl, "Result", "is-result");
+  }
+
+  if (isDisplayText(tournamentInfoUrl)) {
+    return linkButton(tournamentInfoUrl, "Tournament Info", "is-tournament-info");
+  }
+
+  if (isDisplayText(leaderboardUrl)) {
+    return linkButton(leaderboardUrl, "Leaderboard", "is-leaderboard");
   }
 
   return `
@@ -7630,6 +7839,8 @@ function resultItem(event) {
     </span>
   `;
 }
+
+
 
 function buildMetrics(event) {
   const metrics = event.metrics || {};
@@ -14736,6 +14947,14 @@ document.head.appendChild(style);
   }
 
   #jh-summer-results-log-isolated .jh-srl-results-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 28px;
+    padding: 5px 11px;
+    border-radius: 999px;
+    color: #ffc72c;
     background:
       linear-gradient(
         135deg,
