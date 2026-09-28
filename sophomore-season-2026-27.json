@@ -227,7 +227,7 @@
       "links": {
   "leaderboard": "",
   "Tournament Info": "",
-  "Final results": "https://scoreboard.clippd.com/tournaments/245341/scoring/player"
+  "results": "https://scoreboard.clippd.com/tournaments/245341/scoring/player"
         }
     },
 
@@ -279,7 +279,7 @@
       },
       "links": {
   "tournamentInfo": "",
-  "Final results": "https://scoreboard.clippd.com/tournaments/246292/scoring/player"
+  "results": "https://scoreboard.clippd.com/tournaments/246292/scoring/player"
         }
     }
   ],
